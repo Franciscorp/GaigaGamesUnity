@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: UI_Table Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: UI_Table
+  m_TableCollectionNameGuidString: f393bb28aa9c1d44da7e00ab413c5f42
+  m_Entries:
+  - m_Id: 23141371904
+    m_Key: OptionsKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3192118398976
+    m_Key: LoadingKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3284732825600
+    m_Key: TitleKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3460608380928
+    m_Key: GamesMenuKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3996015480832
+    m_Key: PlayStoryModeKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7186140188672
+    m_Key: GamesMenuTitleKey
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 3827865155868557336
+  references:
+    version: 2
+    RefIds:
+    - rid: 3827865155868557336
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1714764138616

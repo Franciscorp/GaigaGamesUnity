@@ -14,4 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GaigaGamesProject/Scenes/LoadingScreen.unity
     guid: 171043071aa3d384c8b9cd114c94476b
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: bad97605507e8f449ad247c9a81e9acd, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: ad30b319e1ce9794bbaa085d93f0acd1, type: 2}

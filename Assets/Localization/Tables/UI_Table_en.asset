@@ -42,6 +42,30 @@ MonoBehaviour:
     m_Localized: Games Menu
     m_Metadata:
       m_Items: []
+  - m_Id: 2134143623581696
+    m_Localized: Speech Machine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134190314573824
+    m_Localized: What's That!?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134239555702784
+    m_Localized: Identify The Stutter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134338847461376
+    m_Localized: Truth or not Truth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134383151894528
+    m_Localized: Undercover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134515285053440
+    m_Localized: Magic Spells
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

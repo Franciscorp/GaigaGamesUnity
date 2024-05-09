@@ -39,6 +39,30 @@ MonoBehaviour:
     m_Key: GamesMenuTitleKey
     m_Metadata:
       m_Items: []
+  - m_Id: 2134143623581696
+    m_Key: SpeechMachineKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134190314573824
+    m_Key: DiscoverGameKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134239555702784
+    m_Key: FindTheStutterKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134338847461376
+    m_Key: TruthOrFalseKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134383151894528
+    m_Key: UndercoverKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134515285053440
+    m_Key: MagicSpellsKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

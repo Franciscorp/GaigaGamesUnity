@@ -8,4 +8,8 @@ public class GamesMenu : MonoBehaviour
         SceneLoader.Load(SceneLoader.Scene.MainMenu);
     }
 
+    public void StartSpeechMachineGame()
+    {
+        SceneLoader.Load(SceneLoader.Scene.SpeechMachine);
+    }
 }

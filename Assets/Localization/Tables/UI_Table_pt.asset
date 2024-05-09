@@ -42,6 +42,30 @@ MonoBehaviour:
     m_Localized: Menu Jogos
     m_Metadata:
       m_Items: []
+  - m_Id: 2134143623581696
+    m_Localized: "M\xE1quina da Fala"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134190314573824
+    m_Localized: "O que \xE9 aquilo!?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134239555702784
+    m_Localized: Identifica a Gaguez
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134338847461376
+    m_Localized: "Ser\xE1 Verdade? Ser\xE1 Mentira?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134383151894528
+    m_Localized: Infiltrado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2134515285053440
+    m_Localized: "Feiti\xE7os M\xE1gicos"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

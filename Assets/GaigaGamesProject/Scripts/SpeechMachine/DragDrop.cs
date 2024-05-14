@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static SpeechMachineGameManager;
 
 public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     // Canvas controls the movement of the delta, so if the canvas i scaled, so will be the movement
     [SerializeField] private Canvas canvas;
+    [SerializeField] private SpeechElements speechElementID { get; }
+
 
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
@@ -13,6 +16,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+    }
+
+    public SpeechElements GetSpeechElementID()
+    {
+        return speechElementID;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

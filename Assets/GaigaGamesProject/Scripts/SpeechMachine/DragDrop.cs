@@ -1,21 +1,26 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static SpeechMachineGameManager;
+using static Utils;
 
 public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     // Canvas controls the movement of the delta, so if the canvas i scaled, so will be the movement
     [SerializeField] private Canvas canvas;
-    [SerializeField] private SpeechElements speechElementID { get; }
+    [SerializeField] private SpeechElements speechElementID;
 
 
     private RectTransform rectTransform;
+    private Vector2 initialPositionTransform;
     private CanvasGroup canvasGroup;
+
+    private bool isElementInSlot = false;
+
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        initialPositionTransform = rectTransform.anchoredPosition;
     }
 
     public SpeechElements GetSpeechElementID()
@@ -23,8 +28,27 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         return speechElementID;
     }
 
+    public void ResetPosition()
+    {
+        rectTransform.anchoredPosition = initialPositionTransform;
+    }
+
+    public void ElementInSlot(SpeechElements speechElementInSlotID)
+    {
+        // If this ID corresponds to the one in slot, then it passes to true
+        if (speechElementID == speechElementInSlotID)
+        {
+            isElementInSlot = true;
+            Debug.Log("Element = " + speechElementID + " is in Slot");
+        }
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
+        // if element is already in slot, does nothing
+        if (isElementInSlot)
+            return;
+
         Debug.Log("OnBeginDrag");
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
@@ -34,7 +58,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     // Called on every frame of dragging
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("OnDrag");
+        // if element is already in slot, does nothing
+        if (isElementInSlot)
+            return;
+
+        //Debug.Log("OnDrag");
         // the movement done by the mouse, since the last updated frame
         if (canvas != null)
         {
@@ -52,6 +80,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         Debug.Log("OnEndDrag");
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+        
+        if (!isElementInSlot)
+            ResetPosition();
     }
 
     public void OnPointerDown(PointerEventData eventData)

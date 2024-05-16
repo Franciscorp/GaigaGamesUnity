@@ -62,7 +62,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         if (isElementInSlot)
             return;
 
-        //Debug.Log("OnDrag");
         // the movement done by the mouse, since the last updated frame
         if (canvas != null)
         {

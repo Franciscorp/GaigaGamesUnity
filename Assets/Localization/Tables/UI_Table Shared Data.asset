@@ -63,6 +63,36 @@ MonoBehaviour:
     m_Key: MagicSpellsKey
     m_Metadata:
       m_Items: []
+  - m_Id: 4310992554381312
+    m_Key: BrainKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311036091256832
+    m_Key: LungsKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311059336089600
+    m_Key: TeethKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311079498108928
+    m_Key: MouthKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311099655933952
+    m_Key: TongueKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311118601605120
+    m_Key: VoiceBoxKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311183151943680
+    m_Key: 'DiaphragmKey
+
+'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

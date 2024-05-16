@@ -17,6 +17,7 @@ public class SpeechElementSlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("OnDrop");
+
         // Catch object being dragged by the mouse
         if(eventData.pointerDrag != null)
         {
@@ -39,11 +40,5 @@ public class SpeechElementSlot : MonoBehaviour, IDropHandler
             Debug.Log("Speech Element ID detected, sending event!");
             elementDetected.Invoke(speechElementSlotID, speechElementID);
         }
-
-        Debug.Log(eventData.pointerDrag.gameObject.GetComponent<DragDrop>());
-
-        // On element detection invoke event
-
-
     }
 }

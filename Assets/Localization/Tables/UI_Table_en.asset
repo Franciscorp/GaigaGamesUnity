@@ -66,6 +66,34 @@ MonoBehaviour:
     m_Localized: Magic Spells
     m_Metadata:
       m_Items: []
+  - m_Id: 4310992554381312
+    m_Localized: Brain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311036091256832
+    m_Localized: Lungs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311059336089600
+    m_Localized: Teeth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311079498108928
+    m_Localized: Mouth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311099655933952
+    m_Localized: Tongue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311118601605120
+    m_Localized: Voice Box
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311183151943680
+    m_Localized: Diaphragm
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

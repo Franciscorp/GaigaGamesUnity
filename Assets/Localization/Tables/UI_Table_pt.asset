@@ -66,6 +66,34 @@ MonoBehaviour:
     m_Localized: "Feiti\xE7os M\xE1gicos"
     m_Metadata:
       m_Items: []
+  - m_Id: 4310992554381312
+    m_Localized: "C\xE9rebro"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311036091256832
+    m_Localized: "Pulm\xF5es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311059336089600
+    m_Localized: Dentes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311079498108928
+    m_Localized: Boca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311099655933952
+    m_Localized: "L\xEDngua"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311118601605120
+    m_Localized: Caixa da Voz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4311183151943680
+    m_Localized: Diafragma
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

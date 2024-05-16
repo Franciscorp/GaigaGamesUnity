@@ -8,10 +8,17 @@ public class SpeechElementSlot : MonoBehaviour, IDropHandler
     [SerializeField] private SpeechElements speechElementSlotID;
 
     public SpeechMachineGameEvent elementDetected;
+    public CanvasGroup canvasGroup;
 
     private void Start()
     {
         elementDetected.AddListener(GameObject.FindGameObjectWithTag("SpeechMachineController").GetComponent<SpeechMachineGameManager>().ElementInSlotDetected);
+        canvasGroup = GetComponent<CanvasGroup>();
+    }
+
+    public SpeechElements GetSpeechElementSlotID()
+    {
+        return speechElementSlotID;
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -29,6 +36,7 @@ public class SpeechElementSlot : MonoBehaviour, IDropHandler
             {
                 Debug.Log("Speech Element is equal!");
                 eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+                DisableRaycast();
             }
             else
             {
@@ -40,5 +48,16 @@ public class SpeechElementSlot : MonoBehaviour, IDropHandler
             Debug.Log("Speech Element ID detected, sending event!");
             elementDetected.Invoke(speechElementSlotID, speechElementID);
         }
+    }
+
+    private void DisableRaycast()
+    {
+        if (canvasGroup == null)
+        {
+            Debug.Log("[" + speechElementSlotID + "] Doesn't have a raycast");
+            return;
+        }
+        canvasGroup.blocksRaycasts = false;
+        Debug.Log("[" + speechElementSlotID + "] raycast disabled");
     }
 }

@@ -40,6 +40,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         {
             isElementInSlot = true;
             Debug.Log("Element = " + speechElementID + " is in Slot");
+            // disables raycast and stops being interactable
+            canvasGroup.blocksRaycasts = false;
+            Debug.Log("[" + speechElementID + "] raycast disabled");
+
         }
     }
 
@@ -82,6 +86,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         
         if (!isElementInSlot)
             ResetPosition();
+        else
+            canvasGroup.blocksRaycasts = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)

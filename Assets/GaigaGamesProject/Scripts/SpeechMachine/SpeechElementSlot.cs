@@ -54,10 +54,10 @@ public class SpeechElementSlot : MonoBehaviour, IDropHandler
     {
         if (canvasGroup == null)
         {
-            Debug.Log("[" + speechElementSlotID + "] Doesn't have a raycast");
+            //Debug.Log("[" + speechElementSlotID + "] Doesn't have a raycast");
             return;
         }
         canvasGroup.blocksRaycasts = false;
-        Debug.Log("[" + speechElementSlotID + "] raycast disabled");
+        //Debug.Log("[" + speechElementSlotID + "] raycast disabled");
     }
 }

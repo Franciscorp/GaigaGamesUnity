@@ -11,6 +11,8 @@ public class SpeechMachineGameManager : MonoBehaviour
 
     public SpeechMachineElementInPositionEvent elementIsInSlot;
 
+    public UnityEvent dialogueEvent;
+
 
     void Awake()
     {
@@ -35,6 +37,16 @@ public class SpeechMachineGameManager : MonoBehaviour
         {
             Debug.Log("Speech Element was detected and it is equal!");
             elementIsInSlot.Invoke(speechElementID);
+            SpeechElementsState[Enum.GetName(typeof(SpeechElements), speechElementID)] = true;
+            // on catching element, sends a dialogue event
+            dialogueEvent.Invoke();
+        }
+
+        //Debug.Log("Presenting list of elements done: ");
+
+        foreach (var element in SpeechElementsState)
+        {
+            //Debug.Log(element.Key + " = " + element.Value);
         }
 
     }

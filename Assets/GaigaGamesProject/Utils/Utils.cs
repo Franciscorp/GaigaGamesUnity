@@ -11,6 +11,12 @@ public class Utils
     // TIMERS CONSTANTS
     public const float LoadingScreenMinimumTime = 0.5f;
 
+    public enum Language
+    {
+        Portuguese = 0,
+        English = 1
+    }
+
 
     // SPEECH MACHINE UTILS
 

@@ -1,13 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Utils;
 
-public class DialogueStructure
+[System.Serializable]
+public class DialogueDataStructure
 {
-    private Language language;
-    private SpeechMachineDialogueStructure speechMachineDialogues;
+    public Language language;
+    public SpeechMachineDialogueStructure speechMachineDialogues;
 
+    public DialogueDataStructure()
+    {
+        this.language = Language.English;
+    }
 }
 
 [System.Serializable]

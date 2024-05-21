@@ -4,19 +4,19 @@ using static Utils;
 public class Utils
 {
     // SAVES FILE NAMES 
-    //public const string SaveDirectory = "Saves";
+    public const string SaveDirectory = "Saves";
     public const string SettingsSaveFilePath = "SettingsSave";
-    //public const string GameDataSaveFilePath = SaveDirectory + "/" + "GameDataSaveFilePath";
+    public const string DialoguesSaveFilePath = "DialoguesSave";
 
     // TIMERS CONSTANTS
     public const float LoadingScreenMinimumTime = 0.5f;
+
 
     public enum Language
     {
         Portuguese = 0,
         English = 1
     }
-
 
     // SPEECH MACHINE UTILS
 
@@ -32,6 +32,8 @@ public class Utils
     }
 
 }
+
+
 
 [System.Serializable]
 public class SpeechMachineGameEvent : UnityEvent<SpeechElements, SpeechElements>

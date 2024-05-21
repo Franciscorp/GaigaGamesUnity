@@ -6,6 +6,7 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour
 {
     public GameObject gameManager;
+    public DialogueDataStructure dialogueDataStructure;
 
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
@@ -35,6 +36,10 @@ public class DialogueManager : MonoBehaviour
             gameManager.GetComponent<SpeechMachineGameManager>().dialogueEvent.AddListener(ActivateDialogue);
             Debug.Log("[DialogueManager] Dialogue Events are connected");
         }
+
+        // TODO TEMP
+        dialogueDataStructure = new DialogueDataStructure();
+
         ResetText();
     }
 
@@ -85,19 +90,9 @@ public class DialogueManager : MonoBehaviour
 
         isDialogueActive = true;
 
-        //if (dialoguePanel.activeInHierarchy)
-        //{
-        //    ResetText();
-        //}
-        //else
-        //{
-        //    dialoguePanel.SetActive(true);
-        //    StartCoroutine(Typing());
-        //}
-
-            ResetText();
-            dialoguePanel.SetActive(true);
-            StartCoroutine(Typing());
+        ResetText();
+        dialoguePanel.SetActive(true);
+        StartCoroutine(Typing());
     }
 
     public void DisableDialogue()

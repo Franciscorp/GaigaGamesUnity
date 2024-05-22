@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using static Utils;
+using static UtilsSpeechMachine;
 
 public class SpeechElementSlot : MonoBehaviour, IDropHandler
 {

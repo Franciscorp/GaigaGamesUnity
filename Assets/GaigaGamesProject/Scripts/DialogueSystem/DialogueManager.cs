@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static UtilsSpeechMachine;
+
 
 public class DialogueManager : MonoBehaviour
 {
@@ -33,7 +35,7 @@ public class DialogueManager : MonoBehaviour
         else
         {
             // TODO temp
-            gameManager.GetComponent<SpeechMachineGameManager>().dialogueEvent.AddListener(ActivateDialogue);
+            gameManager.GetComponent<SpeechMachineGameManager>().dialogueEvent.AddListener(OnDialogueEvent);
             Debug.Log("[DialogueManager] Dialogue Events are connected");
         }
 
@@ -82,6 +84,12 @@ public class DialogueManager : MonoBehaviour
         {
             ResetText();
         }
+    }
+
+    public void OnDialogueEvent(DialogueEventType dialogueTypeEvent, SpeechElements speechElementID)
+    {
+        Debug.Log("dialogueTypeEvent = " + dialogueTypeEvent + " speechElementID = " + speechElementID);
+        ActivateDialogue();
     }
 
     public void ActivateDialogue()

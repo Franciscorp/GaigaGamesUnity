@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using static Utils;
+using static UtilsSpeechMachine;
 
 public class SpeechMachineGameManager : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class SpeechMachineGameManager : MonoBehaviour
 
     public SpeechMachineElementInPositionEvent elementIsInSlot;
 
-    public UnityEvent dialogueEvent;
+    public SpeechMachineDialogueEvent dialogueEvent;
 
 
     void Awake()
@@ -39,7 +39,12 @@ public class SpeechMachineGameManager : MonoBehaviour
             elementIsInSlot.Invoke(speechElementID);
             SpeechElementsState[Enum.GetName(typeof(SpeechElements), speechElementID)] = true;
             // on catching element, sends a dialogue event
-            dialogueEvent.Invoke();
+            // Right Element, righ answer
+            dialogueEvent.Invoke(DialogueEventType.RightAnswer, speechElementID);
+        }
+        else
+        {
+            dialogueEvent.Invoke(DialogueEventType.WrongAnswer, SpeechElements.None);
         }
 
         //Debug.Log("Presenting list of elements done: ");

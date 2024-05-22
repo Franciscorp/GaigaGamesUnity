@@ -7,10 +7,15 @@ public class DropManager : MonoBehaviour, IDropHandler
     public SpeechElementSlot[] slots;
     public CanvasGroup[] slotsCanvasGroup;
 
+    // Note: Somewhat a bad solution, but drop manager sends the signal to the controller
+    public SpeechMachineGameEvent elementDetected;
+
+
     void Start()
     {
         // Assuming slots are assigned in the inspector or dynamically
         slots = GetComponentsInChildren<SpeechElementSlot>();
+        elementDetected.AddListener(GameObject.FindGameObjectWithTag("SpeechMachineController").GetComponent<SpeechMachineGameManager>().ElementInSlotDetected);
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -30,7 +35,9 @@ public class DropManager : MonoBehaviour, IDropHandler
             }
         }
 
-        Debug.Log("[DropManager] No compatible slots");
+        // TODO doesn't detect the right slot and can't suggest a wrong message correctly
+        elementDetected.Invoke(UtilsSpeechMachine.SpeechElements.None, speechElementID);
+        Debug.Log("[DropManager] No compatible slots, sending signal");
     }
 
 

@@ -20,6 +20,7 @@ public class DialogueDataStructure
 public class Dialogue
 {
     public string key; // Unique identifier for the dialogue
+    public bool wasDisplayed;
     public string englishText;
     public string portugueseText;
 }

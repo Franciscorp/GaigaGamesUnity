@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using static Utils;
+using static UtilsSpeechMachine;
 
 [System.Serializable]
 public class SpeechMachineDialogueStructure

@@ -8,7 +8,7 @@ public class UtilsSpeechMachine : MonoBehaviour
     {
         None,
         Brain,
-        Diaphgram,
+        Diaphragm,
         Mouth,
         Teeth,
         Tongue,

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using static Utils;
 
+
 /// <summary>
 /// Dialogue Save State belongs to [DialoguePanel.DialogueManager]
 /// Saves all data from dialogues
@@ -25,8 +26,6 @@ public class DialogueSafeStateController : BaseState
     public DialogueSafeStateController()
     {
         this.dialogueStructure = new DialogueDataStructure();
-        dialogueStructure.language = Language.English;
-        //SaveToJson();
     }
 
 
@@ -74,14 +73,15 @@ public class DialogueSafeStateController : BaseState
             return string.Empty;
         }
 
-        return JsonUtility.ToJson(dialogueStructure);
+        return JsonUtility.ToJson(dialogueStructure, true);
     }
 
 
     public override void LoadState(string json)
     {
         EnsureInit();
-        dialogueStructure = JsonUtility.FromJson<DialogueDataStructure>(json);
+        // TODO load disable to save data correctly
+        //dialogueStructure = JsonUtility.FromJson<DialogueDataStructure>(json);
     }
 
     private void EnsureInit()

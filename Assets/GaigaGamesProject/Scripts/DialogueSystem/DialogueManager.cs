@@ -40,7 +40,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         // TODO TEMP
-        dialogueDataStructure = new DialogueDataStructure();
+        //dialogueDataStructure = new DialogueDataStructure();
 
         ResetText();
     }

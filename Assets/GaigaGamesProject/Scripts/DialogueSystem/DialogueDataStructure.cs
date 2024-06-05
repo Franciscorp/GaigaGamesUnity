@@ -43,4 +43,12 @@ public class Dialogue
         this.englishText = new List<string> {englishText};
         this.portugueseText = new List<string> { portugueseText };
     }
+
+    public string[] GetDialoguesToArray(Language language)
+    {
+        if (language == Language.English)
+            return englishText.ToArray();
+        else
+            return portugueseText.ToArray();
+    }
 }

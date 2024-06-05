@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using static UtilsSpeechMachine;
 
 [System.Serializable]
@@ -19,6 +20,41 @@ public class SpeechMachineDialogueStructure
         this.rightAnswers = rightAnswers;
         this.conclusion = conclusion;
         this.speechElementsDialogues = speechElementsDialogues;
+    }
+
+    public SpeechElementDialogues GetSpeechElementDialogues(SpeechElements speechElement)
+    {
+        foreach(SpeechElementDialogues x in speechElementsDialogues)
+        {
+            if(x.speechElementName == speechElement) 
+                return x;
+        }
+        return null;
+    }
+
+    public List<Dialogue> GetSpeechElementDialogues(SpeechElements speechElement, DialogueEventType type)
+    {
+        SpeechElementDialogues speechElementDialgues = null;
+        foreach (SpeechElementDialogues x in speechElementsDialogues)
+        {
+            if (x.speechElementName == speechElement)
+                speechElementDialgues = x;
+        }
+
+        if (speechElementDialgues == null)
+            return null;
+
+        switch (type)
+        {
+            case DialogueEventType.Suggestion:
+                return speechElementDialgues.suggestion;
+            case DialogueEventType.RightAnswer:
+                return speechElementDialgues.rightAnswer;
+            case DialogueEventType.WrongAnswer:
+                return speechElementDialgues.wrongAnswer;
+        }
+
+        return null;
     }
 }
 

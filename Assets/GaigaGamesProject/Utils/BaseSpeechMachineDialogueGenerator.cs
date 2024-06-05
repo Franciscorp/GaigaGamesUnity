@@ -58,8 +58,8 @@ public class BaseSpeechMachineDialogueGenerator
             "Arrasta cada peça para o sítio certo. O objetivo é conseguir a máquina da fala completa!",
             "Vamos lá começar!"
         };
-
-        Dialogue dialogue = new Dialogue(SpeechMachine + "Introduction" + Key + "1", portugueseText, englishText);
+        
+        Dialogue dialogue = new Dialogue(SpeechMachine + "Introduction" + Key + "1", englishText, portugueseText);
 
         List<Dialogue> introductionList = new List<Dialogue>();
         introductionList.Add(dialogue);

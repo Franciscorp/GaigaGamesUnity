@@ -1,23 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using static UtilsSpeechMachine;
 
 
 public class DialogueManager : MonoBehaviour
 {
     public GameObject gameManager;
-    public DialogueDataStructure dialogueDataStructure;
 
     public GameObject dialoguePanel;
+    public GameObject ChoicePanel;
     public TextMeshProUGUI dialogueText;
     public string[] dialogue;
+    public List<string> dialogueKeys;
     private int index;
 
     public GameObject continueButton;
-    public float wordSpeed;
     public bool isDialogueActive;
+    public float wordSpeed;
+
+    private bool isChoicePanelActive = false;
+    private DialogueDataStructure dialogueDataStructure;
+    private Coroutine typingCoroutine;
+    private Coroutine suggestionCoroutine;
 
     // To help build the dialogue system
     // https://stackoverflow.com/questions/36274948/converting-a-json-string-to-csv-using-csvhelper
@@ -39,10 +48,23 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("[DialogueManager] Dialogue Events are connected");
         }
 
-        // TODO TEMP
-        //dialogueDataStructure = new DialogueDataStructure();
+        DisableChoicePanel();
+
+        UpdateDialogueDataStructure();
 
         ResetText();
+    }
+
+    public void UpdateDialogueDataStructure()
+    {
+        // TODO Upate language in data structure
+        //dialogueDataStructure.language = LocalizationSettings.SelectedLocale;
+
+        if (gameManager != null)
+        {
+            dialogueDataStructure = DialogueSafeStateController.Instance.dialogueStructure;
+            //dialogueDataStructure.language = Utils.Language.Portuguese;
+        }
     }
 
     public void ResetText()
@@ -51,6 +73,20 @@ public class DialogueManager : MonoBehaviour
         index = 0;
         dialoguePanel.SetActive(false);
         continueButton.SetActive(false);
+
+        if (isChoicePanelActive == false)
+            ChoicePanel.SetActive(false);
+    }
+
+
+    // Checks if it was already typing something and stops it
+    public void StartTyping()
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+        typingCoroutine = StartCoroutine(Typing());
     }
 
     IEnumerator Typing()
@@ -74,22 +110,94 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("[DialogueManager] NextLine");
 
+
         if (index < dialogue.Length - 1)
         {
             index++;
             dialogueText.text = "";
-            StartCoroutine(Typing());
+            StartTyping();
         }
         else
         {
-            ResetText();
+            //ResetText();
+            DisableDialogue();
+            DisableChoicePanel();
         }
     }
 
     public void OnDialogueEvent(DialogueEventType dialogueTypeEvent, SpeechElements speechElementID)
     {
         Debug.Log("dialogueTypeEvent = " + dialogueTypeEvent + " speechElementID = " + speechElementID);
-        ActivateDialogue();
+        FormDialogueKeySequence(dialogueTypeEvent, speechElementID);
+        if (!isDialogueActive)
+            ActivateDialogue();
+    }
+
+    // This interprets the signal receive and selects next keys for dialogue
+    private void FormDialogueKeySequence(DialogueEventType dialogueTypeEvent, SpeechElements speechElementID)
+    {
+
+        //public List<Dialogue> introduction;
+        //public List<Dialogue> askSuggestion;
+        //public List<Dialogue> rightAnswers;
+        //public List<Dialogue> conclusion;
+        //public List<SpeechElementDialogues> speechElementsDialogues;
+
+        //None,
+        //Intro,
+        //WrongAnswer,
+        //RightAnswer,
+        //Help,
+        //Conclusion
+
+        if (speechElementID != SpeechElements.None)
+        {
+            if (dialogueTypeEvent == DialogueEventType.Suggestion)
+            {
+                // from the list of speech Elements that exist, take out all the avaiable suggestions
+                var speechElementSuggestions = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.Suggestion);
+                // from that suggestion, remove one list of dialogues at random
+                dialogue = GetRandomDialogueFromList(speechElementSuggestions);
+                // goes to next line but disables chat
+                NextLine();
+                DisableChoicePanel();
+            }
+
+        }
+
+            if (SpeechElements.None == speechElementID)
+        {
+            switch (dialogueTypeEvent)
+            {
+                case DialogueEventType.None:
+                    dialogue = new string[]
+                    {
+                        "Error, None type of error found"
+                    };
+                    break;
+                case DialogueEventType.Intro:
+                    dialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.introduction);
+                    break;
+                case DialogueEventType.Help:
+                    if (!isDialogueActive)
+                    {
+                        dialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.askSuggestion);
+                        EnableChoicePanel();
+                    }
+                    break;
+                default:
+                    // code block
+                    break;
+            }
+
+            
+        }
+    }
+
+    private string[] GetRandomDialogueFromList(List<Dialogue> possibleDialogues)
+    {
+        int randomDialogue = Random.Range(0, possibleDialogues.Count);
+        return possibleDialogues[randomDialogue].GetDialoguesToArray(dialogueDataStructure.language);
     }
 
     public void ActivateDialogue()
@@ -100,7 +208,7 @@ public class DialogueManager : MonoBehaviour
 
         ResetText();
         dialoguePanel.SetActive(true);
-        StartCoroutine(Typing());
+        StartTyping();
     }
 
     public void DisableDialogue()
@@ -108,5 +216,17 @@ public class DialogueManager : MonoBehaviour
         isDialogueActive = false;
         ResetText();
         dialoguePanel.SetActive(false);
+    }
+
+    public void DisableChoicePanel()
+    {
+        isChoicePanelActive = false;
+        ChoicePanel.SetActive(isChoicePanelActive);
+    }
+
+    public void EnableChoicePanel()
+    {
+        isChoicePanelActive = true;
+        ChoicePanel.SetActive(isChoicePanelActive);
     }
 }

@@ -4523,6 +4523,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 959890983}
+    - target: {fileID: 7932965159058834812, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
+      propertyPath: defaultWordSpeed
+      value: 0.06
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -4,6 +4,13 @@ using static UtilsSpeechMachine;
 
 public class UtilsSpeechMachine : MonoBehaviour
 {
+
+    public const string SpeechMachine = "SpeechMachine";
+    public const string Key = "Key";
+    public const string SuggestionKey = "SuggestionKey";
+    public const string RightAnswerKey = "RightAnswerKey";
+    public const string WrongAnswerKey = "WrongAnswerKey";
+
     public enum SpeechElements
     {
         None,
@@ -20,9 +27,10 @@ public class UtilsSpeechMachine : MonoBehaviour
     {
         None,
         Intro,
+        Help, 
+        Suggestion,
         WrongAnswer,
         RightAnswer,
-        Help, 
         Conclusion
     }
 

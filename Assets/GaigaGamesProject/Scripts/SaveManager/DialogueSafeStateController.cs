@@ -28,7 +28,6 @@ public class DialogueSafeStateController : BaseState
         this.dialogueStructure = new DialogueDataStructure();
     }
 
-
     private void Awake()
     {
         saveOnQuit = true;

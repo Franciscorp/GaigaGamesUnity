@@ -107,7 +107,8 @@ public class SpeechMachineGameManager : MonoBehaviour
         // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
         // if so, it doesn't show anything
         dialogueEvent.Invoke(DialogueEventType.Help, SpeechElements.None);
-        Debug.Log("Sent suggestion");
+
+        //Debug.Log("Sent suggestion");
         StartCountdownForSuggestion();
     }
 

@@ -62,6 +62,13 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueDataStructure = DialogueSafeStateController.Instance.dialogueStructure;
             //dialogueDataStructure.language = Utils.Language.Portuguese;
+
+            if (!dialogueDataStructure.IsThereDialoguesAvaiable())
+                Debug.LogError("[DialogueManager] - No Speech Machine Dialogues Avaiable");
+        }
+        else
+        {
+            Debug.LogError("[DialogueManager] - game manager is null");
         }
     }
 
@@ -200,7 +207,7 @@ public class DialogueManager : MonoBehaviour
 
     public void ActivateDialogue()
     {
-        Debug.Log("[DialogueManager] ActivateDialogue");
+        //Debug.Log("[DialogueManager] ActivateDialogue");
 
         isDialogueActive = true;
 

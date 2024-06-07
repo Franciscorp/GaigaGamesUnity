@@ -26,6 +26,8 @@ public class DialogueSafeStateController : BaseState
     public DialogueSafeStateController()
     {
         this.dialogueStructure = new DialogueDataStructure();
+        // TODO BUG being called two times
+        //Debug.Log("[DialogueSafeStateController] New()");
     }
 
     private void Awake()
@@ -81,6 +83,8 @@ public class DialogueSafeStateController : BaseState
         EnsureInit();
         // TODO load disable to save data correctly
         //dialogueStructure = JsonUtility.FromJson<DialogueDataStructure>(json);
+        // TODO DELETE
+        this.dialogueStructure.GenerateData();
     }
 
     private void EnsureInit()

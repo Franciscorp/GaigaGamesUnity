@@ -15,7 +15,23 @@ public class DialogueDataStructure
     public DialogueDataStructure()
     {
         this.language = Language.English;
+        //speechMachineDialogues = GenerateSpeechMachineDialogue();
+    }
+
+    public void GenerateData()
+    {
         speechMachineDialogues = GenerateSpeechMachineDialogue();
+    }
+
+    public bool IsThereDialoguesAvaiable()
+    {
+        if (speechMachineDialogues != null)
+            return true;
+        else
+        {
+            Debug.LogError("[DialogueDataStructure] - No Dialogues Avaiable in DataMisalignedException Structure");
+            return false;
+        }
     }
 }
 

@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.Diagnostics;
 using UnityEngine.SceneManagement;
-using UnityEngine.WSA;
 
 public static class SceneLoader
 {

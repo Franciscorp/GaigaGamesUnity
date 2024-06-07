@@ -113,8 +113,7 @@ public class DialogueManager : MonoBehaviour
 
     public void NextLine()
     {
-        Debug.Log("[DialogueManager] NextLine");
-
+        //Debug.Log("[DialogueManager] NextLine");
 
         if (index < dialogue.Length - 1)
         {

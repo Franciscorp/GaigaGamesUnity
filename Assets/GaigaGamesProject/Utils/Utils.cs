@@ -9,6 +9,7 @@ public class Utils
 
     // TIMERS CONSTANTS
     public const float LoadingScreenMinimumTime = 0.5f;
+    public const float EventTimeout = 0.1f;
 
 
     public enum Language

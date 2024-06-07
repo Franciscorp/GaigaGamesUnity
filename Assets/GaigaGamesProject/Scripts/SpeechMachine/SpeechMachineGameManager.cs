@@ -18,7 +18,7 @@ public class SpeechMachineGameManager : MonoBehaviour
     // TODO insert default time in utils
     public float timeUntilSuggestion = 15f;
     private Coroutine suggestionCoroutine;
-
+    private Coroutine introEventCoroutine;
 
 
     void Awake()
@@ -40,10 +40,29 @@ public class SpeechMachineGameManager : MonoBehaviour
 
     private void Start()
     {
-        dialogueEvent.Invoke(DialogueEventType.Intro, SpeechElements.None);
+        introEventCoroutine = StartCoroutine(TryUntilInvokeIntro());
         StartCountdownForSuggestion();
-
     }
+
+    // working, checks if event avaiable until being sent
+    IEnumerator TryUntilInvokeIntro()
+    {
+        // Waits for a few seconds until a suggestion appears
+        yield return new WaitForSeconds(Utils.EventTimeout);
+
+        // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
+        // if so, it doesn't show anything
+        if (dialogueEvent != null)
+        {
+            dialogueEvent.Invoke(DialogueEventType.Intro, SpeechElements.None);
+            StopCoroutine(introEventCoroutine);
+            //Debug.Log("[Start] Sending intro");
+        }
+
+        //Debug.Log("[Start] TryUntilInvokeIntro()");
+        TryUntilInvokeIntro();
+    }
+
 
     public void PresentSuggestionToPlayer()
     {
@@ -99,6 +118,7 @@ public class SpeechMachineGameManager : MonoBehaviour
         }
         suggestionCoroutine = StartCoroutine(CountdownForSuggestion());
     }
+
 
     IEnumerator CountdownForSuggestion()
     {

@@ -18,10 +18,12 @@ public class DialogueDataStructure
         //speechMachineDialogues = GenerateSpeechMachineDialogue();
     }
 
+
     public void GenerateData()
     {
         speechMachineDialogues = GenerateSpeechMachineDialogue();
     }
+
 
     public bool IsThereDialoguesAvaiable()
     {

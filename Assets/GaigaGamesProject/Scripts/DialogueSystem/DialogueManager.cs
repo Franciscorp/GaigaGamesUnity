@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using static UtilsSpeechMachine;
 
@@ -54,6 +55,26 @@ public class DialogueManager : MonoBehaviour
         ResetText();
     }
 
+    void Update()
+    {
+        // Works on tablet, because it simulates the touch with mouse
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (dialogueText.text.Length < dialogue[index].Length)
+            {
+                CompleteTyping();
+            }
+            else if(dialogueText.text == dialogue[index])
+            {
+                NextLine();
+            }
+            else
+            {
+                DisableDialogue();
+            }
+        }    
+    }
+
     public void UpdateDialogueDataStructure()
     {
         // TODO Upate language in data structure
@@ -84,6 +105,11 @@ public class DialogueManager : MonoBehaviour
             ChoicePanel.SetActive(false);
     }
 
+    private void CompleteTyping()
+    {
+        StopCoroutine(typingCoroutine);
+        dialogueText.text = dialogue[index];
+    }
 
     // Checks if it was already typing something and stops it
     public void StartTyping()
@@ -195,7 +221,7 @@ public class DialogueManager : MonoBehaviour
                     if (!isDialogueActive)
                     {
                         dialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.askSuggestion);
-                        EnableChoicePanel();
+                        //EnableChoicePanel();
                     }
                     break;
 

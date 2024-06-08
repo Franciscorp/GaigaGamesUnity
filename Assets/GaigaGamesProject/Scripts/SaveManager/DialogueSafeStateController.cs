@@ -84,7 +84,7 @@ public class DialogueSafeStateController : BaseState
         // TODO load disable to save data correctly
         //dialogueStructure = JsonUtility.FromJson<DialogueDataStructure>(json);
         // TODO DELETE
-        this.dialogueStructure.GenerateData();
+        //this.dialogueStructure.GenerateData();
     }
 
     private void EnsureInit()

@@ -16,7 +16,6 @@ public class SpeechMachineGameManager : MonoBehaviour
     public SpeechMachineDialogueEvent dialogueEvent;
 
     // TODO insert default time in utils
-    public float timeUntilSuggestion = 15f;
     private Coroutine suggestionCoroutine;
     private Coroutine introEventCoroutine;
 
@@ -123,7 +122,7 @@ public class SpeechMachineGameManager : MonoBehaviour
     IEnumerator CountdownForSuggestion()
     {
         // Waits for a few seconds until a suggestion appears
-        yield return new WaitForSeconds(timeUntilSuggestion);
+        yield return new WaitForSeconds(Utils.TimeUntilSuggestion);
         // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
         // if so, it doesn't show anything
         dialogueEvent.Invoke(DialogueEventType.Help, SpeechElements.None);
@@ -145,14 +144,17 @@ public class SpeechMachineGameManager : MonoBehaviour
         }
         else
         {
-            dialogueEvent.Invoke(DialogueEventType.WrongAnswer, SpeechElements.None);
+            dialogueEvent.Invoke(DialogueEventType.WrongAnswer, speechElementID);
         }
 
         //Debug.Log("Presenting list of elements done: ");
 
-        foreach (var element in SpeechElementsState)
+        int numberOfElementsDone = SpeechElementsState.Where(x => x.Value == true).Count();
+        
+        if (numberOfElementsDone == UtilsSpeechMachine.NumberOfSpeechElements)
         {
-            //Debug.Log(element.Key + " = " + element.Value);
+            dialogueEvent.Invoke(DialogueEventType.Conclusion, SpeechElements.None);
+            Debug.Log("All speech elements done");
         }
 
     }

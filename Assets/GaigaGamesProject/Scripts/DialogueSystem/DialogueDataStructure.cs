@@ -15,13 +15,14 @@ public class DialogueDataStructure
     public DialogueDataStructure()
     {
         this.language = Language.English;
-        //speechMachineDialogues = GenerateSpeechMachineDialogue();
+        GenerateData();
     }
 
 
     public void GenerateData()
     {
-        speechMachineDialogues = GenerateSpeechMachineDialogue();
+        if (this.speechMachineDialogues == null)
+            speechMachineDialogues = GenerateSpeechMachineDialogue();
     }
 
 

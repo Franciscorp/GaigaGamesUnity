@@ -10,6 +10,7 @@ public class UtilsSpeechMachine : MonoBehaviour
     public const string SuggestionKey = "SuggestionKey";
     public const string RightAnswerKey = "RightAnswerKey";
     public const string WrongAnswerKey = "WrongAnswerKey";
+    public const int NumberOfSpeechElements = 7;
 
     public enum SpeechElements
     {

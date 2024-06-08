@@ -21,6 +21,7 @@ public class DialogueManager : MonoBehaviour
     public bool isDialogueActive;
     public float wordSpeed;
 
+    private bool isGameCompleted = false;
     private bool isChoicePanelActive = false;
     private DialogueDataStructure dialogueDataStructure;
     private Coroutine typingCoroutine;
@@ -123,10 +124,17 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            //ResetText();
             DisableDialogue();
             DisableChoicePanel();
+            if (isGameCompleted)
+                FinishGameMode();
         }
+    }
+
+    // TODO decouple, it is game logic
+    private void FinishGameMode()
+    {
+        SceneLoader.Load(SceneLoader.Scene.GamesMenu);
     }
 
     public void OnDialogueEvent(DialogueEventType dialogueTypeEvent, SpeechElements speechElementID)
@@ -140,20 +148,6 @@ public class DialogueManager : MonoBehaviour
     // This interprets the signal receive and selects next keys for dialogue
     private void FormDialogueKeySequence(DialogueEventType dialogueTypeEvent, SpeechElements speechElementID)
     {
-
-        //public List<Dialogue> introduction;
-        //public List<Dialogue> askSuggestion;
-        //public List<Dialogue> rightAnswers;
-        //public List<Dialogue> conclusion;
-        //public List<SpeechElementDialogues> speechElementsDialogues;
-
-        //None,
-        //Intro,
-        //WrongAnswer,
-        //RightAnswer,
-        //Help,
-        //Conclusion
-
         if (speechElementID != SpeechElements.None)
         {
             if (dialogueTypeEvent == DialogueEventType.Suggestion)
@@ -167,21 +161,36 @@ public class DialogueManager : MonoBehaviour
                 DisableChoicePanel();
             }
 
+            if (dialogueTypeEvent == DialogueEventType.RightAnswer)
+            {
+                var speechElementRightAnswer = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.RightAnswer);
+
+                dialogue = GetRandomDialogueFromList(speechElementRightAnswer);
+                NextLine();
+            }
+
+            if (dialogueTypeEvent == DialogueEventType.WrongAnswer)
+            {
+                var speechElementWrongAnswer = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.WrongAnswer);
+
+                dialogue = GetRandomDialogueFromList(speechElementWrongAnswer);
+                NextLine();
+            }
+
         }
 
-            if (SpeechElements.None == speechElementID)
+        if (SpeechElements.None == speechElementID)
         {
             switch (dialogueTypeEvent)
             {
                 case DialogueEventType.None:
-                    dialogue = new string[]
-                    {
-                        "Error, None type of error found"
-                    };
+                    dialogue = new string[] { "Error, None type of error found" };
                     break;
+
                 case DialogueEventType.Intro:
                     dialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.introduction);
                     break;
+
                 case DialogueEventType.Help:
                     if (!isDialogueActive)
                     {
@@ -189,12 +198,16 @@ public class DialogueManager : MonoBehaviour
                         EnableChoicePanel();
                     }
                     break;
+
+                case DialogueEventType.Conclusion:
+                    dialogue = dialogue.Concat(GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.conclusion)).ToArray();
+                    isGameCompleted = true;
+                    break;
+
                 default:
-                    // code block
+                    dialogue = new string[]{ "Default value with no speech element, This is an error" };
                     break;
             }
-
-            
         }
     }
 

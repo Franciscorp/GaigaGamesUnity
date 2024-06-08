@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
+using UnityEngine.Events;
 using static UtilsSpeechMachine;
 
 
@@ -14,14 +15,16 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialoguePanel;
     public GameObject ChoicePanel;
     public TextMeshProUGUI dialogueText;
+    public GameObject continueIcon;
+    public Animator continueAnimation;
+
     public string[] dialogue;
     public List<string> dialogueKeys;
-    private int index;
-
-    public GameObject continueButton;
-    public bool isDialogueActive;
     public float wordSpeed;
+    public UnityEvent OnGameIsOverDialogueCompleted;
 
+    private bool isDialogueActive;
+    private int index;
     private bool isGameCompleted = false;
     private bool isChoicePanelActive = false;
     private DialogueDataStructure dialogueDataStructure;
@@ -98,8 +101,8 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueText.text = "";
         index = 0;
+        StopContinueAnimation();
         dialoguePanel.SetActive(false);
-        continueButton.SetActive(false);
 
         if (isChoicePanelActive == false)
             ChoicePanel.SetActive(false);
@@ -109,6 +112,7 @@ public class DialogueManager : MonoBehaviour
     {
         StopCoroutine(typingCoroutine);
         dialogueText.text = dialogue[index];
+        PlayContinueAnimation();
     }
 
     // Checks if it was already typing something and stops it
@@ -133,14 +137,13 @@ public class DialogueManager : MonoBehaviour
 
         // Sets the continue button to active
         if (dialogueText.text == dialogue[index])
-        {
-            continueButton.SetActive(true);
-        }
+            PlayContinueAnimation();
     }
 
     public void NextLine()
     {
         //Debug.Log("[DialogueManager] NextLine");
+        StopContinueAnimation();
 
         if (index < dialogue.Length - 1)
         {
@@ -160,7 +163,8 @@ public class DialogueManager : MonoBehaviour
     // TODO decouple, it is game logic
     private void FinishGameMode()
     {
-        SceneLoader.Load(SceneLoader.Scene.GamesMenu);
+        //SceneLoader.Load(SceneLoader.Scene.GamesMenu);
+        OnGameIsOverDialogueCompleted.Invoke();
     }
 
     public void OnDialogueEvent(DialogueEventType dialogueTypeEvent, SpeechElements speechElementID)
@@ -241,6 +245,18 @@ public class DialogueManager : MonoBehaviour
     {
         int randomDialogue = Random.Range(0, possibleDialogues.Count);
         return possibleDialogues[randomDialogue].GetDialoguesToArray(dialogueDataStructure.language);
+    }
+
+    private void PlayContinueAnimation()
+    {
+        continueIcon.SetActive(true);
+        continueAnimation.Play("ContinueIndication");
+    }
+
+    private void StopContinueAnimation()
+    {
+        continueIcon.SetActive(false);
+        continueAnimation.StopPlayback();
     }
 
     public void ActivateDialogue()

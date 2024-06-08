@@ -1716,11 +1716,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845679706}
   m_CullTransparentMesh: 1
---- !u!1 &902145501 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 689479277741369891, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-  m_PrefabInstance: {fileID: 3441133237687859166}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &916892725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,7 +1915,6 @@ MonoBehaviour:
   dialogueEvent:
     m_PersistentCalls:
       m_Calls: []
-  timeUntilSuggestion: 5
 --- !u!1 &1005202185
 GameObject:
   m_ObjectHideFlags: 0
@@ -3406,17 +3400,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674970781}
   m_CullTransparentMesh: 1
---- !u!114 &1717625123 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7932965159058834812, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-  m_PrefabInstance: {fileID: 3441133237687859166}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d184911402875f4881e34a9b7b1f407, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1718369094
 GameObject:
   m_ObjectHideFlags: 0
@@ -4453,85 +4436,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 356661662}
     m_Modifications:
     - target: {fileID: 201366046061769607, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 201366046061769607, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 959890986}
-    - target: {fileID: 201366046061769607, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 959890986}
-    - target: {fileID: 201366046061769607, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PresentSuggestionToPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 201366046061769607, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SpeechMachineGameManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 201366046061769607, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+    - target: {fileID: 869731716712035675, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
+      propertyPath: m_TagString
+      value: DialogueManager
       objectReference: {fileID: 0}
     - target: {fileID: 2672970192024212385, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
       propertyPath: m_Name
       value: DialoguePanel
       objectReference: {fileID: 0}
     - target: {fileID: 3263500028426313416, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3263500028426313416, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3263500028426313416, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3263500028426313416, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 959890986}
-    - target: {fileID: 3263500028426313416, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1717625123}
-    - target: {fileID: 3263500028426313416, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3263500028426313416, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3263500028426313416, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StopSuggestionsToThePlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 3263500028426313416, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: DisableChoicePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 3263500028426313416, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SpeechMachineGameManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3263500028426313416, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: DialogueManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3263500028426313416, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3263500028426313416, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 7190126301173165094, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4613,18 +4532,23 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7932965159058834812, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
-      propertyPath: ChoicePanel
-      value: 
-      objectReference: {fileID: 902145501}
-    - target: {fileID: 7932965159058834812, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 959890983}
+    - target: {fileID: 7932965159058834812, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
+      propertyPath: continueAnimation
+      value: 
+      objectReference: {fileID: 3441133237687859169}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
+--- !u!95 &3441133237687859169 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5744690903881259238, guid: 8f396721a2ca36b46ac0dcc3612ece47, type: 3}
+  m_PrefabInstance: {fileID: 3441133237687859166}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

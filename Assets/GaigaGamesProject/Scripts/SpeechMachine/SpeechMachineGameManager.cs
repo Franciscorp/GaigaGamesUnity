@@ -16,6 +16,7 @@ public class SpeechMachineGameManager : MonoBehaviour
     public SpeechMachineDialogueEvent dialogueEvent;
 
     // TODO insert default time in utils
+    private GameObject dialogueManager;
     private Coroutine suggestionCoroutine;
     private Coroutine introEventCoroutine;
 
@@ -35,12 +36,23 @@ public class SpeechMachineGameManager : MonoBehaviour
         {
             elementIsInSlot.AddListener(speechElement.GetComponent<DragDrop>().ElementInSlot);
         }
+
+        dialogueManager = GameObject.FindGameObjectsWithTag("DialogueManager").FirstOrDefault();
+        if (dialogueManager != null)
+            dialogueManager.GetComponent<DialogueManager>().OnGameIsOverDialogueCompleted.AddListener(GameCompleted);
+
     }
 
     private void Start()
     {
         introEventCoroutine = StartCoroutine(TryUntilInvokeIntro());
         StartCountdownForSuggestion();
+    }
+
+    public void GameCompleted()
+    {
+        Debug.Log("SpeechMachine Controller - GameCompleted()");
+        SceneLoader.Load(SceneLoader.Scene.GamesMenu);
     }
 
     // working, checks if event avaiable until being sent

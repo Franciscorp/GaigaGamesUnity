@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 7932965159058834812}
   m_Layer: 5
   m_Name: DialogueManager
-  m_TagString: Untagged
+  m_TagString: DialogueManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -357,13 +357,16 @@ MonoBehaviour:
   dialoguePanel: {fileID: 2672970192024212385}
   ChoicePanel: {fileID: 689479277741369891}
   dialogueText: {fileID: 415577426097659391}
+  continueIcon: {fileID: 4152135414541316592}
+  continueAnimation: {fileID: 5744690903881259238}
   dialogue:
   - Hello!
   - This is a new sentence!
   dialogueKeys: []
-  continueIcon: {fileID: 4152135414541316592}
-  isDialogueActive: 0
   wordSpeed: 0.06
+  OnGameIsOverDialogueCompleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2111163588780472545
 GameObject:
   m_ObjectHideFlags: 0

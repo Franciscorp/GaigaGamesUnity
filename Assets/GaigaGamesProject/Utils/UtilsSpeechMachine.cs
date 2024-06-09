@@ -14,14 +14,14 @@ public class UtilsSpeechMachine : MonoBehaviour
 
     public enum SpeechElements
     {
-        None,
-        Brain,
-        Diaphragm,
-        Mouth,
-        Teeth,
-        Tongue,
-        VoiceBox,
-        Lungs
+        None = 0,
+        Brain = 1,
+        Diaphragm = 2,
+        Lungs = 3,
+        VoiceBox = 4,
+        Mouth = 5,
+        Tongue = 6,
+        Teeth = 7
     }
 
     public enum DialogueEventType

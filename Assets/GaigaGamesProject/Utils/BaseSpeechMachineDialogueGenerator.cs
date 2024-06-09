@@ -70,15 +70,15 @@ public class BaseSpeechMachineDialogueGenerator
 
         List<string> englishText = new List<string>
         {
-            "Psst... Do you want a clue for the next piece?"
+            "Psst... Here is a clue for the next speech element"
         };
 
         List<string> portugueseText = new List<string>
         {
-            "Psst... Queres uma pista para a próxima parte?"
+            "Psst... Vou te deixar aqui uma pista para a próxima parte da máquina da fala"
         };
 
-        Dialogue dialogue = new Dialogue(SpeechMachine + "Suggestion" + Key + "1", portugueseText, englishText);
+        Dialogue dialogue = new Dialogue(SpeechMachine + "Suggestion" + Key + "1", englishText, portugueseText);
         suggestionList.Add(dialogue);
 
         return suggestionList;

@@ -171,6 +171,7 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("dialogueTypeEvent = " + dialogueTypeEvent + " speechElementID = " + speechElementID);
         FormDialogueKeySequence(dialogueTypeEvent, speechElementID);
+        
         if (!isDialogueActive)
             ActivateDialogue();
     }
@@ -182,12 +183,19 @@ public class DialogueManager : MonoBehaviour
         {
             if (dialogueTypeEvent == DialogueEventType.Suggestion)
             {
+                // add suggestion before presenting it
+                dialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.askSuggestion);
+
                 // from the list of speech Elements that exist, take out all the avaiable suggestions
                 var speechElementSuggestions = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.Suggestion);
                 // from that suggestion, remove one list of dialogues at random
-                dialogue = GetRandomDialogueFromList(speechElementSuggestions);
+                //dialogue = GetRandomDialogueFromList(speechElementSuggestions);
+                dialogue = dialogue.Concat(GetRandomDialogueFromList(speechElementSuggestions)).ToArray();
+
                 // goes to next line but disables chat
-                NextLine();
+                if (!isDialogueActive)
+                    ActivateDialogue();
+                //NextLine();
                 DisableChoicePanel();
             }
 

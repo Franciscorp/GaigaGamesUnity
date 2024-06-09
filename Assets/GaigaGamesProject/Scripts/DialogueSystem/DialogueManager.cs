@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.Events;
 using static UtilsSpeechMachine;
@@ -13,7 +12,6 @@ public class DialogueManager : MonoBehaviour
     public GameObject gameManager;
 
     public GameObject dialoguePanel;
-    public GameObject ChoicePanel;
     public TextMeshProUGUI dialogueText;
     public GameObject continueIcon;
     public Animator continueAnimation;
@@ -26,7 +24,6 @@ public class DialogueManager : MonoBehaviour
     private bool isDialogueActive;
     private int index;
     private bool isGameCompleted = false;
-    private bool isChoicePanelActive = false;
     private DialogueDataStructure dialogueDataStructure;
     private Coroutine typingCoroutine;
     private Coroutine suggestionCoroutine;
@@ -50,8 +47,6 @@ public class DialogueManager : MonoBehaviour
             gameManager.GetComponent<SpeechMachineGameManager>().dialogueEvent.AddListener(OnDialogueEvent);
             Debug.Log("[DialogueManager] Dialogue Events are connected");
         }
-
-        DisableChoicePanel();
 
         UpdateDialogueDataStructure();
 
@@ -103,9 +98,6 @@ public class DialogueManager : MonoBehaviour
         index = 0;
         StopContinueAnimation();
         dialoguePanel.SetActive(false);
-
-        if (isChoicePanelActive == false)
-            ChoicePanel.SetActive(false);
     }
 
     private void CompleteTyping()
@@ -154,7 +146,6 @@ public class DialogueManager : MonoBehaviour
         else
         {
             DisableDialogue();
-            DisableChoicePanel();
             if (isGameCompleted)
                 FinishGameMode();
         }
@@ -171,9 +162,7 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("dialogueTypeEvent = " + dialogueTypeEvent + " speechElementID = " + speechElementID);
         FormDialogueKeySequence(dialogueTypeEvent, speechElementID);
-        
-        if (!isDialogueActive)
-            ActivateDialogue();
+        ActivateDialogue();
     }
 
     // This interprets the signal receive and selects next keys for dialogue
@@ -192,11 +181,7 @@ public class DialogueManager : MonoBehaviour
                 //dialogue = GetRandomDialogueFromList(speechElementSuggestions);
                 dialogue = dialogue.Concat(GetRandomDialogueFromList(speechElementSuggestions)).ToArray();
 
-                // goes to next line but disables chat
-                if (!isDialogueActive)
-                    ActivateDialogue();
-                //NextLine();
-                DisableChoicePanel();
+                ActivateDialogue();
             }
 
             if (dialogueTypeEvent == DialogueEventType.RightAnswer)
@@ -227,14 +212,6 @@ public class DialogueManager : MonoBehaviour
 
                 case DialogueEventType.Intro:
                     dialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.introduction);
-                    break;
-
-                case DialogueEventType.Help:
-                    if (!isDialogueActive)
-                    {
-                        dialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.askSuggestion);
-                        //EnableChoicePanel();
-                    }
                     break;
 
                 case DialogueEventType.Conclusion:
@@ -269,6 +246,10 @@ public class DialogueManager : MonoBehaviour
 
     public void ActivateDialogue()
     {
+        // If dialogue is already active, don't do anything
+        if (isDialogueActive)
+            return;
+
         //Debug.Log("[DialogueManager] ActivateDialogue");
 
         isDialogueActive = true;
@@ -283,17 +264,5 @@ public class DialogueManager : MonoBehaviour
         isDialogueActive = false;
         ResetText();
         dialoguePanel.SetActive(false);
-    }
-
-    public void DisableChoicePanel()
-    {
-        isChoicePanelActive = false;
-        ChoicePanel.SetActive(isChoicePanelActive);
-    }
-
-    public void EnableChoicePanel()
-    {
-        isChoicePanelActive = true;
-        ChoicePanel.SetActive(isChoicePanelActive);
     }
 }

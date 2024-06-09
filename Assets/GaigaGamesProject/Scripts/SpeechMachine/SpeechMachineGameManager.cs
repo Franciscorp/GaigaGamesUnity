@@ -9,7 +9,6 @@ using static UtilsSpeechMachine;
 
 public class SpeechMachineGameManager : MonoBehaviour
 {
-    // TODO insert default time in utils
     private GameObject dialogueManager;
     private Coroutine suggestionCoroutine;
     private Coroutine introEventCoroutine;
@@ -83,10 +82,8 @@ public class SpeechMachineGameManager : MonoBehaviour
         {
             dialogueEvent.Invoke(DialogueEventType.Intro, SpeechElements.None);
             StopCoroutine(introEventCoroutine);
-            //Debug.Log("[Start] Sending intro");
         }
 
-        //Debug.Log("[Start] TryUntilInvokeIntro()");
         TryUntilInvokeIntro();
     }
 
@@ -145,7 +142,6 @@ public class SpeechMachineGameManager : MonoBehaviour
         
         // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
         // if so, it doesn't show anything
-        //dialogueEvent.Invoke(DialogueEventType.Help, SpeechElements.None);
         PresentSuggestionToPlayer();
 
         //Debug.Log("Sent suggestion");

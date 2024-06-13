@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{c8f42d70-c8eb-4e8c-a130-6757abc655d9}">
+		<property name="assetPath">
+			<value>SFX/Update Bubbles 001.wav.meta</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e8ca7cb6-7dd0-491f-9898-b7de34803c68}</destination>
+		</relationship>
+	</object>
+</objects>

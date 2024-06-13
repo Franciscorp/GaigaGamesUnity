@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{bc84acaf-393e-44c7-88e5-32eb7a5300e1}">
+		<property name="assetPath">
+			<value>SFX/Task Complete Harp 001.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.1718594104308391</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e8ca7cb6-7dd0-491f-9898-b7de34803c68}</destination>
+		</relationship>
+	</object>
+</objects>

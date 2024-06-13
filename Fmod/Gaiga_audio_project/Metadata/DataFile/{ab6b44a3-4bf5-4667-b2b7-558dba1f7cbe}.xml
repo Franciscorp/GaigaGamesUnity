@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{ab6b44a3-4bf5-4667-b2b7-558dba1f7cbe}">
+		<property name="assetPath">
+			<value>Music/Casual Game Music Pack Vol.2/Casual Theme #3 (Looped).wav.meta</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e8ca7cb6-7dd0-491f-9898-b7de34803c68}</destination>
+		</relationship>
+	</object>
+</objects>

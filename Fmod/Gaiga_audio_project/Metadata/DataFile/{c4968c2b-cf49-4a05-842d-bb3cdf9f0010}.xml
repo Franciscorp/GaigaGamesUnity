@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{c4968c2b-cf49-4a05-842d-bb3cdf9f0010}">
+		<property name="assetPath">
+			<value>SFX/typing_sfx_no_license-02.wav.meta</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e8ca7cb6-7dd0-491f-9898-b7de34803c68}</destination>
+		</relationship>
+	</object>
+</objects>

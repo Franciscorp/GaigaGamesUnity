@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{037c5538-7476-4d8e-b07a-87abd984d2bd}">
+		<property name="assetPath">
+			<value>Music/Casual Game Music Pack Vol.2.meta</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e8ca7cb6-7dd0-491f-9898-b7de34803c68}</destination>
+		</relationship>
+	</object>
+</objects>

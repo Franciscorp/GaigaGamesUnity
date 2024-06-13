@@ -47,6 +47,7 @@ public class SpeechMachineGameManager : MonoBehaviour
     {
         introEventCoroutine = StartCoroutine(TryUntilInvokeIntro());
         StartCountdownForSuggestion();
+        AudioManager.Instance.PlayOneShot(FModEvents.Instance.SpeechMachineMusic);
     }
 
 
@@ -67,6 +68,7 @@ public class SpeechMachineGameManager : MonoBehaviour
     {
         Debug.Log("SpeechMachine Controller - GameCompleted()");
         SceneLoader.Load(SceneLoader.Scene.GamesMenu);
+        AudioManager.Instance.PlayOneShot(FModEvents.Instance.gameOverSFX);
     }
 
 

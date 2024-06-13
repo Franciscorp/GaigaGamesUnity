@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.Events;
 using static UtilsSpeechMachine;
@@ -64,6 +66,7 @@ public class DialogueManager : MonoBehaviour
             }
             else if(dialogueText.text == dialogue[index])
             {
+                AudioManager.Instance.PlayOneShot(FModEvents.Instance.buttonClick);
                 NextLine();
             }
             else
@@ -124,6 +127,7 @@ public class DialogueManager : MonoBehaviour
             // Adds next letter
             // Waits for a dew seconds for the next letter to be added
             dialogueText.text += letter;
+            AudioManager.Instance.PlayOneShot(FModEvents.Instance.typingSFX);
             yield return new WaitForSeconds(wordSpeed);
         }
 
@@ -181,14 +185,17 @@ public class DialogueManager : MonoBehaviour
                 //dialogue = GetRandomDialogueFromList(speechElementSuggestions);
                 dialogue = dialogue.Concat(GetRandomDialogueFromList(speechElementSuggestions)).ToArray();
 
+                AudioManager.Instance.PlayOneShot(FModEvents.Instance.presentSuggestionSFX);
                 ActivateDialogue();
             }
 
             if (dialogueTypeEvent == DialogueEventType.RightAnswer)
             {
                 var speechElementRightAnswer = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.RightAnswer);
-
+                
                 dialogue = GetRandomDialogueFromList(speechElementRightAnswer);
+                AudioManager.Instance.PlayOneShot(FModEvents.Instance.rightAnswerSFX);
+                PlaySoundAccordingToElement(speechElementID);
                 NextLine();
             }
 
@@ -197,6 +204,7 @@ public class DialogueManager : MonoBehaviour
                 var speechElementWrongAnswer = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.WrongAnswer);
 
                 dialogue = GetRandomDialogueFromList(speechElementWrongAnswer);
+                AudioManager.Instance.PlayOneShot(FModEvents.Instance.wrongAnswerSFX);
                 NextLine();
             }
 
@@ -223,6 +231,16 @@ public class DialogueManager : MonoBehaviour
                     dialogue = new string[]{ "Default value with no speech element, This is an error" };
                     break;
             }
+        }
+    }
+
+    private void PlaySoundAccordingToElement(SpeechElements speechElementID)
+    {
+        switch (speechElementID)
+        {
+            case SpeechElements.Lungs:
+                AudioManager.Instance.PlayOneShot(FModEvents.Instance.breathingSFX);
+                break;
         }
     }
 

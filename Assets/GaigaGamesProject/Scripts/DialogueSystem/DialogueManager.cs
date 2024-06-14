@@ -71,6 +71,9 @@ public class DialogueManager : MonoBehaviour
         if (dialogue.Length < index)
             return;
 
+        if (!isDialogueActive)
+            dialogue = new string[] { "Diálogo temporário para apresentar a próxima pista..." };
+
         if (dialogueText.text.Length < dialogue[index].Length)
         {
             CompleteTyping();
@@ -82,6 +85,8 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            //dialogue = new string[] { "Diálogo temporário para apresentar a próxima pista..."};
+            // note: doesn't work here, because it is the activate dialogue
             DisableDialogue();
         }
     }
@@ -295,7 +300,7 @@ public class DialogueManager : MonoBehaviour
     {
         isDialogueActive = false;
         ResetText();
-        // TOD confirm if it works
+        // new string no work
         //dialogue = new string[] { "Diálogo temporário para apresentar a próxima pista..."};
         //dialoguePanel.SetActive(false);
     }

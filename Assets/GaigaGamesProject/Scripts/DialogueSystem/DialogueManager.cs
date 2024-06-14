@@ -53,32 +53,37 @@ public class DialogueManager : MonoBehaviour
         ResetText();
     }
 
-    void Update()
+    //void Update()
+    //{
+    //    // Works on tablet, because it simulates the touch with mouse
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+            
+    //    }    
+    //}
+
+    public void OnDialogueClick()
     {
-        // Works on tablet, because it simulates the touch with mouse
-        if (Input.GetMouseButtonDown(0))
+        if (dialogueText == null || dialogue == null)
+            return;
+
+        // TODO CHECK if crashes
+        if (dialogue.Length < index)
+            return;
+
+        if (dialogueText.text.Length < dialogue[index].Length)
         {
-            if (dialogueText == null || dialogue == null)
-                return;
-
-            // TODO CHECK if crashes
-            if (dialogue.Length < index)
-                return;
-
-            if (dialogueText.text.Length < dialogue[index].Length)
-            {
-                CompleteTyping();
-            }
-            else if(dialogueText.text == dialogue[index])
-            {
-                AudioManager.Instance.PlayOneShot(FModEvents.Instance.buttonClick);
-                NextLine();
-            }
-            else
-            {
-                DisableDialogue();
-            }
-        }    
+            CompleteTyping();
+        }
+        else if (dialogueText.text == dialogue[index])
+        {
+            AudioManager.Instance.PlayOneShot(FModEvents.Instance.buttonClick);
+            NextLine();
+        }
+        else
+        {
+            DisableDialogue();
+        }
     }
 
     public void UpdateDialogueDataStructure()

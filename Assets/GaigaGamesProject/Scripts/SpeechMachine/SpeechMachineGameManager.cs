@@ -21,6 +21,8 @@ public class SpeechMachineGameManager : MonoBehaviour
 
     private void Awake()
     {
+        Utils.SetScreenAlwaysOn();
+
         SpeechElementsState = new Dictionary<string, bool>();
         // Each Enum is inserted into dictionary has false
         foreach (var name in Enum.GetNames(typeof(SpeechElements)))

@@ -180,7 +180,11 @@ public class SpeechMachineGameManager : MonoBehaviour
         //Debug.Log("Presenting list of elements done: ");
 
         int numberOfElementsDone = SpeechElementsState.Where(x => x.Value == true).Count();
-        
+
+        // subtract the extra value of NONE
+        numberOfElementsDone -= 1;
+
+
         if (numberOfElementsDone == UtilsSpeechMachine.NumberOfSpeechElements)
         {
             dialogueEvent.Invoke(DialogueEventType.Conclusion, SpeechElements.None);

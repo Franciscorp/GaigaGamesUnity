@@ -61,6 +61,7 @@ public class DialogueManager : MonoBehaviour
             if (dialogueText == null || dialogue == null)
                 return;
 
+            // TODO CHECK if crashes
             if (dialogue.Length < index)
                 return;
 
@@ -104,7 +105,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         index = 0;
         StopContinueAnimation();
-        dialoguePanel.SetActive(false);
+        //dialoguePanel.SetActive(false);
     }
 
     private void CompleteTyping()
@@ -180,6 +181,10 @@ public class DialogueManager : MonoBehaviour
         {
             if (dialogueTypeEvent == DialogueEventType.Suggestion)
             {
+                // TODO moca de sono check if it makes sense
+                if (isDialogueActive)
+                    return;
+
                 // add suggestion before presenting it
                 dialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.askSuggestion);
 
@@ -285,6 +290,8 @@ public class DialogueManager : MonoBehaviour
     {
         isDialogueActive = false;
         ResetText();
-        dialoguePanel.SetActive(false);
+        // TOD confirm if it works
+        //dialogue = new string[] { "Diálogo temporário para apresentar a próxima pista..."};
+        //dialoguePanel.SetActive(false);
     }
 }

@@ -14,7 +14,7 @@ public class DialogueDataStructure
 
     public DialogueDataStructure()
     {
-        this.language = Language.English;
+        this.language = Language.Portuguese;
         GenerateData();
     }
 

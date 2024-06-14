@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.Events;
 using static UtilsSpeechMachine;
@@ -60,6 +58,12 @@ public class DialogueManager : MonoBehaviour
         // Works on tablet, because it simulates the touch with mouse
         if (Input.GetMouseButtonDown(0))
         {
+            if (dialogueText == null || dialogue == null)
+                return;
+
+            if (dialogue.Length < index)
+                return;
+
             if (dialogueText.text.Length < dialogue[index].Length)
             {
                 CompleteTyping();

@@ -154,7 +154,7 @@ public class BaseSpeechMachineDialogueGenerator
         };
 
 
-        Dialogue dialogue = new Dialogue(SpeechMachine + "Conclusion" + Key + "1", portugueseText, englishText);
+        Dialogue dialogue = new Dialogue(SpeechMachine + "Conclusion" + Key + "1", englishText, portugueseText);
         conclusionList.Add(dialogue);
 
         return conclusionList;

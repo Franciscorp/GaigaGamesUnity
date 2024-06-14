@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/GaigaGamesProject/Scenes/MainMenu.unity
     guid: e2c5c3227f88c0346be63eca4d68303a
-  - enabled: 1
+  - enabled: 0
     path: Assets/GaigaGamesProject/Scenes/GamesMenu.unity
     guid: 5bc8796475aa1a540aba9ac92dd57015
-  - enabled: 1
+  - enabled: 0
     path: Assets/GaigaGamesProject/Scenes/LoadingScreen.unity
     guid: 171043071aa3d384c8b9cd114c94476b
   - enabled: 1

@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.Events;
 
 public class Utils
@@ -18,6 +19,13 @@ public class Utils
     {
         Portuguese = 0,
         English = 1
+    }
+
+    // TODO make sure it is called in the app starting
+    // TODO tmp in single game
+    public static void SetScreenAlwaysOn()
+    {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 }
 

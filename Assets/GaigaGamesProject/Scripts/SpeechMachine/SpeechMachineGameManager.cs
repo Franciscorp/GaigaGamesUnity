@@ -21,6 +21,8 @@ public class SpeechMachineGameManager : MonoBehaviour
 
     private void Awake()
     {
+        Utils.SetScreenAlwaysOn();
+
         SpeechElementsState = new Dictionary<string, bool>();
         // Each Enum is inserted into dictionary has false
         foreach (var name in Enum.GetNames(typeof(SpeechElements)))
@@ -178,7 +180,11 @@ public class SpeechMachineGameManager : MonoBehaviour
         //Debug.Log("Presenting list of elements done: ");
 
         int numberOfElementsDone = SpeechElementsState.Where(x => x.Value == true).Count();
-        
+
+        // subtract the extra value of NONE
+        numberOfElementsDone -= 1;
+
+
         if (numberOfElementsDone == UtilsSpeechMachine.NumberOfSpeechElements)
         {
             dialogueEvent.Invoke(DialogueEventType.Conclusion, SpeechElements.None);

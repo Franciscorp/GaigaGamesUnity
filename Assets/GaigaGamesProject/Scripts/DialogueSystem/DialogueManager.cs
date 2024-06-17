@@ -53,31 +53,42 @@ public class DialogueManager : MonoBehaviour
         ResetText();
     }
 
-    void Update()
+    //void Update()
+    //{
+    //    // Works on tablet, because it simulates the touch with mouse
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+            
+    //    }    
+    //}
+
+    public void OnDialogueClick()
     {
-        // Works on tablet, because it simulates the touch with mouse
-        if (Input.GetMouseButtonDown(0))
+        if (dialogueText == null || dialogue == null)
+            return;
+
+        // TODO CHECK if crashes
+        if (dialogue.Length < index)
+            return;
+
+        if (!isDialogueActive)
+            dialogue = new string[] { "Diálogo temporário para apresentar a próxima pista..." };
+
+        if (dialogueText.text.Length < dialogue[index].Length)
         {
-            if (dialogueText == null || dialogue == null)
-                return;
-
-            if (dialogue.Length < index)
-                return;
-
-            if (dialogueText.text.Length < dialogue[index].Length)
-            {
-                CompleteTyping();
-            }
-            else if(dialogueText.text == dialogue[index])
-            {
-                AudioManager.Instance.PlayOneShot(FModEvents.Instance.buttonClick);
-                NextLine();
-            }
-            else
-            {
-                DisableDialogue();
-            }
-        }    
+            CompleteTyping();
+        }
+        else if (dialogueText.text == dialogue[index])
+        {
+            AudioManager.Instance.PlayOneShot(FModEvents.Instance.buttonClick);
+            NextLine();
+        }
+        else
+        {
+            //dialogue = new string[] { "Diálogo temporário para apresentar a próxima pista..."};
+            // note: doesn't work here, because it is the activate dialogue
+            DisableDialogue();
+        }
     }
 
     public void UpdateDialogueDataStructure()
@@ -104,7 +115,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         index = 0;
         StopContinueAnimation();
-        dialoguePanel.SetActive(false);
+        //dialoguePanel.SetActive(false);
     }
 
     private void CompleteTyping()
@@ -180,6 +191,10 @@ public class DialogueManager : MonoBehaviour
         {
             if (dialogueTypeEvent == DialogueEventType.Suggestion)
             {
+                // TODO moca de sono check if it makes sense
+                if (isDialogueActive)
+                    return;
+
                 // add suggestion before presenting it
                 dialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.askSuggestion);
 
@@ -285,6 +300,8 @@ public class DialogueManager : MonoBehaviour
     {
         isDialogueActive = false;
         ResetText();
-        dialoguePanel.SetActive(false);
+        // new string no work
+        //dialogue = new string[] { "Diálogo temporário para apresentar a próxima pista..."};
+        //dialoguePanel.SetActive(false);
     }
 }

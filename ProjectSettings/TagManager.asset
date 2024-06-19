@@ -8,6 +8,7 @@ TagManager:
   - SpeechElement
   - SpeechMachineController
   - DialogueManager
+  - Ladder
   layers:
   - Default
   - TransparentFX

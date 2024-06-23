@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CheckGround();
+        //CheckGround();
 
         if (grounded)
         {

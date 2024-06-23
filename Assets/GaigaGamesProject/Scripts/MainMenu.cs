@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayStoryMode()
     {
-        SceneLoader.Load(SceneLoader.Scene.StoryMode);
+        SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

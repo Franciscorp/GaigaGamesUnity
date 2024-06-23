@@ -17,7 +17,7 @@ public static class SceneLoader
         MainMenu,
         LoadingScreen,
         GamesMenu,
-        StoryMode,
+        MainStoryGame,
         SpeechMachine
     }
 

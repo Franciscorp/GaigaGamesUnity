@@ -43,10 +43,10 @@ public class PlayerMovement : MonoBehaviour
     {
         //CheckGround();
 
-        if (grounded)
-        {
-            body.velocity *= drag;
-        }
+        //if (grounded)
+        //{
+        //    body.velocity *= drag;
+        //}
     }
 
     private void CheckGround()

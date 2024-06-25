@@ -71,7 +71,6 @@ public class SpeechMachineGameManager : MonoBehaviour
         Debug.Log("SpeechMachine Controller - GameCompleted()");
         AudioManager.Instance.PlayOneShot(FModEvents.Instance.gameOverSFX);
         StartCoroutine(WaitForJingleToEnd());
-        //Application.Quit();
     }
 
     // TODO TEMP
@@ -79,8 +78,8 @@ public class SpeechMachineGameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(4.8f);
         Debug.Log("WaitForJingleToEnd");
-        //SceneLoader.Load(SceneLoader.Scene.GamesMenu);
-        Application.Quit();
+        SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
+        //Application.Quit();
     }
 
     // working, checks if event avaiable until being sent

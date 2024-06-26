@@ -11,23 +11,34 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private CharacterController2D characterController2D;
 
+
     public float speed = 10.0f;
     private bool jump = false;
     public float drag = 0.9f;
     public bool grounded = false;
 
+    private PlayerControls playerControls;
     private float horizontalMove = 0f;
     private float verticalMove = 0f;
 
     void Start()
     {
+        playerControls = new PlayerControls();
+        playerControls.Enable();
+
+        playerControls.MainGame.Move.performed += ctx =>
+        {
+            horizontalMove = ctx.ReadValue<float>() * speed;
+        };
+
     }
 
     void Update()
     {
 
         // New input system
-        horizontalMove = Input.GetAxis("Horizontal") * speed; 
+        //horizontalMove = Input.GetAxis("Horizontal") * speed;
+        Debug.Log(horizontalMove);
         float yInput = Input.GetAxis("Vertical");
 
         if (Input.GetButtonDown("Jump"))

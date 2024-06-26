@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LadderMovement : MonoBehaviour
 {
+    private PlayerControls playerControls;
     private float vertical;
     [SerializeField] private float speed = 2.5f;
     private bool isLadder;
@@ -12,9 +13,19 @@ public class LadderMovement : MonoBehaviour
 
     [SerializeField] private Rigidbody2D playerBody;
 
+
+
     private void Start()
     {
         defaultGravity = playerBody.gravityScale;
+
+        playerControls = new PlayerControls();
+        playerControls.Enable();
+
+        //playerControls.MainGame.MoveVertical.performed += ctx =>
+        //{
+        //    vertical = ctx.ReadValue<float>() * speed;
+        //};
     }
 
     // Update is called once per frame

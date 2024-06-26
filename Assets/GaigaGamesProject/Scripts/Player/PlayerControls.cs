@@ -44,6 +44,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveVertical"",
+                    ""type"": ""Value"",
+                    ""id"": ""890a00ab-5ce7-43db-af75-62bd469b521a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -222,6 +231,72 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Move2D"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""0e119445-0481-4bcb-83d7-4ad6e36c5a41"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertical"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""41664a8b-79ad-4f48-a823-58e851653f5a"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""b5310375-4f9b-4608-be46-30e76809d2e1"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis WS"",
+                    ""id"": ""234004ee-d5a5-4caf-a6b3-5d30ce6f74ed"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertical"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""af1b091f-c1a5-4877-b299-8ca57f5fda0b"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""b273d2b4-3838-42ec-898b-8f7e58c516ba"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -232,6 +307,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_MainGame = asset.FindActionMap("MainGame", throwIfNotFound: true);
         m_MainGame_Move = m_MainGame.FindAction("Move", throwIfNotFound: true);
         m_MainGame_Move2D = m_MainGame.FindAction("Move2D", throwIfNotFound: true);
+        m_MainGame_MoveVertical = m_MainGame.FindAction("MoveVertical", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -295,12 +371,14 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IMainGameActions> m_MainGameActionsCallbackInterfaces = new List<IMainGameActions>();
     private readonly InputAction m_MainGame_Move;
     private readonly InputAction m_MainGame_Move2D;
+    private readonly InputAction m_MainGame_MoveVertical;
     public struct MainGameActions
     {
         private @PlayerControls m_Wrapper;
         public MainGameActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_MainGame_Move;
         public InputAction @Move2D => m_Wrapper.m_MainGame_Move2D;
+        public InputAction @MoveVertical => m_Wrapper.m_MainGame_MoveVertical;
         public InputActionMap Get() { return m_Wrapper.m_MainGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -316,6 +394,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move2D.started += instance.OnMove2D;
             @Move2D.performed += instance.OnMove2D;
             @Move2D.canceled += instance.OnMove2D;
+            @MoveVertical.started += instance.OnMoveVertical;
+            @MoveVertical.performed += instance.OnMoveVertical;
+            @MoveVertical.canceled += instance.OnMoveVertical;
         }
 
         private void UnregisterCallbacks(IMainGameActions instance)
@@ -326,6 +407,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move2D.started -= instance.OnMove2D;
             @Move2D.performed -= instance.OnMove2D;
             @Move2D.canceled -= instance.OnMove2D;
+            @MoveVertical.started -= instance.OnMoveVertical;
+            @MoveVertical.performed -= instance.OnMoveVertical;
+            @MoveVertical.canceled -= instance.OnMoveVertical;
         }
 
         public void RemoveCallbacks(IMainGameActions instance)
@@ -347,5 +431,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnMove2D(InputAction.CallbackContext context);
+        void OnMoveVertical(InputAction.CallbackContext context);
     }
 }

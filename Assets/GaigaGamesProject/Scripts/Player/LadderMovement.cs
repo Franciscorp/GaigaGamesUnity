@@ -22,16 +22,17 @@ public class LadderMovement : MonoBehaviour
         playerControls = new PlayerControls();
         playerControls.Enable();
 
-        //playerControls.MainGame.MoveVertical.performed += ctx =>
-        //{
-        //    vertical = ctx.ReadValue<float>() * speed;
-        //};
+        playerControls.MainGame.MoveVertical.performed += ctx =>
+        {
+            vertical = ctx.ReadValue<float>() * speed;
+        };
     }
 
     // Update is called once per frame
     void Update()
     {
-        vertical = Input.GetAxis("Vertical");
+        //vertical = Input.GetAxis("Vertical");
+        Debug.Log(vertical);
 
         if (isLadder && Mathf.Abs(vertical) > 0f)
         {
@@ -44,7 +45,7 @@ public class LadderMovement : MonoBehaviour
         if (isClimbing)
         {
             playerBody.gravityScale = 0f;
-            playerBody.velocity = new Vector2(playerBody.velocity.x, vertical * speed);
+            playerBody.velocity = new Vector2(playerBody.velocity.x, vertical);
         }
         else
         {
@@ -57,6 +58,7 @@ public class LadderMovement : MonoBehaviour
         if (collision.CompareTag("Ladder"))
         {
             isLadder = true;
+            Debug.Log("Is in ladder");
         }
     }
 

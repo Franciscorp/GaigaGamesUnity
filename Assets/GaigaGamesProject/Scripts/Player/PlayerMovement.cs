@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         // New input system
         //horizontalMove = Input.GetAxis("Horizontal") * speed;
-        Debug.Log(horizontalMove);
+        //Debug.Log(horizontalMove);
         float yInput = Input.GetAxis("Vertical");
 
         if (Input.GetButtonDown("Jump"))

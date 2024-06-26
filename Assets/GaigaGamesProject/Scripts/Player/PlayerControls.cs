@@ -37,21 +37,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Move2D"",
-                    ""type"": ""Button"",
-                    ""id"": ""20af2942-801a-4f80-ad5c-4aa6e6d3c01d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""MoveVertical"",
                     ""type"": ""Value"",
                     ""id"": ""890a00ab-5ce7-43db-af75-62bd469b521a"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": true
                 }
             ],
@@ -119,116 +110,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""f243334f-e1ea-46eb-8db8-cf6aacb150e1"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move2D"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""4440c4cc-422c-4b00-9b2c-260727ccbf5c"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move2D"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""29a272d0-0e02-412b-8e39-4a1bb5b85e7d"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move2D"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""1900aa75-0e41-4167-9e4c-c7c4d6940320"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move2D"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""0942dd6e-cf98-4a00-a20c-cf89b1ad7f69"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move2D"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""2D Vector arrows"",
-                    ""id"": ""5d053f15-d35d-4496-b9ad-ee68b1eb9464"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move2D"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""93c9842a-3fb8-4e0c-9177-19d87af9b5bf"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move2D"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""00dde3a4-a730-4117-bbc8-a28fe787d316"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move2D"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""df54b43c-fb23-4d7b-a3d5-f21f981e6719"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move2D"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""dfa88429-324b-4a1e-842d-7b7b2129587f"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move2D"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -306,7 +187,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // MainGame
         m_MainGame = asset.FindActionMap("MainGame", throwIfNotFound: true);
         m_MainGame_Move = m_MainGame.FindAction("Move", throwIfNotFound: true);
-        m_MainGame_Move2D = m_MainGame.FindAction("Move2D", throwIfNotFound: true);
         m_MainGame_MoveVertical = m_MainGame.FindAction("MoveVertical", throwIfNotFound: true);
     }
 
@@ -370,14 +250,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_MainGame;
     private List<IMainGameActions> m_MainGameActionsCallbackInterfaces = new List<IMainGameActions>();
     private readonly InputAction m_MainGame_Move;
-    private readonly InputAction m_MainGame_Move2D;
     private readonly InputAction m_MainGame_MoveVertical;
     public struct MainGameActions
     {
         private @PlayerControls m_Wrapper;
         public MainGameActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_MainGame_Move;
-        public InputAction @Move2D => m_Wrapper.m_MainGame_Move2D;
         public InputAction @MoveVertical => m_Wrapper.m_MainGame_MoveVertical;
         public InputActionMap Get() { return m_Wrapper.m_MainGame; }
         public void Enable() { Get().Enable(); }
@@ -391,9 +269,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Move2D.started += instance.OnMove2D;
-            @Move2D.performed += instance.OnMove2D;
-            @Move2D.canceled += instance.OnMove2D;
             @MoveVertical.started += instance.OnMoveVertical;
             @MoveVertical.performed += instance.OnMoveVertical;
             @MoveVertical.canceled += instance.OnMoveVertical;
@@ -404,9 +279,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Move2D.started -= instance.OnMove2D;
-            @Move2D.performed -= instance.OnMove2D;
-            @Move2D.canceled -= instance.OnMove2D;
             @MoveVertical.started -= instance.OnMoveVertical;
             @MoveVertical.performed -= instance.OnMoveVertical;
             @MoveVertical.canceled -= instance.OnMoveVertical;
@@ -430,7 +302,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IMainGameActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnMove2D(InputAction.CallbackContext context);
         void OnMoveVertical(InputAction.CallbackContext context);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class LadderMovement : MonoBehaviour
 {
     private float vertical;
-    private float speed = 8f;
+    [SerializeField] private float speed = 2.5f;
     private bool isLadder;
     private bool isClimbing;
     private float defaultGravity;

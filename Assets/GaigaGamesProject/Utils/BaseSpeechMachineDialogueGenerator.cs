@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using static UtilsSpeechMachine;
 
@@ -288,22 +289,22 @@ public class BaseSpeechMachineDialogueGenerator
         string englishText;
         string portugueseText;
 
-        englishText = "There's a part of the body responsible for creating our voice. What could it be?";
-        portugueseText = "Há uma parte do corpo responsável por criar a nossa voz. Qual será?";
+        englishText = "There's a part of the body that helps us to speak, eat, and smile. What could it be?";
+        portugueseText = "Há uma parte do corpo que nos ajuda a falar, comer e sorrir. Qual será?";
 
         suggestionList.Add(new Dialogue(SpeechMachine + "Mouth" + SuggestionKey + "1", englishText, portugueseText));
 
         // --------------
 
-        englishText = "Oops! That wasn't quite right. Try moving the voice box a towards the neck area. You're almost there!";
-        portugueseText = "Ups! Não era bem aó. Tenta mexer a caixa de voz para a zona do pescoço. Estás quase lá!";
+        englishText = "Oops! That wasn't quite right. Try thinking about the part of the body that's controls the muscles that move your teeth and chin.";
+        portugueseText = "Ups! Não era bem isso. Tenta pensar na parte do corpo que está envolvida em controlar os musculos que fazem os dentes mexer.";
 
         wrongAnswersList.Add(new Dialogue(SpeechMachine + "Mouth" + WrongAnswerKey + "1", englishText, portugueseText));
 
         // ---------
 
-        englishText = "You got it right! The voice box contains our vocal cords, which vibrate when air passes through them, creating our voice.";
-        portugueseText = "Acertaste! A caixa de voz contém as nossas cordas vocais, que vibram quando o ar passa por elas e cria a nossa voz.";
+        englishText = "You got it right! The mouth helps us to speak, eat, and smile. It plays a crucial role in our daily lives.";
+        portugueseText = "Acertaste! A boca ajuda-nos a falar, comer e sorrir. Ela desempenha um papel crucial nas nossas vidas diárias.";
 
         rightAnswersList.Add(new Dialogue(SpeechMachine + "Mouth" + RightAnswerKey + "1", englishText, portugueseText));
 

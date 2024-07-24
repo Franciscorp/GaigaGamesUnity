@@ -14,6 +14,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     private CanvasGroup canvasGroup;
 
     private bool isElementInSlot = false;
+    private bool canElementBeMoved = false;
 
 
     private void Awake()
@@ -21,6 +22,25 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         initialPositionTransform = rectTransform.anchoredPosition;
+        DisabledElement();
+    }
+
+    private void Start()
+    {
+        // conects the event from game manager to enable elements
+        GameObject.FindGameObjectWithTag("SpeechMachineController").GetComponent<SpeechMachineGameManager>().enableSpeechElements.AddListener(EnableElement);
+    }
+
+    private void DisabledElement()
+    {
+        canvasGroup.alpha = 0.4f;
+        canElementBeMoved = false;
+    }
+
+    private void EnableElement()
+    {
+        canvasGroup.alpha = 1f;
+        canElementBeMoved = true;
     }
 
     public SpeechElements GetSpeechElementID()
@@ -51,6 +71,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         // if element is already in slot, does nothing
         if (isElementInSlot)
+            return;
+
+        if (!canElementBeMoved)
             return;
 
         Debug.Log("OnBeginDrag");

@@ -98,6 +98,10 @@ MonoBehaviour:
     m_Localized: Xavier
     m_Metadata:
       m_Items: []
+  - m_Id: 29608501765820416
+    m_Localized: Start Game
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

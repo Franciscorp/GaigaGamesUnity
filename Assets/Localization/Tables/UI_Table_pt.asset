@@ -87,7 +87,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4311118601605120
-    m_Localized: Caixa da Voz
+    m_Localized: Laringe
     m_Metadata:
       m_Items: []
   - m_Id: 4311183151943680
@@ -96,6 +96,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 16595006636945408
     m_Localized: Xavier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29608501765820416
+    m_Localized: "Come\xE7ar Jogo"
     m_Metadata:
       m_Items: []
   references:

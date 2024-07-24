@@ -20,10 +20,13 @@ public class DialogueManager : MonoBehaviour
     public List<string> dialogueKeys;
     public float wordSpeed;
     public UnityEvent OnGameIsOverDialogueCompleted;
+    public UnityEvent OnIntroductionDialogueCompleted;
 
     private bool isDialogueActive;
     private int index;
     private bool isGameCompleted = false;
+    private bool didIntroductionPlay = false;
+    private bool isIntroductionCompleted = false;
     private DialogueDataStructure dialogueDataStructure;
     private Coroutine typingCoroutine;
     private Coroutine suggestionCoroutine;
@@ -167,6 +170,8 @@ public class DialogueManager : MonoBehaviour
             DisableDialogue();
             if (isGameCompleted)
                 FinishGameMode();
+            if (didIntroductionPlay && !isIntroductionCompleted)
+                FinishIntroduction();
         }
     }
 
@@ -175,6 +180,13 @@ public class DialogueManager : MonoBehaviour
     {
         //SceneLoader.Load(SceneLoader.Scene.GamesMenu);
         OnGameIsOverDialogueCompleted.Invoke();
+    }
+
+    private void FinishIntroduction()
+    {
+        didIntroductionPlay = true;
+        isIntroductionCompleted = true;
+        OnIntroductionDialogueCompleted.Invoke();
     }
 
     public void OnDialogueEvent(DialogueEventType dialogueTypeEvent, SpeechElements speechElementID)
@@ -239,6 +251,7 @@ public class DialogueManager : MonoBehaviour
 
                 case DialogueEventType.Intro:
                     dialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.introduction);
+                    didIntroductionPlay = true;
                     break;
 
                 case DialogueEventType.Conclusion:

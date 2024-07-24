@@ -14,9 +14,13 @@ public class SpeechMachineGameManager : MonoBehaviour
     private Coroutine introEventCoroutine;
     private Dictionary<string, bool> SpeechElementsState;
 
+    public GameObject StartGameButton;
+    
     // Events
     public SpeechMachineElementInPositionEvent elementIsInSlot;
     public SpeechMachineDialogueEvent dialogueEvent;
+    public UnityEvent enableSpeechElements;
+
 
 
     private void Awake()
@@ -42,7 +46,10 @@ public class SpeechMachineGameManager : MonoBehaviour
 
         dialogueManager = GameObject.FindGameObjectsWithTag("DialogueManager").FirstOrDefault();
         if (dialogueManager != null)
+        {
             dialogueManager.GetComponent<DialogueManager>().OnGameIsOverDialogueCompleted.AddListener(GameCompleted);
+            dialogueManager.GetComponent<DialogueManager>().OnIntroductionDialogueCompleted.AddListener(IntroductionCompleted);
+        }
     }
 
     private void Start()
@@ -71,6 +78,18 @@ public class SpeechMachineGameManager : MonoBehaviour
         Debug.Log("SpeechMachine Controller - GameCompleted()");
         AudioManager.Instance.PlayOneShot(FModEvents.Instance.gameOverSFX);
         StartCoroutine(WaitForJingleToEnd());
+    }
+
+    public void IntroductionCompleted()
+    {
+        Debug.Log("SpeechMachine Controller - Introduction Completed()");
+        StartGameButton.active = true;
+    }
+
+    public void StartGame()
+    {
+        enableSpeechElements.Invoke();
+        StartGameButton.active = false;
     }
 
     // TODO TEMP

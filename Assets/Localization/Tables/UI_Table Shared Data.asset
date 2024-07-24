@@ -97,6 +97,10 @@ MonoBehaviour:
     m_Key: NPCNameKey
     m_Metadata:
       m_Items: []
+  - m_Id: 29608501765820416
+    m_Key: StartGame
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

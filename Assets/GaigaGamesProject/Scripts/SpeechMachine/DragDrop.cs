@@ -14,7 +14,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     private CanvasGroup canvasGroup;
 
     private bool isElementInSlot = false;
-    private bool canElementBeMoved = false;
+    private bool isElementMovable = false;
 
 
     private void Awake()
@@ -34,13 +34,13 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     private void DisabledElement()
     {
         canvasGroup.alpha = 0.4f;
-        canElementBeMoved = false;
+        isElementMovable = false;
     }
 
     private void EnableElement()
     {
         canvasGroup.alpha = 1f;
-        canElementBeMoved = true;
+        isElementMovable = true;
     }
 
     public SpeechElements GetSpeechElementID()
@@ -73,7 +73,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         if (isElementInSlot)
             return;
 
-        if (!canElementBeMoved)
+        if (!isElementMovable)
             return;
 
         Debug.Log("OnBeginDrag");
@@ -87,6 +87,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         // if element is already in slot, does nothing
         if (isElementInSlot)
+            return;
+
+        // if egame did not start, element is not movable
+        if (!isElementMovable)
             return;
 
         // the movement done by the mouse, since the last updated frame
@@ -103,6 +107,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        // if egame did not start, element is not movable
+        if (!isElementMovable)
+            return;
+
         Debug.Log("OnEndDrag");
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;

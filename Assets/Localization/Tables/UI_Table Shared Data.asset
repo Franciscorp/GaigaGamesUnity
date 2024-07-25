@@ -101,6 +101,12 @@ MonoBehaviour:
     m_Key: StartGame
     m_Metadata:
       m_Items: []
+  - m_Id: 29966432025792512
+    m_Key: 'StoryBeginsKey
+
+'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

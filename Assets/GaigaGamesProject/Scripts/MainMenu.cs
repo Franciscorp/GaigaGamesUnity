@@ -12,7 +12,8 @@ public class MainMenu : MonoBehaviour
 
     public void PlayStoryMode()
     {
-        SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
+        SceneLoader.Load(SceneLoader.Scene.Introduction);
+        //SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

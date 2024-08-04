@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
@@ -14,6 +15,8 @@ public class IntroductionController : MonoBehaviour
 
     private Canvas scene1;
     private Canvas scene2;
+
+    public IntroductionDialogueEvent dialogueEvent;
 
 
     public UnityEvent enableSpeechElements;
@@ -51,15 +54,32 @@ public class IntroductionController : MonoBehaviour
             //dialogueManager.GetComponent<DialogueManager>().OnIntroductionDialogueCompleted.AddListener(IntroductionCompleted);
         }
 
+        SendIntroduction();
+
     }
 
-    public void ChangeToScene2()
+    public void SendIntroduction()
+    {
+        // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
+        // if so, it doesn't show anything
+        if (dialogueEvent != null)
+        {
+            dialogueEvent.Invoke(DialogueEventType.Intro);
+        }
+    }
+
+    public async void ChangeToScene2()
     {
         Debug.Log("Change to Scene 2");
         //scene1.enabled = false;
         scene1.gameObject.SetActive(false);
         //scene1.enabled = true;
         scene2.gameObject.SetActive(true);
+
+        // Wait for 4 seconds
+        await Task.Delay(3000);
+
+        SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
     }
 
     // Update is called once per frame

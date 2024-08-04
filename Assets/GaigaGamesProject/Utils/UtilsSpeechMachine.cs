@@ -52,3 +52,8 @@ public class SpeechMachineElementInPositionEvent : UnityEvent<SpeechElements>
 public class SpeechMachineDialogueEvent : UnityEvent<DialogueEventType , SpeechElements>
 {
 }
+
+[System.Serializable]
+public class IntroductionDialogueEvent : UnityEvent<DialogueEventType>
+{
+}

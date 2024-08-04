@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Utils;
 using static BaseSpeechMachineDialogueGenerator;
+using static BaseIntroductionDialogueGenerator;
 
 
 [System.Serializable]
 public class DialogueDataStructure
 {
     public Language language;
+    public IntroductionDialogueStructure introductionDialogues;
     public SpeechMachineDialogueStructure speechMachineDialogues;
+
 
     public DialogueDataStructure()
     {
@@ -23,6 +26,9 @@ public class DialogueDataStructure
     {
         if (this.speechMachineDialogues == null)
             speechMachineDialogues = GenerateSpeechMachineDialogue();
+
+        if (this.introductionDialogues == null)
+            introductionDialogues = GenerateIntroductionDialogueStructure();
     }
 
 

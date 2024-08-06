@@ -35,6 +35,14 @@ public class UtilsSpeechMachine : MonoBehaviour
         Conclusion
     }
 
+    public enum Scene
+    {
+        None,
+        Introduction,
+        MainGame,
+        SpeechMachine
+    }
+
 
 }
 
@@ -49,11 +57,11 @@ public class SpeechMachineElementInPositionEvent : UnityEvent<SpeechElements>
 }
 
 [System.Serializable]
-public class SpeechMachineDialogueEvent : UnityEvent<DialogueEventType , SpeechElements>
+public class SpeechMachineDialogueEvent : UnityEvent<Scene, DialogueEventType, SpeechElements>
 {
 }
 
 [System.Serializable]
-public class IntroductionDialogueEvent : UnityEvent<DialogueEventType>
+public class IntroductionDialogueEvent : UnityEvent<Scene, DialogueEventType>
 {
 }

@@ -54,7 +54,6 @@ public class IntroductionController : MonoBehaviour
             //dialogueManager.GetComponent<DialogueManager>().OnIntroductionDialogueCompleted.AddListener(IntroductionCompleted);
         }
 
-        SendIntroduction();
 
     }
 
@@ -76,10 +75,12 @@ public class IntroductionController : MonoBehaviour
         //scene1.enabled = true;
         scene2.gameObject.SetActive(true);
 
+        SendIntroduction();
+
         // Wait for 4 seconds
         await Task.Delay(3000);
 
-        SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
+        //SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
     }
 
     // Update is called once per frame

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.Events;
 using static UtilsSpeechMachine;
@@ -47,7 +48,8 @@ public class DialogueManager : MonoBehaviour
         else
         {
             // TODO temp
-            gameManager.GetComponent<SpeechMachineGameManager>().dialogueEvent.AddListener(OnDialogueEvent);
+            //gameManager.GetComponent<SpeechMachineGameManager>().dialogueEvent.AddListener(OnDialogueEvent);
+            gameManager.GetComponent<IntroductionController>().dialogueEvent.AddListener(OnDialogueEvent);
             Debug.Log("[DialogueManager] Dialogue Events are connected");
         }
 
@@ -175,10 +177,8 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    // TODO decouple, it is game logic
     private void FinishGameMode()
     {
-        //SceneLoader.Load(SceneLoader.Scene.GamesMenu);
         OnGameIsOverDialogueCompleted.Invoke();
     }
 
@@ -189,57 +189,41 @@ public class DialogueManager : MonoBehaviour
         OnIntroductionDialogueCompleted.Invoke();
     }
 
-    public void OnDialogueEvent(DialogueEventType dialogueTypeEvent, SpeechElements speechElementID)
+    public void OnDialogueEvent(Scene scene, DialogueEventType dialogueTypeEvent)
     {
-        Debug.Log("dialogueTypeEvent = " + dialogueTypeEvent + " speechElementID = " + speechElementID);
-        FormDialogueKeySequence(dialogueTypeEvent, speechElementID);
+        Debug.Log("dialogueTypeEvent = " + dialogueTypeEvent);
+        FormSpeechMachineDialogueKeySequence(dialogueTypeEvent, SpeechElements.None);
+        ActivateDialogue();
+    }
+
+    public void OnDialogueEvent(Scene scene, DialogueEventType dialogueTypeEvent, SpeechElements speechElementID)
+    {
+        Debug.Log("Scene = " + scene + " dialogueTypeEvent = " + dialogueTypeEvent + " speechElementID = " + speechElementID);
+
+        switch (scene)
+        {
+            case Scene.Introduction:
+                FormSpeechMachineDialogueKeySequence(dialogueTypeEvent, speechElementID);
+                break;
+            case Scene.SpeechMachine:
+                FormSpeechMachineDialogueKeySequence(dialogueTypeEvent, speechElementID);
+                break;
+            default:
+                Debug.LogWarning("Scene not identified correctly on Dialogue Manager");
+                break;
+        }
+
+        FormSpeechMachineDialogueKeySequence(dialogueTypeEvent, speechElementID);
         ActivateDialogue();
     }
 
     // This interprets the signal receive and selects next keys for dialogue
-    private void FormDialogueKeySequence(DialogueEventType dialogueTypeEvent, SpeechElements speechElementID)
+    private void FormSpeechMachineDialogueKeySequence(DialogueEventType dialogueTypeEvent, SpeechElements speechElementID = SpeechElements.None)
     {
+        // If Speech Element exists, plays interprets type of Speech Dialogue
         if (speechElementID != SpeechElements.None)
-        {
-            if (dialogueTypeEvent == DialogueEventType.Suggestion)
-            {
-                // TODO moca de sono check if it makes sense
-                if (isDialogueActive)
-                    return;
+            FormSpeechElementDialogueKeySequence(dialogueTypeEvent, speechElementID);
 
-                // add suggestion before presenting it
-                dialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.askSuggestion);
-
-                // from the list of speech Elements that exist, take out all the avaiable suggestions
-                var speechElementSuggestions = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.Suggestion);
-                // from that suggestion, remove one list of dialogues at random
-                //dialogue = GetRandomDialogueFromList(speechElementSuggestions);
-                dialogue = dialogue.Concat(GetRandomDialogueFromList(speechElementSuggestions)).ToArray();
-
-                AudioManager.Instance.PlayOneShot(FModEvents.Instance.presentSuggestionSFX);
-                ActivateDialogue();
-            }
-
-            if (dialogueTypeEvent == DialogueEventType.RightAnswer)
-            {
-                var speechElementRightAnswer = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.RightAnswer);
-                
-                dialogue = GetRandomDialogueFromList(speechElementRightAnswer);
-                AudioManager.Instance.PlayOneShot(FModEvents.Instance.rightAnswerSFX);
-                PlaySoundAccordingToElement(speechElementID);
-                NextLine();
-            }
-
-            if (dialogueTypeEvent == DialogueEventType.WrongAnswer)
-            {
-                var speechElementWrongAnswer = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.WrongAnswer);
-
-                dialogue = GetRandomDialogueFromList(speechElementWrongAnswer);
-                AudioManager.Instance.PlayOneShot(FModEvents.Instance.wrongAnswerSFX);
-                NextLine();
-            }
-
-        }
 
         if (SpeechElements.None == speechElementID)
         {
@@ -263,6 +247,47 @@ public class DialogueManager : MonoBehaviour
                     dialogue = new string[]{ "Default value with no speech element, This is an error" };
                     break;
             }
+        }
+    }
+
+    private void FormSpeechElementDialogueKeySequence(DialogueEventType dialogueTypeEvent, SpeechElements speechElementID = SpeechElements.None)
+    {
+        if (dialogueTypeEvent == DialogueEventType.Suggestion)
+        {
+            // TODO moca de sono check if it makes sense
+            if (isDialogueActive)
+                return;
+
+            // add suggestion before presenting it
+            dialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.askSuggestion);
+
+            // from the list of speech Elements that exist, take out all the avaiable suggestions
+            var speechElementSuggestions = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.Suggestion);
+            // from that suggestion, remove one list of dialogues at random
+            //dialogue = GetRandomDialogueFromList(speechElementSuggestions);
+            dialogue = dialogue.Concat(GetRandomDialogueFromList(speechElementSuggestions)).ToArray();
+
+            AudioManager.Instance.PlayOneShot(FModEvents.Instance.presentSuggestionSFX);
+            ActivateDialogue();
+        }
+
+        if (dialogueTypeEvent == DialogueEventType.RightAnswer)
+        {
+            var speechElementRightAnswer = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.RightAnswer);
+
+            dialogue = GetRandomDialogueFromList(speechElementRightAnswer);
+            AudioManager.Instance.PlayOneShot(FModEvents.Instance.rightAnswerSFX);
+            PlaySoundAccordingToElement(speechElementID);
+            NextLine();
+        }
+
+        if (dialogueTypeEvent == DialogueEventType.WrongAnswer)
+        {
+            var speechElementWrongAnswer = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.WrongAnswer);
+
+            dialogue = GetRandomDialogueFromList(speechElementWrongAnswer);
+            AudioManager.Instance.PlayOneShot(FModEvents.Instance.wrongAnswerSFX);
+            NextLine();
         }
     }
 

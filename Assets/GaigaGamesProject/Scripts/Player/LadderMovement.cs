@@ -32,7 +32,7 @@ public class LadderMovement : MonoBehaviour
     void Update()
     {
         //vertical = Input.GetAxis("Vertical");
-        Debug.Log(vertical);
+        //Debug.Log(vertical);
 
         if (isLadder && Mathf.Abs(vertical) > 0f)
         {

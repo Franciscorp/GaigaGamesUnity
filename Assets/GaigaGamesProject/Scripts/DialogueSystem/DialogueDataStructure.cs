@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Utils;
+using static UtilsSpeechMachine;
 using static BaseSpeechMachineDialogueGenerator;
 using static BaseIntroductionDialogueGenerator;
+
 
 
 [System.Serializable]

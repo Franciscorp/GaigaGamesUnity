@@ -57,11 +57,13 @@ public class SpeechMachineElementInPositionEvent : UnityEvent<SpeechElements>
 }
 
 [System.Serializable]
-public class SpeechMachineDialogueEvent : UnityEvent<Scene, DialogueEventType, SpeechElements>
+public class BaseDialogueEvent : UnityEvent<Scene, DialogueEventType>
 {
 }
 
 [System.Serializable]
-public class IntroductionDialogueEvent : UnityEvent<Scene, DialogueEventType>
+
+public class SpeechMachineDialogueEvent : UnityEvent<Scene, DialogueEventType, SpeechElements>
 {
 }
+

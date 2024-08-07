@@ -16,7 +16,7 @@ public class IntroductionController : MonoBehaviour
     private Canvas scene1;
     private Canvas scene2;
 
-    public IntroductionDialogueEvent dialogueEvent;
+    public BaseDialogueEvent dialogueEvent;
 
 
     public UnityEvent enableSpeechElements;
@@ -63,7 +63,7 @@ public class IntroductionController : MonoBehaviour
         // if so, it doesn't show anything
         if (dialogueEvent != null)
         {
-            dialogueEvent.Invoke(DialogueEventType.Intro);
+            dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.Intro);
         }
     }
 
@@ -78,9 +78,9 @@ public class IntroductionController : MonoBehaviour
         SendIntroduction();
 
         // Wait for 4 seconds
-        await Task.Delay(3000);
+        await Task.Delay(4000);
 
-        //SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
+        SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
     }
 
     // Update is called once per frame

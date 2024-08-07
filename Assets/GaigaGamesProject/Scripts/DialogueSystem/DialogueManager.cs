@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,8 +49,24 @@ public class DialogueManager : MonoBehaviour
         else
         {
             // TODO temp
-            //gameManager.GetComponent<SpeechMachineGameManager>().dialogueEvent.AddListener(OnDialogueEvent);
-            gameManager.GetComponent<IntroductionController>().dialogueEvent.AddListener(OnDialogueEvent);
+            try
+            {
+                gameManager.GetComponent<SpeechMachineGameManager>().dialogueEvent.AddListener(OnDialogueEvent);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError(ex);
+            }
+
+            try
+            {
+                gameManager.GetComponent<IntroductionController>().dialogueEvent.AddListener(OnDialogueEvent);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError(ex);
+            }
+
             Debug.Log("[DialogueManager] Dialogue Events are connected");
         }
 
@@ -189,68 +206,68 @@ public class DialogueManager : MonoBehaviour
         OnIntroductionDialogueCompleted.Invoke();
     }
 
-    public void OnDialogueEvent(Scene scene, DialogueEventType dialogueTypeEvent)
+    private void OnDialogueEvent(Scene scene, DialogueEventType dialogueTypeEvent)
     {
-        Debug.Log("dialogueTypeEvent = " + dialogueTypeEvent);
-        FormSpeechMachineDialogueKeySequence(dialogueTypeEvent, SpeechElements.None);
-        ActivateDialogue();
+        InterpretDialogueEvent(scene, dialogueTypeEvent, SpeechElements.None);
     }
 
-    public void OnDialogueEvent(Scene scene, DialogueEventType dialogueTypeEvent, SpeechElements speechElementID)
+    private void OnDialogueEvent(Scene scene, DialogueEventType dialogueTypeEvent, SpeechElements speechElementID)
+    {
+        InterpretDialogueEvent(scene, dialogueTypeEvent, speechElementID);
+    }
+
+
+    private void InterpretDialogueEvent(Scene scene, DialogueEventType dialogueTypeEvent, SpeechElements speechElementID)
     {
         Debug.Log("Scene = " + scene + " dialogueTypeEvent = " + dialogueTypeEvent + " speechElementID = " + speechElementID);
 
         switch (scene)
         {
             case Scene.Introduction:
-                FormSpeechMachineDialogueKeySequence(dialogueTypeEvent, speechElementID);
+                FormComonDialogueKeySequence(scene, dialogueTypeEvent, speechElementID);
                 break;
             case Scene.SpeechMachine:
-                FormSpeechMachineDialogueKeySequence(dialogueTypeEvent, speechElementID);
+                // If Speech Element exists, plays interprets type of Speech Dialogue
+                if (speechElementID != SpeechElements.None)
+                    FormSpeechMachineElementDialogueKeySequence(dialogueTypeEvent, speechElementID);
+                else
+                    FormComonDialogueKeySequence(scene, dialogueTypeEvent, speechElementID);
                 break;
             default:
                 Debug.LogWarning("Scene not identified correctly on Dialogue Manager");
                 break;
         }
 
-        FormSpeechMachineDialogueKeySequence(dialogueTypeEvent, speechElementID);
         ActivateDialogue();
     }
 
-    // This interprets the signal receive and selects next keys for dialogue
-    private void FormSpeechMachineDialogueKeySequence(DialogueEventType dialogueTypeEvent, SpeechElements speechElementID = SpeechElements.None)
+    private void FormComonDialogueKeySequence(Scene scene, DialogueEventType dialogueTypeEvent, SpeechElements speechElementID = SpeechElements.None)
     {
-        // If Speech Element exists, plays interprets type of Speech Dialogue
-        if (speechElementID != SpeechElements.None)
-            FormSpeechElementDialogueKeySequence(dialogueTypeEvent, speechElementID);
-
-
-        if (SpeechElements.None == speechElementID)
+        switch (dialogueTypeEvent)
         {
-            switch (dialogueTypeEvent)
-            {
-                case DialogueEventType.None:
-                    dialogue = new string[] { "Error, None type of error found" };
-                    break;
+            case DialogueEventType.None:
+                dialogue = new string[] { "Error, None type of error found" };
+                break;
 
-                case DialogueEventType.Intro:
-                    dialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.introduction);
-                    didIntroductionPlay = true;
-                    break;
+            case DialogueEventType.Intro:
+                dialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
+                didIntroductionPlay = true;
+                break;
 
-                case DialogueEventType.Conclusion:
-                    dialogue = dialogue.Concat(GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.conclusion)).ToArray();
-                    isGameCompleted = true;
-                    break;
+            case DialogueEventType.Conclusion:
 
-                default:
-                    dialogue = new string[]{ "Default value with no speech element, This is an error" };
-                    break;
-            }
+                var conclusionStrings =  DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
+                dialogue = dialogue.Concat(conclusionStrings).ToArray();
+                isGameCompleted = true;
+                break;
+
+            default:
+                dialogue = new string[] { "Default value with no speech element, This is an error" };
+                break;
         }
     }
 
-    private void FormSpeechElementDialogueKeySequence(DialogueEventType dialogueTypeEvent, SpeechElements speechElementID = SpeechElements.None)
+    private void FormSpeechMachineElementDialogueKeySequence(DialogueEventType dialogueTypeEvent, SpeechElements speechElementID = SpeechElements.None)
     {
         if (dialogueTypeEvent == DialogueEventType.Suggestion)
         {
@@ -303,7 +320,7 @@ public class DialogueManager : MonoBehaviour
 
     private string[] GetRandomDialogueFromList(List<Dialogue> possibleDialogues)
     {
-        int randomDialogue = Random.Range(0, possibleDialogues.Count);
+        int randomDialogue = UnityEngine.Random.Range(0, possibleDialogues.Count);
         return possibleDialogues[randomDialogue].GetDialoguesToArray(dialogueDataStructure.language);
     }
 

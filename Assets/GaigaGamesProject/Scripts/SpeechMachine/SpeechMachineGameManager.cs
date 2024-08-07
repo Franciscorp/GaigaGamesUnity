@@ -64,7 +64,7 @@ public class SpeechMachineGameManager : MonoBehaviour
     {
         var speechElement = GetPlayableSpeechElement();
         Debug.Log("[PresentSuggestionToPlayer] = " + speechElement);
-        dialogueEvent.Invoke(DialogueEventType.Suggestion, speechElement);
+        dialogueEvent.Invoke(Scene.SpeechMachine, DialogueEventType.Suggestion, speechElement);
     }
 
     // TODO stops giving suggestions for ever, will need reactivating in the future
@@ -111,7 +111,7 @@ public class SpeechMachineGameManager : MonoBehaviour
         // if so, it doesn't show anything
         if (dialogueEvent != null)
         {
-            dialogueEvent.Invoke(DialogueEventType.Intro, SpeechElements.None);
+            dialogueEvent.Invoke(Scene.SpeechMachine, DialogueEventType.Intro, SpeechElements.None);
             StopCoroutine(introEventCoroutine);
         }
 
@@ -188,11 +188,11 @@ public class SpeechMachineGameManager : MonoBehaviour
             SpeechElementsState[Enum.GetName(typeof(SpeechElements), speechElementID)] = true;
             // on catching element, sends a dialogue event
             // Right Element, righ answer
-            dialogueEvent.Invoke(DialogueEventType.RightAnswer, speechElementID);
+            dialogueEvent.Invoke(Scene.SpeechMachine,DialogueEventType.RightAnswer, speechElementID);
         }
         else
         {
-            dialogueEvent.Invoke(DialogueEventType.WrongAnswer, speechElementID);
+            dialogueEvent.Invoke(Scene.SpeechMachine, DialogueEventType.WrongAnswer, speechElementID);
         }
 
         //Debug.Log("Presenting list of elements done: ");
@@ -205,7 +205,7 @@ public class SpeechMachineGameManager : MonoBehaviour
 
         if (numberOfElementsDone == UtilsSpeechMachine.NumberOfSpeechElements)
         {
-            dialogueEvent.Invoke(DialogueEventType.Conclusion, SpeechElements.None);
+            dialogueEvent.Invoke(Scene.SpeechMachine, DialogueEventType.Conclusion, SpeechElements.None);
             Debug.Log("All speech elements done");
         }
 

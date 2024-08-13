@@ -254,6 +254,14 @@ public class DialogueManager : MonoBehaviour
                 didIntroductionPlay = true;
                 break;
 
+            case DialogueEventType.AskName:
+                dialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
+                break;
+
+            case DialogueEventType.AskGender:
+                dialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
+                break;
+
             case DialogueEventType.Conclusion:
 
                 var conclusionStrings =  DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);

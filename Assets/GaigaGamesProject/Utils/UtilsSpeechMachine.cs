@@ -28,6 +28,8 @@ public class UtilsSpeechMachine : MonoBehaviour
     {
         None,
         Intro,
+        AskName,
+        AskGender,
         Help, 
         Suggestion,
         WrongAnswer,

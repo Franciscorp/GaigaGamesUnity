@@ -7,5 +7,8 @@ using UnityEngine;
 public class IntroductionDialogueStructure
 {
     public List<Dialogue> introduction;
+    public List<Dialogue> askName;
+    public List<Dialogue> askGender;
+    
 
 }

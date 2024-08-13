@@ -106,6 +106,10 @@ MonoBehaviour:
     m_Localized: "A Nossa Hist\xF3ria Come\xE7a"
     m_Metadata:
       m_Items: []
+  - m_Id: 35413425033310208
+    m_Localized: Escreve o teu nome aqui
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

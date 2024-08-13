@@ -106,6 +106,10 @@ MonoBehaviour:
     m_Localized: Our Story Begins
     m_Metadata:
       m_Items: []
+  - m_Id: 35413425033310208
+    m_Localized: Enter your name here
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

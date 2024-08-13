@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static UtilsSpeechMachine;
 
 
@@ -16,6 +17,12 @@ public class DialogueFetcher : MonoBehaviour {
 
             case DialogueEventType.Intro:
                 return GetRandomDialogueFromList(dialogueDataStructure, GetIntroFromCurrentScene(dialogueDataStructure, currentScene));
+
+            case DialogueEventType.AskName:
+                return GetRandomDialogueFromList(dialogueDataStructure, dialogueDataStructure.introductionDialogues.askName);
+
+            case DialogueEventType.AskGender:
+                return GetRandomDialogueFromList(dialogueDataStructure, dialogueDataStructure.introductionDialogues.askGender);
 
             case DialogueEventType.Conclusion:
                 return GetRandomDialogueFromList(dialogueDataStructure, GetConclusionFromCurrentScene(dialogueDataStructure, currentScene));
@@ -42,6 +49,15 @@ public class DialogueFetcher : MonoBehaviour {
         }
     }
 
+    private static List<Dialogue> GetAskGenderForIntroduction(DialogueDataStructure dialogueDataStructure)
+    {
+        string[] askGenderString = GetRandomDialogueFromList(dialogueDataStructure, dialogueDataStructure.introductionDialogues.askGender);
+        
+
+
+        return dialogueDataStructure.introductionDialogues.askGender;
+    }
+
     private static List<Dialogue> GetConclusionFromCurrentScene(DialogueDataStructure dialogueDataStructure, Scene currentScene)
     {
         switch (currentScene)
@@ -63,4 +79,19 @@ public class DialogueFetcher : MonoBehaviour {
         int randomDialogue = UnityEngine.Random.Range(0, possibleDialogues.Count);
         return possibleDialogues[randomDialogue].GetDialoguesToArray(dialogueDataStructure.language);
     }
+
+    private static string[] ChangeDialogueKeywords(string[] originalDialogue)
+    {
+        // TODO not efficient. but fuck it
+        PlayerInformation playerInformation = new PlayerInformation();
+        string username = playerInformation.GetCharacterName();
+
+        foreach (var str in originalDialogue)
+        {
+            str.Replace(Utils.UsernameDialogueKeyword, username);
+        }
+
+        return originalDialogue;
+    }
+
 }

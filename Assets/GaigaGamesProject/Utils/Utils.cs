@@ -7,11 +7,14 @@ public class Utils
     public const string SaveDirectory = "Saves";
     public const string SettingsSaveFilePath = "SettingsSave";
     public const string DialoguesSaveFilePath = "DialoguesSave";
+    public const string PlayerInformationSaveFilePath = "PlayerSave";
 
     // TIMERS CONSTANTS
     public const float LoadingScreenMinimumTime = 0.5f;
     public const float EventTimeout = 0.1f;
     public const float TimeUntilSuggestion = 20f;
+
+    public const string UsernameDialogueKeyword = "$username$";
 
 
 

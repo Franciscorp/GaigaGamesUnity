@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Localization.SmartFormat.Utilities;
 using static UtilsSpeechMachine;
 
 
@@ -20,9 +22,15 @@ public class DialogueFetcher : MonoBehaviour {
 
             case DialogueEventType.AskName:
                 return GetRandomDialogueFromList(dialogueDataStructure, dialogueDataStructure.introductionDialogues.askName);
+            
+            case DialogueEventType.NameEntered:
+                return GetNameEnteredForIntroduction(dialogueDataStructure);
 
             case DialogueEventType.AskGender:
                 return GetRandomDialogueFromList(dialogueDataStructure, dialogueDataStructure.introductionDialogues.askGender);
+
+            case DialogueEventType.GenderEntered:
+                return GetAdequateGenderAnswerForIntroduction(dialogueDataStructure);
 
             case DialogueEventType.Conclusion:
                 return GetRandomDialogueFromList(dialogueDataStructure, GetConclusionFromCurrentScene(dialogueDataStructure, currentScene));
@@ -49,13 +57,25 @@ public class DialogueFetcher : MonoBehaviour {
         }
     }
 
-    private static List<Dialogue> GetAskGenderForIntroduction(DialogueDataStructure dialogueDataStructure)
+    private static string[] GetNameEnteredForIntroduction(DialogueDataStructure dialogueDataStructure)
     {
-        string[] askGenderString = GetRandomDialogueFromList(dialogueDataStructure, dialogueDataStructure.introductionDialogues.askGender);
-        
+        string[] nameEnteredString = GetRandomDialogueFromList(dialogueDataStructure, dialogueDataStructure.introductionDialogues.nameEntered);
 
+        nameEnteredString = ChangeDialogueKeywords(nameEnteredString);
 
-        return dialogueDataStructure.introductionDialogues.askGender;
+        return nameEnteredString;
+    }
+
+    private static string[] GetAdequateGenderAnswerForIntroduction(DialogueDataStructure dialogueDataStructure)
+    {
+        PlayerInformation playerInformation = new PlayerInformation();
+        Utils.Gender gender = playerInformation.GetGender();
+
+        if (gender == Utils.Gender.Male)
+            return GetRandomDialogueFromList(dialogueDataStructure, dialogueDataStructure.introductionDialogues.maleGenderEntered);
+        //if (gender == Utils.Gender.Female)
+        else 
+            return GetRandomDialogueFromList(dialogueDataStructure, dialogueDataStructure.introductionDialogues.femaleGenderEntered);
     }
 
     private static List<Dialogue> GetConclusionFromCurrentScene(DialogueDataStructure dialogueDataStructure, Scene currentScene)
@@ -76,6 +96,12 @@ public class DialogueFetcher : MonoBehaviour {
 
     private static string[] GetRandomDialogueFromList(DialogueDataStructure dialogueDataStructure, List<Dialogue> possibleDialogues)
     {
+        if (possibleDialogues == null || possibleDialogues.Count == 0)
+        {
+            Debug.LogError("Dialogue Fetcher - List of possible Dialogues is Empty, check DialogueStructure");
+            return null;
+        }
+
         int randomDialogue = UnityEngine.Random.Range(0, possibleDialogues.Count);
         return possibleDialogues[randomDialogue].GetDialoguesToArray(dialogueDataStructure.language);
     }
@@ -86,9 +112,10 @@ public class DialogueFetcher : MonoBehaviour {
         PlayerInformation playerInformation = new PlayerInformation();
         string username = playerInformation.GetCharacterName();
 
-        foreach (var str in originalDialogue)
+        // Replace the keyword in each string
+        for (int i = 0; i < originalDialogue.Count(); i++)
         {
-            str.Replace(Utils.UsernameDialogueKeyword, username);
+            originalDialogue[i] = originalDialogue[i].Replace(Utils.UsernameDialogueKeyword, username);
         }
 
         return originalDialogue;

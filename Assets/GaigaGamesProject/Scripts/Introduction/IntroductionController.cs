@@ -1,7 +1,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.Events;
 using UnityEngine.Playables;
 using UnityEngine.UI;
@@ -13,6 +15,7 @@ public class IntroductionController : MonoBehaviour
     private PlayerInformation playerInformation;
 
     // Game Objects
+    public GameObject dialoguePanel;
     private GameObject dialogueManager;
     public GameObject nameRequestTextInput;
     public GameObject genderChoicePanelButton;
@@ -49,6 +52,8 @@ public class IntroductionController : MonoBehaviour
         {
             //dialogueManager.GetComponent<DialogueManager>().OnGameIsOverDialogueCompleted.AddListener(GameCompleted);
             dialogueManager.GetComponent<DialogueManager>().OnIntroductionDialogueCompleted.AddListener(IntroductionCompleted);
+            dialogueManager.GetComponent<DialogueManager>().OnDialogueCompleted.AddListener(DialogueCompleted);
+            
         }
 
         SetInitialGameStatus();
@@ -59,6 +64,7 @@ public class IntroductionController : MonoBehaviour
     {
         playerInformation = new PlayerInformation();
 
+        dialoguePanel.SetActive(false);
         nameRequestTextInput.SetActive(false);
         genderChoicePanelButton.SetActive(false);
 
@@ -94,8 +100,27 @@ public class IntroductionController : MonoBehaviour
     public void OnNameEntered()
     {
         string textInputText = nameRequestTextInput.GetComponent<TMP_InputField>().text;
+        
+        // Check if string empty, if it is, repeats
+        if (textInputText == string.Empty || textInputText == null)
+            return;
+
         playerInformation.SetCharacterName(textInputText);
         playerInformation.GetCharacterName();
+        
+        nameRequestTextInput.SetActive(false);
+
+        if (dialogueEvent != null)
+            dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NameEntered);
+
+        if (dialogueEvent != null)
+            dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NextDialogueLine);
+    }
+
+    public void DialogueCompleted()
+    {
+        Debug.Log("DialogueCompleted");
+
         AskGender();
     }
 
@@ -108,19 +133,54 @@ public class IntroductionController : MonoBehaviour
         if (dialogueEvent != null)
             dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.AskGender);
 
+        //if (dialogueEvent != null)
+        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NextDialogueLine);
+
         genderChoicePanelButton.SetActive(true);
     }
 
+    // NOTE: Male = 0, Female = 1
+    public void GenderEntered(int selectedGender)
+    {
+        genderChoicePanelButton.SetActive(false);
+
+        Debug.Log("IntroductionController - Gender Entered()");
+
+        playerInformation.SetGender((Utils.Gender) selectedGender);
+        playerInformation.GetGender();
+
+        // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
+        if (dialogueEvent != null)
+            dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.GenderEntered);
+
+        if (dialogueEvent != null)
+            dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NextDialogueLine);
+    }
 
     public async void ChangeToScene2()
     {
         Debug.Log("Change to Scene 2");
-        //scene1.enabled = false;
         scene1.gameObject.SetActive(false);
-        //scene1.enabled = true;
         scene2.gameObject.SetActive(true);
+        dialoguePanel.SetActive(true);
+
 
         SendIntroduction();
+
+        // Wait for 4 seconds
+        await Task.Delay(4000);
+
+        //SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
+    }
+
+    public async void ChangeToScene3()
+    {
+        Debug.Log("Change to Scene 3");
+        dialoguePanel.SetActive(false);
+        scene2.gameObject.SetActive(true);
+
+        
+
 
         // Wait for 4 seconds
         await Task.Delay(4000);

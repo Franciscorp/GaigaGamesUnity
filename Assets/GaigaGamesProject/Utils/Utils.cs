@@ -14,7 +14,10 @@ public class Utils
     public const float EventTimeout = 0.1f;
     public const float TimeUntilSuggestion = 20f;
 
+    // PLAYER PREFS
     public const string UsernameDialogueKeyword = "$username$";
+    public const string UsernamePlayerPrefsKeyword = "Username";
+    public const string GenderPlayerPrefsKeyword = "Gender";
 
 
 
@@ -22,6 +25,12 @@ public class Utils
     {
         Portuguese = 0,
         English = 1
+    }
+
+    public enum Gender
+    {
+        Male = 0,
+        Female = 1
     }
 
     // TODO make sure it is called in the app starting

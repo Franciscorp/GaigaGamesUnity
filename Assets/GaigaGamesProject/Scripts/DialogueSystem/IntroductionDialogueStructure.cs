@@ -8,7 +8,9 @@ public class IntroductionDialogueStructure
 {
     public List<Dialogue> introduction;
     public List<Dialogue> askName;
+    public List<Dialogue> nameEntered;
     public List<Dialogue> askGender;
-    
+    public List<Dialogue> maleGenderEntered;
+    public List<Dialogue> femaleGenderEntered;
 
 }

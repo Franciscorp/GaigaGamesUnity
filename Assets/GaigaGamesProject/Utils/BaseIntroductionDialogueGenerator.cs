@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.EventSystems.EventTrigger;
 
 class BaseIntroductionDialogueGenerator
 {
@@ -11,6 +13,10 @@ class BaseIntroductionDialogueGenerator
         IntroductionDialogueStructure introduction = new IntroductionDialogueStructure();
         introduction.introduction = GenerateIntroduction();
         introduction.askName = GenerateAskName();
+        introduction.nameEntered = GenerateNameEntered();
+        introduction.askGender = GenerateAskGender();
+        introduction.maleGenderEntered = GenerateMaleGenderEntered();
+        introduction.femaleGenderEntered = GenerateFemaleGenderEntered();
 
         return introduction;
     }
@@ -64,19 +70,39 @@ class BaseIntroductionDialogueGenerator
         return askNameList;
     }
 
+    // Name Entered
+    public static List<Dialogue> GenerateNameEntered()
+    {
+
+        List<string> englishText = new List<string>
+        {
+            "Welcome $username$! Welcome to Gaiga Games!"
+        };
+
+        List<string> portugueseText = new List<string>
+        {
+            "Bem vindo $username$! Bem vindo aos jogos Gaiga!"
+        };
+
+        Dialogue dialogue = new Dialogue("NameEntered" + Key + "1", englishText, portugueseText);
+
+        List<Dialogue> nameEnteredList = new List<Dialogue>();
+        nameEnteredList.Add(dialogue);
+
+        return nameEnteredList;
+    }
+
     // Ask Name 
     public static List<Dialogue> GenerateAskGender()
     {
 
         List<string> englishText = new List<string>
         {
-            "Welcome $username$! Welcome to Gaiga Games!",
             "Are you a boy or a girl?"
         };
 
         List<string> portugueseText = new List<string>
         {
-            "Bem vindo $username$! Bem vindo aos jogos Gaiga!",
             "Diz-me, és um rapaz ou uma rapariga?"
         };
 
@@ -86,6 +112,51 @@ class BaseIntroductionDialogueGenerator
         askNameList.Add(dialogue);
 
         return askNameList;
+    }
+
+    public static List<Dialogue> GenerateMaleGenderEntered()
+    {
+
+        List<string> englishText = new List<string>
+        {
+            "Ah, so you're a girl! Wonderful!",
+            "Are you ready for an adventure full of mysteries and surprises?"
+        };
+        List<string> portugueseText = new List<string>
+        {
+            "Ah, então és um rapaz! Excelente! ",
+            "Vamos começar essa aventura cheia de descobertas e diversão!"
+        };
+
+        Dialogue dialogue = new Dialogue("MaleGenderEntered" + Key + "1", englishText, portugueseText);
+
+        List<Dialogue> genderEnteredList = new List<Dialogue>();
+        genderEnteredList.Add(dialogue);
+
+        return genderEnteredList;
+    }
+
+    public static List<Dialogue> GenerateFemaleGenderEntered()
+    {
+
+        List<string> englishText = new List<string>
+        {
+            "Ah, so you're a boy! Excellent!",
+            "Let's start this adventure full of discoveries and fun!"
+        };
+
+        List<string> portugueseText = new List<string>
+        {
+            "Ah, então és uma rapariga! Maravilha!",
+            "Preparada para uma aventura cheia de mistérios e surpresas?"
+        };
+
+        Dialogue dialogue = new Dialogue("FemaleGenderEntered" + Key + "1", englishText, portugueseText);
+
+        List<Dialogue> genderEnteredList = new List<Dialogue>();
+        genderEnteredList.Add(dialogue);
+
+        return genderEnteredList;
     }
 
 }

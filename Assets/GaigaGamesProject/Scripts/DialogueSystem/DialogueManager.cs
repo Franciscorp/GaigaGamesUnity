@@ -23,12 +23,16 @@ public class DialogueManager : MonoBehaviour
     public float wordSpeed;
     public UnityEvent OnGameIsOverDialogueCompleted;
     public UnityEvent OnIntroductionDialogueCompleted;
+    public UnityEvent OnDialogueCompleted;
 
     private bool isDialogueActive;
     private int index;
+
+    private bool isDialogueCompleted = false;
     private bool isGameCompleted = false;
     private bool didIntroductionPlay = false;
     private bool isIntroductionCompleted = false;
+
     private DialogueDataStructure dialogueDataStructure;
     private Coroutine typingCoroutine;
     private Coroutine suggestionCoroutine;
@@ -93,8 +97,9 @@ public class DialogueManager : MonoBehaviour
         if (dialogue.Length < index)
             return;
 
-        if (!isDialogueActive)
-            dialogue = new string[] { "Diálogo temporário para apresentar a próxima pista..." };
+        // TODO check
+        //if (!isDialogueActive)
+            //dialogue = new string[] { "Diálogo temporário para apresentar a próxima pista..." };
 
         if (dialogueText.text.Length < dialogue[index].Length)
         {
@@ -187,11 +192,19 @@ public class DialogueManager : MonoBehaviour
         else
         {
             DisableDialogue();
+            if (isDialogueCompleted)
+                DialogueIsFinished();
             if (isGameCompleted)
                 FinishGameMode();
             if (didIntroductionPlay && !isIntroductionCompleted)
                 FinishIntroduction();
         }
+    }
+
+    private void DialogueIsFinished()
+    {
+        isDialogueCompleted = false;
+        OnDialogueCompleted.Invoke();
     }
 
     private void FinishGameMode()
@@ -249,18 +262,33 @@ public class DialogueManager : MonoBehaviour
                 dialogue = new string[] { "Error, None type of error found" };
                 break;
 
+            case DialogueEventType.NextDialogueLine:
+                OnDialogueClick();
+                break;
+
             case DialogueEventType.Intro:
                 dialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
                 didIntroductionPlay = true;
                 break;
 
             case DialogueEventType.AskName:
+            case DialogueEventType.AskGender:
+            case DialogueEventType.GenderEntered:
                 dialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
                 break;
 
-            case DialogueEventType.AskGender:
+            case DialogueEventType.NameEntered:
                 dialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
+                isDialogueCompleted = true;
                 break;
+
+            //case DialogueEventType.AskGender:
+            //    dialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
+            //    break;
+
+            //case DialogueEventType.GenderEntered:
+            //    dialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
+            //    break;
 
             case DialogueEventType.Conclusion:
 

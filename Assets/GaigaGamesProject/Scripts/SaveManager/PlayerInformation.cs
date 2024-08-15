@@ -16,6 +16,7 @@ public class PlayerInformation
 
     public void SetCharacterName(string name)
     {
+        name = CapitalizeEachWord(name);
         PlayerPrefs.SetString(Utils.UsernamePlayerPrefsKeyword, name);
         PlayerPrefs.Save();
         Debug.Log("Character Name saved");

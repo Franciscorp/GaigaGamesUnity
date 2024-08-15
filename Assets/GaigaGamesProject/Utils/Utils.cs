@@ -1,3 +1,4 @@
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -38,6 +39,14 @@ public class Utils
     public static void SetScreenAlwaysOn()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+    }
+
+    // Function to capitalize each word in the sentence.
+    public static string CapitalizeEachWord(string sentence)
+    {
+        // Use TextInfo to capitalize each word in the sentence.
+        TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+        return textInfo.ToTitleCase(sentence.ToLower());
     }
 }
 

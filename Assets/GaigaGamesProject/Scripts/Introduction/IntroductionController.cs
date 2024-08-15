@@ -24,8 +24,10 @@ public class IntroductionController : MonoBehaviour
     private Image carImage;
     private PlayableDirector Timeline;
 
-    private Canvas scene1;
-    private Canvas scene2;
+    private int currentScene = 0;
+    private GameObject scene1;
+    private GameObject scene2;
+    private GameObject scene3;
 
     public BaseDialogueEvent dialogueEvent;
 
@@ -39,13 +41,15 @@ public class IntroductionController : MonoBehaviour
         string imageName = "Car";
         string scene1Name = "Scene1";
         string scene2Name = "Scene2";
+        string scene3Name = "Scene3";
 
         // Find all Image components in children and filter by name
         //carImage = GetComponentsInChildren<Image>()
-            //.FirstOrDefault(image => image.gameObject.name == imageName);
+        //.FirstOrDefault(image => image.gameObject.name == imageName);
 
-        scene1 = GameObject.Find(scene1Name).GetComponent<Canvas>();
-        scene2 = GameObject.Find(scene2Name).GetComponent<Canvas>();
+        scene1 = GameObject.Find(scene1Name);
+        scene2 = GameObject.Find(scene2Name);
+        scene3 = GameObject.Find(scene3Name);
 
         dialogueManager = GameObject.FindGameObjectsWithTag("DialogueManager").FirstOrDefault();
         if (dialogueManager != null)
@@ -53,7 +57,6 @@ public class IntroductionController : MonoBehaviour
             //dialogueManager.GetComponent<DialogueManager>().OnGameIsOverDialogueCompleted.AddListener(GameCompleted);
             dialogueManager.GetComponent<DialogueManager>().OnIntroductionDialogueCompleted.AddListener(IntroductionCompleted);
             dialogueManager.GetComponent<DialogueManager>().OnDialogueCompleted.AddListener(DialogueCompleted);
-            
         }
 
         SetInitialGameStatus();
@@ -68,9 +71,16 @@ public class IntroductionController : MonoBehaviour
         nameRequestTextInput.SetActive(false);
         genderChoicePanelButton.SetActive(false);
 
+        currentScene = 1;
+
         if (scene2 != null)
         {
-            scene2.gameObject.SetActive(false);
+            scene2.SetActive(false);
+        }
+
+        if (scene3 != null)
+        {
+            scene3.SetActive(false);
         }
 
     }
@@ -121,7 +131,21 @@ public class IntroductionController : MonoBehaviour
     {
         Debug.Log("DialogueCompleted");
 
-        AskGender();
+        switch (currentScene)
+        {
+            case 1:
+                // nothing to do
+                break; 
+            case 2:
+                AskGender();
+                break;
+            case 3:
+                ChangeToScene3();
+                break;
+            default:
+                Debug.LogWarning("Current scene was not planned. Error in Introduction Controller");
+                break;
+        }
     }
 
 
@@ -132,9 +156,6 @@ public class IntroductionController : MonoBehaviour
         // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
         if (dialogueEvent != null)
             dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.AskGender);
-
-        //if (dialogueEvent != null)
-        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NextDialogueLine);
 
         genderChoicePanelButton.SetActive(true);
     }
@@ -155,15 +176,17 @@ public class IntroductionController : MonoBehaviour
 
         if (dialogueEvent != null)
             dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NextDialogueLine);
+
+        currentScene = 3;
     }
 
     public async void ChangeToScene2()
     {
         Debug.Log("Change to Scene 2");
-        scene1.gameObject.SetActive(false);
-        scene2.gameObject.SetActive(true);
-        dialoguePanel.SetActive(true);
-
+        currentScene = 2;
+        scene1.SetActive(false);
+        scene2.SetActive(true);
+        dialoguePanel.gameObject.SetActive(true);
 
         SendIntroduction();
 
@@ -177,10 +200,8 @@ public class IntroductionController : MonoBehaviour
     {
         Debug.Log("Change to Scene 3");
         dialoguePanel.SetActive(false);
-        scene2.gameObject.SetActive(true);
-
-        
-
+        scene2.SetActive(false);
+        scene3.SetActive(true);
 
         // Wait for 4 seconds
         await Task.Delay(4000);

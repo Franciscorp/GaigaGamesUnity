@@ -275,6 +275,7 @@ public class DialogueManager : MonoBehaviour
             case DialogueEventType.AskGender:
             case DialogueEventType.GenderEntered:
                 dialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
+                isDialogueCompleted = true;
                 break;
 
             case DialogueEventType.NameEntered:

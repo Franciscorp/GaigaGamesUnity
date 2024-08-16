@@ -34,6 +34,12 @@ public class IntroductionController : MonoBehaviour
 
     public UnityEvent enableSpeechElements;
 
+    // timelines / Scenes play
+    public PlayableDirector FirstSceneTimeline;
+    public PlayableDirector ThirdSceneTimeline;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -202,11 +208,20 @@ public class IntroductionController : MonoBehaviour
         dialoguePanel.SetActive(false);
         scene2.SetActive(false);
         scene3.SetActive(true);
+        scene3.GetComponent<IntroductionScene3Controller>().SetSceneAccordingToGender(playerInformation.GetGender());
 
-        // Wait for 4 seconds
-        await Task.Delay(4000);
+        ThirdSceneTimeline.Play();
+    }
 
-        //SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
+    public void ChangeToGrandmasHouseScene1()
+    {
+        Debug.Log("Change to Grandmas House Scene 1");
+        dialoguePanel.SetActive(false);
+        scene2.SetActive(false);
+        scene3.SetActive(true);
+        scene3.GetComponent<IntroductionScene3Controller>().SetSceneAccordingToGender(playerInformation.GetGender());
+
+        ThirdSceneTimeline.Play();
     }
 
     // Update is called once per frame

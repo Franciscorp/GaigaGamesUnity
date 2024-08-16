@@ -120,12 +120,14 @@ class BaseIntroductionDialogueGenerator
         List<string> englishText = new List<string>
         {
             "Ah, so you're a girl! Wonderful!",
-            "Are you ready for an adventure full of mysteries and surprises?"
+            "Are you ready for an adventure full of mysteries and surprises?",
+            "Let's go then..."
         };
         List<string> portugueseText = new List<string>
         {
             "Ah, então és um rapaz! Excelente! ",
-            "Vamos começar essa aventura cheia de descobertas e diversão!"
+            "Vamos começar essa aventura cheia de descobertas e diversão!",
+            "Então vamos lá..."
         };
 
         Dialogue dialogue = new Dialogue("MaleGenderEntered" + Key + "1", englishText, portugueseText);
@@ -142,13 +144,15 @@ class BaseIntroductionDialogueGenerator
         List<string> englishText = new List<string>
         {
             "Ah, so you're a boy! Excellent!",
-            "Let's start this adventure full of discoveries and fun!"
+            "Let's start this adventure full of discoveries and fun!",
+            "Let's go then..."
         };
 
         List<string> portugueseText = new List<string>
         {
             "Ah, então és uma rapariga! Maravilha!",
-            "Preparada para uma aventura cheia de mistérios e surpresas?"
+            "Preparada para uma aventura cheia de mistérios e surpresas?",
+            "Então vamos lá..."
         };
 
         Dialogue dialogue = new Dialogue("FemaleGenderEntered" + Key + "1", englishText, portugueseText);

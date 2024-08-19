@@ -197,7 +197,7 @@ public class IntroductionController : MonoBehaviour
         SendIntroduction();
 
         // Wait for 4 seconds
-        await Task.Delay(4000);
+        //await Task.Delay(4000);
 
         //SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
     }

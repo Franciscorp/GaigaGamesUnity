@@ -6,6 +6,7 @@ using static Utils;
 using static UtilsSpeechMachine;
 using static BaseSpeechMachineDialogueGenerator;
 using static BaseIntroductionDialogueGenerator;
+using static BaseMainGameDialogueGenerator;
 
 
 
@@ -14,6 +15,7 @@ public class DialogueDataStructure
 {
     public Language language;
     public IntroductionDialogueStructure introductionDialogues;
+    public MainGameDialogueStructure mainGameDialogues;
     public SpeechMachineDialogueStructure speechMachineDialogues;
 
 
@@ -31,8 +33,10 @@ public class DialogueDataStructure
 
         if (this.introductionDialogues == null)
             introductionDialogues = GenerateIntroductionDialogueStructure();
-    }
 
+        if (this.mainGameDialogues == null)
+            mainGameDialogues = GenerateMainGameDialogueStructure();
+    }
 
     public bool IsThereDialoguesAvaiable()
     {

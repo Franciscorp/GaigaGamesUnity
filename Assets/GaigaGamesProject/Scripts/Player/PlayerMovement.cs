@@ -30,7 +30,16 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontalMove = ctx.ReadValue<float>() * speed;
         };
+    }
 
+    public void EnablePlayerControls()
+    {
+        playerControls.Enable();
+    }
+
+    public void DisablePlayerControls()
+    {
+        playerControls.Disable();
     }
 
     void Update()

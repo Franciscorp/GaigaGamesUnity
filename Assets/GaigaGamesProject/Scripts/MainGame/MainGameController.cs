@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using static Utils;
+using static UtilsSpeechMachine;
 
 public class MainGameController : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class MainGameController : MonoBehaviour
     public GameObject spriteBoy;
     public GameObject spriteGirl;
 
+    // Events
+    public BaseDialogueEvent dialogueEvent;
+    
     private void Awake()
     {
         playerInformation = new PlayerInformation();
@@ -53,8 +57,25 @@ public class MainGameController : MonoBehaviour
         Debug.Log("Camera Idle");
 
 
-        //dialoguePanel.SetActive(false);
-        TransitionCameraToDialogue();
+        dialoguePanel.SetActive(false);
+    }
+
+    public async void StartGameIntroduction()
+    {
+        cameraAnimator.Play("CameraOut");
+        dialoguePanel.SetActive(true);
+        await Task.Delay(1000);
+        InvokeDialogueEvent(Scene.MainGame, DialogueEventType.Intro);
+    }
+
+    // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
+    // if so, it doesn't show anything
+    private void InvokeDialogueEvent(Scene currentScene, DialogueEventType dialogueEventType)
+    {
+        if (dialogueEvent != null)
+            dialogueEvent.Invoke(currentScene, dialogueEventType);
+        else
+            Debug.LogWarning("Invoking Dialogue Event went wrong. Check Main Game Controller");
     }
 
     private async void TransitionCameraToDialogue()

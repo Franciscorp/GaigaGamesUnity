@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,7 +21,16 @@ public class Utils
     public const string UsernamePlayerPrefsKeyword = "Username";
     public const string GenderPlayerPrefsKeyword = "Gender";
 
-
+    public enum Npc
+    {
+        Narrator = 0,
+        Boy = 1,
+        Girl = 2,
+        SpeechMachine = 3,
+        Tobias = 4,
+        Grandma = 5,
+        Grandpa = 6
+    }
 
     public enum Language
     {
@@ -47,6 +57,22 @@ public class Utils
         // Use TextInfo to capitalize each word in the sentence.
         TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
         return textInfo.ToTitleCase(sentence.ToLower());
+    }
+
+    public static string GetPortugueseTranslatedNpcList(Npc currentNpc)
+    {
+        List<string> npcList = new List<string>
+        {
+            "Narrador",      // Narrator
+            "Menino",        // Boy
+            "Menina",        // Girl
+            "Boneco", // SpeechMachine
+            "Tobias",        // Tobias
+            "Avó",           // Grandma
+            "Avô"            // Grandpa
+        };
+
+        return npcList[(int)currentNpc];
     }
 }
 

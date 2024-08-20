@@ -18,6 +18,10 @@ public class DialogueManager : MonoBehaviour
     public GameObject continueIcon;
     public Animator continueAnimation;
 
+    //images
+    public List<Sprite> npcImages;
+
+
     public string[] dialogue;
     public List<string> dialogueKeys;
     public float wordSpeed;
@@ -65,6 +69,15 @@ public class DialogueManager : MonoBehaviour
             try
             {
                 gameManager.GetComponent<IntroductionController>().dialogueEvent.AddListener(OnDialogueEvent);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError(ex);
+            }
+
+            try
+            {
+                gameManager.GetComponent<MainGameController>().dialogueEvent.AddListener(OnDialogueEvent);
             }
             catch (Exception ex)
             {
@@ -229,7 +242,6 @@ public class DialogueManager : MonoBehaviour
         InterpretDialogueEvent(scene, dialogueTypeEvent, speechElementID);
     }
 
-
     private void InterpretDialogueEvent(Scene scene, DialogueEventType dialogueTypeEvent, SpeechElements speechElementID)
     {
         Debug.Log("Scene = " + scene + " dialogueTypeEvent = " + dialogueTypeEvent + " speechElementID = " + speechElementID);
@@ -237,6 +249,7 @@ public class DialogueManager : MonoBehaviour
         switch (scene)
         {
             case Scene.Introduction:
+            case Scene.MainGame:
                 FormComonDialogueKeySequence(scene, dialogueTypeEvent, speechElementID);
                 break;
             case Scene.SpeechMachine:

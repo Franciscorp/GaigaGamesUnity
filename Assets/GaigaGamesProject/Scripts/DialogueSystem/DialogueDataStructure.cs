@@ -56,6 +56,9 @@ public class Dialogue
 {
     public string key; // Unique identifier for the dialogue
     public bool wasDisplayed;
+    public string npcNamePortuguese;
+    public string npcNameEnglish;
+    public Npc npcImage;
     public List<string> englishText;
     public List<string> portugueseText;
 
@@ -72,6 +75,26 @@ public class Dialogue
         this.key = key;
         this.wasDisplayed = false;
         this.englishText = new List<string> {englishText};
+        this.portugueseText = new List<string> { portugueseText };
+    }
+
+    public Dialogue(string key, Npc npc, List<string> englishText, List<string> portugueseText)
+    {
+        this.key = key;
+        this.wasDisplayed = false;
+        this.npcNamePortuguese = GetPortugueseTranslatedNpcList(npc);
+        this.npcImage = npc;
+        this.englishText = englishText;
+        this.portugueseText = portugueseText;
+    }
+
+    public Dialogue(string key, Npc npc, string englishText, string portugueseText)
+    {
+        this.key = key;
+        this.wasDisplayed = false;
+        this.npcNamePortuguese = GetPortugueseTranslatedNpcList(npc);
+        this.npcImage = npc;
+        this.englishText = new List<string> { englishText };
         this.portugueseText = new List<string> { portugueseText };
     }
 

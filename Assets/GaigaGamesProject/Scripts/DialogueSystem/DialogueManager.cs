@@ -7,7 +7,8 @@ using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.Events;
 using static UtilsSpeechMachine;
-
+using static Utils;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI npcName;
+    public Image npcIcon;
     public GameObject continueIcon;
     public Animator continueAnimation;
 
@@ -22,7 +25,8 @@ public class DialogueManager : MonoBehaviour
     public List<Sprite> npcImages;
 
 
-    public string[] dialogue;
+    public ReadyToDisplayDialogue readyToDisplayDialogue;
+    //public string[] dialogue;
     public List<string> dialogueKeys;
     public float wordSpeed;
     public UnityEvent OnGameIsOverDialogueCompleted;
@@ -103,22 +107,22 @@ public class DialogueManager : MonoBehaviour
 
     public void OnDialogueClick()
     {
-        if (dialogueText == null || dialogue == null)
+        if (dialogueText == null || readyToDisplayDialogue == null)
             return;
 
         // TODO CHECK if crashes
-        if (dialogue.Length < index)
+        if (readyToDisplayDialogue.text.Length < index)
             return;
 
         // TODO check
         //if (!isDialogueActive)
             //dialogue = new string[] { "Diálogo temporário para apresentar a próxima pista..." };
 
-        if (dialogueText.text.Length < dialogue[index].Length)
+        if (dialogueText.text.Length < readyToDisplayDialogue.text[index].Length)
         {
             CompleteTyping();
         }
-        else if (dialogueText.text == dialogue[index])
+        else if (dialogueText.text == readyToDisplayDialogue.text[index])
         {
             AudioManager.Instance.PlayOneShot(FModEvents.Instance.buttonClick);
             NextLine();
@@ -161,14 +165,16 @@ public class DialogueManager : MonoBehaviour
     private void CompleteTyping()
     {
         StopCoroutine(typingCoroutine);
-        dialogueText.text = dialogue[index];
+        dialogueText.text = readyToDisplayDialogue.text[index];
         PlayContinueAnimation();
     }
 
     // TODO
     private void ChangeDisplayedNpcNameAndImage()
     {
-
+        //gameObject.GetComponent().sprite = myImage;
+        npcIcon.sprite = npcImages[(int)readyToDisplayDialogue.npc];
+        npcName.text = GetPortugueseTranslatedNpcList(readyToDisplayDialogue.npc);
     }
 
     // Checks if it was already typing something and stops it
@@ -184,7 +190,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator Typing()
     {
-        foreach (char letter in dialogue[index].ToCharArray())
+        foreach (char letter in readyToDisplayDialogue.text[index].ToCharArray())
         {
             // Adds next letter
             // Waits for a dew seconds for the next letter to be added
@@ -194,7 +200,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         // Sets the continue button to active
-        if (dialogueText.text == dialogue[index])
+        if (dialogueText.text == readyToDisplayDialogue.text[index])
             PlayContinueAnimation();
     }
 
@@ -203,7 +209,7 @@ public class DialogueManager : MonoBehaviour
         //Debug.Log("[DialogueManager] NextLine");
         StopContinueAnimation();
 
-        if (index < dialogue.Length - 1)
+        if (index < readyToDisplayDialogue.text.Length - 1)
         {
             index++;
             dialogueText.text = "";
@@ -279,7 +285,7 @@ public class DialogueManager : MonoBehaviour
         switch (dialogueTypeEvent)
         {
             case DialogueEventType.None:
-                dialogue = new string[] { "Error, None type of error found" };
+                readyToDisplayDialogue = new ReadyToDisplayDialogue(Npc.Error, new string[] { "Error, None type of error found" });  
                 break;
 
             case DialogueEventType.NextDialogueLine:
@@ -287,19 +293,19 @@ public class DialogueManager : MonoBehaviour
                 break;
 
             case DialogueEventType.Intro:
-                dialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
+                readyToDisplayDialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
                 didIntroductionPlay = true;
                 break;
 
             case DialogueEventType.AskName:
             case DialogueEventType.AskGender:
             case DialogueEventType.GenderEntered:
-                dialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
+                readyToDisplayDialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
                 isDialogueCompleted = true;
                 break;
 
             case DialogueEventType.NameEntered:
-                dialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
+                readyToDisplayDialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
                 isDialogueCompleted = true;
                 break;
 
@@ -313,13 +319,13 @@ public class DialogueManager : MonoBehaviour
 
             case DialogueEventType.Conclusion:
 
-                var conclusionStrings =  DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
-                dialogue = dialogue.Concat(conclusionStrings).ToArray();
+                readyToDisplayDialogue =  DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
+                readyToDisplayDialogue.text = readyToDisplayDialogue.text.Concat(readyToDisplayDialogue.text).ToArray();
                 isGameCompleted = true;
                 break;
 
             default:
-                dialogue = new string[] { "Default value with no speech element, This is an error" };
+                readyToDisplayDialogue = new ReadyToDisplayDialogue(Npc.Error, new string[] { "Default value with no speech element, This is an error" });
                 break;
         }
     }
@@ -333,13 +339,13 @@ public class DialogueManager : MonoBehaviour
                 return;
 
             // add suggestion before presenting it
-            dialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.askSuggestion);
+            readyToDisplayDialogue = GetRandomDialogueFromList(dialogueDataStructure.speechMachineDialogues.askSuggestion);
 
             // from the list of speech Elements that exist, take out all the avaiable suggestions
             var speechElementSuggestions = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.Suggestion);
             // from that suggestion, remove one list of dialogues at random
             //dialogue = GetRandomDialogueFromList(speechElementSuggestions);
-            dialogue = dialogue.Concat(GetRandomDialogueFromList(speechElementSuggestions)).ToArray();
+            readyToDisplayDialogue.text = readyToDisplayDialogue.text.Concat(readyToDisplayDialogue.text).ToArray();
 
             AudioManager.Instance.PlayOneShot(FModEvents.Instance.presentSuggestionSFX);
             ActivateDialogue();
@@ -349,7 +355,7 @@ public class DialogueManager : MonoBehaviour
         {
             var speechElementRightAnswer = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.RightAnswer);
 
-            dialogue = GetRandomDialogueFromList(speechElementRightAnswer);
+            readyToDisplayDialogue = GetRandomDialogueFromList(speechElementRightAnswer);
             AudioManager.Instance.PlayOneShot(FModEvents.Instance.rightAnswerSFX);
             PlaySoundAccordingToElement(speechElementID);
             NextLine();
@@ -359,7 +365,7 @@ public class DialogueManager : MonoBehaviour
         {
             var speechElementWrongAnswer = dialogueDataStructure.speechMachineDialogues.GetSpeechElementDialogues(speechElementID, DialogueEventType.WrongAnswer);
 
-            dialogue = GetRandomDialogueFromList(speechElementWrongAnswer);
+            readyToDisplayDialogue = GetRandomDialogueFromList(speechElementWrongAnswer);
             AudioManager.Instance.PlayOneShot(FModEvents.Instance.wrongAnswerSFX);
             NextLine();
         }
@@ -375,10 +381,11 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private string[] GetRandomDialogueFromList(List<Dialogue> possibleDialogues)
+    private ReadyToDisplayDialogue GetRandomDialogueFromList(List<Dialogue> possibleDialogues)
     {
         int randomDialogue = UnityEngine.Random.Range(0, possibleDialogues.Count);
-        return possibleDialogues[randomDialogue].GetDialoguesToArray(dialogueDataStructure.language);
+        Dialogue currentDialogue = possibleDialogues[randomDialogue];
+        return new ReadyToDisplayDialogue(currentDialogue.npc, currentDialogue.GetDialoguesToArray(dialogueDataStructure.language));
     }
 
     private void PlayContinueAnimation()

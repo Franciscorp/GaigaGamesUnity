@@ -58,7 +58,7 @@ public class Dialogue
     public bool wasDisplayed;
     public string npcNamePortuguese;
     public string npcNameEnglish;
-    public Npc npcImage;
+    public Npc npc;
     public List<string> englishText;
     public List<string> portugueseText;
 
@@ -83,7 +83,7 @@ public class Dialogue
         this.key = key;
         this.wasDisplayed = false;
         this.npcNamePortuguese = GetPortugueseTranslatedNpcList(npc);
-        this.npcImage = npc;
+        this.npc = npc;
         this.englishText = englishText;
         this.portugueseText = portugueseText;
     }
@@ -93,7 +93,7 @@ public class Dialogue
         this.key = key;
         this.wasDisplayed = false;
         this.npcNamePortuguese = GetPortugueseTranslatedNpcList(npc);
-        this.npcImage = npc;
+        this.npc = npc;
         this.englishText = new List<string> { englishText };
         this.portugueseText = new List<string> { portugueseText };
     }

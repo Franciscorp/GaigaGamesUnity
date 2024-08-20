@@ -5,17 +5,20 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Localization.SmartFormat.Utilities;
 using static UtilsSpeechMachine;
+using static Utils;
 
 
 public class DialogueFetcher : MonoBehaviour {
 
-    public static string[] GetRequestedRandomDialogueFromList(DialogueDataStructure dialogueDataStructure, 
+    public static ReadyToDisplayDialogue GetRequestedRandomDialogueFromList(DialogueDataStructure dialogueDataStructure, 
         DialogueEventType currentDialogueTypeEvent, Scene currentScene)
     {
+        ReadyToDisplayDialogue readyToDisplayDialogue = new ReadyToDisplayDialogue();
+
         switch (currentDialogueTypeEvent)
         {
             case DialogueEventType.None:
-                return new string[] { "Error, None type of error found" };
+                return new ReadyToDisplayDialogue(Npc.Error, new string[] { "Error, None type of error found" });
 
             case DialogueEventType.Intro:
                 return GetRandomDialogueFromList(dialogueDataStructure, GetIntroFromCurrentScene(dialogueDataStructure, currentScene));
@@ -36,7 +39,7 @@ public class DialogueFetcher : MonoBehaviour {
                 return GetRandomDialogueFromList(dialogueDataStructure, GetConclusionFromCurrentScene(dialogueDataStructure, currentScene));
 
             default:
-                return new string[] { "Default value with no speech element, This is an error" };
+                return new ReadyToDisplayDialogue(Npc.Error, new string[] { "Default value with no speech element, This is an error" });
         }
 
     }
@@ -60,23 +63,22 @@ public class DialogueFetcher : MonoBehaviour {
         }
     }
 
-    private static string[] GetNameEnteredForIntroduction(DialogueDataStructure dialogueDataStructure)
+    private static ReadyToDisplayDialogue GetNameEnteredForIntroduction(DialogueDataStructure dialogueDataStructure)
     {
-        string[] nameEnteredString = GetRandomDialogueFromList(dialogueDataStructure, dialogueDataStructure.introductionDialogues.nameEntered);
+        ReadyToDisplayDialogue nameEnteredString = GetRandomDialogueFromList(dialogueDataStructure, dialogueDataStructure.introductionDialogues.nameEntered);
 
-        nameEnteredString = ChangeDialogueKeywords(nameEnteredString);
+        nameEnteredString.text = ChangeDialogueKeywords(nameEnteredString.text);
 
         return nameEnteredString;
     }
 
-    private static string[] GetAdequateGenderAnswerForIntroduction(DialogueDataStructure dialogueDataStructure)
+    private static ReadyToDisplayDialogue GetAdequateGenderAnswerForIntroduction(DialogueDataStructure dialogueDataStructure)
     {
         PlayerInformation playerInformation = new PlayerInformation();
         Utils.Gender gender = playerInformation.GetGender();
 
         if (gender == Utils.Gender.Male)
             return GetRandomDialogueFromList(dialogueDataStructure, dialogueDataStructure.introductionDialogues.maleGenderEntered);
-        //if (gender == Utils.Gender.Female)
         else 
             return GetRandomDialogueFromList(dialogueDataStructure, dialogueDataStructure.introductionDialogues.femaleGenderEntered);
     }
@@ -97,7 +99,7 @@ public class DialogueFetcher : MonoBehaviour {
     }
 
 
-    private static string[] GetRandomDialogueFromList(DialogueDataStructure dialogueDataStructure, List<Dialogue> possibleDialogues)
+    private static ReadyToDisplayDialogue GetRandomDialogueFromList(DialogueDataStructure dialogueDataStructure, List<Dialogue> possibleDialogues)
     {
         if (possibleDialogues == null || possibleDialogues.Count == 0)
         {
@@ -106,7 +108,8 @@ public class DialogueFetcher : MonoBehaviour {
         }
 
         int randomDialogue = UnityEngine.Random.Range(0, possibleDialogues.Count);
-        return possibleDialogues[randomDialogue].GetDialoguesToArray(dialogueDataStructure.language);
+        Dialogue currentDialogue = possibleDialogues[randomDialogue];
+        return new ReadyToDisplayDialogue(currentDialogue.npc, currentDialogue.GetDialoguesToArray(dialogueDataStructure.language));
     }
 
     private static string[] ChangeDialogueKeywords(string[] originalDialogue)

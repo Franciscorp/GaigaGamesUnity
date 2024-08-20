@@ -55,7 +55,7 @@ public class DialogueFetcher : MonoBehaviour {
                 return dialogueDataStructure.speechMachineDialogues.introduction;
            
             default:
-                return new List<Dialogue>() { new Dialogue("Error", "There was an error in Dialogue fetcher", "Ocorreu um erro no Dialogue Fetcher") };
+                return new List<Dialogue>() { new Dialogue("Error", Utils.Npc.Error, "There was an error in Dialogue fetcher", "Ocorreu um erro no Dialogue Fetcher") };
 
         }
     }
@@ -92,7 +92,7 @@ public class DialogueFetcher : MonoBehaviour {
                 return dialogueDataStructure.speechMachineDialogues.conclusion;
 
             default:
-                return new List<Dialogue>() { new Dialogue("Error", "There was an error in Dialogue fetcher", "Ocorreu um erro no Dialogue Fetcher") };
+                return new List<Dialogue>() { new Dialogue("Error", Utils.Npc.Error, "There was an error in Dialogue fetcher", "Ocorreu um erro no Dialogue Fetcher") };
         }
     }
 

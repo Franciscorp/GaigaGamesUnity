@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using static Utils;
 using static UnityEditor.PlayerSettings;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -40,7 +41,7 @@ class BaseIntroductionDialogueGenerator
             "Mas antes de começarmos, preciso de saber..."
         };
 
-        Dialogue dialogue = new Dialogue("Introduction" + Key + "1", englishText, portugueseText);
+        Dialogue dialogue = new Dialogue("Introduction" + Key + "1", Npc.Narrator, englishText, portugueseText);
 
         List<Dialogue> introductionList = new List<Dialogue>();
         introductionList.Add(dialogue);
@@ -62,7 +63,7 @@ class BaseIntroductionDialogueGenerator
             "Como te devo chamar?"
         };
 
-        Dialogue dialogue = new Dialogue("AskName" + Key + "1", englishText, portugueseText);
+        Dialogue dialogue = new Dialogue("AskName" + Key + "1", Npc.Narrator, englishText, portugueseText);
 
         List<Dialogue> askNameList = new List<Dialogue>();
         askNameList.Add(dialogue);
@@ -84,7 +85,7 @@ class BaseIntroductionDialogueGenerator
             "Bem vindo $username$! Bem vindo aos jogos Gaiga!"
         };
 
-        Dialogue dialogue = new Dialogue("NameEntered" + Key + "1", englishText, portugueseText);
+        Dialogue dialogue = new Dialogue("NameEntered" + Key + "1", Npc.Narrator, englishText, portugueseText);
 
         List<Dialogue> nameEnteredList = new List<Dialogue>();
         nameEnteredList.Add(dialogue);
@@ -106,7 +107,7 @@ class BaseIntroductionDialogueGenerator
             "Diz-me, és um rapaz ou uma rapariga?"
         };
 
-        Dialogue dialogue = new Dialogue("AskName" + Key + "1", englishText, portugueseText);
+        Dialogue dialogue = new Dialogue("AskName" + Key + "1", Npc.Narrator, englishText, portugueseText);
 
         List<Dialogue> askNameList = new List<Dialogue>();
         askNameList.Add(dialogue);
@@ -130,7 +131,7 @@ class BaseIntroductionDialogueGenerator
             "Então vamos lá..."
         };
 
-        Dialogue dialogue = new Dialogue("MaleGenderEntered" + Key + "1", englishText, portugueseText);
+        Dialogue dialogue = new Dialogue("MaleGenderEntered" + Key + "1", Npc.Narrator, englishText, portugueseText);
 
         List<Dialogue> genderEnteredList = new List<Dialogue>();
         genderEnteredList.Add(dialogue);
@@ -155,7 +156,7 @@ class BaseIntroductionDialogueGenerator
             "Então vamos lá..."
         };
 
-        Dialogue dialogue = new Dialogue("FemaleGenderEntered" + Key + "1", englishText, portugueseText);
+        Dialogue dialogue = new Dialogue("FemaleGenderEntered" + Key + "1", Npc.Narrator, englishText, portugueseText);
 
         List<Dialogue> genderEnteredList = new List<Dialogue>();
         genderEnteredList.Add(dialogue);

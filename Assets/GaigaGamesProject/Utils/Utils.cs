@@ -29,7 +29,8 @@ public class Utils
         SpeechMachine = 3,
         Tobias = 4,
         Grandma = 5,
-        Grandpa = 6
+        Grandpa = 6, 
+        Error = 7
     }
 
     public enum Language
@@ -69,7 +70,8 @@ public class Utils
             "Boneco", // SpeechMachine
             "Tobias",        // Tobias
             "Avó",           // Grandma
-            "Avô"            // Grandpa
+            "Avô",            // Grandpa
+            "Erro"            // Erro
         };
 
         return npcList[(int)currentNpc];

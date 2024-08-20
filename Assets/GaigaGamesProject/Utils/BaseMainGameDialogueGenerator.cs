@@ -5,6 +5,7 @@ using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEditor;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.Controls.AxisControl;
+using static Utils;
 
 class BaseMainGameDialogueGenerator
 {
@@ -32,7 +33,7 @@ class BaseMainGameDialogueGenerator
             "Tu chegas a parar um pouco para apreciar as fotos na parede, quando algo novo te chama a atenção..."
         };
 
-        Dialogue dialogue = new Dialogue("MainGameIntroduction" + Key + "1", englishText, portugueseText);
+        Dialogue dialogue = new Dialogue("MainGameIntroduction" + Key + "1", Npc.Narrator, englishText, portugueseText);
 
         List<Dialogue> introductionList = new List<Dialogue>();
         introductionList.Add(dialogue);

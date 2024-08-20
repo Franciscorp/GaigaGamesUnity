@@ -165,9 +165,16 @@ public class DialogueManager : MonoBehaviour
         PlayContinueAnimation();
     }
 
+    // TODO
+    private void ChangeDisplayedNpcNameAndImage()
+    {
+
+    }
+
     // Checks if it was already typing something and stops it
     public void StartTyping()
     {
+        ChangeDisplayedNpcNameAndImage();
         if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);

@@ -28,6 +28,7 @@ public class UtilsSpeechMachine : MonoBehaviour
     {
         None,
         Intro,
+        LongerIntro,
         NextDialogueLine,
         AskName,
         NameEntered,

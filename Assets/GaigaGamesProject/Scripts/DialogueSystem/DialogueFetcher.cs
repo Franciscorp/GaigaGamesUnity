@@ -52,7 +52,7 @@ public class DialogueFetcher : MonoBehaviour {
                 return dialogueDataStructure.introductionDialogues.introduction;
 
             case Scene.MainGame:
-                return dialogueDataStructure.mainGameDialogues.introduction;
+                return dialogueDataStructure.mainGameDialogues.introduction1;
 
             case Scene.SpeechMachine:
                 return dialogueDataStructure.speechMachineDialogues.introduction;

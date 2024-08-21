@@ -42,6 +42,7 @@ public class DialogueManager : MonoBehaviour
     private bool isIntroductionCompleted = false;
 
     private DialogueDataStructure dialogueDataStructure;
+    private PlayerInformation playerInformation;
     private Coroutine typingCoroutine;
     private Coroutine suggestionCoroutine;
 
@@ -53,6 +54,8 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerInformation = new PlayerInformation();
+
         if (gameManager == null)
         {
             Debug.LogWarning("Game Manager not linked to Dialogue Manager");
@@ -169,10 +172,17 @@ public class DialogueManager : MonoBehaviour
         PlayContinueAnimation();
     }
 
-    // TODO
     private void ChangeDisplayedNpcNameAndImage()
     {
         //gameObject.GetComponent().sprite = myImage;
+        if (readyToDisplayDialogue.npc == Npc.Player)
+        {
+            if (playerInformation.GetGender() == Gender.Male)
+                readyToDisplayDialogue.npc = Npc.Boy;
+            else
+                readyToDisplayDialogue.npc = Npc.Girl;
+        }
+
         npcIcon.sprite = npcImages[(int)readyToDisplayDialogue.npc];
         npcName.text = GetPortugueseTranslatedNpcList(readyToDisplayDialogue.npc);
     }
@@ -295,6 +305,11 @@ public class DialogueManager : MonoBehaviour
             case DialogueEventType.Intro:
                 readyToDisplayDialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
                 didIntroductionPlay = true;
+                break;
+
+            case DialogueEventType.LongerIntro:
+                readyToDisplayDialogue = DialogueFetcher.GetRequestedRandomDialogueFromList(dialogueDataStructure, dialogueTypeEvent, scene);
+                isDialogueCompleted = true;
                 break;
 
             case DialogueEventType.AskName:

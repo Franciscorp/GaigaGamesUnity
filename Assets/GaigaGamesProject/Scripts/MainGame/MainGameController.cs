@@ -8,6 +8,7 @@ using static UtilsSpeechMachine;
 public class MainGameController : MonoBehaviour
 {
     private PlayerInformation playerInformation;
+    private int currentDialogue = 0;
 
     public GameObject dialoguePanel;
     private GameObject dialogueManager;
@@ -45,7 +46,7 @@ public class MainGameController : MonoBehaviour
         {
             //dialogueManager.GetComponent<DialogueManager>().OnGameIsOverDialogueCompleted.AddListener(GameCompleted);
             //dialogueManager.GetComponent<DialogueManager>().OnIntroductionDialogueCompleted.AddListener(IntroductionCompleted);
-            //dialogueManager.GetComponent<DialogueManager>().OnDialogueCompleted.AddListener(DialogueCompleted);
+            dialogueManager.GetComponent<DialogueManager>().OnDialogueCompleted.AddListener(DialogueCompleted);
         }
 
         SetInitialGameStatus();
@@ -55,8 +56,22 @@ public class MainGameController : MonoBehaviour
     {
         playerInformation = new PlayerInformation();
         Debug.Log("Camera Idle");
+        currentDialogue = 0;
 
+        dialoguePanel.SetActive(false);
+    }
 
+    public async void ActivateDialogue()
+    {
+        cameraAnimator.Play("CameraOut");
+        dialoguePanel.SetActive(true);
+        await Task.Delay(1000);
+    }
+
+    public async void DisableDialogue()
+    {
+        cameraAnimator.Play("CameraIn");
+        await Task.Delay(1000);
         dialoguePanel.SetActive(false);
     }
 
@@ -65,7 +80,28 @@ public class MainGameController : MonoBehaviour
         cameraAnimator.Play("CameraOut");
         dialoguePanel.SetActive(true);
         await Task.Delay(1000);
+        //InvokeDialogueEvent(Scene.MainGame, DialogueEventType.LongerIntro);
         InvokeDialogueEvent(Scene.MainGame, DialogueEventType.Intro);
+    }
+
+    private void DialogueCompleted()
+    {
+        Debug.Log("DialogueCompleted");
+        currentDialogue = 0;
+
+        switch (currentDialogue)
+        {
+            case 1:
+                // nothing to do
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                Debug.LogWarning("Current scene was not planned. Error in Main Game Controller");
+                break;
+        }
     }
 
     // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 

@@ -30,7 +30,8 @@ public class Utils
         Tobias = 4,
         Grandma = 5,
         Grandpa = 6, 
-        Error = 7
+        Error = 7,
+        Player = 8
     }
 
     public enum Language
@@ -71,7 +72,8 @@ public class Utils
             "Tobias",        // Tobias
             "Avó",           // Grandma
             "Avô",            // Grandpa
-            "Erro"            // Erro
+            "Erro",           // Erro
+            "Jogador"         // Player
         };
 
         return npcList[(int)currentNpc];

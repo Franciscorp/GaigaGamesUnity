@@ -111,6 +111,10 @@ MonoBehaviour:
     m_Key: NamePlaceholderKey
     m_Metadata:
       m_Items: []
+  - m_Id: 40873267536678912
+    m_Key: StartGameKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

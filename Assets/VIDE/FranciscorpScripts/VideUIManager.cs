@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using VIDE_Data;
 
-public class UIManager : MonoBehaviour
+public class VideUIManager : MonoBehaviour
 {
     //This script will handle everything related to dialogue interface
     //It will use the VD class to load dialogues and retrieve node data
@@ -15,7 +16,6 @@ public class UIManager : MonoBehaviour
     #region VARS
 
     public GameObject containerDialogue;
-    public GameObject containerNpc;
 
     public Image npcIcon;
     public TextMeshProUGUI npcName;
@@ -28,6 +28,10 @@ public class UIManager : MonoBehaviour
     //With this we can start a coroutine and stop it. Used to animate text
     IEnumerator npcTextAnimator;
 
+    // Events
+    public UnityEvent dialogueEvent;
+
+
     #endregion
 
     // Start is called before the first frame update
@@ -37,17 +41,29 @@ public class UIManager : MonoBehaviour
         //containerPlayer.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool SetupAndStartDialogue(string assignedDialogue)
     {
-        
+        if (VD.isActive)
+            return false;
+
+        Begin(GetComponent<VIDE_Assign>(), assignedDialogue);
+        return true;
+    }
+
+    public bool SetupAndRestartDialogue(string assignedDialogue)
+    {
+        if (VD.isActive)
+            End(null);
+
+        Begin(GetComponent<VIDE_Assign>(), assignedDialogue);
+        return true;
     }
 
     public void InteractWithDialogue()
     {
         if (!VD.isActive)
         {
-            Begin(GetComponent<VIDE_Assign>());
+            Begin(GetComponent<VIDE_Assign>(), "unidentifiedDialogue");
         }
         else
         {
@@ -56,9 +72,9 @@ public class UIManager : MonoBehaviour
     }
 
     //This begins the conversation
-    void Begin(VIDE_Assign dialogue)
+    void Begin(VIDE_Assign dialogue, string assignedDialogue)
     {
-        dialogue.assignedDialogue = "Demo_tutorial";
+        dialogue.assignedDialogue = assignedDialogue;
         //Let's reset the NPC text variables
         dialogueText.text = "";
         npcName.text = "";
@@ -74,7 +90,6 @@ public class UIManager : MonoBehaviour
         VD.BeginDialogue(dialogue); //Begins dialogue, will call the first OnNodeChange
 
         containerDialogue.SetActive(true); //Let's make our dialogue container visible
-        containerNpc.SetActive(true); //Let's make our dialogue container visible
     }
 
     //Calls next node in the dialogue
@@ -92,7 +107,6 @@ public class UIManager : MonoBehaviour
     private void End(VD.NodeData data)
     {
         //containerDialogue.SetActive(false);
-        containerNpc.SetActive(false);
 
         VD.OnActionNode -= ActionHandler;
         VD.OnNodeChange -= UpdateUI;
@@ -107,6 +121,7 @@ public class UIManager : MonoBehaviour
         //containerPlayer.SetActive(false);
         npcIcon.sprite = null;
         dialogueText.text = "";
+        npcName.text = "";
         continueIcon.SetActive(false);
 
         if (!data.isPlayer)
@@ -148,7 +163,6 @@ public class UIManager : MonoBehaviour
 
             //Sets the NPC container on
             containerDialogue.SetActive(true);
-            containerNpc.SetActive(true);
 
         }
 
@@ -156,7 +170,7 @@ public class UIManager : MonoBehaviour
 
     private void OnDisable()
     {
-        if (containerNpc != null)
+        if (containerDialogue != null)
             End(null);
     }
 
@@ -167,6 +181,11 @@ public class UIManager : MonoBehaviour
     }
 
     #region Events and Handlers
+
+    public void DialogueEndActionHandler()
+    {
+        dialogueEvent.Invoke();
+    }
 
     //Another way to handle Action Nodes is to listen to the OnActionNode event, which sends the ID of the action node
     void ActionHandler(int actionNodeID)
@@ -187,12 +206,12 @@ public class UIManager : MonoBehaviour
 
             string previousText = dialogueText.text;
 
-            float lastHeight = dialogueText.preferredHeight;
+            //float lastHeight = dialogueText.preferredHeight;
             dialogueText.text += word;
-            if (dialogueText.preferredHeight > lastHeight)
-            {
-                previousText += System.Environment.NewLine;
-            }
+            //if (dialogueText.preferredHeight > lastHeight)
+            //{
+                //previousText += System.Environment.NewLine;
+            //}
 
             for (int j = 0; j < word.Length; j++)
             {

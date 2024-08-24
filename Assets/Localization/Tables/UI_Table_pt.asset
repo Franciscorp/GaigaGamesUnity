@@ -110,6 +110,10 @@ MonoBehaviour:
     m_Localized: Escreve o teu nome aqui
     m_Metadata:
       m_Items: []
+  - m_Id: 40873267536678912
+    m_Localized: Jogar
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

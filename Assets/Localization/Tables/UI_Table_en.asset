@@ -110,6 +110,10 @@ MonoBehaviour:
     m_Localized: Enter your name here
     m_Metadata:
       m_Items: []
+  - m_Id: 40873267536678912
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

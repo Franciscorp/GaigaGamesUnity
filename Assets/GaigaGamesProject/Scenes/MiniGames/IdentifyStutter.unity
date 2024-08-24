@@ -880,6 +880,7 @@ MonoBehaviour:
   VideDialoguePanel: {fileID: 1948292297}
   dialogueManager: {fileID: 1948292298}
   StartButton: {fileID: 1488013153}
+  TVContent: {fileID: 251725041}
 --- !u!1001 &858758836
 PrefabInstance:
   m_ObjectHideFlags: 0

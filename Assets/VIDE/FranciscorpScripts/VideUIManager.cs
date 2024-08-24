@@ -16,6 +16,7 @@ public class VideUIManager : MonoBehaviour
     #region VARS
 
     public GameObject containerDialogue;
+    public GameObject containerIdentifyChoices;
 
     public Image npcIcon;
     public TextMeshProUGUI npcName;
@@ -37,8 +38,7 @@ public class VideUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //containerNpc.SetActive(true);
-        //containerPlayer.SetActive(true);
+        containerIdentifyChoices.SetActive(false);
     }
 
     public bool SetupAndStartDialogue(string assignedDialogue)
@@ -106,7 +106,7 @@ public class VideUIManager : MonoBehaviour
 
     private void End(VD.NodeData data)
     {
-        //containerDialogue.SetActive(false);
+        containerDialogue.SetActive(false);
 
         VD.OnActionNode -= ActionHandler;
         VD.OnNodeChange -= UpdateUI;
@@ -116,56 +116,58 @@ public class VideUIManager : MonoBehaviour
 
     private void UpdateUI(VD.NodeData data)
     {
-        //containerDialogue.SetActive(false);
-        //containerNpc.SetActive(false);
-        //containerPlayer.SetActive(false);
         npcIcon.sprite = null;
         dialogueText.text = "";
         npcName.text = "";
         continueIcon.SetActive(false);
+        containerIdentifyChoices.SetActive(false);
+
 
         if (!data.isPlayer)
         {
-            //containerNpc.SetActive(true);
-            //dialogueText.text = data.comments[data.commentIndex];
-
-
-            //Set node sprite if there's any, otherwise try to use default sprite
-            if (data.sprite != null)
-            {
-                //For NPC sprite, we'll first check if there's any "sprite" key
-                //Such key is being used to apply the sprite only when at a certain comment index
-                //Check CrazyCap dialogue for reference
-                if (data.extraVars.ContainsKey("sprite"))
-                {
-                    if (data.commentIndex == (int)data.extraVars["sprite"])
-                        npcIcon.sprite = data.sprite;
-                    else
-                        npcIcon.sprite = VD.assigned.defaultNPCSprite; //If not there yet, set default dialogue sprite
-                }
-                else //Otherwise use the node sprites
-                {
-                    npcIcon.sprite = data.sprite;
-                }
-            } //or use the default sprite if there isnt a node sprite at all
-            else if (VD.assigned.defaultNPCSprite != null)
-                npcIcon.sprite = VD.assigned.defaultNPCSprite;
-
-            //This coroutine animates the NPC text instead of displaying it all at once
-            npcTextAnimator = DrawText(data.comments[data.commentIndex], 0.06f);
-            StartCoroutine(npcTextAnimator);
-
-            //If it has a tag, show it, otherwise let's use the alias we set in the VIDE Assign
-            if (data.tag.Length > 0)
-                npcName.text = data.tag;
-            else
-                npcName.text = VD.assigned.alias;
-
-            //Sets the NPC container on
-            containerDialogue.SetActive(true);
-
+            DisplayDialogueText(data);
         }
+        else if(data.isPlayer)
+        {
+            DisplayDialogueText(data);
+            containerIdentifyChoices.SetActive(true);
+        }
+    }
 
+    private void DisplayDialogueText(VD.NodeData data)
+    {
+        //Set node sprite if there's any, otherwise try to use default sprite
+        if (data.sprite != null)
+        {
+            //For NPC sprite, we'll first check if there's any "sprite" key
+            //Such key is being used to apply the sprite only when at a certain comment index
+            if (data.extraVars.ContainsKey("sprite"))
+            {
+                if (data.commentIndex == (int)data.extraVars["sprite"])
+                    npcIcon.sprite = data.sprite;
+                else
+                    npcIcon.sprite = VD.assigned.defaultNPCSprite; //If not there yet, set default dialogue sprite
+            }
+            else //Otherwise use the node sprites
+            {
+                npcIcon.sprite = data.sprite;
+            }
+        } //or use the default sprite if there isnt a node sprite at all
+        else if (VD.assigned.defaultNPCSprite != null)
+            npcIcon.sprite = VD.assigned.defaultNPCSprite;
+
+        //This coroutine animates the NPC text instead of displaying it all at once
+        npcTextAnimator = DrawText(data.comments[data.commentIndex], 0.06f);
+        StartCoroutine(npcTextAnimator);
+
+        //If it has a tag, show it, otherwise let's use the alias we set in the VIDE Assign
+        if (data.tag.Length > 0)
+            npcName.text = data.tag;
+        else
+            npcName.text = VD.assigned.alias;
+
+        //Sets the NPC container on
+        containerDialogue.SetActive(true);
     }
 
     private void OnDisable()
@@ -176,8 +178,10 @@ public class VideUIManager : MonoBehaviour
 
     public void SetPlayerChoice(int choice)
     {
+        // player clicked a button, therefore hides buttons
+        containerIdentifyChoices.SetActive(false);
         VD.nodeData.commentIndex = choice;
-        //VD.Next();
+        VD.Next();
     }
 
     #region Events and Handlers

@@ -114,6 +114,18 @@ MonoBehaviour:
     m_Localized: Jogar
     m_Metadata:
       m_Items: []
+  - m_Id: 40951339032072192
+    m_Localized: Prolongamento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40951458699759616
+    m_Localized: Bloqueio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40951470351536128
+    m_Localized: "Repeti\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

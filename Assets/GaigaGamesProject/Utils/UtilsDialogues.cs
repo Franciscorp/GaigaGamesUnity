@@ -14,7 +14,7 @@ public  class UtilsDialogues{
     {
         { IdentifyStutterDialogues.GameIntroduction, "IdentifyStutterGameIntroduction" },
         { IdentifyStutterDialogues.GameIntroduction2, "IdentifyStutterGameIntroduction2" },
-        { IdentifyStutterDialogues.Question1, "question_001" }
+        { IdentifyStutterDialogues.Question1, "IdentifyStutterQuestion1" }
     };
 
     // Static function to get the key associated with a dialogue name

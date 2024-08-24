@@ -54,7 +54,13 @@ public class IdentifyStutterController : MonoBehaviour
 
     public void AskQuestion()
     {
+        Debug.Log("AskQuestion");
         dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.Question1));
+    }
+
+    public void RightAnswer()
+    {
+        Debug.Log("RightAnswer");
     }
 
 }

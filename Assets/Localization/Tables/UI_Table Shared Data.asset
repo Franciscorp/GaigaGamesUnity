@@ -115,6 +115,18 @@ MonoBehaviour:
     m_Key: StartGameKey
     m_Metadata:
       m_Items: []
+  - m_Id: 40951339032072192
+    m_Key: IdentityProlongationButtonKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40951458699759616
+    m_Key: IdentityBlockButtonKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40951470351536128
+    m_Key: IdentityRepetitionButtonKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

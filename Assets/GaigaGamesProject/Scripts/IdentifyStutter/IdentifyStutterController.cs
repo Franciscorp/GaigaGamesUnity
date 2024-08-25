@@ -30,9 +30,18 @@ public class IdentifyStutterController : MonoBehaviour
 
         if (dialogueManager != null)
             dialogueManager.dialogueEvent.AddListener(DialogueCompleted);
+        
+        //doTempShit();
     }
 
-    private void DialogueCompleted()
+    private void doTempShit()
+    {
+        PlayerInformation playerInformation = new PlayerInformation();
+        playerInformation.SetGender(Utils.Gender.Male);
+        playerInformation.SetCharacterName("Franciscorp");
+    }
+
+private void DialogueCompleted()
     {
         currentStage = 2;
         Debug.Log("Dialogue Completed");
@@ -63,4 +72,8 @@ public class IdentifyStutterController : MonoBehaviour
         Debug.Log("RightAnswer");
     }
 
+    public void WrongQuestion()
+    {
+        Debug.Log("WrongQuestion");
+    }
 }

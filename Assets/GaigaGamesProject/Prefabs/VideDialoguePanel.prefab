@@ -341,7 +341,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -474,7 +474,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -689,9 +689,9 @@ MonoBehaviour:
   - QuestChartDemo
   - TriggeredDude
   - Witch
-  assignedIndex: 8
-  assignedID: 15932
-  assignedDialogue: IdentifyStutterGameIntroduction
+  assignedIndex: 10
+  assignedID: 80147
+  assignedDialogue: IdentifyStutterQuestion1
   interactionCount: 0
   alias: 
   overrideStartNode: -1
@@ -717,6 +717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5f0dd8951f35143be56273f8b4a43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boySprite: {fileID: 21300000, guid: df45ebb7f9aaf69438c8b127d8e06c1a, type: 3}
+  girlSprite: {fileID: 21300000, guid: 079768bd263350c4f983f1a39e8e153a, type: 3}
   containerDialogue: {fileID: 7004859955046241004}
   containerIdentifyChoices: {fileID: 111354448076253945}
   npcIcon: {fileID: 9096148868816199978}
@@ -1505,7 +1507,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

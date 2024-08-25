@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 
 public  class UtilsDialogues{
+
+    public const string PLAYER_NAME_TAG = "[PLAYER_NAME]";
+
     public enum IdentifyStutterDialogues
     {
         GameIntroduction = 0,

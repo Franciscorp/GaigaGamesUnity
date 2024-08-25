@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using VIDE_Data;
+using static UtilsDialogues;
 
 public class VideUIManager : MonoBehaviour
 {
@@ -14,6 +16,11 @@ public class VideUIManager : MonoBehaviour
     //It will use the VD class to load dialogues and retrieve node data
 
     #region VARS
+
+    // Custom Variables
+    private PlayerInformation playerInformation;
+    public Sprite boySprite;
+    public Sprite girlSprite;
 
     public GameObject containerDialogue;
     public GameObject containerIdentifyChoices;
@@ -38,6 +45,7 @@ public class VideUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerInformation = new PlayerInformation();
         containerIdentifyChoices.SetActive(false);
     }
 
@@ -78,6 +86,7 @@ public class VideUIManager : MonoBehaviour
         //Let's reset the NPC text variables
         dialogueText.text = "";
         npcName.text = "";
+        containerDialogue.SetActive(true); //Let's make our dialogue container visible
 
         //First step is to call BeginDialogue, passing the required VIDE_Assign component 
         //This will store the first Node data in VD.nodeData
@@ -88,8 +97,6 @@ public class VideUIManager : MonoBehaviour
         VD.OnEnd += End;
 
         VD.BeginDialogue(dialogue); //Begins dialogue, will call the first OnNodeChange
-
-        containerDialogue.SetActive(true); //Let's make our dialogue container visible
     }
 
     //Calls next node in the dialogue
@@ -106,12 +113,12 @@ public class VideUIManager : MonoBehaviour
 
     private void End(VD.NodeData data)
     {
-        containerDialogue.SetActive(false);
-
         VD.OnActionNode -= ActionHandler;
         VD.OnNodeChange -= UpdateUI;
         VD.OnEnd -= End;
         VD.EndDialogue();
+
+        containerDialogue.SetActive(false);
     }
 
     private void UpdateUI(VD.NodeData data)
@@ -141,16 +148,19 @@ public class VideUIManager : MonoBehaviour
         {
             //For NPC sprite, we'll first check if there's any "sprite" key
             //Such key is being used to apply the sprite only when at a certain comment index
-            if (data.extraVars.ContainsKey("sprite"))
+            if (!ReplacePlayerSprite(data))
             {
-                if (data.commentIndex == (int)data.extraVars["sprite"])
+                if (data.extraVars.ContainsKey("sprite"))
+                {
+                    if (data.commentIndex == (int)data.extraVars["sprite"])
+                        npcIcon.sprite = data.sprite;
+                    else
+                        npcIcon.sprite = VD.assigned.defaultNPCSprite; //If not there yet, set default dialogue sprite
+                }
+                else //Otherwise use the node sprites
+                {
                     npcIcon.sprite = data.sprite;
-                else
-                    npcIcon.sprite = VD.assigned.defaultNPCSprite; //If not there yet, set default dialogue sprite
-            }
-            else //Otherwise use the node sprites
-            {
-                npcIcon.sprite = data.sprite;
+                }
             }
         } //or use the default sprite if there isnt a node sprite at all
         else if (VD.assigned.defaultNPCSprite != null)
@@ -161,10 +171,7 @@ public class VideUIManager : MonoBehaviour
         StartCoroutine(npcTextAnimator);
 
         //If it has a tag, show it, otherwise let's use the alias we set in the VIDE Assign
-        if (data.tag.Length > 0)
-            npcName.text = data.tag;
-        else
-            npcName.text = VD.assigned.alias;
+        ReplaceNameTag(data);
 
         //Sets the NPC container on
         containerDialogue.SetActive(true);
@@ -183,6 +190,43 @@ public class VideUIManager : MonoBehaviour
         VD.nodeData.commentIndex = choice;
         VD.Next();
     }
+
+    #region DialoguesAssit
+
+    //If it has a player tag, if so, replaces sprite with appropriate gender, else returns null
+    private bool ReplacePlayerSprite(VD.NodeData data)
+    {
+        if (data.tag.Length <= 0)
+            return false;
+
+        if (!data.tag.Contains(PLAYER_NAME_TAG))
+            return false;
+
+        if (playerInformation.GetGender() == Utils.Gender.Male)
+            npcIcon.sprite = boySprite;
+        else
+            npcIcon.sprite = girlSprite;
+
+        return true;
+    }
+
+    //This will replace any "[NAME]" with the name of the gameobject holding the VIDE_Assign
+    //Will also replace [WEAPON] with a different variable
+    private void ReplaceNameTag(VD.NodeData data)
+    {
+        //If it has a tag, show it, otherwise let's use the alias we set in the VIDE Assign
+        if (data.tag.Length > 0)
+        {
+            if (data.tag.Contains(PLAYER_NAME_TAG))
+                npcName.text = playerInformation.GetCharacterName();
+            else
+                npcName.text = data.tag;
+        }
+        else
+            npcName.text = VD.assigned.alias;
+    }
+
+    #endregion
 
     #region Events and Handlers
 

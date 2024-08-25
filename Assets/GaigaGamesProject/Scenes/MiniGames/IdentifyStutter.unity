@@ -1570,33 +1570,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1830678741771873818, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2924502178401450276, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4026354084398051050, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7004859955046241004, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
       propertyPath: m_Name
       value: VideDialoguePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: assignedID
-      value: 80147
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: assignedIndex
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: assignedDialogue
-      value: IdentifyStutterQuestion1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

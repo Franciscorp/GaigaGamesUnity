@@ -167,9 +167,12 @@ public class VideUIManager : MonoBehaviour
             npcIcon.sprite = VD.assigned.defaultNPCSprite;
 
         //This coroutine animates the NPC text instead of displaying it all at once
+        if (npcTextAnimator != null)
+            StopCoroutine(npcTextAnimator);
         npcTextAnimator = DrawText(data.comments[data.commentIndex], 0.06f);
         StartCoroutine(npcTextAnimator);
 
+        
         //If it has a tag, show it, otherwise let's use the alias we set in the VIDE Assign
         ReplaceNameTag(data);
 

@@ -1,0 +1,98 @@
+Edit the dialogue on the go.
+You can edit and add comments, edit the tags, and set node type.
+Do not attempt to add more nodes: the number of nodes must match when importing the text file.
+Do not modify the IDs.
+Do not add or remove empty lines.
+Do not restructure the data.
+
+Dialogue name: IdentifyStutterQuestion1
+---------------------------------
+#NODEID#
+0
+#TAG#
+Avô
+#ISPLAYER#
+False
+---
+#COMMENT#
+E então, que tipo de gaguez foi essa?
+---------------------------------
+#NODEID#
+1
+#TAG#
+Televisão
+#ISPLAYER#
+True
+---
+#COMMENT#
+Co-co-co-comprar umas cebolas lá para casa...
+#COMMENT#
+Repetição
+#COMMENT#
+Bloqueio
+#COMMENT#
+Prolongamento
+---------------------------------
+#NODEID#
+2
+#TAG#
+Avô
+#ISPLAYER#
+False
+---
+#COMMENT#
+Exatamente! Muito bem! Boa observação!
+#COMMENT#
+Continua com o programa Tobias!
+---------------------------------
+#NODEID#
+3
+#TAG#
+Avô
+#ISPLAYER#
+False
+---
+#COMMENT#
+Boa tentativa, mas ouve novamente com atenção o que ele diz, a pista está em várias vezes.
+---------------------------------
+#NODEID#
+4
+#TAG#
+Avô
+#ISPLAYER#
+False
+---
+#COMMENT#
+Boa tentativa, mas repará que ele não está bem a bloquear antes de falar, olha tenta mais uma vez.
+---------------------------------
+#NODEID#
+5
+#TAG#
+[PLAYER_NAME]
+#ISPLAYER#
+False
+---
+#COMMENT#
+Acho que foram repetições, ele disse "co" várias vezes.
+---------------------------------
+#NODEID#
+7
+#TAG#
+[PLAYER_NAME]
+#ISPLAYER#
+False
+---
+#COMMENT#
+Acho que foi um bloqueio,parece que ele bloqueou ao dizer  "co" várias vezes.
+---------------------------------
+#NODEID#
+8
+#TAG#
+[PLAYER_NAME]
+#ISPLAYER#
+False
+---
+#COMMENT#
+Acho que foi um prolongamento, ele prolongou a quantidade de vezes que disse "co".
+---------------------------------
+#END#

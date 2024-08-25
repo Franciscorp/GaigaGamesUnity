@@ -64,7 +64,7 @@ private void DialogueCompleted()
     public void AskQuestion()
     {
         Debug.Log("AskQuestion");
-        dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.Question1));
+        dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.Question2));
     }
 
     public void RightAnswer()

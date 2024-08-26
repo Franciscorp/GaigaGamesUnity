@@ -675,6 +675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 655958534}
   - component: {fileID: 655958535}
+  - component: {fileID: 655958536}
   m_Layer: 0
   m_Name: TobiasSprite
   m_TagString: Untagged
@@ -691,7 +692,7 @@ Transform:
   m_GameObject: {fileID: 655958533}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -542.3, y: -584.23, z: 0}
+  m_LocalPosition: {x: -541.91, y: -583.96, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -738,7 +739,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d3836f474fd0f484e9d3f148bd0b79fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 244fe1794b8cc4543ad6bb49fe662b51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -749,6 +750,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &655958536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655958533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca8b6fbd55c1974582dcc85b92550a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contents:
+  - {fileID: 21300000, guid: 244fe1794b8cc4543ad6bb49fe662b51, type: 3}
+  - {fileID: 21300000, guid: fc7eb02ea73dca14c9b9b48ece5f3347, type: 3}
+  - {fileID: 21300000, guid: b63596fcb6387f44a85c37dd59a03053, type: 3}
+  - {fileID: 21300000, guid: 4a979ada2670c474d8b256a46f67d320, type: 3}
 --- !u!1 &691156677
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,6 +899,7 @@ MonoBehaviour:
   dialogueManager: {fileID: 1948292298}
   StartButton: {fileID: 1488013153}
   TVContent: {fileID: 251725041}
+  CatSprite: {fileID: 655958536}
 --- !u!1001 &858758836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1573,6 +1592,74 @@ PrefabInstance:
     - target: {fileID: 7004859955046241004, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
       propertyPath: m_Name
       value: VideDialoguePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: assignedID
+      value: 4709
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: assignedIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: assignedDialogue
+      value: IdentifyStutterQuestion2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: diags.Array.size
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: diags.Array.data[12]
+      value: IdentifyStutterQuestion3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: diags.Array.data[13]
+      value: IdentifyStutterQuestion4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: diags.Array.data[14]
+      value: IdentifyStutterQuestion5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: diags.Array.data[15]
+      value: IdentifyStutterQuestion6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: diags.Array.data[16]
+      value: IdentifyStutterQuestion7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: diags.Array.data[17]
+      value: IdentifyStutterQuestion8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: diags.Array.data[18]
+      value: IdentifyStutterQuestion9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: diags.Array.data[19]
+      value: Item_LookUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: diags.Array.data[20]
+      value: Laura
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: diags.Array.data[21]
+      value: MrCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: diags.Array.data[22]
+      value: NPCOnly
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: diags.Array.data[23]
+      value: QuestChartDemo
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: diags.Array.data[24]
+      value: TriggeredDude
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

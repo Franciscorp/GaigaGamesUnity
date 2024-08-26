@@ -44,129 +44,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268dc70b105993846a123be43345df63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileIndex: 10
+  fileIndex: 8
   skinIndex: 0
   loadTag: 
   startID: 0
-  curFocusID: 0
-  currentID: 80147
+  curFocusID: 10
+  currentID: 4709
   autosave: 1
   previewPanning: 0
-  currentDiag: 10
-  locEdit: 0
+  currentDiag: 8
+  locEdit: 1
   pNodeID: 18
   aNodeID: 2
   S_playerDiags:
-  - commentCount: 1
-    s_comment:
-    - text: "E ent\xE3o, que tipo de gaguez foi essa?"
-      extraData: ExtraData
-      inputSetIndex: 0
-      outputNodeIndex: 5
-      outActionIndex: -1
-      showmore: 0
-      outRect:
-        serializedVersion: 2
-        x: 301
-        y: 63
-        width: 30
-        height: 33
-      sprites: {fileID: 0}
-      audios: {fileID: 0}
-      visible: 1
-    ID: 0
-    rect:
-      serializedVersion: 2
-      x: -1250
-      y: -370
-      width: 348
-      height: 232
-    pTag: "Av\xF4"
-    expand: 1
-    sprite: {fileID: 21300000, guid: d7a7607ed19a41049a5c3e66d8935b04, type: 3}
-    vars: []
-    varKeys: []
-    isPlayer: 0
-  - commentCount: 3
-    s_comment:
-    - text: "Repeti\xE7\xE3o"
-      extraData: ExtraData
-      inputSetIndex: 1
-      outputNodeIndex: 2
-      outActionIndex: -1
-      showmore: 0
-      outRect:
-        serializedVersion: 2
-        x: 301
-        y: 63
-        width: 30
-        height: 23
-      sprites: {fileID: 0}
-      audios: {fileID: 0}
-      visible: 1
-    - text: Bloqueio
-      extraData: ExtraData
-      inputSetIndex: 1
-      outputNodeIndex: 3
-      outActionIndex: -1
-      showmore: 0
-      outRect:
-        serializedVersion: 2
-        x: 300
-        y: 87
-        width: 30
-        height: 23
-      sprites: {fileID: 0}
-      audios: {fileID: 0}
-      visible: 1
-    - text: Prolongamento
-      extraData: ExtraData
-      inputSetIndex: 1
-      outputNodeIndex: 4
-      outActionIndex: -1
-      showmore: 0
-      outRect:
-        serializedVersion: 2
-        x: 300
-        y: 111
-        width: 30
-        height: 23
-      sprites: {fileID: 0}
-      audios: {fileID: 0}
-      visible: 1
-    ID: 1
-    rect:
-      serializedVersion: 2
-      x: -410
-      y: -360
-      width: 348
-      height: 177
-    pTag: 
-    expand: 0
-    sprite: {fileID: 0}
-    vars: []
-    varKeys: []
-    isPlayer: 1
   - commentCount: 2
     s_comment:
-    - text: "Exatamente! Muito bem! Boa observa\xE7\xE3o!"
+    - text: "Como algu\xE9m que viveu com gaguez desde a inf\xE2ncia, quero que todos
+        saibam: a gaguez n\xE3o define quem somos"
       extraData: ExtraData
-      inputSetIndex: 2
-      outputNodeIndex: -1
-      outActionIndex: 0
+      inputSetIndex: 0
+      outputNodeIndex: 1
+      outActionIndex: -1
       showmore: 0
       outRect:
         serializedVersion: 2
         x: 301
         y: 63
         width: 30
-        height: 33
+        height: 63
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
-    - text: Continua com o programa Tobias!
+    - text: Mas sim como enfrentamos os desafios.
       extraData: ExtraData
-      inputSetIndex: 2
+      inputSetIndex: 0
       outputNodeIndex: -1
       outActionIndex: -1
       showmore: 0
@@ -179,26 +90,25 @@ MonoBehaviour:
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
-    ID: 2
+    ID: 0
     rect:
       serializedVersion: 2
-      x: 40
-      y: -610
+      x: -1740
+      y: -390
       width: 348
-      height: 256
-    pTag: "Av\xF4"
+      height: 296
+    pTag: "Televis\xE3o"
     expand: 1
-    sprite: {fileID: 21300000, guid: d7a7607ed19a41049a5c3e66d8935b04, type: 3}
+    sprite: {fileID: 21300000, guid: 5be8b41d6e4837e4f805d72412ec8671, type: 3}
     vars: []
     varKeys: []
     isPlayer: 0
   - commentCount: 1
     s_comment:
-    - text: "Boa tentativa, mas ouve novamente com aten\xE7\xE3o o que ele diz, a
-        pista est\xE1 em v\xE1rias vezes."
+    - text: "Palavras poderosas, Sr. Jo\xE3o. Muito obrigado pela sua participa\xE7\xE3o."
       extraData: ExtraData
-      inputSetIndex: 3
-      outputNodeIndex: 5
+      inputSetIndex: 1
+      outputNodeIndex: 2
       outActionIndex: -1
       showmore: 0
       outRect:
@@ -210,56 +120,25 @@ MonoBehaviour:
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
-    ID: 3
+    ID: 1
     rect:
       serializedVersion: 2
-      x: 50
-      y: -330
+      x: -1350
+      y: -380
       width: 348
       height: 247
-    pTag: "Av\xF4"
+    pTag: Entrevistador
     expand: 1
-    sprite: {fileID: 21300000, guid: d7a7607ed19a41049a5c3e66d8935b04, type: 3}
+    sprite: {fileID: 21300000, guid: c2bb002f3203300479aa0aff44d0ab5b, type: 3}
     vars: []
     varKeys: []
     isPlayer: 0
   - commentCount: 1
     s_comment:
-    - text: "Boa tentativa, mas repar\xE1 que ele n\xE3o est\xE1 bem a bloquear antes
-        de falar, olha tenta mais uma vez."
+    - text: Obrigado. E lembrem-se, cada voz tem o seu valor.
       extraData: ExtraData
-      inputSetIndex: 4
-      outputNodeIndex: 5
-      outActionIndex: -1
-      showmore: 0
-      outRect:
-        serializedVersion: 2
-        x: 301
-        y: 63
-        width: 30
-        height: 48
-      sprites: {fileID: 0}
-      audios: {fileID: 0}
-      visible: 1
-    ID: 4
-    rect:
-      serializedVersion: 2
-      x: 50
-      y: -50
-      width: 348
-      height: 247
-    pTag: "Av\xF4"
-    expand: 1
-    sprite: {fileID: 21300000, guid: d7a7607ed19a41049a5c3e66d8935b04, type: 3}
-    vars: []
-    varKeys: []
-    isPlayer: 0
-  - commentCount: 1
-    s_comment:
-    - text: "Co-co-co-comprar umas cebolas l\xE1 para casa..."
-      extraData: ExtraData
-      inputSetIndex: 5
-      outputNodeIndex: 1
+      inputSetIndex: 2
+      outputNodeIndex: 3
       outActionIndex: -1
       showmore: 0
       outRect:
@@ -271,11 +150,11 @@ MonoBehaviour:
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
-    ID: 5
+    ID: 2
     rect:
       serializedVersion: 2
-      x: -830
-      y: -360
+      x: -890
+      y: -390
       width: 348
       height: 232
     pTag: "Televis\xE3o"
@@ -284,31 +163,35 @@ MonoBehaviour:
     vars: []
     varKeys: []
     isPlayer: 0
-  S_actionNodes:
-  - pauseHere: 0
-    gameObjectName: '[No object]'
-    methodName: '[No method]'
-    nameIndex: 0
-    methodIndex: 0
-    paramIndex: -1
-    opts:
-    - '[No method]'
-    nameOpts:
-    - '[No object]'
-    param_bool: 0
-    param_string: 
-    param_int: 0
-    param_float: 0
+  - commentCount: 1
+    s_comment:
+    - text: "At\xE9 \xE0 pr\xF3xima!"
+      extraData: ExtraData
+      inputSetIndex: 3
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 3
     rect:
       serializedVersion: 2
-      x: 540
-      y: -570
-      width: 200
-      height: 170
-    ID: 6
-    outPlayerIndex: -1
-    outActionIndex: -1
-    more: 0
-    ovrStartNode: -1
-    renameDialogue: 
+      x: -480
+      y: -380
+      width: 348
+      height: 222
+    pTag: Entrevistador
+    expand: 1
+    sprite: {fileID: 21300000, guid: 2d6a0cfbe134dc0439376d43f6cb4fa1, type: 3}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  S_actionNodes: []
   S_selNodes: []

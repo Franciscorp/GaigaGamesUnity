@@ -71,7 +71,7 @@ public class VideUIManager : MonoBehaviour
     {
         if (!VD.isActive)
         {
-            Begin(GetComponent<VIDE_Assign>(), "unidentifiedDialogue");
+            Begin(GetComponent<VIDE_Assign>(), UNIDENTIFIED_DIALOGUE);
         }
         else
         {

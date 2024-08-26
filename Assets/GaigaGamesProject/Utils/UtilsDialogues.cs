@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public  class UtilsDialogues{
 
     public const string PLAYER_NAME_TAG = "[PLAYER_NAME]";
+    public const string UNIDENTIFIED_DIALOGUE = "unidentifiedDialogue";
 
     public enum IdentifyStutterDialogues
     {
@@ -17,7 +18,8 @@ public  class UtilsDialogues{
         Question6 = 7,
         Question7 = 8,
         Question8 = 9,
-        Question9 = 10
+        Question9 = 10,
+        UnidentifiedDialogue = 11,
     }
 
     // Dictionary to map dialogue names to keys
@@ -48,6 +50,21 @@ public  class UtilsDialogues{
             // Handle case where the dialogue name is not found
             return null; // or return a default key, throw an exception, etc.
         }
+    }
+
+    // Function to find the key based on the value
+    public static IdentifyStutterDialogues GetDialogueByValueID(string value)
+    {
+        foreach (var pair in dialogueKeys)
+        {
+            if (pair.Value == value)
+            {
+                return pair.Key;
+            }
+        }
+
+        // Return null if no matching key is found
+        return IdentifyStutterDialogues.UnidentifiedDialogue;
     }
 
 }

@@ -255,7 +255,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contents:
   - {fileID: 21300000, guid: 65f99b4653315794382eab722fee7a43, type: 3}
-  - {fileID: 21300000, guid: 00d51db19cc0ead409a59065bebef8d8, type: 3}
+  - {fileID: 21300000, guid: 8a9b77708a9cf1947a625b5dc2a7dd67, type: 3}
+  - {fileID: 21300000, guid: f62cd2309af328e40a9f9231f2237979, type: 3}
+  - {fileID: 21300000, guid: ead52a2f5bfed3541adc9f46c2f68536, type: 3}
+  - {fileID: 21300000, guid: 5e4a015f07583964ebf5ac52a4fad69b, type: 3}
 --- !u!1 &256072263
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,6 +898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0f5d06b20d45004e81b2a877bb44141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  catSpriteDuration: 2500
   VideDialoguePanel: {fileID: 1948292297}
   dialogueManager: {fileID: 1948292298}
   StartButton: {fileID: 1488013153}

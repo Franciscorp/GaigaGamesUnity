@@ -7,11 +7,19 @@ public class PlayerInformation
 {
     private string username { get; set; }
     private Gender gender { get; set; }
+    public IdentifyStutterInformation identifyStuterGameInfo { get; set; }
 
     public PlayerInformation()
     {
         username = GetCharacterName();
         gender = GetGender();
+        // Loads information if exists
+        identifyStuterGameInfo = new IdentifyStutterInformation();
+    }
+
+    public void ResetMiniGamesInformation()
+    {
+        identifyStuterGameInfo.ResetIdentifyStutter();
     }
 
     public void SetCharacterName(string name)

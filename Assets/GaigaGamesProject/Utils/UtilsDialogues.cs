@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public  class UtilsDialogues{
 
     public const string PLAYER_NAME_TAG = "[PLAYER_NAME]";
+    public const string WRONG_ANSWERS_TAG = "[WRONG_ANSWERS]";
     public const string UNIDENTIFIED_DIALOGUE = "unidentifiedDialogue";
 
     public enum IdentifyStutterDialogues
@@ -20,6 +21,9 @@ public  class UtilsDialogues{
         Question8 = 9,
         Question9 = 10,
         UnidentifiedDialogue = 11,
+        Conclusion = 12,
+        GoodConclusion = 13,
+        BadConclusion = 14
     }
 
     // Dictionary to map dialogue names to keys
@@ -35,7 +39,11 @@ public  class UtilsDialogues{
         { IdentifyStutterDialogues.Question6, "IdentifyStutterQuestion6" },
         { IdentifyStutterDialogues.Question7, "IdentifyStutterQuestion7" },
         { IdentifyStutterDialogues.Question8, "IdentifyStutterQuestion8" },
-        { IdentifyStutterDialogues.Question9, "IdentifyStutterQuestion9" }
+        { IdentifyStutterDialogues.Question9, "IdentifyStutterQuestion9" },
+        { IdentifyStutterDialogues.UnidentifiedDialogue, "IdentifyStutterUnidentifiedDialogue" },
+        { IdentifyStutterDialogues.Conclusion, "IdentifyStutterConclusion" },
+        { IdentifyStutterDialogues.GoodConclusion, "IdentifyStutterGoodConclusion" },
+        { IdentifyStutterDialogues.BadConclusion, "IdentifyStutterBadConclusion" },
     };
 
     // Static function to get the key associated with a dialogue name

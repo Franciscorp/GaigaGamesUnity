@@ -11,7 +11,10 @@ public class TVContent : MonoBehaviour
     public enum TVContentID
     {
         ScreenOff = 0,
-        FriendTalking = 1
+        News = 1,
+        FriendTalking = 2,
+        ReporterTalking = 3,
+        BothTalking = 4
     }
 
     // Start is called before the first frame update

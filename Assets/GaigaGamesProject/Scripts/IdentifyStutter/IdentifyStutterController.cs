@@ -12,10 +12,12 @@ using static UtilsDialogues;
 public class IdentifyStutterController : MonoBehaviour
 {
     private const int MAX_AVAILABLE_ANSWERS = 9;
+    private const int NUMBER_OF_WRONG_ANSWERS_TO_DISPLAY_GOOD_CONCLUSION = 3;
     private int currentStage = 1;
     private int wrongAnswers = 0;
     private int rightAnswers = 0;
     private Dictionary<string, bool> availableQuestions;
+    private PlayerInformation playerInformation;
 
     public int catSpriteDuration = 2500;
     public GameObject VideDialoguePanel;
@@ -35,6 +37,7 @@ public class IdentifyStutterController : MonoBehaviour
 
     private void SetInitialGameStatus()
     {
+        playerInformation = new PlayerInformation();
         currentStage = 1;
         VideDialoguePanel.SetActive(true);
         StartButton.SetActive(false);
@@ -59,7 +62,6 @@ public class IdentifyStutterController : MonoBehaviour
 
     private void doTempShit()
     {
-        PlayerInformation playerInformation = new PlayerInformation();
         playerInformation.SetGender(Utils.Gender.Male);
         playerInformation.SetCharacterName("Franciscorp");
     }
@@ -73,6 +75,7 @@ public class IdentifyStutterController : MonoBehaviour
 
     private void StartIntroduction()
     {
+        TVContent.UpdateContent(TVContentID.News);
         dialogueManager.SetupAndStartDialogue(GetDialogueKey(IdentifyStutterDialogues.GameIntroduction));
     }
 
@@ -97,6 +100,7 @@ public class IdentifyStutterController : MonoBehaviour
         }
         else
         {
+            dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.Conclusion));
             Debug.Log("End game");
         }
     }
@@ -112,7 +116,37 @@ public class IdentifyStutterController : MonoBehaviour
     {
         wrongAnswers++;
         Debug.Log("WrongQuestion");
+        // TODO very inneficient, but a working shortcut
+        playerInformation.identifyStuterGameInfo.SetIdentifyStutterWrongAnswersDone(wrongAnswers);
     }
+
+    public void PresentConclusion()
+    {
+        if (rightAnswers < MAX_AVAILABLE_ANSWERS)
+        {
+            Debug.LogWarning("Something went wrong. Not all questions were asked");
+        }
+
+        playerInformation.identifyStuterGameInfo.EndIdentifyStutterGame(wrongAnswers);
+        
+        if (wrongAnswers <= NUMBER_OF_WRONG_ANSWERS_TO_DISPLAY_GOOD_CONCLUSION)
+        {
+            Debug.Log("Good Conclusion");
+            dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.GoodConclusion));
+        }
+        else
+        {
+            dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.BadConclusion));
+            Debug.Log("Bad Conclusion");
+        }
+    }
+
+
+    public void EndGame()
+    {
+        Debug.Log("End Game");
+    }
+
 
     #endregion
 

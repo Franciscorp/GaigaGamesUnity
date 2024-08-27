@@ -20,6 +20,8 @@ public class Utils
     public const string UsernameDialogueKeyword = "$username$";
     public const string UsernamePlayerPrefsKeyword = "Username";
     public const string GenderPlayerPrefsKeyword = "Gender";
+    public const string IdentifyStutterConclusionState = "IdentifyStutterConclusionState";
+    public const string IdentifyStutterWrongAnswersDone = "IdentifyStutterWrongAnswersDone";
 
     public enum Npc
     {
@@ -44,6 +46,12 @@ public class Utils
     {
         Male = 0,
         Female = 1
+    }
+
+    public enum ConclusionState
+    {
+        NotConcluded = 0,
+        Concluded = 1
     }
 
 

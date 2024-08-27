@@ -175,6 +175,7 @@ public class VideUIManager : MonoBehaviour
         
         //If it has a tag, show it, otherwise let's use the alias we set in the VIDE Assign
         ReplaceNameTag(data);
+        ReplaceWord(data);
 
         //Sets the NPC container on
         containerDialogue.SetActive(true);
@@ -227,6 +228,16 @@ public class VideUIManager : MonoBehaviour
         }
         else
             npcName.text = VD.assigned.alias;
+    }
+
+    //This will replace any "[KEY]"
+    private void ReplaceWord(VD.NodeData data)
+    {
+        if (data.comments[data.commentIndex].Contains(WRONG_ANSWERS_TAG))
+        {
+            int numberOfWrongAnswers = playerInformation.identifyStuterGameInfo.GetNumberOfWrongAnswer();
+            data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace(WRONG_ANSWERS_TAG, numberOfWrongAnswers.ToString());
+        }
     }
 
     #endregion

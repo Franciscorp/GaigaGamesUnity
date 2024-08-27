@@ -44,38 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268dc70b105993846a123be43345df63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileIndex: 8
+  fileIndex: 11
   skinIndex: 0
   loadTag: 
   startID: 0
-  curFocusID: 10
-  currentID: 4709
+  curFocusID: 0
+  currentID: 54666
   autosave: 1
   previewPanning: 0
-  currentDiag: 8
+  currentDiag: 11
   locEdit: 1
   pNodeID: 18
   aNodeID: 2
   S_playerDiags:
-  - commentCount: 2
+  - commentCount: 1
     s_comment:
-    - text: "Como algu\xE9m que viveu com gaguez desde a inf\xE2ncia, quero que todos
-        saibam: a gaguez n\xE3o define quem somos"
-      extraData: ExtraData
-      inputSetIndex: 0
-      outputNodeIndex: 1
-      outActionIndex: -1
-      showmore: 0
-      outRect:
-        serializedVersion: 2
-        x: 301
-        y: 63
-        width: 30
-        height: 63
-      sprites: {fileID: 0}
-      audios: {fileID: 0}
-      visible: 1
-    - text: Mas sim como enfrentamos os desafios.
+    - text: "Av\xF4: \"Impressionante! Est\xE1s mesmo a apanhar o jeito de perceber
+        os diferentes tipos de gaguez.\"\r\n\r\nAv\xF4: "
       extraData: ExtraData
       inputSetIndex: 0
       outputNodeIndex: -1
@@ -93,103 +78,13 @@ MonoBehaviour:
     ID: 0
     rect:
       serializedVersion: 2
-      x: -1740
-      y: -390
+      x: 240
+      y: 250
       width: 348
-      height: 296
-    pTag: "Televis\xE3o"
-    expand: 1
-    sprite: {fileID: 21300000, guid: 5be8b41d6e4837e4f805d72412ec8671, type: 3}
-    vars: []
-    varKeys: []
-    isPlayer: 0
-  - commentCount: 1
-    s_comment:
-    - text: "Palavras poderosas, Sr. Jo\xE3o. Muito obrigado pela sua participa\xE7\xE3o."
-      extraData: ExtraData
-      inputSetIndex: 1
-      outputNodeIndex: 2
-      outActionIndex: -1
-      showmore: 0
-      outRect:
-        serializedVersion: 2
-        x: 301
-        y: 63
-        width: 30
-        height: 48
-      sprites: {fileID: 0}
-      audios: {fileID: 0}
-      visible: 1
-    ID: 1
-    rect:
-      serializedVersion: 2
-      x: -1350
-      y: -380
-      width: 348
-      height: 247
-    pTag: Entrevistador
-    expand: 1
-    sprite: {fileID: 21300000, guid: c2bb002f3203300479aa0aff44d0ab5b, type: 3}
-    vars: []
-    varKeys: []
-    isPlayer: 0
-  - commentCount: 1
-    s_comment:
-    - text: Obrigado. E lembrem-se, cada voz tem o seu valor.
-      extraData: ExtraData
-      inputSetIndex: 2
-      outputNodeIndex: 3
-      outActionIndex: -1
-      showmore: 0
-      outRect:
-        serializedVersion: 2
-        x: 301
-        y: 63
-        width: 30
-        height: 33
-      sprites: {fileID: 0}
-      audios: {fileID: 0}
-      visible: 1
-    ID: 2
-    rect:
-      serializedVersion: 2
-      x: -890
-      y: -390
-      width: 348
-      height: 232
-    pTag: "Televis\xE3o"
-    expand: 1
-    sprite: {fileID: 21300000, guid: 5be8b41d6e4837e4f805d72412ec8671, type: 3}
-    vars: []
-    varKeys: []
-    isPlayer: 0
-  - commentCount: 1
-    s_comment:
-    - text: "At\xE9 \xE0 pr\xF3xima!"
-      extraData: ExtraData
-      inputSetIndex: 3
-      outputNodeIndex: -1
-      outActionIndex: -1
-      showmore: 0
-      outRect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      sprites: {fileID: 0}
-      audios: {fileID: 0}
-      visible: 1
-    ID: 3
-    rect:
-      serializedVersion: 2
-      x: -480
-      y: -380
-      width: 348
-      height: 222
-    pTag: Entrevistador
-    expand: 1
-    sprite: {fileID: 21300000, guid: 2d6a0cfbe134dc0439376d43f6cb4fa1, type: 3}
+      height: 199
+    pTag: "Av\xF4"
+    expand: 0
+    sprite: {fileID: 0}
     vars: []
     varKeys: []
     isPlayer: 0

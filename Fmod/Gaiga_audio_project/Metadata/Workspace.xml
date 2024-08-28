@@ -2,31 +2,31 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Workspace" id="{bbd7af71-e854-4190-9a42-875276493274}">
 		<relationship name="masterEventFolder">
-			<destination>{e145b66b-ea8b-4cca-bbc0-cb1f42e6b16f}</destination>
+			<destination>{2298813a-e1d3-4278-8e11-515008d9ac66}</destination>
 		</relationship>
 		<relationship name="masterTagFolder">
-			<destination>{276f256f-391b-4fab-a923-b81a31947dc2}</destination>
+			<destination>{399a23fe-7799-42af-a72e-c6a2a590a944}</destination>
 		</relationship>
 		<relationship name="masterEffectPresetFolder">
-			<destination>{3d4cc83f-6fe4-4371-a949-e277194a7492}</destination>
+			<destination>{c8670524-7823-4bad-b5f0-f18a95885828}</destination>
 		</relationship>
 		<relationship name="masterParameterPresetFolder">
-			<destination>{63f7fa55-501c-4bbf-bcb9-55feecb9e3b3}</destination>
+			<destination>{54a78b3c-4957-4f88-95a9-805043ae76ca}</destination>
 		</relationship>
 		<relationship name="masterBankFolder">
-			<destination>{e12675ba-8a2e-49ab-ad0c-073b92e26524}</destination>
+			<destination>{1923b2c2-2c58-40f9-86c2-585665939a00}</destination>
 		</relationship>
 		<relationship name="masterSandboxFolder">
-			<destination>{45237a47-f3e0-4660-81d7-3606893e15d9}</destination>
+			<destination>{50a73cbf-6b9f-48c2-b0e8-146339a311b7}</destination>
 		</relationship>
 		<relationship name="masterAssetFolder">
-			<destination>{e8ca7cb6-7dd0-491f-9898-b7de34803c68}</destination>
+			<destination>{ff6d5952-8dd7-4ae2-8ab5-7b451ca5812d}</destination>
 		</relationship>
 		<relationship name="mixer">
-			<destination>{5ee4f38b-89fb-4d1e-abd6-83dcf4c52957}</destination>
+			<destination>{708418ba-784f-4f3b-a672-0678a58d1399}</destination>
 		</relationship>
 		<relationship name="profilerSessionFolder">
-			<destination>{6e4191c0-8707-45c1-b4ec-a83ac6cf7a3d}</destination>
+			<destination>{ab3853aa-4094-4646-b6d4-1815e220f2e4}</destination>
 		</relationship>
 		<relationship name="platforms">
 			<destination>{63a43f21-7f15-455d-a5fd-565f9d1aed1e}</destination>

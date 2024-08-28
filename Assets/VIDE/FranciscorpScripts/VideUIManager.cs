@@ -69,6 +69,8 @@ public class VideUIManager : MonoBehaviour
 
     public void InteractWithDialogue()
     {
+        AudioManager.Instance.PlayOneShot(FModEvents.Instance.buttonClick);
+
         if (!VD.isActive)
         {
             Begin(GetComponent<VIDE_Assign>(), UNIDENTIFIED_DIALOGUE);
@@ -277,6 +279,7 @@ public class VideUIManager : MonoBehaviour
 
             for (int j = 0; j < word.Length; j++)
             {
+                AudioManager.Instance.PlayOneShot(FModEvents.Instance.typingSFX);
                 dialogueText.text = previousText + word.Substring(0, j + 1);
                 yield return new WaitForSeconds(time);
             }

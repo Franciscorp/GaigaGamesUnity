@@ -5,7 +5,7 @@
 			<value>SFX</value>
 		</property>
 		<relationship name="folder">
-			<destination>{e12675ba-8a2e-49ab-ad0c-073b92e26524}</destination>
+			<destination>{1923b2c2-2c58-40f9-86c2-585665939a00}</destination>
 		</relationship>
 	</object>
 </objects>

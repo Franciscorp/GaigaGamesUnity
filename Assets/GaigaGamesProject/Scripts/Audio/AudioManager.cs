@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
     // contains all event instances in scene
     private List<EventInstance> eventInstances;
     private List<StudioEventEmitter> eventEmitters;
+    private EventInstance uniqueEventInstance;
+
 
     public static AudioManager Instance { get; private set; }
 
@@ -37,6 +39,15 @@ public class AudioManager : MonoBehaviour
     {
         Vector3 worldPos = Vector3.zero;
         RuntimeManager.PlayOneShot(sound, worldPos);
+    }
+
+    public void PlayUniqueOneShot(EventReference sound)
+    {
+        //Vector3 worldPos = Vector3.zero;
+        //RuntimeManager.PlayOneShot(sound, worldPos);
+        uniqueEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        uniqueEventInstance = CreateInstance(sound);
+        uniqueEventInstance.start();
     }
 
     // responsible for Emitters that are local spatial audios

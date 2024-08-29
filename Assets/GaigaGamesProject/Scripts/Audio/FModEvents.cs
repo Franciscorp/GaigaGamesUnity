@@ -18,6 +18,17 @@ public class FModEvents : MonoBehaviour
     [field: SerializeField] public EventReference gameOverSFX { get; private set; }
     [field: SerializeField] public EventReference breathingSFX { get; private set; }
 
+    [field: Header("IdentifyStutter")]
+
+    [field: SerializeField] public EventReference IdentifyStutterMusic { get; private set; }
+    [field: SerializeField] public EventReference stopTvCatSFX { get; private set; }
+    [field: SerializeField] public EventReference rightAnswerCatSFX { get; private set; }
+    [field: SerializeField] public EventReference wrongAnswerCatSFX { get; private set; }
+    [field: SerializeField] public EventReference rightAnswerAltSFX { get; private set; }
+    [field: SerializeField] public EventReference wrongAnswerAltSFX { get; private set; }
+    [field: SerializeField] public EventReference newsIntroSFX { get; private set; }
+    [field: SerializeField] public EventReference tvTalkingSFX { get; private set; }
+
     // contains all event instances in scene
     private List<EventInstance> eventInstances;
     private List<StudioEventEmitter> eventEmitters;

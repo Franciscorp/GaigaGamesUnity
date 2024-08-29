@@ -57,6 +57,9 @@ public class IdentifyStutterController : MonoBehaviour
             { "IdentifyStutterQuestion9", true }
         };
 
+        // play audio
+        AudioManager.Instance.PlayOneShot(FModEvents.Instance.IdentifyStutterMusic);
+        
         //doTempShit();
     }
 
@@ -75,24 +78,24 @@ public class IdentifyStutterController : MonoBehaviour
 
     private void StartIntroduction()
     {
-        TVContent.UpdateContent(TVContentID.News);
         dialogueManager.SetupAndStartDialogue(GetDialogueKey(IdentifyStutterDialogues.GameIntroduction));
     }
 
     public void StartGame()
     {
         StartButton.SetActive(false);
+        PlayNewsIntro();
         dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.GameIntroduction2));
-        TVContent.UpdateContent(TVContentID.FriendTalking);
     }
 
     public void AskQuestion()
     {
         Debug.Log("AskQuestion. Number of Answers given: " + rightAnswers);
         CatSprite.UpdateContent(CatSpriteID.NormalCat);
-        
+
         if (rightAnswers < MAX_AVAILABLE_ANSWERS)
         {
+            AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.tvTalkingSFX);
             IdentifyStutterDialogues currentQuestion = GetAvailableQuestionEnum();
             Debug.Log(currentQuestion);
             dialogueManager.SetupAndRestartDialogue(GetDialogueKey(currentQuestion));
@@ -100,6 +103,7 @@ public class IdentifyStutterController : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.PlayOneShot(FModEvents.Instance.gameOverSFX);
             dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.Conclusion));
             Debug.Log("End game");
         }
@@ -154,23 +158,38 @@ public class IdentifyStutterController : MonoBehaviour
 
     public void CatStopsTV()
     {
+        AudioManager.Instance.PlayOneShot(FModEvents.Instance.stopTvCatSFX);
         PlayCatSprite(CatSpriteID.StopCat);
     }
 
     public void PlayConfusedCat()
     {
+        AudioManager.Instance.PlayOneShot(FModEvents.Instance.wrongAnswerCatSFX);
+        //AudioManager.Instance.PlayOneShot(FModEvents.Instance.wrongAnswerAltSFX);
         PlayCatSprite(CatSpriteID.ConfusedCat);
     }
 
     public void PlayHappyCat()
     {
         PlayCatSprite(CatSpriteID.HappyCat);
+        AudioManager.Instance.PlayOneShot(FModEvents.Instance.rightAnswerCatSFX);
+        //AudioManager.Instance.PlayOneShot(FModEvents.Instance.rightAnswerAltSFX);
     }
 
 
     #endregion
 
     #region Auxiliary
+
+    public async void PlayNewsIntro()
+    {
+        Debug.Log("PlayNewsIntro");
+        TVContent.UpdateContent(TVContentID.News);
+        AudioManager.Instance.PlayOneShot(FModEvents.Instance.newsIntroSFX);
+        // 2600 is the tv intro length
+        await Task.Delay(2600);
+        TVContent.UpdateContent(TVContentID.FriendTalking);
+    }
 
     public async void PlayCatSprite(CatSpriteID spriteToPlay)
     {

@@ -1057,6 +1057,166 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <newsIntroSFX>k__BackingField.Path
+      value: event:/SFX/IdentifyStutter/NewsIntro
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <stopTvCatSFX>k__BackingField.Path
+      value: event:/SFX/IdentifyStutter/StopTV_CatMeow
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <tvTalkingSFX>k__BackingField.Path
+      value: event:/SFX/IdentifyStutter/TV_Interview_Noise
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <rightAnswerAltSFX>k__BackingField.Path
+      value: event:/SFX/IdentifyStutter/RightAnswer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <rightAnswerCatSFX>k__BackingField.Path
+      value: event:/SFX/IdentifyStutter/HappyCat
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <wrongAnswerAltSFX>k__BackingField.Path
+      value: event:/SFX/IdentifyStutter/WrongAnswer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <wrongAnswerCatSFX>k__BackingField.Path
+      value: event:/SFX/IdentifyStutter/ConfusedCat
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <newsIntroSFX>k__BackingField.Guid.Data1
+      value: 1213019390
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <newsIntroSFX>k__BackingField.Guid.Data2
+      value: 1204541213
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <newsIntroSFX>k__BackingField.Guid.Data3
+      value: 1791101081
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <newsIntroSFX>k__BackingField.Guid.Data4
+      value: 1038836648
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <stopTvCatSFX>k__BackingField.Guid.Data1
+      value: -1860968275
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <stopTvCatSFX>k__BackingField.Guid.Data2
+      value: 1286132136
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <stopTvCatSFX>k__BackingField.Guid.Data3
+      value: 2006058404
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <stopTvCatSFX>k__BackingField.Guid.Data4
+      value: 388554628
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <tvTalkingSFX>k__BackingField.Guid.Data1
+      value: 1557261732
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <tvTalkingSFX>k__BackingField.Guid.Data2
+      value: 1090528785
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <tvTalkingSFX>k__BackingField.Guid.Data3
+      value: -512442452
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <tvTalkingSFX>k__BackingField.Guid.Data4
+      value: -1915010750
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <IdentifyStutterMusic>k__BackingField.Path
+      value: event:/Music/IdentifyStutterMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <rightAnswerAltSFX>k__BackingField.Guid.Data1
+      value: -1515827941
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <rightAnswerAltSFX>k__BackingField.Guid.Data2
+      value: 1138069143
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <rightAnswerAltSFX>k__BackingField.Guid.Data3
+      value: 1382779265
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <rightAnswerAltSFX>k__BackingField.Guid.Data4
+      value: -453162154
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <rightAnswerCatSFX>k__BackingField.Guid.Data1
+      value: -2102250521
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <rightAnswerCatSFX>k__BackingField.Guid.Data2
+      value: 1246610459
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <rightAnswerCatSFX>k__BackingField.Guid.Data3
+      value: 111763367
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <rightAnswerCatSFX>k__BackingField.Guid.Data4
+      value: -1079964418
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <wrongAnswerAltSFX>k__BackingField.Guid.Data1
+      value: 1391687611
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <wrongAnswerAltSFX>k__BackingField.Guid.Data2
+      value: 1288848400
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <wrongAnswerAltSFX>k__BackingField.Guid.Data3
+      value: 1219339430
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <wrongAnswerAltSFX>k__BackingField.Guid.Data4
+      value: -436896874
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <wrongAnswerCatSFX>k__BackingField.Guid.Data1
+      value: 662149782
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <wrongAnswerCatSFX>k__BackingField.Guid.Data2
+      value: 1341404503
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <wrongAnswerCatSFX>k__BackingField.Guid.Data3
+      value: 1075531198
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <wrongAnswerCatSFX>k__BackingField.Guid.Data4
+      value: 319516476
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <IdentifyStutterMusic>k__BackingField.Guid.Data1
+      value: 1330982504
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <IdentifyStutterMusic>k__BackingField.Guid.Data2
+      value: 1243487418
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <IdentifyStutterMusic>k__BackingField.Guid.Data3
+      value: 366256541
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
+      propertyPath: <IdentifyStutterMusic>k__BackingField.Guid.Data4
+      value: 1434747208
+      objectReference: {fileID: 0}
     - target: {fileID: 7417284115296003478, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 993.694

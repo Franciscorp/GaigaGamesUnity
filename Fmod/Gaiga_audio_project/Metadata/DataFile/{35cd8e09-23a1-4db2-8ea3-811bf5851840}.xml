@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{35cd8e09-23a1-4db2-8ea3-811bf5851840}">
+		<property name="assetPath">
+			<value>SFX/IdentifyStutter/Thurston the cat (Full video).aup3</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ff6d5952-8dd7-4ae2-8ab5-7b451ca5812d}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{7ea12590-1f32-4f41-9d09-2817e5d85142}">
+		<property name="assetPath">
+			<value>SFX/IdentifyStutter/(15) REALISTIC CAT SOUND 15MIN!! - YouTube.url</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ff6d5952-8dd7-4ae2-8ab5-7b451ca5812d}</destination>
+		</relationship>
+	</object>
+</objects>

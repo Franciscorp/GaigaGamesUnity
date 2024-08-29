@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{5bda0fed-8a11-473d-b171-ec8c25440d11}">
+		<property name="assetPath">
+			<value>SFX/IdentifyStutter/tv_background/Politics Talk TV Background Noise for Sleep.aup3</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ff6d5952-8dd7-4ae2-8ab5-7b451ca5812d}</destination>
+		</relationship>
+	</object>
+</objects>

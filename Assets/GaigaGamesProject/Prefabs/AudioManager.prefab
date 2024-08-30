@@ -100,6 +100,62 @@ MonoBehaviour:
       Data3: 2021181058
       Data4: -109552844
     Path: event:/SFX/Breathing
+  <IdentifyStutterMusic>k__BackingField:
+    Guid:
+      Data1: 1330982504
+      Data2: 1243487418
+      Data3: 366256541
+      Data4: 1434747208
+    Path: event:/Music/IdentifyStutterMusic
+  <stopTvCatSFX>k__BackingField:
+    Guid:
+      Data1: -1860968275
+      Data2: 1286132136
+      Data3: 2006058404
+      Data4: 388554628
+    Path: event:/SFX/IdentifyStutter/StopTV_CatMeow
+  <rightAnswerCatSFX>k__BackingField:
+    Guid:
+      Data1: -2102250521
+      Data2: 1246610459
+      Data3: 111763367
+      Data4: -1079964418
+    Path: event:/SFX/IdentifyStutter/HappyCat
+  <wrongAnswerCatSFX>k__BackingField:
+    Guid:
+      Data1: 662149782
+      Data2: 1341404503
+      Data3: 1075531198
+      Data4: 319516476
+    Path: event:/SFX/IdentifyStutter/ConfusedCat
+  <rightAnswerAltSFX>k__BackingField:
+    Guid:
+      Data1: -1515827941
+      Data2: 1138069143
+      Data3: 1382779265
+      Data4: -453162154
+    Path: event:/SFX/IdentifyStutter/RightAnswer
+  <wrongAnswerAltSFX>k__BackingField:
+    Guid:
+      Data1: 1391687611
+      Data2: 1288848400
+      Data3: 1219339430
+      Data4: -436896874
+    Path: event:/SFX/IdentifyStutter/WrongAnswer
+  <newsIntroSFX>k__BackingField:
+    Guid:
+      Data1: 1213019390
+      Data2: 1204541213
+      Data3: 1791101081
+      Data4: 1038836648
+    Path: event:/SFX/IdentifyStutter/NewsIntro
+  <tvTalkingSFX>k__BackingField:
+    Guid:
+      Data1: 1557261732
+      Data2: 1090528785
+      Data3: -512442452
+      Data4: -1915010750
+    Path: event:/SFX/IdentifyStutter/TV_Interview_Noise
 --- !u!1 &2124881042281384334
 GameObject:
   m_ObjectHideFlags: 0

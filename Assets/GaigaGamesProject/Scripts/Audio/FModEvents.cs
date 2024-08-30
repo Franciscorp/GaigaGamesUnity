@@ -28,6 +28,7 @@ public class FModEvents : MonoBehaviour
     [field: SerializeField] public EventReference wrongAnswerAltSFX { get; private set; }
     [field: SerializeField] public EventReference newsIntroSFX { get; private set; }
     [field: SerializeField] public EventReference tvTalkingSFX { get; private set; }
+    [field: SerializeField] public EventReference conclusionPartySFX { get; private set; }
 
     // contains all event instances in scene
     private List<EventInstance> eventInstances;

@@ -23,7 +23,8 @@ public  class UtilsDialogues{
         UnidentifiedDialogue = 11,
         Conclusion = 12,
         GoodConclusion = 13,
-        BadConclusion = 14
+        BadConclusion = 14,
+        BestConclusion = 15
     }
 
     // Dictionary to map dialogue names to keys
@@ -44,6 +45,7 @@ public  class UtilsDialogues{
         { IdentifyStutterDialogues.Conclusion, "IdentifyStutterConclusion" },
         { IdentifyStutterDialogues.GoodConclusion, "IdentifyStutterGoodConclusion" },
         { IdentifyStutterDialogues.BadConclusion, "IdentifyStutterBadConclusion" },
+        { IdentifyStutterDialogues.BestConclusion, "IdentifyStutterBestConclusion" },
     };
 
     // Static function to get the key associated with a dialogue name

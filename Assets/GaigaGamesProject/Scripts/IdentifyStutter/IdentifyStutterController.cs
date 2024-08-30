@@ -16,6 +16,7 @@ public class IdentifyStutterController : MonoBehaviour
     private int currentStage = 1;
     private int wrongAnswers = 0;
     private int rightAnswers = 0;
+    private bool isEndGame = false;
     private Dictionary<string, bool> availableQuestions;
     private PlayerInformation playerInformation;
 
@@ -96,6 +97,7 @@ public class IdentifyStutterController : MonoBehaviour
         if (rightAnswers < MAX_AVAILABLE_ANSWERS)
         {
             AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.tvTalkingSFX);
+            TVContent.UpdateContent(TVContentID.FriendTalking);
             IdentifyStutterDialogues currentQuestion = GetAvailableQuestionEnum();
             Debug.Log(currentQuestion);
             dialogueManager.SetupAndRestartDialogue(GetDialogueKey(currentQuestion));
@@ -103,7 +105,7 @@ public class IdentifyStutterController : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.PlayOneShot(FModEvents.Instance.gameOverSFX);
+            AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.conclusionPartySFX);
             dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.Conclusion));
             Debug.Log("End game");
         }
@@ -132,12 +134,18 @@ public class IdentifyStutterController : MonoBehaviour
         }
 
         playerInformation.identifyStuterGameInfo.EndIdentifyStutterGame(wrongAnswers);
-        
-        if (wrongAnswers <= NUMBER_OF_WRONG_ANSWERS_TO_DISPLAY_GOOD_CONCLUSION)
+
+        if (wrongAnswers == 0)
+        {
+            Debug.Log("Best Conclusion");
+            dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.BestConclusion));
+        }
+        else if (wrongAnswers <= NUMBER_OF_WRONG_ANSWERS_TO_DISPLAY_GOOD_CONCLUSION)
         {
             Debug.Log("Good Conclusion");
             dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.GoodConclusion));
         }
+
         else
         {
             dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.BadConclusion));
@@ -148,7 +156,20 @@ public class IdentifyStutterController : MonoBehaviour
 
     public void EndGame()
     {
+        if (isEndGame)
+            return;
+
+        isEndGame = true;
+        AudioManager.Instance.PlayOneShot(FModEvents.Instance.gameOverSFX);
         Debug.Log("End Game");
+        WaitForJingleToEnd();
+    }
+
+    public async void WaitForJingleToEnd()
+    {
+        await Task.Delay(4800);
+        Debug.Log("WaitForJingleToEnd");
+        SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
     }
 
 
@@ -176,19 +197,29 @@ public class IdentifyStutterController : MonoBehaviour
         //AudioManager.Instance.PlayOneShot(FModEvents.Instance.rightAnswerAltSFX);
     }
 
+    public void ChangeTVToReporterAndJoao()
+    {
+        TVContent.UpdateContent(TVContentID.BothTalking);
+    }
+
+    public void ChangeTVToReporter()
+    {
+        TVContent.UpdateContent(TVContentID.ReporterTalking);
+    }
+
 
     #endregion
 
     #region Auxiliary
 
-    public async void PlayNewsIntro()
+    public void PlayNewsIntro()
     {
         Debug.Log("PlayNewsIntro");
         TVContent.UpdateContent(TVContentID.News);
         AudioManager.Instance.PlayOneShot(FModEvents.Instance.newsIntroSFX);
         // 2600 is the tv intro length
-        await Task.Delay(2600);
-        TVContent.UpdateContent(TVContentID.FriendTalking);
+        //await Task.Delay(2600);
+        //TVContent.UpdateContent(TVContentID.FriendTalking);
     }
 
     public async void PlayCatSprite(CatSpriteID spriteToPlay)

@@ -44,25 +44,101 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268dc70b105993846a123be43345df63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileIndex: 11
+  fileIndex: 12
   skinIndex: 0
   loadTag: 
   startID: 0
   curFocusID: 0
-  currentID: 54666
+  currentID: 38904
   autosave: 1
   previewPanning: 0
-  currentDiag: 11
-  locEdit: 1
+  currentDiag: 12
+  locEdit: 0
   pNodeID: 18
   aNodeID: 2
   S_playerDiags:
   - commentCount: 1
     s_comment:
-    - text: "Av\xF4: \"Impressionante! Est\xE1s mesmo a apanhar o jeito de perceber
-        os diferentes tipos de gaguez.\"\r\n\r\nAv\xF4: "
+    - text: "Av\xF4, quem \xE9 que est\xE1s a ver na televis\xE3o?"
       extraData: ExtraData
       inputSetIndex: 0
+      outputNodeIndex: 1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 33
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 0
+    rect:
+      serializedVersion: 2
+      x: -170
+      y: -140
+      width: 348
+      height: 232
+    pTag: '[PLAYER_NAME]'
+    expand: 1
+    sprite: {fileID: 21300000, guid: 079768bd263350c4f983f1a39e8e153a, type: 3}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 1
+    s_comment:
+    - text: "\xC9 o meu amigo Jo\xE3o, ele est\xE1 a contar a sua hist\xF3ria. Ele
+        gagueja um pouco, mas quero que tu me ajudes a identificar quando isso acontece."
+      extraData: ExtraData
+      inputSetIndex: 1
+      outputNodeIndex: -1
+      outActionIndex: 0
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 78
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 1
+    rect:
+      serializedVersion: 2
+      x: 250
+      y: -150
+      width: 348
+      height: 277
+    pTag: "Av\xF4"
+    expand: 1
+    sprite: {fileID: 21300000, guid: d7a7607ed19a41049a5c3e66d8935b04, type: 3}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 3
+    s_comment:
+    - text: "Boa tarde e bem-vindos ao Jornal de Not\xEDcias! "
+      extraData: ExtraData
+      inputSetIndex: 2
+      outputNodeIndex: 3
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 33
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: "Hoje, trazemos a voc\xEAs uma cobertura especial das festas da aldeia
+        de S\xE3o Martinho!"
+      extraData: ExtraData
+      inputSetIndex: 2
       outputNodeIndex: -1
       outActionIndex: -1
       showmore: 0
@@ -75,18 +151,98 @@ MonoBehaviour:
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
-    ID: 0
+    - text: "Agora, vamos ao vivo at\xE9 \xE0 aldeia, onde o nosso rep\xF3rter est\xE1
+        a acompanhar as festividades."
+      extraData: ExtraData
+      inputSetIndex: 2
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 2
     rect:
       serializedVersion: 2
-      x: 240
-      y: 250
+      x: -870
+      y: -200
       width: 348
-      height: 199
-    pTag: "Av\xF4"
+      height: 330
+    pTag: '[PLAYER_NAME]'
+    expand: 1
+    sprite: {fileID: 21300000, guid: 079768bd263350c4f983f1a39e8e153a, type: 3}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 1
+    s_comment:
+    - text: "Estamos aqui nas festas da aldeia, um evento que re\xFAne toda a comunidade
+        com alegria e celebra\xE7\xE3o. "
+      extraData: ExtraData
+      inputSetIndex: 3
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 3
+    rect:
+      serializedVersion: 2
+      x: -460
+      y: -150
+      width: 348
+      height: 169
+    pTag: 
     expand: 0
     sprite: {fileID: 0}
     vars: []
     varKeys: []
     isPlayer: 0
-  S_actionNodes: []
+  S_actionNodes:
+  - pauseHere: 0
+    gameObjectName: IdentifyStutterController
+    methodName: AskQuestion
+    nameIndex: 5
+    methodIndex: 2
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - StartGame
+    - AskQuestion
+    nameOpts:
+    - '[No object]'
+    - DialogueText
+    - NPCName
+    - VideUIManager
+    - SaveManager
+    - IdentifyStutterController
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: 660
+      y: -160
+      width: 200
+      height: 170
+    ID: 4
+    outPlayerIndex: -1
+    outActionIndex: -1
+    more: 0
+    ovrStartNode: -1
+    renameDialogue: 
   S_selNodes: []

@@ -683,15 +683,23 @@ MonoBehaviour:
   - IdentifyStutterGameIntroduction2
   - IdentifyStutterQuestion1
   - Item_LookUp
+  - IdentifyStutterQuestion3
+  - IdentifyStutterQuestion4
+  - IdentifyStutterQuestion5
+  - IdentifyStutterQuestion6
+  - IdentifyStutterQuestion7
+  - IdentifyStutterQuestion8
+  - IdentifyStutterQuestion9
+  - Item_LookUp
   - Laura
   - MrCube
   - NPCOnly
   - QuestChartDemo
   - TriggeredDude
-  - Witch
-  assignedIndex: 10
-  assignedID: 80147
-  assignedDialogue: IdentifyStutterQuestion1
+  - 
+  assignedIndex: 11
+  assignedID: 4709
+  assignedDialogue: IdentifyStutterQuestion2
   interactionCount: 0
   alias: 
   overrideStartNode: -1

@@ -1057,26 +1057,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
-      propertyPath: <conclusionPartySFX>k__BackingField.Path
-      value: event:/SFX/IdentifyStutter/EndGameParty
-      objectReference: {fileID: 0}
-    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
-      propertyPath: <conclusionPartySFX>k__BackingField.Guid.Data1
-      value: 603785455
-      objectReference: {fileID: 0}
-    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
-      propertyPath: <conclusionPartySFX>k__BackingField.Guid.Data2
-      value: 1280674609
-      objectReference: {fileID: 0}
-    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
-      propertyPath: <conclusionPartySFX>k__BackingField.Guid.Data3
-      value: -333868143
-      objectReference: {fileID: 0}
-    - target: {fileID: 2908587690081008164, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
-      propertyPath: <conclusionPartySFX>k__BackingField.Guid.Data4
-      value: -670878974
-      objectReference: {fileID: 0}
     - target: {fileID: 7417284115296003478, guid: 2055099cc3a9a21458a7f7f80edf313d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 993.694
@@ -1616,74 +1596,6 @@ PrefabInstance:
     - target: {fileID: 7004859955046241004, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
       propertyPath: m_Name
       value: VideDialoguePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: assignedID
-      value: 4709
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: assignedIndex
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: assignedDialogue
-      value: IdentifyStutterQuestion2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: diags.Array.size
-      value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: diags.Array.data[12]
-      value: IdentifyStutterQuestion3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: diags.Array.data[13]
-      value: IdentifyStutterQuestion4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: diags.Array.data[14]
-      value: IdentifyStutterQuestion5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: diags.Array.data[15]
-      value: IdentifyStutterQuestion6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: diags.Array.data[16]
-      value: IdentifyStutterQuestion7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: diags.Array.data[17]
-      value: IdentifyStutterQuestion8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: diags.Array.data[18]
-      value: IdentifyStutterQuestion9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: diags.Array.data[19]
-      value: Item_LookUp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: diags.Array.data[20]
-      value: Laura
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: diags.Array.data[21]
-      value: MrCube
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: diags.Array.data[22]
-      value: NPCOnly
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: diags.Array.data[23]
-      value: QuestChartDemo
-      objectReference: {fileID: 0}
-    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: diags.Array.data[24]
-      value: TriggeredDude
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

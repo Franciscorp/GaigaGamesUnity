@@ -156,6 +156,13 @@ MonoBehaviour:
       Data3: -512442452
       Data4: -1915010750
     Path: event:/SFX/IdentifyStutter/TV_Interview_Noise
+  <conclusionPartySFX>k__BackingField:
+    Guid:
+      Data1: 603785455
+      Data2: 1280674609
+      Data3: -333868143
+      Data4: -670878974
+    Path: event:/SFX/IdentifyStutter/EndGameParty
 --- !u!1 &2124881042281384334
 GameObject:
   m_ObjectHideFlags: 0

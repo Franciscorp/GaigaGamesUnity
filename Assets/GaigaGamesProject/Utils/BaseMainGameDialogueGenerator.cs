@@ -1,15 +1,11 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEditor;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.Controls.AxisControl;
 using static Utils;
-using static Unity.Burst.Intrinsics.X86;
 using System.Collections;
-using UnityEditor.PackageManager.UI;
-using UnityEngine.UI;
 
 class BaseMainGameDialogueGenerator
 {

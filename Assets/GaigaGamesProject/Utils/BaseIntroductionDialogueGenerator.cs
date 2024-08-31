@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using static Utils;
-using static UnityEditor.PlayerSettings;
-using static UnityEngine.EventSystems.EventTrigger;
 
 class BaseIntroductionDialogueGenerator
 {

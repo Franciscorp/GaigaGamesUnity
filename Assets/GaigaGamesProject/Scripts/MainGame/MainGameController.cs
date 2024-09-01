@@ -30,6 +30,7 @@ public class MainGameController : MonoBehaviour
 
     // Events nad Playlable directors
     public PlayableDirector TobiasAppearsTimeline;
+    public PlayableDirector TobiasDissapearsTimeline;
 
 
 
@@ -85,7 +86,7 @@ public class MainGameController : MonoBehaviour
 
     public void DialogueCompleted()
     {
-        Debug.Log("DialogueCompleted");
+        Debug.Log("DialogueCompleted - currentDialogue: " + currentDialogue);
 
         switch (currentDialogue)
         {
@@ -96,6 +97,10 @@ public class MainGameController : MonoBehaviour
                 TobiasAppears();
                 break;
             case 3:
+                TobiasDissapears();
+                break;
+            case 4:
+                TobiasDissapears();
                 break;
             default:
                 Debug.LogWarning("Current scene was not planned. Error in Main Game Controller");
@@ -116,6 +121,31 @@ public class MainGameController : MonoBehaviour
         currentDialogue++;
     }
 
+    public async void TobiasMeows()
+    {
+        TobiasSprite.UpdateContent(CatSpriteController.CatSpriteID.CatMeows);
+        await Task.Delay(500);
+        videDialogueManager.SetupAndRestartDialogue(GetMainGameDialogueKey(MainGameDialogues.MainGameStory3));
+        await Task.Delay(500);
+        TobiasSprite.UpdateContent(CatSpriteController.CatSpriteID.NormalCat);
+        currentDialogue++;
+    }
+
+    public async void TobiasDissapears()
+    {
+        videDialogueManager.DisableContinueButton();
+        TobiasDissapearsTimeline.Play();
+        await Task.Delay(1400);
+        videDialogueManager.EnableContinueButton();
+        videDialogueManager.SetupAndRestartDialogue(GetMainGameDialogueKey(MainGameDialogues.MainGameStory4));
+        currentDialogue++;
+    }
+
+    public void EndIntroduction()
+    {
+        DisableDialogue();
+    }
+
     #endregion
 
     #region GameVisualsControl
@@ -123,17 +153,19 @@ public class MainGameController : MonoBehaviour
     public async void ActivateDialogue()
     {
         cameraAnimator.Play("CameraOut");
+        await Task.Delay(300);
         VideDialoguePanel.SetActive(true);
         MobileControls.SetActive(false);
-        await Task.Delay(1000);
+        await Task.Delay(700);
     }
 
     public async void DisableDialogue()
     {
         cameraAnimator.Play("CameraIn");
-        await Task.Delay(1000);
+        await Task.Delay(300);
         VideDialoguePanel.SetActive(false);
         MobileControls.SetActive(true);
+        await Task.Delay(700);
     }
 
 
@@ -147,16 +179,6 @@ public class MainGameController : MonoBehaviour
         await Task.Delay(4000);
 
         cameraAnimator.Play("CameraIn");
-    }
-
-
-    public async void TobiasMeows()
-    {
-        TobiasSprite.UpdateContent(CatSpriteController.CatSpriteID.CatMeows);
-        await Task.Delay(500);
-        videDialogueManager.SetupAndRestartDialogue(GetMainGameDialogueKey(MainGameDialogues.MainGameStory3));
-        await Task.Delay(500);
-        TobiasSprite.UpdateContent(CatSpriteController.CatSpriteID.NormalCat);
     }
 
 

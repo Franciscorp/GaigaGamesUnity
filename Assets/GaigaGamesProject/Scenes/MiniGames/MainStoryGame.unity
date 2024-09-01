@@ -1748,6 +1748,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &586331047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586331048}
+  - component: {fileID: 586331049}
+  m_Layer: 0
+  m_Name: TobiasDissapears
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &586331048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586331047}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 864437595}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &586331049
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586331047}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: c8b1d66306426644c844f787cef9a61d, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -8418355011914325329, guid: e029303c5031e514f82c27af5111ed25, type: 2}
+    value: {fileID: 75395542}
+  - key: {fileID: -414844626666223374, guid: e029303c5031e514f82c27af5111ed25, type: 2}
+    value: {fileID: 1164934421}
+  - key: {fileID: 864625525233973450, guid: c8b1d66306426644c844f787cef9a61d, type: 2}
+    value: {fileID: 75395542}
+  - key: {fileID: 1931178367075295359, guid: c8b1d66306426644c844f787cef9a61d, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &615583446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,6 +2431,7 @@ Transform:
   m_Children:
   - {fileID: 649493900}
   - {fileID: 1571840149}
+  - {fileID: 586331048}
   m_Father: {fileID: 1164934420}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1009338827
@@ -2895,18 +2953,6 @@ PrefabInstance:
       value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 1700313056839526205, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1700313056839526205, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1700313056839526205, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1700313056839526205, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2958,17 +3004,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideDialoguePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 7004859955046241004, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
       propertyPath: assignedID
-      value: 10669
+      value: 46249
       objectReference: {fileID: 0}
     - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
       propertyPath: assignedIndex
-      value: 25
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
       propertyPath: assignedDialogue
-      value: MainGameStory1
+      value: MainGameStory3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3012,6 +3062,7 @@ MonoBehaviour:
   spriteGirl: {fileID: 498286724}
   TobiasSprite: {fileID: 75395543}
   TobiasAppearsTimeline: {fileID: 1571840150}
+  TobiasDissapearsTimeline: {fileID: 586331049}
 --- !u!4 &1164934420
 Transform:
   m_ObjectHideFlags: 0
@@ -3049,6 +3100,7 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: 1b8e91ada5e8b13438ce50e6a6edda4b, type: 2}
     - {fileID: 11400000, guid: 36c4547428b159f408e903857569b9a8, type: 2}
+    - {fileID: 11400000, guid: 0e7be9c83ae227440b45cacab43435d4, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -3073,6 +3125,20 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1164934418}
+          m_TargetAssemblyTypeName: 
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 

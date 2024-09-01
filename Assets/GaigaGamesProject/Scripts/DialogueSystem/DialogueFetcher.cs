@@ -116,7 +116,7 @@ public class DialogueFetcher : MonoBehaviour {
     {
         // TODO not efficient. but fuck it
         PlayerInformation playerInformation = new PlayerInformation();
-        string username = playerInformation.GetCharacterName();
+        string username = playerInformation.LoadCharacterName();
 
         // Replace the keyword in each string
         for (int i = 0; i < originalDialogue.Count(); i++)

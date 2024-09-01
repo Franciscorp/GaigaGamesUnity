@@ -122,7 +122,7 @@ public class IntroductionController : MonoBehaviour
             return;
 
         playerInformation.SetCharacterName(textInputText);
-        playerInformation.GetCharacterName();
+        playerInformation.LoadCharacterName();
         
         nameRequestTextInput.SetActive(false);
 

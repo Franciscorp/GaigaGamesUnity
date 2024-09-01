@@ -18,7 +18,7 @@ public class PlayerInformation
     // TODO this is bad, because it was loading multiple times without necessity
     public async void LoadData()
     {
-        username = GetCharacterName();
+        username = LoadCharacterName();
         gender = GetGender();
         // Loads information if exists
         identifyStuterGameInfo = new IdentifyStutterInformation();
@@ -37,7 +37,12 @@ public class PlayerInformation
         Debug.Log("Character Name saved");
     }
 
-    public string GetCharacterName()
+    public string GetUsername()
+    {
+        return username;
+    }
+
+    public string LoadCharacterName()
     {
         string characterName = PlayerPrefs.GetString(Utils.UsernamePlayerPrefsKeyword);
         //Debug.Log(characterName);

@@ -181,16 +181,15 @@ public class VideUIManager : MonoBehaviour
         else if (VD.assigned.defaultNPCSprite != null)
             npcIcon.sprite = VD.assigned.defaultNPCSprite;
 
+        //If it has a tag, show it, otherwise let's use the alias we set in the VIDE Assign
+        ReplaceNameTag(data);
+        ReplaceWord(data);
+
         //This coroutine animates the NPC text instead of displaying it all at once
         if (npcTextAnimator != null)
             StopCoroutine(npcTextAnimator);
         npcTextAnimator = DrawText(data.comments[data.commentIndex], 0.06f);
         StartCoroutine(npcTextAnimator);
-
-        
-        //If it has a tag, show it, otherwise let's use the alias we set in the VIDE Assign
-        ReplaceNameTag(data);
-        ReplaceWord(data);
 
         //Sets the NPC container on
         containerDialogue.SetActive(true);
@@ -237,7 +236,7 @@ public class VideUIManager : MonoBehaviour
         if (data.tag.Length > 0)
         {
             if (data.tag.Contains(PLAYER_NAME_TAG))
-                npcName.text = playerInformation.GetCharacterName();
+                npcName.text = playerInformation.LoadCharacterName();
             else
                 npcName.text = data.tag;
         }
@@ -252,6 +251,11 @@ public class VideUIManager : MonoBehaviour
         {
             int numberOfWrongAnswers = playerInformation.identifyStuterGameInfo.GetNumberOfWrongAnswer();
             data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace(WRONG_ANSWERS_TAG, numberOfWrongAnswers.ToString());
+        }
+
+        if (data.comments[data.commentIndex].Contains(PLAYER_NAME_TAG))
+        {
+            data.comments[data.commentIndex] = data.comments[data.commentIndex].Replace(PLAYER_NAME_TAG, playerInformation.GetUsername());
         }
     }
 

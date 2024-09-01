@@ -287,6 +287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1713474166286840782}
   - component: {fileID: 1494779040069231992}
+  - component: {fileID: 5154185579666011883}
   m_Layer: 0
   m_Name: Mannequin
   m_TagString: Untagged
@@ -364,3 +365,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5154185579666011883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8979540996852435818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36ea3ea898f86f40bd2f3a817f84004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionShadow: {fileID: 6844852533370613422}
+  interactionIcon: {fileID: 7393327678302036342}

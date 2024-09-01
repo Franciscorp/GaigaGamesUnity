@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class Interactable : MonoBehaviour
 {
     // TODO optimize this and check correct properties
+    private bool isActive = false;
     public bool isInRange;
     public SpriteRenderer selectionShadow;
     public SpriteRenderer interactIcon;
@@ -53,8 +54,12 @@ public class Interactable : MonoBehaviour
 
     public void InteractWithObject()
     {
+        if (isActive)
+            return;
+
         if (isInRange)
         {
+            isActive = true;
             interactAction.Invoke();
         }
     }
@@ -74,6 +79,7 @@ public class Interactable : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            isActive = false;
             isInRange = false;
             Debug.Log("Player is now out of range range");
             selectionShadow.enabled = false;

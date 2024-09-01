@@ -1759,7 +1759,7 @@ GameObject:
   - component: {fileID: 500805077}
   - component: {fileID: 500805078}
   m_Layer: 0
-  m_Name: Grandpa
+  m_Name: GrandpaKitchen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2767,10 +2767,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 772896956}
     m_Modifications:
-    - target: {fileID: 646450217212765468, guid: 84be178ca18ca514da0745b89edaadf3, type: 3}
-      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1713474166286840782, guid: 84be178ca18ca514da0745b89edaadf3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.676132
@@ -3129,7 +3125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
       propertyPath: assignedID
-      value: 46249
+      value: 86108
       objectReference: {fileID: 0}
     - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
       propertyPath: assignedIndex
@@ -3137,7 +3133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
       propertyPath: assignedDialogue
-      value: MainGameStory3
+      value: MainGameGrandma1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3176,6 +3172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VideDialoguePanel: {fileID: 405285373}
   MobileControls: {fileID: 362669712}
+  interactions: []
   Player: {fileID: 97423607}
   spriteBoy: {fileID: 1471682590}
   spriteGirl: {fileID: 498286724}
@@ -5135,9 +5132,9 @@ MonoBehaviour:
   interactAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GamesMenu, Assembly-CSharp
-        m_MethodName: StartSpeechMachineGame
+      - m_Target: {fileID: 1164934419}
+        m_TargetAssemblyTypeName: MainGameController, Assembly-CSharp
+        m_MethodName: FirstInteractionWithGrandma
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5269,6 +5266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2710741687502448574}
   - component: {fileID: 2803353332863627528}
+  - component: {fileID: 5675866390113459995}
   m_Layer: 0
   m_Name: Grandma
   m_TagString: Untagged
@@ -5276,6 +5274,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5675866390113459995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5675866390113459994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36ea3ea898f86f40bd2f3a817f84004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionShadow: {fileID: 7828605819725036254}
+  interactionIcon: {fileID: 6107838515695416582}
 --- !u!4 &5871022736796976773
 Transform:
   m_ObjectHideFlags: 0

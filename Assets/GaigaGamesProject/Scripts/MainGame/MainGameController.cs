@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class MainGameController : MonoBehaviour
     private PlayerInformation playerInformation;
     private int currentDialogue = 0;
 
+    [field: Header("Game Objects")]
     // Game Objects 
     public GameObject VideDialoguePanel;
     private VideUIManager videDialogueManager;
@@ -20,7 +22,9 @@ public class MainGameController : MonoBehaviour
     private GameObject gameObjectCamera;
     private Camera camera;
     private Animator cameraAnimator;
+    public List<InteractionController> interactions;
 
+    [field: Header("PlayerTobias")]
     // Player and Tobias
     public GameObject Player;
     public GameObject spriteBoy;
@@ -148,12 +152,14 @@ public class MainGameController : MonoBehaviour
 
     public async void FirstInteractionWithGrandma()
     {
+        SetActiveInteraction(false);
         ActivateDialogue(MainGameDialogues.GrandmaStory1);
         currentDialogue = 5;
     }
 
     public async void EndFirstInteractionWithGrandma()
     {
+        //SetActiveInteraction(true);
         DisableDialogue();
         // TODO estrondo, tirar avo
         //animação avo, livros no meio do caminho
@@ -164,6 +170,14 @@ public class MainGameController : MonoBehaviour
     #endregion
 
     #region GameVisualsControl
+
+    public void SetActiveInteraction(bool active)
+    {
+        foreach(InteractionController obj in interactions)
+        {
+            obj.SetInteractionActive(active);
+        }
+    }
 
     public async void ActivateDialogue()
     {

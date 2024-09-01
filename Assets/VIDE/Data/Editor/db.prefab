@@ -44,22 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268dc70b105993846a123be43345df63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileIndex: 12
+  fileIndex: 25
   skinIndex: 0
   loadTag: 
   startID: 0
-  curFocusID: 0
-  currentID: 38904
+  curFocusID: 1
+  currentID: 86108
   autosave: 1
   previewPanning: 0
-  currentDiag: 12
-  locEdit: 0
+  currentDiag: 25
+  locEdit: 1
   pNodeID: 18
   aNodeID: 2
   S_playerDiags:
   - commentCount: 1
     s_comment:
-    - text: "Av\xF4, quem \xE9 que est\xE1s a ver na televis\xE3o?"
+    - text: "[PLAYER_NAME]! Ah, que saudades, meu querido! D\xE1 c\xE1 um grande
+        abra\xE7o!"
       extraData: ExtraData
       inputSetIndex: 0
       outputNodeIndex: 1
@@ -70,48 +71,47 @@ MonoBehaviour:
         x: 301
         y: 63
         width: 30
-        height: 33
+        height: 48
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
     ID: 0
     rect:
       serializedVersion: 2
-      x: -170
-      y: -140
+      x: -420
+      y: -130
       width: 348
-      height: 232
-    pTag: '[PLAYER_NAME]'
+      height: 247
+    pTag: "Av\xF3"
     expand: 1
-    sprite: {fileID: 21300000, guid: 079768bd263350c4f983f1a39e8e153a, type: 3}
+    sprite: {fileID: 21300000, guid: c4e9f45e12517fa4692783494329f7b3, type: 3}
     vars: []
     varKeys: []
     isPlayer: 0
   - commentCount: 1
     s_comment:
-    - text: "\xC9 o meu amigo Jo\xE3o, ele est\xE1 a contar a sua hist\xF3ria. Ele
-        gagueja um pouco, mas quero que tu me ajudes a identificar quando isso acontece."
+    - text: "Tamb\xE9m quero o meu!"
       extraData: ExtraData
       inputSetIndex: 1
-      outputNodeIndex: -1
-      outActionIndex: 0
+      outputNodeIndex: 2
+      outActionIndex: -1
       showmore: 0
       outRect:
         serializedVersion: 2
         x: 301
         y: 63
         width: 30
-        height: 78
+        height: 23
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
     ID: 1
     rect:
       serializedVersion: 2
-      x: 250
-      y: -150
+      x: -40
+      y: -130
       width: 348
-      height: 277
+      height: 222
     pTag: "Av\xF4"
     expand: 1
     sprite: {fileID: 21300000, guid: d7a7607ed19a41049a5c3e66d8935b04, type: 3}
@@ -120,7 +120,7 @@ MonoBehaviour:
     isPlayer: 0
   - commentCount: 3
     s_comment:
-    - text: "Boa tarde e bem-vindos ao Jornal de Not\xEDcias! "
+    - text: "Av\xF3s! Estava mesmo com saudades vossas e desta casa. "
       extraData: ExtraData
       inputSetIndex: 2
       outputNodeIndex: 3
@@ -135,8 +135,7 @@ MonoBehaviour:
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
-    - text: "Hoje, trazemos a voc\xEAs uma cobertura especial das festas da aldeia
-        de S\xE3o Martinho!"
+    - text: "Mas n\xE3o pude deixar de reparar algu\xE9m novo por aqui!"
       extraData: ExtraData
       inputSetIndex: 2
       outputNodeIndex: -1
@@ -151,8 +150,8 @@ MonoBehaviour:
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
-    - text: "Agora, vamos ao vivo at\xE9 \xE0 aldeia, onde o nosso rep\xF3rter est\xE1
-        a acompanhar as festividades."
+    - text: "Av\xF3, quem \xE9 o novo gatinho? Vi um gato preto nas fotos e ele at\xE9
+        fugiu de mim h\xE1 pouco!\""
       extraData: ExtraData
       inputSetIndex: 2
       outputNodeIndex: -1
@@ -170,20 +169,50 @@ MonoBehaviour:
     ID: 2
     rect:
       serializedVersion: 2
-      x: -870
-      y: -200
+      x: 340
+      y: -130
       width: 348
-      height: 330
+      height: 315
     pTag: '[PLAYER_NAME]'
     expand: 1
     sprite: {fileID: 21300000, guid: 079768bd263350c4f983f1a39e8e153a, type: 3}
     vars: []
     varKeys: []
     isPlayer: 0
-  - commentCount: 1
+  - commentCount: 3
     s_comment:
-    - text: "Estamos aqui nas festas da aldeia, um evento que re\xFAne toda a comunidade
-        com alegria e celebra\xE7\xE3o. "
+    - text: "Ah, o Tobias! Ele \xE9 o nosso novo membro da fam\xEDlia."
+      extraData: ExtraData
+      inputSetIndex: 3
+      outputNodeIndex: 4
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 33
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: "Um gatinho cheio de personalidade que apareceu por aqui no in\xEDcio
+        do ano. "
+      extraData: ExtraData
+      inputSetIndex: 3
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: "Desde ent\xE3o, tem-nos feito companhia... e algumas asneiras!"
       extraData: ExtraData
       inputSetIndex: 3
       outputNodeIndex: -1
@@ -201,48 +230,45 @@ MonoBehaviour:
     ID: 3
     rect:
       serializedVersion: 2
-      x: -460
-      y: -150
+      x: 730
+      y: -130
       width: 348
-      height: 169
-    pTag: 
-    expand: 0
-    sprite: {fileID: 0}
+      height: 315
+    pTag: "Av\xF3"
+    expand: 1
+    sprite: {fileID: 21300000, guid: c4e9f45e12517fa4692783494329f7b3, type: 3}
     vars: []
     varKeys: []
     isPlayer: 0
-  S_actionNodes:
-  - pauseHere: 0
-    gameObjectName: IdentifyStutterController
-    methodName: AskQuestion
-    nameIndex: 5
-    methodIndex: 2
-    paramIndex: 0
-    opts:
-    - '[No method]'
-    - StartGame
-    - AskQuestion
-    nameOpts:
-    - '[No object]'
-    - DialogueText
-    - NPCName
-    - VideUIManager
-    - SaveManager
-    - IdentifyStutterController
-    param_bool: 0
-    param_string: 
-    param_int: 0
-    param_float: 0
+  - commentCount: 1
+    s_comment:
+    - text: "\xC9 verdade, [PLAYER_NAME]. O Tobias  \xE9 um verdadeiro aventureiro. "
+      extraData: ExtraData
+      inputSetIndex: 4
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 23
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 4
     rect:
       serializedVersion: 2
-      x: 660
-      y: -160
-      width: 200
-      height: 170
-    ID: 4
-    outPlayerIndex: -1
-    outActionIndex: -1
-    more: 0
-    ovrStartNode: -1
-    renameDialogue: 
+      x: -430
+      y: 290
+      width: 348
+      height: 247
+    pTag: "Av\xF4"
+    expand: 1
+    sprite: {fileID: 21300000, guid: d7a7607ed19a41049a5c3e66d8935b04, type: 3}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  S_actionNodes: []
   S_selNodes: []

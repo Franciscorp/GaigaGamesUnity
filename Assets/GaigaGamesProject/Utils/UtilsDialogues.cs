@@ -14,7 +14,7 @@ public  class UtilsDialogues{
         MainGameStory2 = 2,
         MainGameStory3 = 3,
         MainGameStory4 = 4,
-        MainGameStory5 = 5
+        GrandmaStory1 = 5
     }
 
     // Dictionary to map dialogue names to keys
@@ -25,7 +25,7 @@ public  class UtilsDialogues{
         { MainGameDialogues.MainGameStory2, "MainGameStory2" },
         { MainGameDialogues.MainGameStory3, "MainGameStory3" },
         { MainGameDialogues.MainGameStory4, "MainGameStory4" },
-        { MainGameDialogues.MainGameStory5, "MainGameStory5" },
+        { MainGameDialogues.GrandmaStory1, "MainGameGrandma1" },
     };
 
     // Static function to get the key associated with a dialogue name

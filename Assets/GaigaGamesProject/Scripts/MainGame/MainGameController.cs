@@ -146,6 +146,21 @@ public class MainGameController : MonoBehaviour
         DisableDialogue();
     }
 
+    public async void FirstInteractionWithGrandma()
+    {
+        ActivateDialogue(MainGameDialogues.GrandmaStory1);
+        currentDialogue = 5;
+    }
+
+    public async void EndFirstInteractionWithGrandma()
+    {
+        DisableDialogue();
+        // TODO estrondo, tirar avo
+        //animação avo, livros no meio do caminho
+        //animação
+        currentDialogue = 6;
+    }
+
     #endregion
 
     #region GameVisualsControl
@@ -154,6 +169,16 @@ public class MainGameController : MonoBehaviour
     {
         cameraAnimator.Play("CameraOut");
         await Task.Delay(300);
+        VideDialoguePanel.SetActive(true);
+        MobileControls.SetActive(false);
+        await Task.Delay(700);
+    }
+
+    public async void ActivateDialogue(MainGameDialogues dialogueID)
+    {
+        cameraAnimator.Play("CameraOut");
+        await Task.Delay(300);
+        videDialogueManager.SetupAndStartDialogue(GetMainGameDialogueKey(dialogueID));
         VideDialoguePanel.SetActive(true);
         MobileControls.SetActive(false);
         await Task.Delay(700);

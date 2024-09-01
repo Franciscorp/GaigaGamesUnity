@@ -7,7 +7,9 @@ public class PlayerInformation
 {
     private string username { get; set; }
     private Gender gender { get; set; }
+    public GameStages currentGameStage { get; set; }
     public IdentifyStutterInformation identifyStuterGameInfo { get; set; }
+    
 
     public PlayerInformation()
     {
@@ -22,6 +24,7 @@ public class PlayerInformation
         gender = GetGender();
         // Loads information if exists
         identifyStuterGameInfo = new IdentifyStutterInformation();
+        currentGameStage = LoadCurrentGameStage();
     }
 
     public void ResetMiniGamesInformation()
@@ -47,6 +50,23 @@ public class PlayerInformation
         string characterName = PlayerPrefs.GetString(Utils.UsernamePlayerPrefsKeyword);
         //Debug.Log(characterName);
         return characterName;
+    }
+
+    public GameStages LoadCurrentGameStage()
+    {
+        return (GameStages)PlayerPrefs.GetInt(Utils.GameStagePrefsKeyword, 0);
+    }
+
+    public GameStages GetCurrentGameStage()
+    {
+        return currentGameStage;
+    }
+
+    public void SetCurrentGameStage(GameStages gameStage)
+    {
+        PlayerPrefs.SetInt(Utils.GameStagePrefsKeyword, (int)gameStage);
+        PlayerPrefs.Save();
+        Debug.Log("Game Stage saved");
     }
 
     public void SetGender(Gender gender)

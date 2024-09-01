@@ -20,6 +20,7 @@ public class Utils
     public const string UsernameDialogueKeyword = "$username$";
     public const string UsernamePlayerPrefsKeyword = "Username";
     public const string GenderPlayerPrefsKeyword = "Gender";
+    public const string GameStagePrefsKeyword = "GameStage";
     public const string IdentifyStutterConclusionState = "IdentifyStutterConclusionState";
     public const string IdentifyStutterWrongAnswersDone = "IdentifyStutterWrongAnswersDone";
 
@@ -52,6 +53,15 @@ public class Utils
     {
         NotConcluded = 0,
         Concluded = 1
+    }
+
+    public enum GameStages
+    {
+        Beginning = 0,
+        IntroductionCompleted = 1,
+        GrandmaIntroductionCompleted = 2,
+        SpeechMachineDone = 3,
+        IdentifyStutter = 4
     }
 
 

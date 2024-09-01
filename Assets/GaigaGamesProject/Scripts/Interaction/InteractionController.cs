@@ -6,6 +6,7 @@ public class InteractionController : MonoBehaviour
 
     public GameObject interactionShadow;
     public GameObject interactionIcon;
+    public Interactable interactable;
 
     private void Start()
     {
@@ -14,6 +15,9 @@ public class InteractionController : MonoBehaviour
 
         if (interactionIcon == null)
             Debug.LogWarning("interactionIcon is null, please check Interactable objects");
+
+        if (interactable == null)
+            Debug.LogWarning("interactable is null, please check Interactable objects");
     }
 
     public void SetInteractionActive(bool active)
@@ -23,6 +27,9 @@ public class InteractionController : MonoBehaviour
 
         interactionShadow.SetActive(active);
         interactionIcon.SetActive(active);
+
+        if (active)
+            interactable.FreeInteractionWithObject();
     }
 
     public void HideInteraction()

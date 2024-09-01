@@ -379,3 +379,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionShadow: {fileID: 6844852533370613422}
   interactionIcon: {fileID: 7393327678302036342}
+  interactable: {fileID: 646450217212765468}

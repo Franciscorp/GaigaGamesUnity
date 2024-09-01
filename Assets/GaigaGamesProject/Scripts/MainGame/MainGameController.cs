@@ -13,6 +13,7 @@ public class MainGameController : MonoBehaviour
     // Game Vars
     private PlayerInformation playerInformation;
     private int currentDialogue = 0;
+    private GameStages currentGameStage = GameStages.Beginning;
 
     [field: Header("Game Objects")]
     // Game Objects 
@@ -22,19 +23,22 @@ public class MainGameController : MonoBehaviour
     private GameObject gameObjectCamera;
     private Camera camera;
     private Animator cameraAnimator;
+    public GameObject Grandpa;
     public List<InteractionController> interactions;
 
-    [field: Header("PlayerTobias")]
+    [field: Header("Sprites")]
     // Player and Tobias
     public GameObject Player;
+    public GameObject grandpaKitchen;
     public GameObject spriteBoy;
     public GameObject spriteGirl;
     public CatSpriteController TobiasSprite;
 
-
+    [field: Header("Animations")]
     // Events nad Playlable directors
     public PlayableDirector TobiasAppearsTimeline;
     public PlayableDirector TobiasDissapearsTimeline;
+    public PlayableDirector AfterIntroductionTimeline;
 
 
 
@@ -71,6 +75,7 @@ public class MainGameController : MonoBehaviour
         Debug.Log("Camera Idle");
         currentDialogue = 0;
 
+        Grandpa.SetActive(false);
         VideDialoguePanel.SetActive(false);
         MobileControls.SetActive(false);
     }
@@ -101,7 +106,7 @@ public class MainGameController : MonoBehaviour
                 TobiasAppears();
                 break;
             case 3:
-                TobiasDissapears();
+                //TobiasDissapears();
                 break;
             case 4:
                 TobiasDissapears();
@@ -145,26 +150,45 @@ public class MainGameController : MonoBehaviour
         currentDialogue++;
     }
 
+    // updates after story4 in VIDE
     public void EndIntroduction()
     {
+        UpdateGameStage(GameStages.IntroductionCompleted);
         DisableDialogue();
     }
 
-    public async void FirstInteractionWithGrandma()
+    private void UpdateGameStage(GameStages gameStage)
     {
-        SetActiveInteraction(false);
-        ActivateDialogue(MainGameDialogues.GrandmaStory1);
-        currentDialogue = 5;
+        currentGameStage = gameStage;
+        playerInformation.SetCurrentGameStage(currentGameStage);
+    }
+
+    public void FirstInteractionWithGrandma()
+    {
+        if (currentGameStage == GameStages.IntroductionCompleted)
+        {
+            SetActiveInteraction(false);
+            ActivateDialogue(MainGameDialogues.GrandmaStory1);
+            currentDialogue = 5;
+        }
+        else
+        {
+            Debug.LogError("TODO alternative chat");
+        }
     }
 
     public async void EndFirstInteractionWithGrandma()
     {
         //SetActiveInteraction(true);
         DisableDialogue();
+        AfterIntroductionTimeline.Play();
         // TODO estrondo, tirar avo
         //animação avo, livros no meio do caminho
         //animação
         currentDialogue = 6;
+        await Task.Delay(1800);
+        SetActiveInteraction(true);
+        UpdateGameStage(GameStages.GrandmaIntroductionCompleted);
     }
 
     #endregion

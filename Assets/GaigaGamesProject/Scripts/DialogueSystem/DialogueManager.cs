@@ -81,15 +81,6 @@ public class DialogueManager : MonoBehaviour
                 Debug.LogError(ex);
             }
 
-            try
-            {
-                gameManager.GetComponent<MainGameController>().dialogueEvent.AddListener(OnDialogueEvent);
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError(ex);
-            }
-
             Debug.Log("[DialogueManager] Dialogue Events are connected");
         }
 

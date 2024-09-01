@@ -13,7 +13,7 @@ public class CatSpriteController : MonoBehaviour
         NormalCat = 0,
         ConfusedCat = 1,
         HappyCat = 2,
-        StopCat = 3
+        CatMeows = 3
     }
 
 

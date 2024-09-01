@@ -29,6 +29,7 @@ public class VideUIManager : MonoBehaviour
     public TextMeshProUGUI npcName;
     public TextMeshProUGUI dialogueText;
     public GameObject continueIcon;
+    public GameObject nextLineButton;
 
     bool dialoguePaused = false; //Custom variable to prevent the manager from calling VD.Next
     bool animatingText = false; //Will help us know when text is currently being animated
@@ -79,6 +80,18 @@ public class VideUIManager : MonoBehaviour
         {
             CallNext();
         }
+    }
+
+    public void DisableContinueButton()
+    {
+        continueIcon.SetActive(false);
+        nextLineButton.SetActive(false);
+    }
+
+    public void EnableContinueButton()
+    {
+        nextLineButton.SetActive(true);
+        //continueIcon.SetActive(true);
     }
 
     //This begins the conversation
@@ -287,6 +300,7 @@ public class VideUIManager : MonoBehaviour
         dialogueText.text = text;
         animatingText = false;
         continueIcon.SetActive(true);
+        nextLineButton.SetActive(true);
     }
 
     void CutTextAnim()
@@ -295,6 +309,7 @@ public class VideUIManager : MonoBehaviour
         dialogueText.text = VD.nodeData.comments[VD.nodeData.commentIndex]; //Now just copy full text		
         animatingText = false;
         continueIcon.SetActive(true);
+        nextLineButton.SetActive(true);
     }
 
     #endregion

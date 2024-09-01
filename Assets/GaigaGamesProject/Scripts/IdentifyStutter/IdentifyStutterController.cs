@@ -180,7 +180,7 @@ public class IdentifyStutterController : MonoBehaviour
     public void CatStopsTV()
     {
         AudioManager.Instance.PlayOneShot(FModEvents.Instance.stopTvCatSFX);
-        PlayCatSprite(CatSpriteID.StopCat);
+        PlayCatSprite(CatSpriteID.CatMeows);
     }
 
     public void PlayConfusedCat()

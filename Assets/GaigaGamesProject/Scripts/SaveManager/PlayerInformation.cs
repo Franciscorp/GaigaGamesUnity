@@ -11,6 +11,13 @@ public class PlayerInformation
 
     public PlayerInformation()
     {
+        LoadData();
+    }
+
+    // Loads information async, stops lag
+    // TODO this is bad, because it was loading multiple times without necessity
+    public async void LoadData()
+    {
         username = GetCharacterName();
         gender = GetGender();
         // Loads information if exists
@@ -33,7 +40,7 @@ public class PlayerInformation
     public string GetCharacterName()
     {
         string characterName = PlayerPrefs.GetString(Utils.UsernamePlayerPrefsKeyword);
-        Debug.Log(characterName);
+        //Debug.Log(characterName);
         return characterName;
     }
 

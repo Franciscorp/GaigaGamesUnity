@@ -679,10 +679,14 @@ MonoBehaviour:
   - Demo_tutorial
   - Example3Dialogue
   - Example4_dialogue
+  - IdentifyStutterBadConclusion
+  - IdentifyStutterBestConclusion
+  - IdentifyStutterConclusion
   - IdentifyStutterGameIntroduction
   - IdentifyStutterGameIntroduction2
+  - IdentifyStutterGoodConclusion
   - IdentifyStutterQuestion1
-  - Item_LookUp
+  - IdentifyStutterQuestion2
   - IdentifyStutterQuestion3
   - IdentifyStutterQuestion4
   - IdentifyStutterQuestion5
@@ -692,14 +696,17 @@ MonoBehaviour:
   - IdentifyStutterQuestion9
   - Item_LookUp
   - Laura
+  - MainGameStory1
+  - MainGameStory2
+  - MainGameStory3
   - MrCube
   - NPCOnly
   - QuestChartDemo
   - TriggeredDude
-  - 
-  assignedIndex: 11
-  assignedID: 4709
-  assignedDialogue: IdentifyStutterQuestion2
+  - Witch
+  assignedIndex: 25
+  assignedID: 10669
+  assignedDialogue: MainGameStory1
   interactionCount: 0
   alias: 
   overrideStartNode: -1
@@ -733,6 +740,7 @@ MonoBehaviour:
   npcName: {fileID: 7497160344643016373}
   dialogueText: {fileID: 7775851394015244674}
   continueIcon: {fileID: 3869616825445541040}
+  nextLineButton: {fileID: 5616361305286640331}
   dialogueEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1548,7 +1556,7 @@ RectTransform:
   m_GameObject: {fileID: 7004859955046241004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8385128926385262499}

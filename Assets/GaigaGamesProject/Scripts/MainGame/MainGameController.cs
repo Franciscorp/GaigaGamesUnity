@@ -2,27 +2,37 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Playables;
 using static Utils;
+using static UtilsDialogues;
 using static UtilsSpeechMachine;
 
 public class MainGameController : MonoBehaviour
 {
+    // Game Vars
     private PlayerInformation playerInformation;
     private int currentDialogue = 0;
 
-    public GameObject dialoguePanel;
-    private GameObject dialogueManager;
+    // Game Objects 
+    public GameObject VideDialoguePanel;
+    private VideUIManager videDialogueManager;
+    public GameObject MobileControls;
     private GameObject gameObjectCamera;
     private Camera camera;
     private Animator cameraAnimator;
 
+    // Player and Tobias
     public GameObject Player;
     public GameObject spriteBoy;
     public GameObject spriteGirl;
+    public CatSpriteController TobiasSprite;
 
-    // Events
-    public BaseDialogueEvent dialogueEvent;
-    
+
+    // Events nad Playlable directors
+    public PlayableDirector TobiasAppearsTimeline;
+
+
+
     private void Awake()
     {
         playerInformation = new PlayerInformation();
@@ -41,15 +51,13 @@ public class MainGameController : MonoBehaviour
         else
             Debug.LogError("Can't find camera in Main game");
 
-        dialogueManager = GameObject.FindGameObjectsWithTag("DialogueManager").FirstOrDefault();
-        if (dialogueManager != null)
-        {
-            //dialogueManager.GetComponent<DialogueManager>().OnGameIsOverDialogueCompleted.AddListener(GameCompleted);
-            //dialogueManager.GetComponent<DialogueManager>().OnIntroductionDialogueCompleted.AddListener(IntroductionCompleted);
-            dialogueManager.GetComponent<DialogueManager>().OnDialogueCompleted.AddListener(DialogueCompleted);
-        }
+        if (VideDialoguePanel != null)
+            videDialogueManager = VideDialoguePanel.GetComponentInChildren<VideUIManager>();
+        else
+            Debug.LogError("VideDialoguePanel is null");
 
         SetInitialGameStatus();
+
     }
 
     private void SetInitialGameStatus()
@@ -58,43 +66,34 @@ public class MainGameController : MonoBehaviour
         Debug.Log("Camera Idle");
         currentDialogue = 0;
 
-        dialoguePanel.SetActive(false);
+        VideDialoguePanel.SetActive(false);
+        MobileControls.SetActive(false);
     }
 
-    public async void ActivateDialogue()
-    {
-        cameraAnimator.Play("CameraOut");
-        dialoguePanel.SetActive(true);
-        await Task.Delay(1000);
-    }
+    #region GameControl
 
-    public async void DisableDialogue()
-    {
-        cameraAnimator.Play("CameraIn");
-        await Task.Delay(1000);
-        dialoguePanel.SetActive(false);
-    }
-
+    // Called by the first timeline signal
     public async void StartGameIntroduction()
     {
         cameraAnimator.Play("CameraOut");
-        dialoguePanel.SetActive(true);
-        await Task.Delay(1000);
-        //InvokeDialogueEvent(Scene.MainGame, DialogueEventType.LongerIntro);
-        InvokeDialogueEvent(Scene.MainGame, DialogueEventType.Intro);
+        await Task.Delay(300);
+        VideDialoguePanel.SetActive(true);
+        videDialogueManager.SetupAndStartDialogue(GetMainGameDialogueKey(MainGameDialogues.MainGameStory1));
+        await Task.Delay(700);
+        currentDialogue++;
     }
 
-    private void DialogueCompleted()
+    public void DialogueCompleted()
     {
         Debug.Log("DialogueCompleted");
-        currentDialogue = 0;
 
         switch (currentDialogue)
         {
             case 1:
-                // nothing to do
+                DisplayPhotos();
                 break;
             case 2:
+                TobiasAppears();
                 break;
             case 3:
                 break;
@@ -104,31 +103,60 @@ public class MainGameController : MonoBehaviour
         }
     }
 
-    // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
-    // if so, it doesn't show anything
-    private void InvokeDialogueEvent(Scene currentScene, DialogueEventType dialogueEventType)
+    public async void DisplayPhotos()
     {
-        if (dialogueEvent != null)
-            dialogueEvent.Invoke(currentScene, dialogueEventType);
-        else
-            Debug.LogWarning("Invoking Dialogue Event went wrong. Check Main Game Controller");
+        videDialogueManager.SetupAndRestartDialogue(GetMainGameDialogueKey(MainGameDialogues.MainGameStory2));
+        currentDialogue++;
     }
+
+    public void TobiasAppears()
+    {
+        videDialogueManager.DisableContinueButton();
+        TobiasAppearsTimeline.Play();
+        currentDialogue++;
+    }
+
+    #endregion
+
+    #region GameVisualsControl
+
+    public async void ActivateDialogue()
+    {
+        cameraAnimator.Play("CameraOut");
+        VideDialoguePanel.SetActive(true);
+        MobileControls.SetActive(false);
+        await Task.Delay(1000);
+    }
+
+    public async void DisableDialogue()
+    {
+        cameraAnimator.Play("CameraIn");
+        await Task.Delay(1000);
+        VideDialoguePanel.SetActive(false);
+        MobileControls.SetActive(true);
+    }
+
 
     private async void TransitionCameraToDialogue()
     {
         await Task.Delay(4000);
 
-        //camera.View
         Debug.Log("Camera Rect = " + camera.rect);
-        //cameraAnimator.SetBool("CameraOut", true);
-        //cameraAnimator.SetBool("CameraIn", false);
         cameraAnimator.Play("CameraOut");
-        
+
         await Task.Delay(4000);
 
         cameraAnimator.Play("CameraIn");
+    }
 
-        //camera.rect = new Rect(0.0f, 0.26f, 1.0f, 1.0f);
+
+    public async void TobiasMeows()
+    {
+        TobiasSprite.UpdateContent(CatSpriteController.CatSpriteID.CatMeows);
+        await Task.Delay(500);
+        videDialogueManager.SetupAndRestartDialogue(GetMainGameDialogueKey(MainGameDialogues.MainGameStory3));
+        await Task.Delay(500);
+        TobiasSprite.UpdateContent(CatSpriteController.CatSpriteID.NormalCat);
     }
 
 
@@ -136,7 +164,7 @@ public class MainGameController : MonoBehaviour
     {
         var sprites = Player.GetComponents<SpriteRenderer>();
 
-        if (playerInformation.GetGender() == Gender.Male) 
+        if (playerInformation.GetGender() == Gender.Male)
         {
             spriteBoy.SetActive(true);
             spriteGirl.SetActive(false);
@@ -147,4 +175,13 @@ public class MainGameController : MonoBehaviour
             spriteGirl.SetActive(true);
         }
     }
+
+
+    #endregion
+
+
+
+
+
+
 }

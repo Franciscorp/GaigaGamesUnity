@@ -162,6 +162,7 @@ public class IdentifyStutterController : MonoBehaviour
         isEndGame = true;
         AudioManager.Instance.PlayOneShot(FModEvents.Instance.gameOverSFX);
         Debug.Log("End Game");
+        playerInformation.SetCurrentGameStage(Utils.GameStages.IdentifyStutter);
         WaitForJingleToEnd();
     }
 

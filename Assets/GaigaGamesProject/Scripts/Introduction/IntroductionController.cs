@@ -15,6 +15,7 @@ public class IntroductionController : MonoBehaviour
     private PlayerInformation playerInformation;
 
     // Game Objects
+    public GamesMenu gamesMenu;
     public GameObject dialoguePanel;
     private GameObject dialogueManager;
     public GameObject nameRequestTextInput;
@@ -64,6 +65,8 @@ public class IntroductionController : MonoBehaviour
             dialogueManager.GetComponent<DialogueManager>().OnIntroductionDialogueCompleted.AddListener(IntroductionCompleted);
             dialogueManager.GetComponent<DialogueManager>().OnDialogueCompleted.AddListener(DialogueCompleted);
         }
+
+        gamesMenu = GetComponent<GamesMenu>();
 
         SetInitialGameStatus();
 
@@ -211,6 +214,8 @@ public class IntroductionController : MonoBehaviour
         scene3.GetComponent<IntroductionScene3Controller>().SetSceneAccordingToGender(playerInformation.GetGender());
 
         ThirdSceneTimeline.Play();
+        await Task.Delay(3600);
+        gamesMenu.StartMainGame();
     }
 
     public void ChangeToGrandmasHouseScene1()

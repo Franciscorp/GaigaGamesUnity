@@ -2026,17 +2026,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &629019767 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 646450217212765468, guid: 84be178ca18ca514da0745b89edaadf3, type: 3}
-  m_PrefabInstance: {fileID: 1040631605}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48397647bac95b044b679a2538aad1f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &637528531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2156,7 +2145,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 31b0ec17074b9454b87f37a11e0b96fd, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -3066,6 +3055,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 772896956}
     m_Modifications:
+    - target: {fileID: 646450217212765468, guid: 84be178ca18ca514da0745b89edaadf3, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1164934422}
     - target: {fileID: 1713474166286840782, guid: 84be178ca18ca514da0745b89edaadf3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.676132
@@ -3106,10 +3099,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5154185579666011883, guid: 84be178ca18ca514da0745b89edaadf3, type: 3}
-      propertyPath: interactable
-      value: 
-      objectReference: {fileID: 629019767}
     - target: {fileID: 8979540996852435818, guid: 84be178ca18ca514da0745b89edaadf3, type: 3}
       propertyPath: m_Name
       value: Mannequin
@@ -3538,6 +3527,7 @@ GameObject:
   - component: {fileID: 1164934420}
   - component: {fileID: 1164934419}
   - component: {fileID: 1164934421}
+  - component: {fileID: 1164934422}
   m_Layer: 0
   m_Name: MainGameController
   m_TagString: Untagged
@@ -3569,6 +3559,7 @@ MonoBehaviour:
   spriteBoy: {fileID: 1471682590}
   spriteGirl: {fileID: 498286724}
   TobiasSprite: {fileID: 75395543}
+  Scene1: {fileID: 649493901}
   TobiasAppearsTimeline: {fileID: 1571840150}
   TobiasDissapearsTimeline: {fileID: 586331049}
   AfterIntroductionTimeline: {fileID: 413904494}
@@ -3653,6 +3644,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1164934422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164934418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c51af2b91c5a4e4c9e7f657679d9794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1221725762
 GameObject:
   m_ObjectHideFlags: 0

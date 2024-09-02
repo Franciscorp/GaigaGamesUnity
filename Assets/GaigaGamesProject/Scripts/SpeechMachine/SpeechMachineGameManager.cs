@@ -9,6 +9,8 @@ using static UtilsSpeechMachine;
 
 public class SpeechMachineGameManager : MonoBehaviour
 {
+    private PlayerInformation playerInformation;
+
     private GameObject dialogueManager;
     private Coroutine suggestionCoroutine;
     private Coroutine introEventCoroutine;
@@ -54,6 +56,7 @@ public class SpeechMachineGameManager : MonoBehaviour
 
     private void Start()
     {
+        playerInformation = new PlayerInformation();
         introEventCoroutine = StartCoroutine(TryUntilInvokeIntro());
         StartCountdownForSuggestion();
         AudioManager.Instance.PlayOneShot(FModEvents.Instance.SpeechMachineMusic);
@@ -77,6 +80,7 @@ public class SpeechMachineGameManager : MonoBehaviour
     {
         Debug.Log("SpeechMachine Controller - GameCompleted()");
         AudioManager.Instance.PlayOneShot(FModEvents.Instance.gameOverSFX);
+        playerInformation.SetCurrentGameStage(Utils.GameStages.SpeechMachineDone);
         StartCoroutine(WaitForJingleToEnd());
     }
 

@@ -892,6 +892,7 @@ GameObject:
   - component: {fileID: 672854505}
   - component: {fileID: 672854504}
   - component: {fileID: 672854506}
+  - component: {fileID: 672854507}
   m_Layer: 0
   m_Name: IntroductionController
   m_TagString: Untagged
@@ -911,6 +912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 336492b235fa76f45916c4287d7fb0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamesMenu: {fileID: 0}
   dialoguePanel: {fileID: 1698223025}
   nameRequestTextInput: {fileID: 1424831375}
   genderChoicePanelButton: {fileID: 1693290835}
@@ -967,6 +969,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &672854507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672854503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c51af2b91c5a4e4c9e7f657679d9794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &683940977
 GameObject:
   m_ObjectHideFlags: 0

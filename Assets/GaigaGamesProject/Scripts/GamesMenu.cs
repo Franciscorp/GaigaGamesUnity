@@ -12,4 +12,9 @@ public class GamesMenu : MonoBehaviour
     {
         SceneLoader.Load(SceneLoader.Scene.SpeechMachine);
     }
+
+    public void StartMainGame()
+    {
+        SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
+    }
 }

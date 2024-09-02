@@ -231,14 +231,14 @@ MonoBehaviour:
   continueIcon: {fileID: 4152135414541316592}
   continueAnimation: {fileID: 5744690903881259238}
   npcImages:
-  - {fileID: 21300000, guid: 7894c9afdae30ef42b4a119aa24c01ef, type: 3}
-  - {fileID: 21300000, guid: 2b131a31127dc2c42a3c9e51e7a119c8, type: 3}
-  - {fileID: 21300000, guid: dcff9911f8695d0439770c7a9dd2a940, type: 3}
-  - {fileID: 21300000, guid: 2f7677f80ca2f1b4a90dd08a1364ac77, type: 3}
-  - {fileID: 21300000, guid: 78ff39b1b4e613d428c321d3102dd53c, type: 3}
-  - {fileID: 21300000, guid: b66fccf650baed44f8b7a8c7d65b430c, type: 3}
-  - {fileID: 21300000, guid: cf59e5301df6c2340a6bb5b05ff34194, type: 3}
-  - {fileID: 21300000, guid: 0fb390ff7f197164cabde1db5b1933f9, type: 3}
+  - {fileID: 21300000, guid: 3445726630f15574f92cf3b32569c223, type: 3}
+  - {fileID: 21300000, guid: df45ebb7f9aaf69438c8b127d8e06c1a, type: 3}
+  - {fileID: 21300000, guid: 079768bd263350c4f983f1a39e8e153a, type: 3}
+  - {fileID: 21300000, guid: 7fe20fd873484a14091aee6ae1f35723, type: 3}
+  - {fileID: 21300000, guid: b1bf274acd02df944a5a7292fe0b59a7, type: 3}
+  - {fileID: 21300000, guid: c4e9f45e12517fa4692783494329f7b3, type: 3}
+  - {fileID: 21300000, guid: d7a7607ed19a41049a5c3e66d8935b04, type: 3}
+  - {fileID: 21300000, guid: bb79801beadd64e4283f9b9b2e28cc27, type: 3}
   dialogueKeys: []
   wordSpeed: 0.06
   OnGameIsOverDialogueCompleted:

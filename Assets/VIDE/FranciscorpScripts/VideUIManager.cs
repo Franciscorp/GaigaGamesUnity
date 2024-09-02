@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -82,8 +83,11 @@ public class VideUIManager : MonoBehaviour
         }
     }
 
-    public void DisableContinueButton()
+    public async void DisableContinueButton()
     {
+        // TODO wrong in terms of logic, but gains enough time to dissapear with button
+        await Task.Delay(20);
+        containerDialogue.SetActive(true);
         continueIcon.SetActive(false);
         nextLineButton.SetActive(false);
     }

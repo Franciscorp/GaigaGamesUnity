@@ -36,6 +36,7 @@ public class MainGameController : MonoBehaviour
 
     [field: Header("Animations")]
     // Events nad Playlable directors
+    public PlayableDirector Scene1;
     public PlayableDirector TobiasAppearsTimeline;
     public PlayableDirector TobiasDissapearsTimeline;
     public PlayableDirector AfterIntroductionTimeline;
@@ -66,7 +67,7 @@ public class MainGameController : MonoBehaviour
             Debug.LogError("VideDialoguePanel is null");
 
         SetInitialGameStatus();
-
+        SetGameStage();
     }
 
     private void SetInitialGameStatus()
@@ -80,7 +81,90 @@ public class MainGameController : MonoBehaviour
         MobileControls.SetActive(false);
     }
 
+    #region GameStages
+
+    public void SetIntroductionCompletedGameStage()
+    {
+        currentDialogue = 5;
+        MobileControls.SetActive(true);
+        Debug.Log("Tobias transform = " + TobiasSprite.transform.localPosition);
+        Transform tobiasTransform = TobiasSprite.transform;
+        tobiasTransform.localPosition = new Vector3(19.63f, 1.94f, 0f);
+    }
+
+    public void SetGrandmaIntroductionCompletedGameStage()
+    {
+        Debug.Log("SetGrandmaIntroductionCompletedGameStage");
+
+        Grandpa.SetActive(true);
+        grandpaKitchen.SetActive(false);
+        MobileControls.SetActive(true);
+        
+        TobiasSprite.transform.localPosition = new Vector3(15.55f, 5.02f, 0f);
+        Player.transform.localPosition = new Vector3(21.63f, -0.3699484f, 3.5f);
+    }
+
+    public void SetSpeechMachineDoneGameStage()
+    {
+        Debug.Log("SetSpeechMachineDoneGameStage");
+
+        Grandpa.SetActive(true);
+        grandpaKitchen.SetActive(false);
+        MobileControls.SetActive(true);
+
+        TobiasSprite.transform.localPosition = new Vector3(15.55f, 5.02f, 0f);
+        Player.transform.localPosition = new Vector3(20f, 5.44f, 3.5f);
+    }
+
+    public void SetIdentifyStutterGameStage()
+    {
+        Debug.Log("SetIdentifyStutterGameStage");
+
+        Grandpa.SetActive(true);
+        grandpaKitchen.SetActive(false);
+        MobileControls.SetActive(true);
+
+        TobiasSprite.transform.localPosition = new Vector3(15.55f, 5.02f, 0f);
+        Player.transform.localPosition = new Vector3(10.75f, -0.37f, 3.5f);
+    }
+
+    #endregion
+
     #region GameControl
+
+    public void temp()
+    {
+        playerInformation.SetCurrentGameStage(GameStages.IdentifyStutter);
+        playerInformation.SetCharacterName("Franciscorp");
+    }
+
+    public void SetGameStage()
+    {
+        //temp();
+        Debug.Log("Set game stage = " + playerInformation.GetCurrentGameStage());
+
+        switch (playerInformation.GetCurrentGameStage())
+        {
+            case GameStages.Beginning:
+                Scene1.Play();
+                break;
+            case GameStages.IntroductionCompleted:
+                SetIntroductionCompletedGameStage();
+                break;
+            case GameStages.GrandmaIntroductionCompleted:
+                SetGrandmaIntroductionCompletedGameStage();
+                break;
+            case GameStages.SpeechMachineDone:
+                SetSpeechMachineDoneGameStage();
+                break;
+            case GameStages.IdentifyStutter:
+                SetIdentifyStutterGameStage();
+                break;
+            default:
+                Debug.LogError("SetGameStage default value. Shouldn't happen");
+                break;
+        }
+    }
 
     // Called by the first timeline signal
     public async void StartGameIntroduction()
@@ -106,7 +190,7 @@ public class MainGameController : MonoBehaviour
                 TobiasAppears();
                 break;
             case 3:
-                //TobiasDissapears();
+                TobiasDissapears();
                 break;
             case 4:
                 TobiasDissapears();
@@ -167,13 +251,14 @@ public class MainGameController : MonoBehaviour
     {
         if (currentGameStage == GameStages.IntroductionCompleted)
         {
-            SetActiveInteraction(false);
+            //SetActiveInteraction(false);
             ActivateDialogue(MainGameDialogues.GrandmaStory1);
             currentDialogue = 5;
         }
         else
         {
-            Debug.LogError("TODO alternative chat");
+            ActivateDialogue(MainGameDialogues.GrandmaAltStory1);
+            //Debug.LogError("TODO alternative chat");
         }
     }
 
@@ -187,7 +272,7 @@ public class MainGameController : MonoBehaviour
         //animação
         currentDialogue = 6;
         await Task.Delay(1800);
-        SetActiveInteraction(true);
+        //SetActiveInteraction(true);
         UpdateGameStage(GameStages.GrandmaIntroductionCompleted);
     }
 

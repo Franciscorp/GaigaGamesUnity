@@ -41,6 +41,7 @@ public class GamePanelController : MonoBehaviour
 
     public void SetOptionIDAndDisplayButtons(int optionID)
     {
+        Debug.Log("SetOptionIDAndDisplayButtons = " + optionID);
         startGame.gameObject.SetActive(true);
         startGame.onClick.AddListener(() => GameButtonPressed(optionID));
         returnGame.gameObject.SetActive(true);
@@ -69,7 +70,7 @@ public class GamePanelController : MonoBehaviour
     public void GameButtonPressed(int option = -1)
     {
         buttonIDEvent.Invoke(option);
-        HideButtons();
+        //HideButtons();
     }
 
 }

@@ -48,6 +48,15 @@ public class MainGameController : MonoBehaviour
     {
         Utils.SetScreenAlwaysOn();
         playerInformation = new PlayerInformation();
+        temp();
+    }
+
+
+    public void temp()
+    {
+        playerInformation.SetCurrentGameStage(GameStages.SpeechMachineDone);
+        playerInformation.SetCharacterName("Jogador");
+        playerInformation.SetGender(Gender.Female);
     }
 
     private void Start()
@@ -122,7 +131,10 @@ public class MainGameController : MonoBehaviour
         SetActiveMobileControls(true);
 
         TobiasSprite.transform.localPosition = new Vector3(15.55f, 5.02f, 0f);
-        Player.transform.localPosition = new Vector3(20f, 5.44f, 3.5f);
+        // real
+        //Player.transform.localPosition = new Vector3(20f, 5.44f, 3.5f);
+        // tmp
+        Player.transform.localPosition = new Vector3(10.75f, -0.37f, 3.5f);
     }
 
     public void SetIdentifyStutterGameStage()
@@ -141,15 +153,8 @@ public class MainGameController : MonoBehaviour
 
     #region GameControl
 
-    public void temp()
-    {
-        playerInformation.SetCurrentGameStage(GameStages.SpeechMachineDone);
-        playerInformation.SetCharacterName("Franciscorp");
-    }
-
     public void SetGameStage()
     {
-        temp();
         Debug.Log("Set game stage = " + playerInformation.GetCurrentGameStage());
 
         switch (playerInformation.GetCurrentGameStage())

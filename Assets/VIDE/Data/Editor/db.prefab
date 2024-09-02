@@ -44,24 +44,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268dc70b105993846a123be43345df63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileIndex: 26
+  fileIndex: 13
   skinIndex: 0
   loadTag: 
   startID: 0
   curFocusID: 0
-  currentID: 86108
+  currentID: 15357
   autosave: 1
   previewPanning: 0
-  currentDiag: 26
+  currentDiag: 13
   locEdit: 1
   pNodeID: 18
   aNodeID: 2
   S_playerDiags:
   - commentCount: 1
     s_comment:
-    - text: "J\xE1 encontraste o boneco? "
+    - text: "Impressionante, s\xF3 erraste [WRONG_ANSWERS] pergunta(s)! Est\xE1s
+        mesmo a apanhar o jeito de perceber os diferentes tipos de gaguez."
       extraData: ExtraData
       inputSetIndex: 0
+      outputNodeIndex: -1
+      outActionIndex: 0
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 78
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 0
+    rect:
+      serializedVersion: 2
+      x: -170
+      y: 210
+      width: 348
+      height: 277
+    pTag: "Av\xF4"
+    expand: 1
+    sprite: {fileID: 21300000, guid: d7a7607ed19a41049a5c3e66d8935b04, type: 3}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 1
+    s_comment:
+    - text: "Acho que est\xE1s pronto para o pr\xF3ximo desafio! Agora a conhecer
+        melhor os diferentes tipos de gaguez!"
+      extraData: ExtraData
+      inputSetIndex: 1
       outputNodeIndex: -1
       outActionIndex: -1
       showmore: 0
@@ -74,18 +106,111 @@ MonoBehaviour:
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
-    ID: 0
+    ID: 2
     rect:
       serializedVersion: 2
-      x: 190
-      y: 220
+      x: 490
+      y: 280
       width: 348
-      height: 129
-    pTag: 
-    expand: 0
-    sprite: {fileID: 0}
+      height: 262
+    pTag: "Av\xF4"
+    expand: 1
+    sprite: {fileID: 21300000, guid: d7a7607ed19a41049a5c3e66d8935b04, type: 3}
     vars: []
     varKeys: []
     isPlayer: 0
-  S_actionNodes: []
+  S_actionNodes:
+  - pauseHere: 0
+    gameObjectName: IdentifyStutterController
+    methodName: EndGame
+    nameIndex: 9
+    methodIndex: 6
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - StartGame
+    - AskQuestion
+    - RightAnswer
+    - WrongQuestion
+    - PresentConclusion
+    - EndGame
+    - CatStopsTV
+    - PlayConfusedCat
+    - PlayHappyCat
+    nameOpts:
+    - '[No object]'
+    - Text (TMP)
+    - Text (TMP)
+    - Text (TMP)
+    - DialogueText
+    - NPCName
+    - VideUIManager
+    - SaveManager
+    - Text (TMP)
+    - IdentifyStutterController
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: 230
+      y: 120
+      width: 200
+      height: 170
+    ID: 1
+    outPlayerIndex: -1
+    outActionIndex: 1
+    more: 0
+    ovrStartNode: -1
+    renameDialogue: 
+  - pauseHere: 0
+    gameObjectName: VideUIManager
+    methodName: DisableContinueButton
+    nameIndex: 7
+    methodIndex: 10
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - GetAssigned
+    - AssignNew
+    - SaveState
+    - LoadState
+    - OnBeforeSerialize
+    - OnAfterDeserialize
+    - SetupAndStartDialogue
+    - SetupAndRestartDialogue
+    - InteractWithDialogue
+    - DisableContinueButton
+    - EnableContinueButton
+    - CallNext
+    - SetPlayerChoice
+    - DialogueEndActionHandler
+    nameOpts:
+    - '[No object]'
+    - SaveManager
+    - Text (TMP)
+    - Text (TMP)
+    - Text (TMP)
+    - DialogueText
+    - NPCName
+    - VideUIManager
+    - Text (TMP)
+    - IdentifyStutterController
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: 470
+      y: 60
+      width: 200
+      height: 170
+    ID: 3
+    outPlayerIndex: 1
+    outActionIndex: -1
+    more: 0
+    ovrStartNode: -1
+    renameDialogue: 
   S_selNodes: []

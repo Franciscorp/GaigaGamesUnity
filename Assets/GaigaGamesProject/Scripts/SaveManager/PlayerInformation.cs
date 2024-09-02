@@ -54,7 +54,7 @@ public class PlayerInformation
 
     public string LoadCharacterName()
     {
-        string characterName = PlayerPrefs.GetString(Utils.UsernamePlayerPrefsKeyword);
+        string characterName = PlayerPrefs.GetString(Utils.UsernamePlayerPrefsKeyword, "Jogador");
         //Debug.Log(characterName);
         return characterName;
     }

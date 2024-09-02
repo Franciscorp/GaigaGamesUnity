@@ -1616,6 +1616,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideDialoguePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: assignedID
+      value: 15932
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: assignedIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475668682226169577, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
+      propertyPath: assignedDialogue
+      value: IdentifyStutterGameIntroduction
+      objectReference: {fileID: 0}
     - target: {fileID: 8609698771294837719, guid: 2f701cfac70d4734f914279777cc1459, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 101

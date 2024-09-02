@@ -89,13 +89,14 @@ public class IdentifyStutterController : MonoBehaviour
         CatSprite.UpdateContent(CatSpriteID.NormalCat);
 
         if (rightAnswers < MAX_AVAILABLE_ANSWERS)
+        //if (rightAnswers < 1)
         {
             AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.tvTalkingSFX);
             TVContent.UpdateContent(TVContentID.FriendTalking);
             IdentifyStutterDialogues currentQuestion = GetAvailableQuestionEnum();
             Debug.Log(currentQuestion);
-            //dialogueManager.SetupAndRestartDialogue(GetDialogueKey(currentQuestion));
-            dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.Question1));
+            dialogueManager.SetupAndRestartDialogue(GetDialogueKey(currentQuestion));
+            //dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.Question1));
         }
         else
         {
@@ -164,7 +165,10 @@ public class IdentifyStutterController : MonoBehaviour
     {
         await Task.Delay(4800);
         Debug.Log("WaitForJingleToEnd");
-        SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
+        //SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
+        // TODO delete
+        await Task.Delay(1000);
+        Application.Quit();
     }
 
 

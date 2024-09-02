@@ -48,12 +48,12 @@ public class VideUIManager : MonoBehaviour
     private void Awake()
     {
         Utils.SetScreenAlwaysOn();
+        playerInformation = new PlayerInformation();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        playerInformation = new PlayerInformation();
         containerIdentifyChoices.SetActive(false);
     }
 

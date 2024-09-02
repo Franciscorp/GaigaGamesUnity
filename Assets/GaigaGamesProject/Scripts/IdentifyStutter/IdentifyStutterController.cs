@@ -183,7 +183,8 @@ public class IdentifyStutterController : MonoBehaviour
         AudioManager.Instance.PlayOneShot(FModEvents.Instance.wrongAnswerCatSFX);
         //AudioManager.Instance.PlayOneShot(FModEvents.Instance.wrongAnswerAltSFX);
         PlayCatSprite(CatSpriteID.ConfusedCat);
-        dialogueManager.EnableContinueButton();
+        // TODO bad code, just to avoid making actions in vide
+        EnableContinueButton();
     }
 
     public void PlayHappyCat()
@@ -191,7 +192,8 @@ public class IdentifyStutterController : MonoBehaviour
         PlayCatSprite(CatSpriteID.HappyCat);
         AudioManager.Instance.PlayOneShot(FModEvents.Instance.rightAnswerCatSFX);
         //AudioManager.Instance.PlayOneShot(FModEvents.Instance.rightAnswerAltSFX);
-        dialogueManager.EnableContinueButton();
+        // TODO bad code, just to avoid making actions in vide
+        EnableContinueButton();
     }
 
     public void ChangeTVToReporterAndJoao()
@@ -210,9 +212,9 @@ public class IdentifyStutterController : MonoBehaviour
     #region Auxiliary
 
     // TODO delete maybe
-    public void DisableContinueButton()
+    public void EnableContinueButton()
     {
-        dialogueManager.DisableContinueButton();
+        dialogueManager.EnableContinueButton();
     }
 
     public void PlayNewsIntro()

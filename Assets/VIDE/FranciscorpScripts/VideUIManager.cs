@@ -34,6 +34,7 @@ public class VideUIManager : MonoBehaviour
 
     bool dialoguePaused = false; //Custom variable to prevent the manager from calling VD.Next
     bool animatingText = false; //Will help us know when text is currently being animated
+    bool isContinueDisabled = false; 
 
     //With this we can start a coroutine and stop it. Used to animate text
     IEnumerator npcTextAnimator;
@@ -62,6 +63,7 @@ public class VideUIManager : MonoBehaviour
             return false;
 
         Begin(GetComponent<VIDE_Assign>(), assignedDialogue);
+        EnableContinueButton();
         return true;
     }
 
@@ -71,6 +73,7 @@ public class VideUIManager : MonoBehaviour
             End(null);
 
         Begin(GetComponent<VIDE_Assign>(), assignedDialogue);
+        EnableContinueButton();
         return true;
     }
 
@@ -90,6 +93,7 @@ public class VideUIManager : MonoBehaviour
 
     public async void DisableContinueButton()
     {
+        isContinueDisabled = true;
         // TODO wrong in terms of logic, but gains enough time to dissapear with button
         await Task.Delay(20);
         containerDialogue.SetActive(true);
@@ -99,8 +103,9 @@ public class VideUIManager : MonoBehaviour
 
     public void EnableContinueButton()
     {
+        isContinueDisabled = false;
         nextLineButton.SetActive(true);
-        //continueIcon.SetActive(true);
+        continueIcon.SetActive(true);
     }
 
     //This begins the conversation
@@ -312,8 +317,16 @@ public class VideUIManager : MonoBehaviour
         }
         dialogueText.text = text;
         animatingText = false;
-        continueIcon.SetActive(true);
-        nextLineButton.SetActive(true);
+        SetActiveContinueButton(true);
+    }
+
+    private void SetActiveContinueButton(bool isActive)
+    {
+        if (isContinueDisabled)
+            return;
+
+        continueIcon.SetActive(isActive);
+        nextLineButton.SetActive(isActive);
     }
 
     void CutTextAnim()

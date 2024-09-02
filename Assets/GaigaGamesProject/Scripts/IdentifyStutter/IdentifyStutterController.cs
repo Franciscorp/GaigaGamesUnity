@@ -39,6 +39,8 @@ public class IdentifyStutterController : MonoBehaviour
     private void SetInitialGameStatus()
     {
         playerInformation = new PlayerInformation();
+        // TODO delete
+        playerInformation.CreateBasePlayerInfo();
         currentStage = 1;
         VideDialoguePanel.SetActive(true);
         StartButton.SetActive(false);
@@ -60,14 +62,6 @@ public class IdentifyStutterController : MonoBehaviour
 
         // play audio
         AudioManager.Instance.PlayOneShot(FModEvents.Instance.IdentifyStutterMusic);
-        
-        //doTempShit();
-    }
-
-    private void doTempShit()
-    {
-        playerInformation.SetGender(Utils.Gender.Male);
-        playerInformation.SetCharacterName("Franciscorp");
     }
 
     private void DialogueCompleted()
@@ -100,8 +94,8 @@ public class IdentifyStutterController : MonoBehaviour
             TVContent.UpdateContent(TVContentID.FriendTalking);
             IdentifyStutterDialogues currentQuestion = GetAvailableQuestionEnum();
             Debug.Log(currentQuestion);
-            dialogueManager.SetupAndRestartDialogue(GetDialogueKey(currentQuestion));
-            //dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.Question2));
+            //dialogueManager.SetupAndRestartDialogue(GetDialogueKey(currentQuestion));
+            dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.Question1));
         }
         else
         {
@@ -189,6 +183,7 @@ public class IdentifyStutterController : MonoBehaviour
         AudioManager.Instance.PlayOneShot(FModEvents.Instance.wrongAnswerCatSFX);
         //AudioManager.Instance.PlayOneShot(FModEvents.Instance.wrongAnswerAltSFX);
         PlayCatSprite(CatSpriteID.ConfusedCat);
+        dialogueManager.EnableContinueButton();
     }
 
     public void PlayHappyCat()
@@ -196,6 +191,7 @@ public class IdentifyStutterController : MonoBehaviour
         PlayCatSprite(CatSpriteID.HappyCat);
         AudioManager.Instance.PlayOneShot(FModEvents.Instance.rightAnswerCatSFX);
         //AudioManager.Instance.PlayOneShot(FModEvents.Instance.rightAnswerAltSFX);
+        dialogueManager.EnableContinueButton();
     }
 
     public void ChangeTVToReporterAndJoao()
@@ -212,6 +208,12 @@ public class IdentifyStutterController : MonoBehaviour
     #endregion
 
     #region Auxiliary
+
+    // TODO delete maybe
+    public void DisableContinueButton()
+    {
+        dialogueManager.DisableContinueButton();
+    }
 
     public void PlayNewsIntro()
     {

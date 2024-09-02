@@ -27,6 +27,13 @@ public class PlayerInformation
         currentGameStage = LoadCurrentGameStage();
     }
 
+    public void CreateBasePlayerInfo()
+    {
+        SetCurrentGameStage(GameStages.SpeechMachineDone);
+        SetCharacterName("Jogador");
+        SetGender(Gender.Female);
+    }
+
     public void ResetMiniGamesInformation()
     {
         identifyStuterGameInfo.ResetIdentifyStutter();

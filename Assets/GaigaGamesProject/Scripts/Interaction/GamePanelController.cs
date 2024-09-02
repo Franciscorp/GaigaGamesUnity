@@ -21,15 +21,19 @@ public class GamePanelController : MonoBehaviour
         IdentifyStutter = 2
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         buttonIDEvent = new GamePanelButtonID();
 
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
         if (startGame != null)
         {
             // Add the onClick listener and associate it with the method
-            startGame.onClick.AddListener(() => GameButtonPressed((int)Options.SpeechMachine));  
+            startGame.onClick.AddListener(() => SendButtonPressedID((int)Options.SpeechMachine));  
         }
         else
         {
@@ -43,14 +47,7 @@ public class GamePanelController : MonoBehaviour
     {
         Debug.Log("SetOptionIDAndDisplayButtons = " + optionID);
         startGame.gameObject.SetActive(true);
-        startGame.onClick.AddListener(() => GameButtonPressed(optionID));
-        returnGame.gameObject.SetActive(true);
-    }
-
-    public void SetOptionIDAndDisplayButtons(Options optionID)
-    {
-        startGame.gameObject.SetActive(true);
-        startGame.onClick.AddListener(() => GameButtonPressed((int)optionID));
+        startGame.onClick.AddListener(() => SendButtonPressedID(optionID));
         returnGame.gameObject.SetActive(true);
     }
 
@@ -67,10 +64,11 @@ public class GamePanelController : MonoBehaviour
         returnGame.gameObject.SetActive(false);
     }
 
-    public void GameButtonPressed(int option = -1)
+    public void SendButtonPressedID(int option = -1)
     {
+        Debug.Log("SendButtonPressedID = " + option);
         buttonIDEvent.Invoke(option);
-        //HideButtons();
+        HideButtons();
     }
 
 }

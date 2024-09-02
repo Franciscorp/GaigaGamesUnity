@@ -80,9 +80,9 @@ public class MainGameController : MonoBehaviour
 
         gamePanelController = GamesPanel.GetComponent<GamePanelController>();
         if (gamePanelController != null)
-        {
             gamePanelController.buttonIDEvent.AddListener(GameButtonPressed);
-        }
+        else
+            Debug.LogWarning("gamePanelController not available");
 
         SetInitialGameStatus();
         SetGameStage();
@@ -298,7 +298,7 @@ public class MainGameController : MonoBehaviour
     }
 
 
-    public async void GameButtonPressed(int option = -1)
+    public void GameButtonPressed(int option = -1)
     {
         Debug.Log("Game button pressed with option = " + option);
 

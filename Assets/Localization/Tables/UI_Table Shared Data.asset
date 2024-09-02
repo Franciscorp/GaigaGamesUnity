@@ -127,6 +127,10 @@ MonoBehaviour:
     m_Key: IdentityRepetitionButtonKey
     m_Metadata:
       m_Items: []
+  - m_Id: 44062512912879616
+    m_Key: ReturnKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

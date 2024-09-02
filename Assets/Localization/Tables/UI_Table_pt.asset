@@ -126,6 +126,10 @@ MonoBehaviour:
     m_Localized: "Repeti\xE7\xE3o"
     m_Metadata:
       m_Items: []
+  - m_Id: 44062512912879616
+    m_Localized: Voltar
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -19,7 +19,8 @@ public static class SceneLoader
         LoadingScreen,
         GamesMenu,
         MainStoryGame,
-        SpeechMachine
+        SpeechMachine,
+        IdentifyStutter
     }
 
 

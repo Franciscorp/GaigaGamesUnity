@@ -44,6 +44,11 @@ public class VideUIManager : MonoBehaviour
 
     #endregion
 
+    private void Awake()
+    {
+        Utils.SetScreenAlwaysOn();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

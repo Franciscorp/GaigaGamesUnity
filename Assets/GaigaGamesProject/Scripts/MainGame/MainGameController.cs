@@ -13,13 +13,14 @@ public class MainGameController : MonoBehaviour
     // Game Vars
     private PlayerInformation playerInformation;
     private int currentDialogue = 0;
-    private GameStages currentGameStage = GameStages.Beginning;
 
     [field: Header("Game Objects")]
     // Game Objects 
     public GameObject VideDialoguePanel;
     private VideUIManager videDialogueManager;
     public GameObject MobileControls;
+    public GameObject GamesPanel;
+    public GamePanelController gamePanelController;
     private GameObject gameObjectCamera;
     private Camera camera;
     private Animator cameraAnimator;
@@ -45,6 +46,7 @@ public class MainGameController : MonoBehaviour
 
     private void Awake()
     {
+        Utils.SetScreenAlwaysOn();
         playerInformation = new PlayerInformation();
     }
 
@@ -66,6 +68,13 @@ public class MainGameController : MonoBehaviour
         else
             Debug.LogError("VideDialoguePanel is null");
 
+
+        gamePanelController = GamesPanel.GetComponent<GamePanelController>();
+        if (gamePanelController != null)
+        {
+            gamePanelController.buttonIDEvent.AddListener(GameButtonPressed);
+        }
+
         SetInitialGameStatus();
         SetGameStage();
     }
@@ -78,7 +87,7 @@ public class MainGameController : MonoBehaviour
 
         Grandpa.SetActive(false);
         VideDialoguePanel.SetActive(false);
-        MobileControls.SetActive(false);
+        SetActiveMobileControls(false);
     }
 
     #region GameStages
@@ -86,7 +95,7 @@ public class MainGameController : MonoBehaviour
     public void SetIntroductionCompletedGameStage()
     {
         currentDialogue = 5;
-        MobileControls.SetActive(true);
+        SetActiveMobileControls(true);
         Debug.Log("Tobias transform = " + TobiasSprite.transform.localPosition);
         Transform tobiasTransform = TobiasSprite.transform;
         tobiasTransform.localPosition = new Vector3(19.63f, 1.94f, 0f);
@@ -98,8 +107,8 @@ public class MainGameController : MonoBehaviour
 
         Grandpa.SetActive(true);
         grandpaKitchen.SetActive(false);
-        MobileControls.SetActive(true);
-        
+        SetActiveMobileControls(true);
+
         TobiasSprite.transform.localPosition = new Vector3(15.55f, 5.02f, 0f);
         Player.transform.localPosition = new Vector3(21.63f, -0.3699484f, 3.5f);
     }
@@ -110,7 +119,7 @@ public class MainGameController : MonoBehaviour
 
         Grandpa.SetActive(true);
         grandpaKitchen.SetActive(false);
-        MobileControls.SetActive(true);
+        SetActiveMobileControls(true);
 
         TobiasSprite.transform.localPosition = new Vector3(15.55f, 5.02f, 0f);
         Player.transform.localPosition = new Vector3(20f, 5.44f, 3.5f);
@@ -122,7 +131,7 @@ public class MainGameController : MonoBehaviour
 
         Grandpa.SetActive(true);
         grandpaKitchen.SetActive(false);
-        MobileControls.SetActive(true);
+        SetActiveMobileControls(true);
 
         TobiasSprite.transform.localPosition = new Vector3(15.55f, 5.02f, 0f);
         Player.transform.localPosition = new Vector3(10.75f, -0.37f, 3.5f);
@@ -134,13 +143,13 @@ public class MainGameController : MonoBehaviour
 
     public void temp()
     {
-        playerInformation.SetCurrentGameStage(GameStages.IdentifyStutter);
+        playerInformation.SetCurrentGameStage(GameStages.SpeechMachineDone);
         playerInformation.SetCharacterName("Franciscorp");
     }
 
     public void SetGameStage()
     {
-        //temp();
+        temp();
         Debug.Log("Set game stage = " + playerInformation.GetCurrentGameStage());
 
         switch (playerInformation.GetCurrentGameStage())
@@ -237,19 +246,13 @@ public class MainGameController : MonoBehaviour
     // updates after story4 in VIDE
     public void EndIntroduction()
     {
-        UpdateGameStage(GameStages.IntroductionCompleted);
+        playerInformation.SetCurrentGameStage(GameStages.IntroductionCompleted);
         DisableDialogue();
     }
 
-    private void UpdateGameStage(GameStages gameStage)
+    public void GrandmaInteraction()
     {
-        currentGameStage = gameStage;
-        playerInformation.SetCurrentGameStage(currentGameStage);
-    }
-
-    public void FirstInteractionWithGrandma()
-    {
-        if (currentGameStage == GameStages.IntroductionCompleted)
+        if (playerInformation.GetCurrentGameStage() == GameStages.IntroductionCompleted)
         {
             //SetActiveInteraction(false);
             ActivateDialogue(MainGameDialogues.GrandmaStory1);
@@ -262,23 +265,85 @@ public class MainGameController : MonoBehaviour
         }
     }
 
+    public void GrandpaInteraction()
+    {
+        Debug.Log("Set game stage = " + playerInformation.GetCurrentGameStage());
+
+        if (playerInformation.GetCurrentGameStage() == GameStages.GrandmaIntroductionCompleted)
+        {
+            ActivateDialogue(MainGameDialogues.GrandpaAltStory1);
+        }
+        if (playerInformation.GetCurrentGameStage() == GameStages.SpeechMachineDone)
+        {
+            ActivateDialogue(MainGameDialogues.IdentifyStutterStory1);
+        }
+    }
+
+    public void SpeechMachineInteraction()
+    {
+        Debug.Log("Set game stage = " + playerInformation.GetCurrentGameStage());
+
+        if (playerInformation.GetCurrentGameStage() == GameStages.GrandmaIntroductionCompleted)
+        {
+            ActivateDialogue(MainGameDialogues.SpeechMachineStory1);
+        }
+        else
+        {
+        }
+    }
+
+
+    public async void GameButtonPressed(int option = -1)
+    {
+        Debug.Log("Game button pressed with option = " + option);
+
+        if (option == -1 || option == 0)
+        {
+            DisableDialogue();
+        }
+        if (option == 1)
+        {
+            //DisableDialogue();
+            //await Task.Delay(400);
+            gamePanelController.HideButtons();
+            SceneLoader.Load(SceneLoader.Scene.SpeechMachine);
+        }
+        if (option == 2)
+        {
+            Debug.Log("GameButtonPressed = 2");
+            //DisableDialogue();
+            //await Task.Delay(400);
+            gamePanelController.HideButtons();
+            SceneLoader.Load(SceneLoader.Scene.IdentifyStutter);
+        }
+    }
+
     public async void EndFirstInteractionWithGrandma()
     {
         //SetActiveInteraction(true);
         DisableDialogue();
         AfterIntroductionTimeline.Play();
-        // TODO estrondo, tirar avo
-        //animação avo, livros no meio do caminho
-        //animação
         currentDialogue = 6;
         await Task.Delay(1800);
         //SetActiveInteraction(true);
-        UpdateGameStage(GameStages.GrandmaIntroductionCompleted);
+        playerInformation.SetCurrentGameStage(GameStages.GrandmaIntroductionCompleted);
     }
 
     #endregion
 
     #region GameVisualsControl
+
+    public void SetActiveMobileControls(bool isActive)
+    {
+#if UNITY_ANDROID || UNITY_IOS
+            Debug.Log("This is an Android device.");
+            MobileControls.SetActive(isActive);
+
+#elif UNITY_STANDALONE || UNITY_EDITOR
+            Debug.Log("This is a PC (Windows, macOS, or Linux).");
+            MobileControls.SetActive(false);
+#endif
+    }
 
     public void SetActiveInteraction(bool active)
     {
@@ -293,7 +358,7 @@ public class MainGameController : MonoBehaviour
         cameraAnimator.Play("CameraOut");
         await Task.Delay(300);
         VideDialoguePanel.SetActive(true);
-        MobileControls.SetActive(false);
+        SetActiveMobileControls(false);
         await Task.Delay(700);
     }
 
@@ -303,7 +368,7 @@ public class MainGameController : MonoBehaviour
         await Task.Delay(300);
         videDialogueManager.SetupAndStartDialogue(GetMainGameDialogueKey(dialogueID));
         VideDialoguePanel.SetActive(true);
-        MobileControls.SetActive(false);
+        SetActiveMobileControls(false);
         await Task.Delay(700);
     }
 
@@ -312,7 +377,7 @@ public class MainGameController : MonoBehaviour
         cameraAnimator.Play("CameraIn");
         await Task.Delay(300);
         VideDialoguePanel.SetActive(false);
-        MobileControls.SetActive(true);
+        SetActiveMobileControls(true);
         await Task.Delay(700);
     }
 

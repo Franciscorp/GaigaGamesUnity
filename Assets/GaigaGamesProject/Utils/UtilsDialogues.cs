@@ -15,7 +15,10 @@ public  class UtilsDialogues{
         MainGameStory3 = 3,
         MainGameStory4 = 4,
         GrandmaStory1 = 5,
-        GrandmaAltStory1 = 6
+        GrandmaAltStory1 = 6,
+        GrandpaAltStory1 = 7,
+        SpeechMachineStory1 = 8,
+        IdentifyStutterStory1 = 9
     }
 
     // Dictionary to map dialogue names to keys
@@ -28,6 +31,9 @@ public  class UtilsDialogues{
         { MainGameDialogues.MainGameStory4, "MainGameStory4" },
         { MainGameDialogues.GrandmaStory1, "MainGameGrandma1" },
         { MainGameDialogues.GrandmaAltStory1, "MainGameGrandmaAltSpeechMachine1" },
+        { MainGameDialogues.GrandpaAltStory1, "MainGameGrandpaAltSpeechMachine1" },
+        { MainGameDialogues.SpeechMachineStory1, "MainGameSpeechMachineStory1" },
+        { MainGameDialogues.IdentifyStutterStory1, "MainGameIdentifyStutterStory1" },
     };
 
     // Static function to get the key associated with a dialogue name

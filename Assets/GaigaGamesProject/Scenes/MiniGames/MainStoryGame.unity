@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3209,7 +3208,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1228245675}
         m_TargetAssemblyTypeName: GamePanelController, Assembly-CSharp
-        m_MethodName: GameButtonPressed
+        m_MethodName: SendButtonPressedID
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

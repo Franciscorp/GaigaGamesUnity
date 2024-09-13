@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3284732825600
-    m_Localized: "T\xEDtulo"
+    m_Localized: "Mist\xE9rios da Fala em Casa da Av\xF3"
     m_Metadata:
       m_Items: []
   - m_Id: 3460608380928
@@ -128,6 +128,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 44062512912879616
     m_Localized: Voltar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47770364038959104
+    m_Localized: "Modo Hist\xF3ria: \nCome\xE7o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47781786588368896
+    m_Localized: "Modo Hist\xF3ria: \nM\xE1quina de Fala"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47782957625462784
+    m_Localized: "Modo Hist\xF3ria: \nM\xE1quina de Fala"
     m_Metadata:
       m_Items: []
   references:

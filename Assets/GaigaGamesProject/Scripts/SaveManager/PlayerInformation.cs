@@ -71,9 +71,11 @@ public class PlayerInformation
 
     public void SetCurrentGameStage(GameStages gameStage)
     {
+        Debug.Log("SetCurrentGameStage = " + gameStage);
         PlayerPrefs.SetInt(Utils.GameStagePrefsKeyword, (int)gameStage);
         PlayerPrefs.Save();
-        Debug.Log("Game Stage saved");
+        currentGameStage = gameStage;
+        Debug.Log("Saved CurrentGameStage = " + gameStage);
     }
 
     public void SetGender(Gender gender)

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{5c6c0afd-a2f0-4eb7-9afc-b98e693080e2}">
+		<property name="assetPath">
+			<value>Music/MainMenu/[Background Music] Path - Relaxing Acoustic Guitar Folk 🍂 - Slow No Copyright Music - YouTube.url</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ff6d5952-8dd7-4ae2-8ab5-7b451ca5812d}</destination>
+		</relationship>
+	</object>
+</objects>

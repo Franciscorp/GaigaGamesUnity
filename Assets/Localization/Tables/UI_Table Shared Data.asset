@@ -131,6 +131,18 @@ MonoBehaviour:
     m_Key: ReturnKey
     m_Metadata:
       m_Items: []
+  - m_Id: 47770364038959104
+    m_Key: PlayStoryMode1Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47781786588368896
+    m_Key: PlayStoryModeSpeechMachineKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47782957625462784
+    m_Key: PlayStoryModeIdentifyStutterKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

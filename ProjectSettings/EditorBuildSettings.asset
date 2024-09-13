@@ -5,22 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/GaigaGamesProject/Scenes/MiniGames/MainStoryGame.unity
     guid: 5d8db6defb6afc44fbc264611c04793a
-  - enabled: 0
+  - enabled: 1
     path: Assets/GaigaGamesProject/Scenes/Introduction.unity
     guid: e090ea11500ce3544aa2f25fc6bddae0
-  - enabled: 0
+  - enabled: 1
     path: Assets/GaigaGamesProject/Scenes/MainMenu.unity
     guid: e2c5c3227f88c0346be63eca4d68303a
-  - enabled: 0
+  - enabled: 1
     path: Assets/GaigaGamesProject/Scenes/GamesMenu.unity
     guid: 5bc8796475aa1a540aba9ac92dd57015
-  - enabled: 0
+  - enabled: 1
     path: Assets/GaigaGamesProject/Scenes/LoadingScreen.unity
     guid: 171043071aa3d384c8b9cd114c94476b
-  - enabled: 0
+  - enabled: 1
     path: Assets/GaigaGamesProject/Scenes/MiniGames/SpeechMachine.unity
     guid: 676024f7c78ede545a9767e3318c5f92
   - enabled: 1

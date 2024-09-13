@@ -34,7 +34,6 @@ public class AudioManager : MonoBehaviour
     }
 
     // LOGIC
-
     public void PlayOneShot(EventReference sound)
     {
         Vector3 worldPos = Vector3.zero;
@@ -66,6 +65,10 @@ public class AudioManager : MonoBehaviour
         return eventInstance;
     }
 
+    public void StopAllAudios()
+    {
+        CleanUp();
+    }
 
     private void CleanUp()
     {
@@ -85,6 +88,7 @@ public class AudioManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        Debug.Log("On Destroy");
         CleanUp();
     }
 

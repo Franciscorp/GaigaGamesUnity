@@ -54,7 +54,8 @@ public class MainGameController : MonoBehaviour
 
     public void temp()
     {
-        playerInformation.SetCurrentGameStage(GameStages.SpeechMachineDone);
+        //playerInformation.SetCurrentGameStage(GameStages.SpeechMachineDone);
+        playerInformation.SetCurrentGameStage(GameStages.IntroductionCompleted);
         playerInformation.SetCharacterName("Jogador");
         playerInformation.SetGender(Gender.Female);
     }
@@ -251,6 +252,7 @@ public class MainGameController : MonoBehaviour
     // updates after story4 in VIDE
     public void EndIntroduction()
     {
+        Debug.Log("EndIntroduction");
         playerInformation.SetCurrentGameStage(GameStages.IntroductionCompleted);
         DisableDialogue();
     }
@@ -286,7 +288,7 @@ public class MainGameController : MonoBehaviour
 
     public void SpeechMachineInteraction()
     {
-        Debug.Log("Set game stage = " + playerInformation.GetCurrentGameStage());
+        Debug.Log("SpeechMachineInteractione = " + playerInformation.GetCurrentGameStage());
 
         if (playerInformation.GetCurrentGameStage() == GameStages.GrandmaIntroductionCompleted)
         {
@@ -329,9 +331,10 @@ public class MainGameController : MonoBehaviour
         DisableDialogue();
         AfterIntroductionTimeline.Play();
         currentDialogue = 6;
+        playerInformation.SetCurrentGameStage(GameStages.GrandmaIntroductionCompleted);
         await Task.Delay(1800);
         //SetActiveInteraction(true);
-        playerInformation.SetCurrentGameStage(GameStages.GrandmaIntroductionCompleted);
+        Debug.Log("EndFirstInteractionWithGrandma = " + playerInformation.GetCurrentGameStage());
     }
 
     #endregion

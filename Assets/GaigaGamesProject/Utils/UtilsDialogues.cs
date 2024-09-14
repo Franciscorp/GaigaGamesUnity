@@ -32,7 +32,7 @@ public  class UtilsDialogues{
         { MainGameDialogues.GrandmaStory1, "MainGameGrandma1" },
         { MainGameDialogues.GrandmaAltStory1, "MainGameGrandmaAltSpeechMachine1" },
         { MainGameDialogues.GrandpaAltStory1, "MainGameGrandpaAltSpeechMachine1" },
-        { MainGameDialogues.SpeechMachineStory1, "MainGameSpeechMachineStory1" },
+        { MainGameDialogues.SpeechMachineStory1, "MainGameSpeechMachineStartGameInteract1" },
         { MainGameDialogues.IdentifyStutterStory1, "MainGameIdentifyStutterStory1" },
     };
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -49,6 +50,16 @@ public class GamePanelController : MonoBehaviour
         startGame.gameObject.SetActive(true);
         startGame.onClick.AddListener(() => SendButtonPressedID(optionID));
         returnGame.gameObject.SetActive(true);
+
+        if (optionID == 1)
+        {
+            // TODO devia ter solução para ingles
+            startGame.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "Ajudar Artur";
+        }else if (optionID == 2)
+        {
+            // TODO devia ter solução para ingles
+            startGame.gameObject.GetComponentInChildren<TextMeshProUGUI>().text = "Ajudar Avô";
+        }
     }
 
     public void DisplayButtons()

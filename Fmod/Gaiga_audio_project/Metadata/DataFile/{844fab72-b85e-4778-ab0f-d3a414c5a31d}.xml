@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{844fab72-b85e-4778-ab0f-d3a414c5a31d}">
+		<property name="assetPath">
+			<value>Music/MainGame/[Background Music] Weslie's Groove - 70's Guitar Funk &amp; Blues 🎸 - Vintage No Copyright Music - YouTube.url</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ff6d5952-8dd7-4ae2-8ab5-7b451ca5812d}</destination>
+		</relationship>
+	</object>
+</objects>

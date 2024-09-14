@@ -61,7 +61,7 @@ public class IdentifyStutterController : MonoBehaviour
         };
 
         // play audio
-        AudioManager.Instance.PlayOneShot(FModEvents.Instance.IdentifyStutterMusic);
+        AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.IdentifyStutterMusic);
     }
 
     private void DialogueCompleted()

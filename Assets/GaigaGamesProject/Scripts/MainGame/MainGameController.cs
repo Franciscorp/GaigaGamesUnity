@@ -85,6 +85,7 @@ public class MainGameController : MonoBehaviour
         else
             Debug.LogWarning("gamePanelController not available");
 
+        AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.mainGameMusic);
         SetInitialGameStatus();
         SetGameStage();
     }

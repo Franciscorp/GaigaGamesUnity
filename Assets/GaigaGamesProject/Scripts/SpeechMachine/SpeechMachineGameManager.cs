@@ -59,7 +59,7 @@ public class SpeechMachineGameManager : MonoBehaviour
         playerInformation = new PlayerInformation();
         introEventCoroutine = StartCoroutine(TryUntilInvokeIntro());
         StartCountdownForSuggestion();
-        AudioManager.Instance.PlayOneShot(FModEvents.Instance.SpeechMachineMusic);
+        AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.SpeechMachineMusic);
     }
 
 
@@ -101,6 +101,7 @@ public class SpeechMachineGameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(4.8f);
         Debug.Log("WaitForJingleToEnd");
+        AudioManager.Instance.StopAllAudios();
         SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
         //Application.Quit();
     }

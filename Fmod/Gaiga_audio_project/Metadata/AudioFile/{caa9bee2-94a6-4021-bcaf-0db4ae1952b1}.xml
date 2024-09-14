@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{caa9bee2-94a6-4021-bcaf-0db4ae1952b1}">
+		<property name="assetPath">
+			<value>Music/MainGame/[Background Music] Weslie's Groove - 70's Guitar Funk &amp; Blues   Vintage No Copyright Music.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>227.13469387755103</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ff6d5952-8dd7-4ae2-8ab5-7b451ca5812d}</destination>
+		</relationship>
+	</object>
+</objects>

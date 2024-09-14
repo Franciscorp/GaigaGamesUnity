@@ -44,6 +44,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88439940c57a6e44fb18312706d3158b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <introductionMusic>k__BackingField:
+    Guid:
+      Data1: -1630495588
+      Data2: 1077405045
+      Data3: 739216829
+      Data4: 957566905
+    Path: event:/Music/IntroductionMusic
+  <mainGameMusic>k__BackingField:
+    Guid:
+      Data1: -1466492269
+      Data2: 1135846279
+      Data3: 1279838102
+      Data4: -2021438860
+    Path: event:/Music/MainGameMusic
+  <mainMenuMusic>k__BackingField:
+    Guid:
+      Data1: -21686683
+      Data2: 1237716837
+      Data3: -734831728
+      Data4: 1468447016
+    Path: event:/Music/MainMenuMusic
   <buttonClick>k__BackingField:
     Guid:
       Data1: -1060240177
@@ -209,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 2124881042281384334}
+  attenuationObject: {fileID: 0}
 --- !u!114 &3967140316584640379
 MonoBehaviour:
   m_ObjectHideFlags: 0

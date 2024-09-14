@@ -7,6 +7,8 @@ using UnityEngine;
 public class FModEvents : MonoBehaviour
 {
     [field: Header("User Interface")]
+    [field: SerializeField] public EventReference introductionMusic { get; private set; }
+    [field: SerializeField] public EventReference mainGameMusic { get; private set; }
     [field: SerializeField] public EventReference mainMenuMusic { get; private set; }
     [field: SerializeField] public EventReference buttonClick { get; private set; }
     [field: SerializeField] public EventReference typingSFX { get; private set; }
@@ -45,7 +47,7 @@ public class FModEvents : MonoBehaviour
             Debug.LogError("Found more than one FMod Events in the scene");
         }
         Instance = this;
-        Debug.Log("Audio Manager Created");
+        Debug.Log("Fmod Events Created");
 
         eventInstances = new List<EventInstance>();
         eventEmitters = new List<StudioEventEmitter>();

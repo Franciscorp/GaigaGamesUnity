@@ -68,8 +68,8 @@ public class IntroductionController : MonoBehaviour
 
         gamesMenu = GetComponent<GamesMenu>();
 
+        AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.introductionMusic);
         SetInitialGameStatus();
-
     }
 
     private void SetInitialGameStatus()
@@ -215,6 +215,8 @@ public class IntroductionController : MonoBehaviour
 
         ThirdSceneTimeline.Play();
         await Task.Delay(3600);
+
+        //AudioManager.Instance.StopAllAudios();
         gamesMenu.StartMainGame();
     }
 

@@ -67,6 +67,7 @@ public class AudioManager : MonoBehaviour
 
     public void StopAllAudios()
     {
+        Debug.Log("StopAllAudios");
         CleanUp();
     }
 
@@ -75,6 +76,7 @@ public class AudioManager : MonoBehaviour
         // stop and release any created instances
         foreach (EventInstance eventInstance in eventInstances)
         {
+            Debug.Log("Clean eventInstance = " + eventInstance.ToString());
             eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             eventInstance.release();
         }

@@ -44,54 +44,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268dc70b105993846a123be43345df63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileIndex: 13
+  fileIndex: 16
   skinIndex: 0
   loadTag: 
-  startID: 0
-  curFocusID: 0
-  currentID: 15357
+  startID: 10
+  curFocusID: 10
+  currentID: 44501
   autosave: 1
   previewPanning: 0
-  currentDiag: 13
+  currentDiag: 16
   locEdit: 1
   pNodeID: 18
   aNodeID: 2
   S_playerDiags:
   - commentCount: 1
     s_comment:
-    - text: "Impressionante, s\xF3 erraste [WRONG_ANSWERS] pergunta(s)! Est\xE1s
-        mesmo a apanhar o jeito de perceber os diferentes tipos de gaguez."
+    - text: ' E agora que tipo de gaguez foi essa?'
       extraData: ExtraData
       inputSetIndex: 0
       outputNodeIndex: -1
-      outActionIndex: 0
+      outActionIndex: 7
       showmore: 0
       outRect:
         serializedVersion: 2
         x: 301
         y: 63
         width: 30
-        height: 78
+        height: 33
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
     ID: 0
     rect:
       serializedVersion: 2
-      x: -170
-      y: 210
+      x: -1430
+      y: -370
       width: 348
-      height: 277
+      height: 232
     pTag: "Av\xF4"
     expand: 1
     sprite: {fileID: 21300000, guid: d7a7607ed19a41049a5c3e66d8935b04, type: 3}
     vars: []
     varKeys: []
     isPlayer: 0
-  - commentCount: 1
+  - commentCount: 4
     s_comment:
-    - text: "Acho que est\xE1s pronto para o pr\xF3ximo desafio! Agora a conhecer
-        melhor os diferentes tipos de gaguez!"
+    - text: A Maria adora uma...... boa sopa de legumes feita...... por mim.
       extraData: ExtraData
       inputSetIndex: 1
       outputNodeIndex: -1
@@ -106,25 +104,327 @@ MonoBehaviour:
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
+    - text: "Repeti\xE7\xE3o"
+      extraData: ExtraData
+      inputSetIndex: 1
+      outputNodeIndex: -1
+      outActionIndex: 5
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 300
+        y: 97
+        width: 30
+        height: 23
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: Bloqueio
+      extraData: ExtraData
+      inputSetIndex: 1
+      outputNodeIndex: -1
+      outActionIndex: 4
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 300
+        y: 121
+        width: 30
+        height: 23
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: Prolongamento
+      extraData: ExtraData
+      inputSetIndex: 1
+      outputNodeIndex: -1
+      outActionIndex: 6
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 300
+        y: 145
+        width: 30
+        height: 23
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 1
+    rect:
+      serializedVersion: 2
+      x: -1040
+      y: -370
+      width: 348
+      height: 304
+    pTag: "Televis\xE3o"
+    expand: 1
+    sprite: {fileID: 21300000, guid: 5be8b41d6e4837e4f805d72412ec8671, type: 3}
+    vars: []
+    varKeys: []
+    isPlayer: 1
+  - commentCount: 1
+    s_comment:
+    - text: "Tenta ouvir outra vez, n\xE3o me pareceu que ele repetisse s\xEDlabas.\r\n"
+      extraData: ExtraData
+      inputSetIndex: 2
+      outputNodeIndex: -1
+      outActionIndex: 1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 48
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
     ID: 2
     rect:
       serializedVersion: 2
-      x: 490
-      y: 280
+      x: 240
+      y: -630
       width: 348
-      height: 262
+      height: 247
     pTag: "Av\xF4"
     expand: 1
     sprite: {fileID: 21300000, guid: d7a7607ed19a41049a5c3e66d8935b04, type: 3}
     vars: []
     varKeys: []
     isPlayer: 0
+  - commentCount: 2
+    s_comment:
+    - text: Exatamente! Foi um bloqueio!
+      extraData: ExtraData
+      inputSetIndex: 3
+      outputNodeIndex: -1
+      outActionIndex: 2
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 23
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: Conseguimos, Tobias!
+      extraData: ExtraData
+      inputSetIndex: 3
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 3
+    rect:
+      serializedVersion: 2
+      x: 250
+      y: -340
+      width: 348
+      height: 246
+    pTag: "Av\xF4"
+    expand: 1
+    sprite: {fileID: 21300000, guid: d7a7607ed19a41049a5c3e66d8935b04, type: 3}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 1
+    s_comment:
+    - text: "hmm.. Eu n\xE3o ouvi ele a ficar preso numa s\xEDlaba. Olha tenta outra
+        vez.\r"
+      extraData: ExtraData
+      inputSetIndex: 4
+      outputNodeIndex: -1
+      outActionIndex: 0
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 33
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 4
+    rect:
+      serializedVersion: 2
+      x: 260
+      y: -50
+      width: 348
+      height: 232
+    pTag: "Av\xF4"
+    expand: 1
+    sprite: {fileID: 21300000, guid: d7a7607ed19a41049a5c3e66d8935b04, type: 3}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 1
+    s_comment:
+    - text: "Talvez repeti\xE7\xE3o! Mas n\xE3o tenho a certeza."
+      extraData: ExtraData
+      inputSetIndex: 5
+      outputNodeIndex: 2
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 33
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 5
+    rect:
+      serializedVersion: 2
+      x: -160
+      y: -610
+      width: 348
+      height: 232
+    pTag: '[PLAYER_NAME]'
+    expand: 1
+    sprite: {fileID: 21300000, guid: 079768bd263350c4f983f1a39e8e153a, type: 3}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 1
+    s_comment:
+    - text: "Foi um bloqueio! Ele ficou muito tempo sem conseguir dizer a pr\xF3xima
+        palavra\r."
+      extraData: ExtraData
+      inputSetIndex: 6
+      outputNodeIndex: 3
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 48
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 7
+    rect:
+      serializedVersion: 2
+      x: -160
+      y: -340
+      width: 348
+      height: 247
+    pTag: '[PLAYER_NAME]'
+    expand: 1
+    sprite: {fileID: 21300000, guid: 079768bd263350c4f983f1a39e8e153a, type: 3}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 1
+    s_comment:
+    - text: "Foi um prolongamento! Ele ficou muito tempo sem dizer a pr\xF3xima palavra\r."
+      extraData: ExtraData
+      inputSetIndex: 7
+      outputNodeIndex: 4
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 48
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 8
+    rect:
+      serializedVersion: 2
+      x: -160
+      y: -50
+      width: 348
+      height: 247
+    pTag: '[PLAYER_NAME]'
+    expand: 1
+    sprite: {fileID: 21300000, guid: 079768bd263350c4f983f1a39e8e153a, type: 3}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 3
+    s_comment:
+    - text: A Maria adora uma......
+      extraData: ExtraData
+      inputSetIndex: 8
+      outputNodeIndex: -1
+      outActionIndex: 3
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 23
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: 
+      extraData: ExtraData
+      inputSetIndex: 8
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: por mim.
+      extraData: ExtraData
+      inputSetIndex: 8
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 10
+    rect:
+      serializedVersion: 2
+      x: -2070
+      y: -370
+      width: 348
+      height: 270
+    pTag: "Sr. Jo\xE3o"
+    expand: 1
+    sprite: {fileID: 21300000, guid: 5be8b41d6e4837e4f805d72412ec8671, type: 3}
+    vars: []
+    varKeys: []
+    isPlayer: 0
   S_actionNodes:
   - pauseHere: 0
     gameObjectName: IdentifyStutterController
-    methodName: EndGame
+    methodName: WrongQuestion
     nameIndex: 9
-    methodIndex: 6
+    methodIndex: 4
     paramIndex: 0
     opts:
     - '[No method]'
@@ -132,8 +432,6 @@ MonoBehaviour:
     - AskQuestion
     - RightAnswer
     - WrongQuestion
-    - PresentConclusion
-    - EndGame
     - CatStopsTV
     - PlayConfusedCat
     - PlayHappyCat
@@ -154,13 +452,231 @@ MonoBehaviour:
     param_float: 0
     rect:
       serializedVersion: 2
-      x: 230
-      y: 120
+      x: 670
+      y: -30
       width: 200
       height: 170
-    ID: 1
+    ID: 6
     outPlayerIndex: -1
-    outActionIndex: 1
+    outActionIndex: 7
+    more: 0
+    ovrStartNode: -1
+    renameDialogue: 
+  - pauseHere: 0
+    gameObjectName: IdentifyStutterController
+    methodName: WrongQuestion
+    nameIndex: 9
+    methodIndex: 4
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - StartGame
+    - AskQuestion
+    - RightAnswer
+    - WrongQuestion
+    nameOpts:
+    - '[No object]'
+    - Text (TMP)
+    - Text (TMP)
+    - Text (TMP)
+    - DialogueText
+    - NPCName
+    - VideUIManager
+    - SaveManager
+    - Text (TMP)
+    - IdentifyStutterController
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: 670
+      y: -610
+      width: 200
+      height: 170
+    ID: 9
+    outPlayerIndex: -1
+    outActionIndex: 7
+    more: 0
+    ovrStartNode: -1
+    renameDialogue: 
+  - pauseHere: 0
+    gameObjectName: IdentifyStutterController
+    methodName: RightAnswer
+    nameIndex: 9
+    methodIndex: 3
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - StartGame
+    - AskQuestion
+    - RightAnswer
+    - WrongQuestion
+    nameOpts:
+    - '[No object]'
+    - Text (TMP)
+    - Text (TMP)
+    - Text (TMP)
+    - DialogueText
+    - NPCName
+    - VideUIManager
+    - SaveManager
+    - Text (TMP)
+    - IdentifyStutterController
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: 660
+      y: -320
+      width: 200
+      height: 170
+    ID: 11
+    outPlayerIndex: -1
+    outActionIndex: -1
+    more: 0
+    ovrStartNode: -1
+    renameDialogue: 
+  - pauseHere: 0
+    gameObjectName: IdentifyStutterController
+    methodName: CatStopsTV
+    nameIndex: 2
+    methodIndex: 5
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - StartGame
+    - AskQuestion
+    - RightAnswer
+    - WrongQuestion
+    - CatStopsTV
+    - PlayConfusedCat
+    - PlayHappyCat
+    nameOpts:
+    - '[No object]'
+    - SaveManager
+    - IdentifyStutterController
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: -1670
+      y: -370
+      width: 200
+      height: 170
+    ID: 12
+    outPlayerIndex: 0
+    outActionIndex: -1
+    more: 0
+    ovrStartNode: -1
+    renameDialogue: 
+  - pauseHere: 0
+    gameObjectName: IdentifyStutterController
+    methodName: PlayHappyCat
+    nameIndex: 2
+    methodIndex: 7
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - StartGame
+    - AskQuestion
+    - RightAnswer
+    - WrongQuestion
+    - CatStopsTV
+    - PlayConfusedCat
+    - PlayHappyCat
+    nameOpts:
+    - '[No object]'
+    - SaveManager
+    - IdentifyStutterController
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: -540
+      y: -340
+      width: 200
+      height: 170
+    ID: 13
+    outPlayerIndex: 6
+    outActionIndex: -1
+    more: 0
+    ovrStartNode: -1
+    renameDialogue: 
+  - pauseHere: 0
+    gameObjectName: IdentifyStutterController
+    methodName: PlayConfusedCat
+    nameIndex: 2
+    methodIndex: 6
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - StartGame
+    - AskQuestion
+    - RightAnswer
+    - WrongQuestion
+    - CatStopsTV
+    - PlayConfusedCat
+    - PlayHappyCat
+    nameOpts:
+    - '[No object]'
+    - SaveManager
+    - IdentifyStutterController
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: -550
+      y: -560
+      width: 200
+      height: 170
+    ID: 14
+    outPlayerIndex: 5
+    outActionIndex: -1
+    more: 0
+    ovrStartNode: -1
+    renameDialogue: 
+  - pauseHere: 0
+    gameObjectName: IdentifyStutterController
+    methodName: PlayConfusedCat
+    nameIndex: 2
+    methodIndex: 6
+    paramIndex: 0
+    opts:
+    - '[No method]'
+    - StartGame
+    - AskQuestion
+    - RightAnswer
+    - WrongQuestion
+    - CatStopsTV
+    - PlayConfusedCat
+    - PlayHappyCat
+    nameOpts:
+    - '[No object]'
+    - SaveManager
+    - IdentifyStutterController
+    param_bool: 0
+    param_string: 
+    param_int: 0
+    param_float: 0
+    rect:
+      serializedVersion: 2
+      x: -550
+      y: -100
+      width: 200
+      height: 170
+    ID: 15
+    outPlayerIndex: 7
+    outActionIndex: -1
     more: 0
     ovrStartNode: -1
     renameDialogue: 
@@ -203,11 +719,11 @@ MonoBehaviour:
     param_float: 0
     rect:
       serializedVersion: 2
-      x: 470
-      y: 60
+      x: -970
+      y: -600
       width: 200
       height: 170
-    ID: 3
+    ID: 16
     outPlayerIndex: 1
     outActionIndex: -1
     more: 0

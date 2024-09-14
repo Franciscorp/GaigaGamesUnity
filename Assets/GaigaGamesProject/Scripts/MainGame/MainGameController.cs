@@ -48,7 +48,7 @@ public class MainGameController : MonoBehaviour
     {
         Utils.SetScreenAlwaysOn();
         playerInformation = new PlayerInformation();
-        temp();
+        //temp();
     }
 
 
@@ -331,10 +331,10 @@ public class MainGameController : MonoBehaviour
         DisableDialogue();
         AfterIntroductionTimeline.Play();
         currentDialogue = 6;
-        playerInformation.SetCurrentGameStage(GameStages.GrandmaIntroductionCompleted);
         await Task.Delay(1800);
         //SetActiveInteraction(true);
-        Debug.Log("EndFirstInteractionWithGrandma = " + playerInformation.GetCurrentGameStage());
+        playerInformation.SetCurrentGameStage(GameStages.GrandmaIntroductionCompleted);
+        //Debug.Log("EndFirstInteractionWithGrandma = " + playerInformation.GetCurrentGameStage());
     }
 
     #endregion

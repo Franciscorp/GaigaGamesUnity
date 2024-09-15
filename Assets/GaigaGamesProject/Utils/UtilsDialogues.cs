@@ -18,7 +18,10 @@ public  class UtilsDialogues{
         GrandmaAltStory1 = 6,
         GrandpaAltStory1 = 7,
         SpeechMachineStory1 = 8,
-        IdentifyStutterStory1 = 9
+        IdentifyStutterStory1 = 9,
+        GrandmaAltStory2 = 10,
+        SpeechMachineAlt2 = 11,
+
     }
 
     // Dictionary to map dialogue names to keys
@@ -33,7 +36,9 @@ public  class UtilsDialogues{
         { MainGameDialogues.GrandmaAltStory1, "MainGameGrandmaAltSpeechMachine1" },
         { MainGameDialogues.GrandpaAltStory1, "MainGameGrandpaAltSpeechMachine1" },
         { MainGameDialogues.SpeechMachineStory1, "MainGameSpeechMachineStartGameInteract1" },
-        { MainGameDialogues.IdentifyStutterStory1, "MainGameIdentifyStutterStory1" },
+        { MainGameDialogues.IdentifyStutterStory1, "MainGameIdentifyStutterStartGameInteract1" },
+        { MainGameDialogues.GrandmaAltStory2, "MainGameGrandmaAlt2" },
+        { MainGameDialogues.SpeechMachineAlt2, "MainGameSpeechMachineAlt2" },
     };
 
     public enum VoiceLines

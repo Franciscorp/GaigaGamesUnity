@@ -266,10 +266,16 @@ public class MainGameController : MonoBehaviour
             ActivateDialogue(MainGameDialogues.GrandmaStory1);
             currentDialogue = 5;
         }
-        else
+        else if (playerInformation.GetCurrentGameStage() == GameStages.GrandmaIntroductionCompleted)
         {
             ActivateDialogue(MainGameDialogues.GrandmaAltStory1);
-            //Debug.LogError("TODO alternative chat");
+        }
+        else if (playerInformation.GetCurrentGameStage() == GameStages.SpeechMachineDone)
+        {
+            ActivateDialogue(MainGameDialogues.GrandmaAltStory2);
+        }
+        else
+        {
         }
     }
 
@@ -295,8 +301,13 @@ public class MainGameController : MonoBehaviour
         {
             ActivateDialogue(MainGameDialogues.SpeechMachineStory1);
         }
+        else if(playerInformation.GetCurrentGameStage() == GameStages.SpeechMachineDone)
+        {
+            ActivateDialogue(MainGameDialogues.GrandmaAltStory2);
+        }
         else
         {
+
         }
     }
 

@@ -142,6 +142,10 @@ MonoBehaviour:
     m_Localized: "Modo Hist\xF3ria: \nIdentifica a Gaguez"
     m_Metadata:
       m_Items: []
+  - m_Id: 48600454771593216
+    m_Localized: Ouvir Outra Vez
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

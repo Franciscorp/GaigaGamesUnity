@@ -1,3 +1,4 @@
+using FMODUnity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,8 +17,10 @@ public class IdentifyStutterController : MonoBehaviour
     private int currentStage = 1;
     private int wrongAnswers = 0;
     private int rightAnswers = 0;
+    private int currentQuestionVoiceLine = -1;
     private bool isEndGame = false;
     private Dictionary<string, bool> availableQuestions;
+    private Dictionary<VoiceLines, EventReference> questionsVoiceLines;
     private PlayerInformation playerInformation;
 
     public int catSpriteDuration = 2500;
@@ -60,6 +63,8 @@ public class IdentifyStutterController : MonoBehaviour
             { "IdentifyStutterQuestion9", true }
         };
 
+        CreateVoiceLineDictionary();
+
         // play audio
         AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.IdentifyStutterMusic);
     }
@@ -91,12 +96,17 @@ public class IdentifyStutterController : MonoBehaviour
         if (rightAnswers < MAX_AVAILABLE_ANSWERS)
         //if (rightAnswers < 1)
         {
-            AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.tvTalkingSFX);
+            // NOTE: will not be used
+            //AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.tvTalkingSFX);
             TVContent.UpdateContent(TVContentID.FriendTalking);
             IdentifyStutterDialogues currentQuestion = GetAvailableQuestionEnum();
             Debug.Log(currentQuestion);
             dialogueManager.SetupAndRestartDialogue(GetDialogueKey(currentQuestion));
             //dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.Question1));
+            currentQuestionVoiceLine = (int)currentQuestion - 1;
+            Debug.Log($"Voice Line ID = {currentQuestionVoiceLine}");
+            //currentQuestionVoiceLine = 1;
+            PlayVoiceLine(currentQuestionVoiceLine);
         }
         else
         {
@@ -110,6 +120,7 @@ public class IdentifyStutterController : MonoBehaviour
     {
         rightAnswers++;
         Debug.Log("RightAnswer");
+        currentQuestionVoiceLine = -1;
         AskQuestion();
     }
 
@@ -182,6 +193,23 @@ public class IdentifyStutterController : MonoBehaviour
         PlayCatSprite(CatSpriteID.CatMeows);
     }
 
+    public void PlayVoiceLine(int voiceLineID)
+    {
+        EventReference voiceLineEvent = questionsVoiceLines[(VoiceLines)voiceLineID];
+        AudioManager.Instance.PlayVoiceLine(voiceLineEvent);
+    }
+    public void PlayCurrentVoiceLine()
+    {
+        if (currentQuestionVoiceLine == -1)
+        {
+            Debug.LogError("No voice line available");
+            return;
+        }
+
+        EventReference voiceLineEvent = questionsVoiceLines[(VoiceLines)currentQuestionVoiceLine];
+        AudioManager.Instance.PlayVoiceLine(voiceLineEvent);
+    }
+
     public void PlayConfusedCat()
     {
         AudioManager.Instance.PlayOneShot(FModEvents.Instance.wrongAnswerCatSFX);
@@ -214,6 +242,22 @@ public class IdentifyStutterController : MonoBehaviour
     #endregion
 
     #region Auxiliary
+
+    private void CreateVoiceLineDictionary()
+    {
+        questionsVoiceLines = new Dictionary<VoiceLines, EventReference>
+        {
+            { VoiceLines.ISVoiceLineQuestion1, FModEvents.Instance.ISVoiceLineQuestion1},
+            { VoiceLines.ISVoiceLineQuestion2, FModEvents.Instance.ISVoiceLineQuestion2},
+            { VoiceLines.ISVoiceLineQuestion3, FModEvents.Instance.ISVoiceLineQuestion3},
+            { VoiceLines.ISVoiceLineQuestion4, FModEvents.Instance.ISVoiceLineQuestion4},
+            { VoiceLines.ISVoiceLineQuestion5, FModEvents.Instance.ISVoiceLineQuestion5},
+            { VoiceLines.ISVoiceLineQuestion6, FModEvents.Instance.ISVoiceLineQuestion6},
+            { VoiceLines.ISVoiceLineQuestion7, FModEvents.Instance.ISVoiceLineQuestion7},
+            { VoiceLines.ISVoiceLineQuestion8, FModEvents.Instance.ISVoiceLineQuestion8},
+            { VoiceLines.ISVoiceLineQuestion9, FModEvents.Instance.ISVoiceLineQuestion9}
+        };
+    }
 
     // TODO delete maybe
     public void EnableContinueButton()

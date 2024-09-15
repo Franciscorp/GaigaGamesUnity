@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     private List<EventInstance> eventInstances;
     private List<StudioEventEmitter> eventEmitters;
     private EventInstance uniqueEventInstance;
+    private EventInstance uniqueVoiceLineEventInstance;
 
 
     public static AudioManager Instance { get; private set; }
@@ -38,6 +39,13 @@ public class AudioManager : MonoBehaviour
     {
         Vector3 worldPos = Vector3.zero;
         RuntimeManager.PlayOneShot(sound, worldPos);
+    }
+
+    public void PlayVoiceLine(EventReference sound)
+    {
+        uniqueVoiceLineEventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        uniqueVoiceLineEventInstance = CreateInstance(sound);
+        uniqueVoiceLineEventInstance.start();
     }
 
     public void PlayUniqueOneShot(EventReference sound)

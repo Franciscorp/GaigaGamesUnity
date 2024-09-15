@@ -184,6 +184,69 @@ MonoBehaviour:
       Data3: -333868143
       Data4: -670878974
     Path: event:/SFX/IdentifyStutter/EndGameParty
+  <ISVoiceLineQuestion1>k__BackingField:
+    Guid:
+      Data1: -32725974
+      Data2: 1316958300
+      Data3: 67792311
+      Data4: -784386263
+    Path: event:/VoiceLines/ISVoiceLineQuestion1
+  <ISVoiceLineQuestion2>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <ISVoiceLineQuestion3>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <ISVoiceLineQuestion4>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <ISVoiceLineQuestion5>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <ISVoiceLineQuestion6>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <ISVoiceLineQuestion7>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <ISVoiceLineQuestion8>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  <ISVoiceLineQuestion9>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &2124881042281384334
 GameObject:
   m_ObjectHideFlags: 0

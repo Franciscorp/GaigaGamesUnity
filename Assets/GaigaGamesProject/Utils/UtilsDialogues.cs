@@ -36,6 +36,20 @@ public  class UtilsDialogues{
         { MainGameDialogues.IdentifyStutterStory1, "MainGameIdentifyStutterStory1" },
     };
 
+    public enum VoiceLines
+    {
+        DefaultVoiceLine = 0,
+        ISVoiceLineQuestion1 = 1,
+        ISVoiceLineQuestion2 = 2,
+        ISVoiceLineQuestion3 = 3,
+        ISVoiceLineQuestion4 = 4,
+        ISVoiceLineQuestion5 = 5,
+        ISVoiceLineQuestion6 = 6,
+        ISVoiceLineQuestion7 = 7,
+        ISVoiceLineQuestion8 = 8,
+        ISVoiceLineQuestion9 = 9
+    }
+
     // Static function to get the key associated with a dialogue name
     public static string GetMainGameDialogueKey(MainGameDialogues dialogueName)
     {

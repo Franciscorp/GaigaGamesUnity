@@ -143,6 +143,10 @@ MonoBehaviour:
     m_Key: PlayStoryModeIdentifyStutterKey
     m_Metadata:
       m_Items: []
+  - m_Id: 48600454771593216
+    m_Key: IdentityRepeatAudioButtonKey
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

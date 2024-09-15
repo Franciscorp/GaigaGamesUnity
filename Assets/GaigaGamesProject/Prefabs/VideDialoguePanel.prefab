@@ -998,9 +998,12 @@ MonoBehaviour:
   - IdentifyStutterQuestion9
   - Laura
   - MainGameGrandma1
+  - MainGameGrandmaAlt2
   - MainGameGrandmaAltSpeechMachine1
   - MainGameGrandpaAltSpeechMachine1
+  - MainGameIdentifyStutterStartGameInteract1
   - MainGameIdentifyStutterStory1
+  - MainGameSpeechMachineAlt2
   - MainGameSpeechMachineStartGameInteract1
   - MainGameSpeechMachineStory1
   - MainGameStory1
@@ -1015,9 +1018,9 @@ MonoBehaviour:
   - MrCube
   - NPCOnly
   - Witch
-  assignedIndex: 4
-  assignedID: 15932
-  assignedDialogue: IdentifyStutterGameIntroduction
+  assignedIndex: 17
+  assignedID: 86108
+  assignedDialogue: MainGameGrandma1
   interactionCount: 0
   alias: 
   overrideStartNode: -1
@@ -1857,7 +1860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1700313056839526205
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1867,7 +1870,7 @@ RectTransform:
   m_GameObject: {fileID: 7004859955046241004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8385128926385262499}

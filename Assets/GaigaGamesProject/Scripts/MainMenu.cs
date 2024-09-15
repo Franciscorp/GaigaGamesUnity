@@ -10,10 +10,15 @@ public class MainMenu : MonoBehaviour
 
     private void Awake()
     {
+        Utils.SetScreenAlwaysOn();
         playerInformation = new PlayerInformation();
         playerInformation.SetCurrentGameStage(GameStages.Beginning);
-        AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.mainMenuMusic);
         //playerInformation.SetCurrentGameStage(GameStages.IntroductionCompleted);
+    }
+
+    private void Start()
+    {
+        AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.mainMenuMusic);
     }
 
     public void OpenGamesMenu()

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{42035515-bfc3-4faf-83fa-1699e68ff06d}">
+		<property name="assetPath">
+			<value>VoiceLines/voicelines_question-05.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.5191836734693878</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ff6d5952-8dd7-4ae2-8ab5-7b451ca5812d}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -303,7 +303,7 @@ public class MainGameController : MonoBehaviour
         }
         else if(playerInformation.GetCurrentGameStage() == GameStages.SpeechMachineDone)
         {
-            ActivateDialogue(MainGameDialogues.GrandmaAltStory2);
+            ActivateDialogue(MainGameDialogues.SpeechMachineAlt2);
         }
         else
         {

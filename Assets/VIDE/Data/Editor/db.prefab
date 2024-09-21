@@ -44,54 +44,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268dc70b105993846a123be43345df63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileIndex: 17
+  fileIndex: 0
   skinIndex: 0
   loadTag: 
   startID: 0
   curFocusID: 0
-  currentID: 63372
+  currentID: 19185
   autosave: 1
   previewPanning: 0
-  currentDiag: 17
-  locEdit: 1
+  currentDiag: 0
+  locEdit: 0
   pNodeID: 18
   aNodeID: 2
   S_playerDiags:
-  - commentCount: 1
+  - commentCount: 3
     s_comment:
-    - text: Bem vindo [PLAYER_NAME]! Bem vindo aos jogos Gaiga!
+    - text: Once upon a time...
       extraData: ExtraData
       inputSetIndex: 0
-      outputNodeIndex: -1
-      outActionIndex: 0
+      outputNodeIndex: 1
+      outActionIndex: -1
       showmore: 0
       outRect:
         serializedVersion: 2
         x: 301
         y: 63
         width: 30
-        height: 33
+        height: 23
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
-    ID: 0
-    rect:
-      serializedVersion: 2
-      x: 180
-      y: 280
-      width: 348
-      height: 232
-    pTag: Narrador
-    expand: 1
-    sprite: {fileID: 21300000, guid: 3445726630f15574f92cf3b32569c223, type: 3}
-    vars: []
-    varKeys: []
-    isPlayer: 0
-  - commentCount: 1
-    s_comment:
-    - text: "Diz-me, qual \xE9 a personagem<br>com quem queres jogar?"
+    - text: In a land far away
       extraData: ExtraData
-      inputSetIndex: 1
+      inputSetIndex: 0
       outputNodeIndex: -1
       outActionIndex: -1
       showmore: 0
@@ -104,130 +89,273 @@ MonoBehaviour:
       sprites: {fileID: 0}
       audios: {fileID: 0}
       visible: 1
-    ID: 1
+    - text: Something happened!
+      extraData: ExtraData
+      inputSetIndex: 0
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 0
     rect:
       serializedVersion: 2
-      x: 1040
-      y: 280
+      x: 70
+      y: 160
       width: 348
-      height: 247
-    pTag: Narrador
-    expand: 1
-    sprite: {fileID: 21300000, guid: 3445726630f15574f92cf3b32569c223, type: 3}
+      height: 177
+    pTag: 
+    expand: 0
+    sprite: {fileID: 0}
     vars: []
     varKeys: []
     isPlayer: 0
-  S_actionNodes:
-  - pauseHere: 0
-    gameObjectName: VideUIManager
-    methodName: DisableContinueButton
-    nameIndex: 7
-    methodIndex: 10
-    paramIndex: 0
-    opts:
-    - '[No method]'
-    - GetAssigned
-    - AssignNew
-    - SaveState
-    - LoadState
-    - OnBeforeSerialize
-    - OnAfterDeserialize
-    - SetupAndStartDialogue
-    - SetupAndRestartDialogue
-    - InteractWithDialogue
-    - DisableContinueButton
-    - EnableContinueButton
-    - CallNext
-    - SetPlayerChoice
-    - DialogueEndActionHandler
-    nameOpts:
-    - '[No object]'
-    - Text (TMP)
-    - Text (TMP)
-    - Text (TMP)
-    - Text (TMP)
-    - DialogueText
-    - NPCName
-    - VideUIManager
-    - AudioManager
-    - DialogueText
-    - NPCName
-    - DialogueManager
-    - SaveManager
-    - IntroductionController
-    - Text
-    - TitleLb
-    - NameRequest
-    - Placeholder
-    param_bool: 0
-    param_string: 
-    param_int: 0
-    param_float: 0
+  - commentCount: 3
+    s_comment:
+    - text: No Way!
+      extraData: ExtraData
+      inputSetIndex: 1
+      outputNodeIndex: 3
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 301
+        y: 63
+        width: 30
+        height: 23
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: What happened?
+      extraData: ExtraData
+      inputSetIndex: 1
+      outputNodeIndex: 2
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 300
+        y: 87
+        width: 30
+        height: 23
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: Laaaame...
+      extraData: ExtraData
+      inputSetIndex: 1
+      outputNodeIndex: 4
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 300
+        y: 111
+        width: 30
+        height: 23
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 1
     rect:
       serializedVersion: 2
-      x: 550
-      y: 280
-      width: 200
-      height: 170
+      x: 490
+      y: 210
+      width: 348
+      height: 177
+    pTag: 
+    expand: 0
+    sprite: {fileID: 0}
+    vars: []
+    varKeys: []
+    isPlayer: 1
+  - commentCount: 2
+    s_comment:
+    - text: A terrible thing happened!
+      extraData: ExtraData
+      inputSetIndex: 2
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: The end.
+      extraData: ExtraData
+      inputSetIndex: 2
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
     ID: 2
-    outPlayerIndex: -1
-    outActionIndex: 1
-    more: 0
-    ovrStartNode: -1
-    renameDialogue: 
-  - pauseHere: 0
-    gameObjectName: IntroductionController
-    methodName: AskGender
-    nameIndex: 13
-    methodIndex: 5
-    paramIndex: 0
-    opts:
-    - '[No method]'
-    - SendIntroduction
-    - IntroductionCompleted
-    - OnNameEntered
-    - DialogueCompleted
-    - AskGender
-    - GenderEntered
-    - ChangeToScene2
-    - ChangeToScene3
-    - ChangeToGrandmasHouseScene1
-    - OpenMainMenu
-    - StartSpeechMachineGame
-    - StartMainGame
-    nameOpts:
-    - '[No object]'
-    - Text (TMP)
-    - Text (TMP)
-    - Text (TMP)
-    - Text (TMP)
-    - DialogueText
-    - NPCName
-    - VideUIManager
-    - AudioManager
-    - DialogueText
-    - NPCName
-    - DialogueManager
-    - SaveManager
-    - IntroductionController
-    - Text
-    - TitleLb
-    - NameRequest
-    - Placeholder
-    param_bool: 0
-    param_string: 
-    param_int: 0
-    param_float: 0
     rect:
       serializedVersion: 2
-      x: 800
-      y: 280
-      width: 200
-      height: 170
+      x: 960
+      y: 260
+      width: 348
+      height: 153
+    pTag: 
+    expand: 0
+    sprite: {fileID: 0}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 4
+    s_comment:
+    - text: Yes way!
+      extraData: ExtraData
+      inputSetIndex: 3
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: Those were the dark times
+      extraData: ExtraData
+      inputSetIndex: 3
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: As dark as this background
+      extraData: ExtraData
+      inputSetIndex: 3
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: End of story.
+      extraData: ExtraData
+      inputSetIndex: 3
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
     ID: 3
-    outPlayerIndex: 1
-    outActionIndex: -1
-    more: 0
-    ovrStartNode: -1
-    renameDialogue: 
+    rect:
+      serializedVersion: 2
+      x: 950
+      y: 50
+      width: 348
+      height: 201
+    pTag: 
+    expand: 0
+    sprite: {fileID: 0}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  - commentCount: 3
+    s_comment:
+    - text: Not lame!
+      extraData: ExtraData
+      inputSetIndex: 4
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: It was a tragedy...
+      extraData: ExtraData
+      inputSetIndex: 4
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    - text: That's about it.
+      extraData: ExtraData
+      inputSetIndex: 4
+      outputNodeIndex: -1
+      outActionIndex: -1
+      showmore: 0
+      outRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      sprites: {fileID: 0}
+      audios: {fileID: 0}
+      visible: 1
+    ID: 4
+    rect:
+      serializedVersion: 2
+      x: 940
+      y: 440
+      width: 348
+      height: 177
+    pTag: 
+    expand: 0
+    sprite: {fileID: 0}
+    vars: []
+    varKeys: []
+    isPlayer: 0
+  S_actionNodes: []
   S_selNodes: []

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -233,6 +234,7 @@ public class MainGameController : MonoBehaviour
     public async void TobiasMeows()
     {
         TobiasSprite.UpdateContent(CatSpriteController.CatSpriteID.CatMeows);
+        AudioManager.Instance.PlayOneShot(FModEvents.Instance.stopTvCatSFX);
         await Task.Delay(500);
         videDialogueManager.SetupAndRestartDialogue(GetMainGameDialogueKey(MainGameDialogues.MainGameStory3));
         await Task.Delay(500);

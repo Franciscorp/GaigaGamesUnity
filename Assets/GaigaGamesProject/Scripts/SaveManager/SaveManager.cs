@@ -84,8 +84,8 @@ public class SaveManager : MonoBehaviour
                 string json = state.SaveState();
                 // _ discards return value
                 _ = WriteToFileAsync(state.GetSaveDir() + "/" + state.GetUID() + ".save", json);
-                Debug.Log("[DataManager.Save] json = " + json);
-                Debug.Log("Saved");
+                //Debug.Log("[DataManager.Save] json = " + json);
+                Debug.Log("[DataManager.Save] json Saved");
             }
         }
     }
@@ -103,8 +103,8 @@ public class SaveManager : MonoBehaviour
                 {
                     string json = File.ReadAllText(expectedFileLocation);
                     state.LoadState(json);
-                    Debug.Log("[DataManager.Load] json = " + json);
-                    Debug.Log("Loaded");
+                    //Debug.Log("[DataManager.Load] json = " + json);
+                    Debug.Log("Dialogue Json Loaded");
                 }
             }
         }

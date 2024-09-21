@@ -231,9 +231,4 @@ public class IntroductionController : MonoBehaviour
         ThirdSceneTimeline.Play();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

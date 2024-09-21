@@ -69,7 +69,7 @@ public class DialogueManager : MonoBehaviour
             }
             catch (Exception ex)
             {
-                Debug.LogError(ex);
+                Debug.LogWarning("[DialogueManager] Missing SpeechMachineGameManager connection" + ex);
             }
 
             try
@@ -78,7 +78,7 @@ public class DialogueManager : MonoBehaviour
             }
             catch (Exception ex)
             {
-                Debug.LogError(ex);
+                Debug.LogWarning("[DialogueManager] Missing IntroductionController connection" + ex);
             }
 
             Debug.Log("[DialogueManager] Dialogue Events are connected");

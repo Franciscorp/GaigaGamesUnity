@@ -29,7 +29,7 @@ public class BaseSpeechMachineDialogueGenerator
         SpeechMachineDialogueStructure speechMachineDialogue = new SpeechMachineDialogueStructure(introductionList, SuggestionList,
             rightAnswersList, conclusionList, speechElementDialogues);
 
-        Debug.Log("[speechMachineDialogue] deserialization = " + JsonUtility.ToJson(speechMachineDialogue));
+        //Debug.Log("[speechMachineDialogue] deserialization = " + JsonUtility.ToJson(speechMachineDialogue));
 
         return speechMachineDialogue;
     }

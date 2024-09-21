@@ -7,6 +7,7 @@ using UnityEngine.Analytics;
 using UnityEngine.Events;
 using UnityEngine.Playables;
 using UnityEngine.UI;
+using static UtilsDialogues;
 using static UtilsSpeechMachine;
 
 
@@ -16,8 +17,10 @@ public class IntroductionController : MonoBehaviour
 
     // Game Objects
     public GamesMenu gamesMenu;
-    public GameObject dialoguePanel;
-    private GameObject dialogueManager;
+    //public GameObject dialoguePanel;
+    //private GameObject dialogueManager;
+    public GameObject VideDialoguePanel;
+    public VideUIManager VideDialogueManager;
     public GameObject nameRequestTextInput;
     public GameObject genderChoicePanelButton;
 
@@ -58,13 +61,13 @@ public class IntroductionController : MonoBehaviour
         scene2 = GameObject.Find(scene2Name);
         scene3 = GameObject.Find(scene3Name);
 
-        dialogueManager = GameObject.FindGameObjectsWithTag("DialogueManager").FirstOrDefault();
-        if (dialogueManager != null)
-        {
-            //dialogueManager.GetComponent<DialogueManager>().OnGameIsOverDialogueCompleted.AddListener(GameCompleted);
-            dialogueManager.GetComponent<DialogueManager>().OnIntroductionDialogueCompleted.AddListener(IntroductionCompleted);
-            dialogueManager.GetComponent<DialogueManager>().OnDialogueCompleted.AddListener(DialogueCompleted);
-        }
+        //dialogueManager = GameObject.FindGameObjectsWithTag("DialogueManager").FirstOrDefault();
+        //if (dialogueManager != null)
+        //{
+        //    //dialogueManager.GetComponent<DialogueManager>().OnGameIsOverDialogueCompleted.AddListener(GameCompleted);
+        //    dialogueManager.GetComponent<DialogueManager>().OnIntroductionDialogueCompleted.AddListener(IntroductionCompleted);
+        //    dialogueManager.GetComponent<DialogueManager>().OnDialogueCompleted.AddListener(DialogueCompleted);
+        //}
 
         gamesMenu = GetComponent<GamesMenu>();
 
@@ -76,7 +79,8 @@ public class IntroductionController : MonoBehaviour
     {
         playerInformation = new PlayerInformation();
 
-        dialoguePanel.SetActive(false);
+        //dialoguePanel.SetActive(false);
+        VideDialoguePanel.SetActive(false);
         nameRequestTextInput.SetActive(false);
         genderChoicePanelButton.SetActive(false);
 
@@ -98,20 +102,26 @@ public class IntroductionController : MonoBehaviour
     {
         // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
         // if so, it doesn't show anything
-        if (dialogueEvent != null)
-        {
-            dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.Intro);
-        }
+        //if (dialogueEvent != null)
+        //{
+        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.Intro);
+        //}
+
+        VideDialogueManager.SetupAndStartDialogue(GetIntroductionDialogueKey(IntroductionDialogues.IntroductionAskName));
     }
 
-    public void IntroductionCompleted()
+    public async void IntroductionCompleted()
     {
         Debug.Log("SpeechMachine Controller - Introduction Completed()");
         
         // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
-        if (dialogueEvent != null)
-            dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.AskName);
-        
+        //if (dialogueEvent != null)
+        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.AskName);
+
+        //VideDialogueManager.SetupAndRestartDialogue(GetIntroductionDialogueKey(IntroductionDialogues.IntroductionAskGender));
+
+        await Task.Delay(1300);
+
         nameRequestTextInput.SetActive(true);
     }
 
@@ -129,11 +139,13 @@ public class IntroductionController : MonoBehaviour
         
         nameRequestTextInput.SetActive(false);
 
-        if (dialogueEvent != null)
-            dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NameEntered);
+        VideDialogueManager.SetupAndRestartDialogue(GetIntroductionDialogueKey(IntroductionDialogues.IntroductionAskGender));
 
-        if (dialogueEvent != null)
-            dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NextDialogueLine);
+        //if (dialogueEvent != null)
+        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NameEntered);
+
+        //if (dialogueEvent != null)
+        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NextDialogueLine);
     }
 
     public void DialogueCompleted()
@@ -158,13 +170,15 @@ public class IntroductionController : MonoBehaviour
     }
 
 
-    public void AskGender()
+    public async void AskGender()
     {
         Debug.Log("SpeechMachine Controller - Ask Gender()");
 
         // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
-        if (dialogueEvent != null)
-            dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.AskGender);
+        //if (dialogueEvent != null)
+        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.AskGender);
+
+        await Task.Delay(1800);
 
         genderChoicePanelButton.SetActive(true);
     }
@@ -179,12 +193,14 @@ public class IntroductionController : MonoBehaviour
         playerInformation.SetGender((Utils.Gender) selectedGender);
         playerInformation.GetGender();
 
-        // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
-        if (dialogueEvent != null)
-            dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.GenderEntered);
+        VideDialogueManager.SetupAndRestartDialogue(GetIntroductionDialogueKey(IntroductionDialogues.IntroductionStartGame));
 
-        if (dialogueEvent != null)
-            dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NextDialogueLine);
+        //// sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
+        //if (dialogueEvent != null)
+        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.GenderEntered);
+
+        //if (dialogueEvent != null)
+        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NextDialogueLine);
 
         currentScene = 3;
     }
@@ -195,7 +211,8 @@ public class IntroductionController : MonoBehaviour
         currentScene = 2;
         scene1.SetActive(false);
         scene2.SetActive(true);
-        dialoguePanel.gameObject.SetActive(true);
+        //dialoguePanel.gameObject.SetActive(true);
+        VideDialoguePanel.SetActive(true);
 
         SendIntroduction();
 
@@ -208,7 +225,7 @@ public class IntroductionController : MonoBehaviour
     public async void ChangeToScene3()
     {
         Debug.Log("Change to Scene 3");
-        dialoguePanel.SetActive(false);
+        VideDialoguePanel.SetActive(false);
         scene2.SetActive(false);
         scene3.SetActive(true);
         scene3.GetComponent<IntroductionScene3Controller>().SetSceneAccordingToGender(playerInformation.GetGender());
@@ -223,7 +240,7 @@ public class IntroductionController : MonoBehaviour
     public void ChangeToGrandmasHouseScene1()
     {
         Debug.Log("Change to Grandmas House Scene 1");
-        dialoguePanel.SetActive(false);
+        VideDialoguePanel.SetActive(false);
         scene2.SetActive(false);
         scene3.SetActive(true);
         scene3.GetComponent<IntroductionScene3Controller>().SetSceneAccordingToGender(playerInformation.GetGender());

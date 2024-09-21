@@ -72,6 +72,7 @@ public class VideUIManager : MonoBehaviour
         if (VD.isActive)
             End(null);
 
+        playerInformation.LoadCharacterName();
         Begin(GetComponent<VIDE_Assign>(), assignedDialogue);
         EnableContinueButton();
         return true;

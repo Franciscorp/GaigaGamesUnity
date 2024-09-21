@@ -42,6 +42,7 @@ public class PlayerInformation
     public void SetCharacterName(string name)
     {
         name = CapitalizeEachWord(name);
+        username = name;
         PlayerPrefs.SetString(Utils.UsernamePlayerPrefsKeyword, name);
         PlayerPrefs.Save();
         Debug.Log("Character Name saved");
@@ -55,6 +56,7 @@ public class PlayerInformation
     public string LoadCharacterName()
     {
         string characterName = PlayerPrefs.GetString(Utils.UsernamePlayerPrefsKeyword, "Jogador");
+        username = characterName;
         //Debug.Log(characterName);
         return characterName;
     }

@@ -7,6 +7,43 @@ public  class UtilsDialogues{
     public const string WRONG_ANSWERS_TAG = "[WRONG_ANSWERS]";
     public const string UNIDENTIFIED_DIALOGUE = "unidentifiedDialogue";
 
+    #region Introduction
+
+    public enum IntroductionDialogues
+    {
+        IntroductionAskName = 0,
+        IntroductionAskGender = 1,
+        IntroductionStartGame = 2,
+    }
+
+    // Dictionary to map dialogue names to keys
+    private static readonly Dictionary<IntroductionDialogues, string> introductionDialogueKeys = new Dictionary<IntroductionDialogues, string>
+    {
+        { IntroductionDialogues.IntroductionAskName, "IntroductionPart1" },
+        { IntroductionDialogues.IntroductionAskGender, "IntroductionPart2" },
+        { IntroductionDialogues.IntroductionStartGame, "IntroductionPart3" },
+    };
+
+    // Static function to get the key associated with a dialogue name
+    public static string GetIntroductionDialogueKey(IntroductionDialogues dialogueName)
+    {
+        if (introductionDialogueKeys.TryGetValue(dialogueName, out string key))
+        {
+            return key;
+        }
+        else
+        {
+            // Handle case where the dialogue name is not found
+            return null; // or return a default key, throw an exception, etc.
+        }
+    }
+
+
+    #endregion
+
+    #region MainGame
+
+
     public enum MainGameDialogues
     {
         UnidentifiedDialogue = 0,
@@ -41,20 +78,6 @@ public  class UtilsDialogues{
         { MainGameDialogues.SpeechMachineAlt2, "MainGameSpeechMachineAlt2" },
     };
 
-    public enum VoiceLines
-    {
-        DefaultVoiceLine = 0,
-        ISVoiceLineQuestion1 = 1,
-        ISVoiceLineQuestion2 = 2,
-        ISVoiceLineQuestion3 = 3,
-        ISVoiceLineQuestion4 = 4,
-        ISVoiceLineQuestion5 = 5,
-        ISVoiceLineQuestion6 = 6,
-        ISVoiceLineQuestion7 = 7,
-        ISVoiceLineQuestion8 = 8,
-        ISVoiceLineQuestion9 = 9
-    }
-
     // Static function to get the key associated with a dialogue name
     public static string GetMainGameDialogueKey(MainGameDialogues dialogueName)
     {
@@ -83,6 +106,10 @@ public  class UtilsDialogues{
         // Return null if no matching key is found
         return MainGameDialogues.UnidentifiedDialogue;
     }
+
+    #endregion
+
+    #region IdentifyStutter
 
     public enum IdentifyStutterDialogues
     {
@@ -126,18 +153,18 @@ public  class UtilsDialogues{
         { IdentifyStutterDialogues.BestConclusion, "IdentifyStutterBestConclusion" },
     };
 
-    // Static function to get the key associated with a dialogue name
-    public static string GetDialogueKey(IdentifyStutterDialogues dialogueName)
+    public enum VoiceLines
     {
-        if (dialogueKeys.TryGetValue(dialogueName, out string key))
-        {
-            return key;
-        }
-        else
-        {
-            // Handle case where the dialogue name is not found
-            return null; // or return a default key, throw an exception, etc.
-        }
+        DefaultVoiceLine = 0,
+        ISVoiceLineQuestion1 = 1,
+        ISVoiceLineQuestion2 = 2,
+        ISVoiceLineQuestion3 = 3,
+        ISVoiceLineQuestion4 = 4,
+        ISVoiceLineQuestion5 = 5,
+        ISVoiceLineQuestion6 = 6,
+        ISVoiceLineQuestion7 = 7,
+        ISVoiceLineQuestion8 = 8,
+        ISVoiceLineQuestion9 = 9
     }
 
     // Function to find the key based on the value
@@ -154,5 +181,26 @@ public  class UtilsDialogues{
         // Return null if no matching key is found
         return IdentifyStutterDialogues.UnidentifiedDialogue;
     }
+
+    // Static function to get the key associated with a dialogue name
+    public static string GetDialogueKey(IdentifyStutterDialogues dialogueName)
+    {
+        if (dialogueKeys.TryGetValue(dialogueName, out string key))
+        {
+            return key;
+        }
+        else
+        {
+            // Handle case where the dialogue name is not found
+            return null; // or return a default key, throw an exception, etc.
+        }
+    }
+
+
+    #endregion
+
+
+
+
 
 }

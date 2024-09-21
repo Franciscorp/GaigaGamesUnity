@@ -16,14 +16,10 @@ public class IntroductionController : MonoBehaviour
     private PlayerInformation playerInformation;
 
     // Game Objects
-    public GamesMenu gamesMenu;
-    //public GameObject dialoguePanel;
-    //private GameObject dialogueManager;
     public GameObject VideDialoguePanel;
     public VideUIManager VideDialogueManager;
     public GameObject nameRequestTextInput;
     public GameObject genderChoicePanelButton;
-
 
     private Image carImage;
     private PlayableDirector Timeline;
@@ -32,6 +28,7 @@ public class IntroductionController : MonoBehaviour
     private GameObject scene1;
     private GameObject scene2;
     private GameObject scene3;
+    private GamesMenu gamesMenu;
 
     public BaseDialogueEvent dialogueEvent;
 
@@ -53,21 +50,9 @@ public class IntroductionController : MonoBehaviour
         string scene2Name = "Scene2";
         string scene3Name = "Scene3";
 
-        // Find all Image components in children and filter by name
-        //carImage = GetComponentsInChildren<Image>()
-        //.FirstOrDefault(image => image.gameObject.name == imageName);
-
         scene1 = GameObject.Find(scene1Name);
         scene2 = GameObject.Find(scene2Name);
         scene3 = GameObject.Find(scene3Name);
-
-        //dialogueManager = GameObject.FindGameObjectsWithTag("DialogueManager").FirstOrDefault();
-        //if (dialogueManager != null)
-        //{
-        //    //dialogueManager.GetComponent<DialogueManager>().OnGameIsOverDialogueCompleted.AddListener(GameCompleted);
-        //    dialogueManager.GetComponent<DialogueManager>().OnIntroductionDialogueCompleted.AddListener(IntroductionCompleted);
-        //    dialogueManager.GetComponent<DialogueManager>().OnDialogueCompleted.AddListener(DialogueCompleted);
-        //}
 
         gamesMenu = GetComponent<GamesMenu>();
 
@@ -79,7 +64,6 @@ public class IntroductionController : MonoBehaviour
     {
         playerInformation = new PlayerInformation();
 
-        //dialoguePanel.SetActive(false);
         VideDialoguePanel.SetActive(false);
         nameRequestTextInput.SetActive(false);
         genderChoicePanelButton.SetActive(false);
@@ -87,26 +71,15 @@ public class IntroductionController : MonoBehaviour
         currentScene = 1;
 
         if (scene2 != null)
-        {
             scene2.SetActive(false);
-        }
 
         if (scene3 != null)
-        {
             scene3.SetActive(false);
-        }
 
     }
 
     public void SendIntroduction()
     {
-        // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
-        // if so, it doesn't show anything
-        //if (dialogueEvent != null)
-        //{
-        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.Intro);
-        //}
-
         VideDialogueManager.SetupAndStartDialogue(GetIntroductionDialogueKey(IntroductionDialogues.IntroductionAskName));
     }
 
@@ -114,12 +87,6 @@ public class IntroductionController : MonoBehaviour
     {
         Debug.Log("SpeechMachine Controller - Introduction Completed()");
         
-        // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
-        //if (dialogueEvent != null)
-        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.AskName);
-
-        //VideDialogueManager.SetupAndRestartDialogue(GetIntroductionDialogueKey(IntroductionDialogues.IntroductionAskGender));
-
         await Task.Delay(1300);
 
         nameRequestTextInput.SetActive(true);
@@ -140,46 +107,15 @@ public class IntroductionController : MonoBehaviour
         nameRequestTextInput.SetActive(false);
 
         VideDialogueManager.SetupAndRestartDialogue(GetIntroductionDialogueKey(IntroductionDialogues.IntroductionAskGender));
-
-        //if (dialogueEvent != null)
-        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NameEntered);
-
-        //if (dialogueEvent != null)
-        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NextDialogueLine);
     }
-
-    public void DialogueCompleted()
-    {
-        Debug.Log("DialogueCompleted");
-
-        switch (currentScene)
-        {
-            case 1:
-                // nothing to do
-                break; 
-            case 2:
-                AskGender();
-                break;
-            case 3:
-                ChangeToScene3();
-                break;
-            default:
-                Debug.LogWarning("Current scene was not planned. Error in Introduction Controller");
-                break;
-        }
-    }
-
 
     public async void AskGender()
     {
         Debug.Log("SpeechMachine Controller - Ask Gender()");
 
-        // sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
-        //if (dialogueEvent != null)
-        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.AskGender);
-
         await Task.Delay(1800);
 
+        // activates buttons to choose character
         genderChoicePanelButton.SetActive(true);
     }
 
@@ -195,31 +131,18 @@ public class IntroductionController : MonoBehaviour
 
         VideDialogueManager.SetupAndRestartDialogue(GetIntroductionDialogueKey(IntroductionDialogues.IntroductionStartGame));
 
-        //// sends dialogue event and dialogue manager checks if other dialogue is present on the dialogue manager, 
-        //if (dialogueEvent != null)
-        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.GenderEntered);
-
-        //if (dialogueEvent != null)
-        //    dialogueEvent.Invoke(Scene.Introduction, DialogueEventType.NextDialogueLine);
-
         currentScene = 3;
     }
 
-    public async void ChangeToScene2()
+    public void ChangeToScene2()
     {
         Debug.Log("Change to Scene 2");
         currentScene = 2;
         scene1.SetActive(false);
         scene2.SetActive(true);
-        //dialoguePanel.gameObject.SetActive(true);
         VideDialoguePanel.SetActive(true);
 
         SendIntroduction();
-
-        // Wait for 4 seconds
-        //await Task.Delay(4000);
-
-        //SceneLoader.Load(SceneLoader.Scene.MainStoryGame);
     }
 
     public async void ChangeToScene3()

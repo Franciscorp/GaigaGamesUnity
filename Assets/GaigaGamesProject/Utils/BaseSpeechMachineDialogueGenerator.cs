@@ -52,9 +52,8 @@ public class BaseSpeechMachineDialogueGenerator
         {
             "Bem Vindo à Maquina da Fala!",
             "Neste jogo o objetivo é encaixar as diferentes partes da fala no sítio certo do corpo.",
-            "Achas que estás pronto para o desafio?",
             "Arrasta cada peça para o sítio certo. O objetivo é conseguir a máquina da fala completa!",
-            "Vamos lá começar!"
+            "Achas que estás pronto para o desafio?"
         };
         
         Dialogue dialogue = new Dialogue(SpeechMachine + "Introduction" + Key + "1", Npc.SpeechMachine, englishText, portugueseText);
@@ -77,7 +76,7 @@ public class BaseSpeechMachineDialogueGenerator
 
         List<string> portugueseText = new List<string>
         {
-            "Psst... Vou te deixar aqui uma pista para a próxima parte da máquina da fala"
+            "Psst... Vou te deixar aqui uma pista para a próxima parte da máquina da fala."
         };
 
         Dialogue dialogue = new Dialogue(SpeechMachine + "Suggestion" + Key + "1", Npc.SpeechMachine, englishText, portugueseText);
@@ -151,8 +150,10 @@ public class BaseSpeechMachineDialogueGenerator
         List<string> portugueseText = new List<string>
         {
             "Parabéns! Estás a ficar um mestre a conhecer a fala do ser humano!", 
-            "Conseguiste concluir todos os elementos da máquina da fala",
-            "Mas estarás pronto para o próximo desafio?",
+            "Conseguiste concluir todos os elementos da máquina da fala.",
+            "Como tal, aqui tens. Esta é quantidade de chocolate para as bolachas.",
+            "Depois tens que vir cá trazer-me algumas!",
+            "Até uma próxima.",
         };
 
 
@@ -205,14 +206,14 @@ public class BaseSpeechMachineDialogueGenerator
         // --------------
 
         englishText = "Woah! I don't think the brain really belongs there! Try again!";
-        portugueseText = "Epa! Acho que o cerébro não é bem aí! Tenta outra vez!";
+        portugueseText = "Epa! Acho que o cérebro não é bem aí! Tenta outra vez!";
 
         wrongAnswersList.Add(new Dialogue(SpeechMachine + "Brain" + WrongAnswerKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 
         // ---------
 
         englishText = "Nice! A perfect fit! Now your character is able to think!";
-        portugueseText = "Boa! O lugar perfeito para o cerébro! Agora a tua personagem consegue pensar nas falas!";
+        portugueseText = "Boa! O lugar perfeito para o cérebro! Agora a tua personagem consegue pensar nas falas!";
 
         rightAnswersList.Add(new Dialogue(SpeechMachine + "Brain" + RightAnswerKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 
@@ -229,21 +230,21 @@ public class BaseSpeechMachineDialogueGenerator
         string portugueseText;
 
         englishText = "There's a part of the body responsible for creating our voice. What could it be?";
-        portugueseText = "Há uma parte do corpo responsável por criar a nossa voz. Qual será?";
+        portugueseText = "Há uma parte do corpo responsável por formar a nossa voz. Qual será?";
 
         suggestionList.Add(new Dialogue(SpeechMachine + "VoiceBox" + SuggestionKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 
         // --------------
 
         englishText = "Oops! That wasn't quite right. Try moving the voice box a towards the neck area. You're almost there!";
-        portugueseText = "Ups! Não era bem aó. Tenta mexer a caixa de voz para a zona do pescoço. Estás quase lá!";
+        portugueseText = "Ups! Não era bem aí. Tenta arrastar a laringe para a zona do pescoço. Estás quase lá!";
 
         wrongAnswersList.Add(new Dialogue(SpeechMachine + "VoiceBox" + WrongAnswerKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 
         // ---------
 
         englishText = "You got it right! The voice box contains our vocal cords, which vibrate when air passes through them, creating our voice.";
-        portugueseText = "Acertaste! A caixa de voz contém as nossas cordas vocais, que vibram quando o ar passa por elas e cria a nossa voz.";
+        portugueseText = "Acertaste! A laringe contém as nossas cordas vocais, que vibram quando o ar passa por elas e forma a nossa voz única.";
 
         rightAnswersList.Add(new Dialogue(SpeechMachine + "VoiceBox" + RightAnswerKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 
@@ -260,21 +261,21 @@ public class BaseSpeechMachineDialogueGenerator
         string portugueseText;
 
         englishText = "There's a part of the body responsible for creating our voice. What could it be?";
-        portugueseText = "Dentro da boca, esta parte do corpo ajuda a formar diferentes sons ao mexer. Qual é que achas que será?";
+        portugueseText = "Dentro da boca, há um músculo que ajuda a formar diferentes sons ao mexer. Qual é que achas que será?";
 
         suggestionList.Add(new Dialogue(SpeechMachine + "Tongue" + SuggestionKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 
         // --------------
 
         englishText = "Oops! That wasn't quite right. Try moving the voice box a towards the neck area. You're almost there!";
-        portugueseText = "Ora bolas, não é bem aí. A língua é um músculo que existe dentro da boca, responsável pelo paladar. Tenta outra vez!";
+        portugueseText = "Ora bolas, não é bem aí. A língua é um músculo que existe dentro da boca, responsável pelo paladar. Tenta outra vez";
 
         wrongAnswersList.Add(new Dialogue(SpeechMachine + "Tongue" + WrongAnswerKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 
         // ---------
 
         englishText = "You got it right! The voice box contains our vocal cords, which vibrate when air passes through them, creating our voice.";
-        portugueseText = "Boa! A língua ao movimentar-se na boca forma certos tipos de sons.";
+        portugueseText = "Boa! A língua dentro da boca ajuda a formar vários tipos de sons.";
 
         rightAnswersList.Add(new Dialogue(SpeechMachine + "Tongue" + RightAnswerKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 
@@ -291,14 +292,14 @@ public class BaseSpeechMachineDialogueGenerator
         string portugueseText;
 
         englishText = "There's a part of the body that helps us to speak, eat, and smile. What could it be?";
-        portugueseText = "Há uma parte do corpo que nos ajuda a falar, comer e sorrir. Qual será?";
+        portugueseText = "Há uma parte do corpo usada para saborear e falar, fica logo abaixo do nariz! Qual será?";
 
         suggestionList.Add(new Dialogue(SpeechMachine + "Mouth" + SuggestionKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 
         // --------------
 
         englishText = "Oops! That wasn't quite right. Try thinking about the part of the body that's controls the muscles that move your teeth and chin.";
-        portugueseText = "Ups! Não era bem isso. Tenta pensar na parte do corpo que está envolvida em controlar os musculos que fazem os dentes mexer.";
+        portugueseText = "Ups! Não era bem aí. Pensa na parte do corpo que onde a língua e dentes se encontram.";
 
         wrongAnswersList.Add(new Dialogue(SpeechMachine + "Mouth" + WrongAnswerKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 
@@ -322,7 +323,7 @@ public class BaseSpeechMachineDialogueGenerator
         string portugueseText;
 
         englishText = "This organ is responsible for providing air to the voice box. What could it be?";
-        portugueseText = "Este orgão é responsável por dar ar à caixa de voz. Qual poderá ser?";
+        portugueseText = "É um orgão que está protegido pelas costelas, e o ar que sai deles ajuda a transformar os sons em palavras. Qual poderá ser?";
 
         suggestionList.Add(new Dialogue(SpeechMachine + "Lungs" + SuggestionKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 
@@ -336,7 +337,7 @@ public class BaseSpeechMachineDialogueGenerator
         // ---------
 
         englishText = "Bingo! The lungs are located in the chest and expand as they fill with air.";
-        portugueseText = "Bingo! Os pulmões ficam no peito e expandem ao acumular ar dentro deles.";
+        portugueseText = "Bingo! Os pulmões ficam no peito, e expandem ao inspirar ar.";
 
         rightAnswersList.Add(new Dialogue(SpeechMachine + "Lungs" + RightAnswerKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 
@@ -353,7 +354,7 @@ public class BaseSpeechMachineDialogueGenerator
         string portugueseText;
 
         englishText = "There's a part of the body that helps articulate sound and is part of the mouth. Do you know what it could be?";
-        portugueseText = "Há uma parte do corpo que ajuda a articular o som e faz parte da boca. Sabes qual poderá ser?";
+        portugueseText = "Há uma parte do corpo, dentro da boca, que ajuda a formar certos sons como “s”, “z”, “f”, “v”, entre outros. Sem eles os sons seriam bem diferentes. Sabes qual poderá ser?";
 
         suggestionList.Add(new Dialogue(SpeechMachine + "Teeth" + SuggestionKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 
@@ -391,14 +392,14 @@ public class BaseSpeechMachineDialogueGenerator
         // --------------
 
         englishText = "Auch! The diaphragm doesn't really belong there! Remember that this muscles is close to the lungs. Try again!";
-        portugueseText = "Au! O diafragma não fica bem aí! Lembre-te que este músculo fica perto dos pulmões. Tente novamente!";
+        portugueseText = "Au! O diafragma não fica bem aí! Lembra-te que este músculo fica perto dos pulmões. Tenta novamente!";
 
         wrongAnswersList.Add(new Dialogue(SpeechMachine + "Diaphragm" + WrongAnswerKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 
         // ---------
 
         englishText = "Great! That's right! The diaphragm contracts and relaxes, and in doing so, it forces the lungs to fill or empty with air!";
-        portugueseText = "Boa! É isso mesmo! O diafragma aperta e relaxa e ao fazer isso obriga os pulmões a encher ou esvaziar o ar!";
+        portugueseText = "Boa! É isso mesmo! O diafragma ao apertar e relaxar obriga os pulmões a encher ou esvaziar o ar!";
 
         rightAnswersList.Add(new Dialogue(SpeechMachine + "Diaphragm" + RightAnswerKey + "1", Npc.SpeechMachine, englishText, portugueseText));
 

@@ -207,11 +207,11 @@ MonoBehaviour:
     Path: event:/VoiceLines/ISVoiceLineQuestion3
   <ISVoiceLineQuestion4>k__BackingField:
     Guid:
-      Data1: -117696058
-      Data2: 1138464661
-      Data3: 829015998
-      Data4: 728254917
-    Path: event:/VoiceLines/ISVoiceLineQuestion3
+      Data1: 97495168
+      Data2: 1264993971
+      Data3: -417327207
+      Data4: 903216091
+    Path: event:/VoiceLines/ISVoiceLineQuestion4
   <ISVoiceLineQuestion5>k__BackingField:
     Guid:
       Data1: -700826394

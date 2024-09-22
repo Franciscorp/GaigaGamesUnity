@@ -128,7 +128,9 @@ public  class UtilsDialogues{
         Conclusion = 12,
         GoodConclusion = 13,
         BadConclusion = 14,
-        BestConclusion = 15
+        BestConclusion = 15,
+        FirstError = 16,
+        PresentObjective = 17
     }
 
 
@@ -151,6 +153,8 @@ public  class UtilsDialogues{
         { IdentifyStutterDialogues.GoodConclusion, "IdentifyStutterGoodConclusion" },
         { IdentifyStutterDialogues.BadConclusion, "IdentifyStutterBadConclusion" },
         { IdentifyStutterDialogues.BestConclusion, "IdentifyStutterBestConclusion" },
+        { IdentifyStutterDialogues.FirstError, "IdentifyStutterGameFirstError" },
+        { IdentifyStutterDialogues.PresentObjective, "IdentifyStutterGamePresentObjective" },
     };
 
     public enum VoiceLines

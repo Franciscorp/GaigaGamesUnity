@@ -17,7 +17,10 @@ public class IdentifyStutterController : MonoBehaviour
     private int currentStage = 1;
     private int wrongAnswers = 0;
     private int rightAnswers = 0;
+    private bool isObjectivePresented = false;
+    private bool isErrorMessagePresented = false;
     private int currentQuestionVoiceLine = -1;
+    IdentifyStutterDialogues currentQuestion;
     private bool isEndGame = false;
     private Dictionary<string, bool> availableQuestions;
     private Dictionary<VoiceLines, EventReference> questionsVoiceLines;
@@ -45,6 +48,9 @@ public class IdentifyStutterController : MonoBehaviour
         // TODO delete
         playerInformation.CreateBasePlayerInfo();
         currentStage = 1;
+        isObjectivePresented = false;
+        isErrorMessagePresented = false;
+
         VideDialoguePanel.SetActive(true);
         StartButton.SetActive(false);
 
@@ -99,7 +105,7 @@ public class IdentifyStutterController : MonoBehaviour
             // NOTE: will not be used
             //AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.tvTalkingSFX);
             TVContent.UpdateContent(TVContentID.FriendTalking);
-            IdentifyStutterDialogues currentQuestion = GetAvailableQuestionEnum();
+            currentQuestion = GetAvailableQuestionEnum();
             Debug.Log(currentQuestion);
             dialogueManager.SetupAndRestartDialogue(GetDialogueKey(currentQuestion));
             //dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.Question1));
@@ -110,10 +116,19 @@ public class IdentifyStutterController : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.PlayUniqueOneShot(FModEvents.Instance.conclusionPartySFX);
+            AudioManager.Instance.PlayOneShot(FModEvents.Instance.conclusionPartySFX);
             dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.Conclusion));
             Debug.Log("End game");
         }
+    }
+
+    // When it displays the first error message, it presents this case instead of a new one
+    public void RepeatPreviousQuestion()
+    {
+        Debug.Log(currentQuestion);
+        dialogueManager.SetupAndRestartDialogue(GetDialogueKey(currentQuestion));
+        currentQuestionVoiceLine = (int)currentQuestion - 1;
+        PlayVoiceLine(currentQuestionVoiceLine);
     }
 
     public void RightAnswer()
@@ -121,7 +136,14 @@ public class IdentifyStutterController : MonoBehaviour
         rightAnswers++;
         Debug.Log("RightAnswer");
         currentQuestionVoiceLine = -1;
-        AskQuestion();
+        
+        if (!isObjectivePresented)
+        {
+            dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.PresentObjective));
+            isObjectivePresented = true;
+        }
+        else
+            AskQuestion();
     }
 
     public void WrongQuestion()
@@ -130,6 +152,12 @@ public class IdentifyStutterController : MonoBehaviour
         Debug.Log("WrongQuestion");
         // TODO very inneficient, but a working shortcut
         playerInformation.identifyStuterGameInfo.SetIdentifyStutterWrongAnswersDone(wrongAnswers);
+
+        if (!isErrorMessagePresented)
+        {
+            isErrorMessagePresented = true;
+            dialogueManager.SetupAndRestartDialogue(GetDialogueKey(IdentifyStutterDialogues.FirstError));
+        }
     }
 
     public void PresentConclusion()

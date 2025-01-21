@@ -1,2 +1,2 @@
-# GaigaGamesUnity
+# Gaiga Games in Unity
  

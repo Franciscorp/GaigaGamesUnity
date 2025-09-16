@@ -10,7 +10,10 @@ Activity created by [Francisco Pinto](https://github.com/Franciscorp).\
 ---
 ## Repository organization
 
-**├── Immunity Bandit Game**\
+GaigaGamesUnity/Assets/GaigaGamesProject/
+
+**├── GaigaGamesProject**\
+In path "GaigaGamesUnity/Assets/GaigaGamesProject" All game components, assets, programming and elements created and organized
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Finish playable version of the game. 
 
 **├── COMPLETE_Immunity_Bandit**\

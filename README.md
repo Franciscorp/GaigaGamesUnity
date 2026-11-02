@@ -49,3 +49,6 @@ As this project is a **proof of concept**, temporary assets were used throughout
 - **Left / Right Arrows:** Move left and right.
 - **Up / Down Arrows:** Move up and down.
 - **Mouse:** Interact with the game and select choices.
+
+## Downloads at
+[Mysteries of Speech at Grandma's House](https://franciscorp.itch.io/mysteries-of-speech-at-grandmas-house-prototype)

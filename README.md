@@ -32,16 +32,13 @@ Initial playtesting indicated that the narrative and interactive environments we
 
 **This project serves as a proof of concept for using game development to create more interactive, accessible, and engaging speech therapy experiences.**
 
-Activity created by [Francisco Pinto](https://github.com/Franciscorp).\
-
----
 ## Repository organization
 
 The main game project and its resources are located at:
 GaigaGamesUnity/Assets/GaigaGamesProject/
 
-- GaigaGamesProject: Contains the game's scripts, scenes, assets, UI elements, and other development resources, organized within the Unity project.
-- Documentation: Contains documentation covering the game concept, its validation process with speech therapy specialists, and user testing results.
+- **GaigaGamesProject**: Contains the game's scripts, scenes, assets, UI elements, and other development resources, organized within the Unity project.
+- **Documentation**: Contains documentation covering the game concept, its validation process with speech therapy specialists, and user testing results.
 
 ## Audio and Assets
 As this project is a **proof of concept**, temporary assets were used throughout development to support prototyping and gameplay implementation. These assets may be replaced with final artwork and resources in future development stages.
